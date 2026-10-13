@@ -2267,7 +2267,7 @@ footer {
       document.getElementById('detail-cons').textContent = d.consensusStatus === 'aligned' ? 'Aligned' : d.consensusStatus === 'opposed' ? 'Opposed' : '—';
     }
 
-    window.addEventListener('hashchange', handleRoute);
+    window.addEventListener('hashchange', function(){ console.log('[DEBUG] hashchange fired, hash=', location.hash); handleRoute(); });
     // 初始路由
     handleRoute();
 
@@ -2293,11 +2293,17 @@ footer {
     // ===== 预测大厅卡片点击委托（WO-11 路由） =====
     var phGrid = document.getElementById('ph-grid');
     if (phGrid) {
+      console.log('[DEBUG] ph-grid click listener bound');
       phGrid.addEventListener('click', function(e) {
         var card = e.target.closest('.p-card');
         if (!card) return;
         var id = card.dataset.id;
-        if (id) location.hash = 'detail/' + id;
+        console.log('[DEBUG] card clicked, id=', id, 'target=', e.target.tagName, 'card.id=', card.id);
+        if (id) {
+          e.preventDefault();
+          location.hash = 'detail/' + id;
+          console.log('[DEBUG] hash set to:', location.hash);
+        }
       });
       phGrid.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
