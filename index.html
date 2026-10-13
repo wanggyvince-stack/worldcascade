@@ -2271,6 +2271,24 @@ footer {
     // 初始路由
     handleRoute();
 
+    // 诊断: 暴露给控制台, 手动测试详情页
+    window.__testDetail = function(id) {
+      id = id || 'FP-01';
+      console.log('=== __testDetail(' + id + ') ===');
+      console.log('DETAIL_MAP has key:', id in DETAIL_MAP);
+      console.log('heroEl:', heroEl, 'hidden=', heroEl && heroEl.hidden);
+      console.log('chainsEl:', chainsEl, 'hidden=', chainsEl && chainsEl.hidden);
+      console.log('hubEl:', hubEl, 'hidden=', hubEl && hubEl.hidden);
+      console.log('trustEl:', trustEl, 'hidden=', trustEl && trustEl.hidden);
+      console.log('footerEl:', footerEl, 'hidden=', footerEl && footerEl.hidden);
+      console.log('detailEl:', detailEl, 'hidden=', detailEl && detailEl.hidden);
+      showDetail(id);
+      console.log('--- after showDetail ---');
+      console.log('heroEl.hidden=', heroEl && heroEl.hidden);
+      console.log('detailEl.hidden=', detailEl && detailEl.hidden);
+      console.log('scrollY=', window.scrollY);
+    };
+
 
     // ===== 预测大厅卡片点击委托（WO-11 路由） =====
     var phGrid = document.getElementById('ph-grid');
