@@ -1295,7 +1295,7 @@ footer {
 
     <div class="chains-list">
 
-      <article class="chain" onclick="location.hash=\'chain/CC-01\'" style="cursor:pointer;">
+      <article class="chain" data-chain-id="CC-01" style="cursor:pointer;">
         <div class="chain-head">
           <span class="chain-id">CC-01</span>
           <span class="chain-type">Cross-Domain</span>
@@ -1318,7 +1318,7 @@ footer {
         </div>
       </article>
 
-      <article class="chain" onclick="location.hash=\'chain/CC-02\'" style="cursor:pointer;">
+      <article class="chain" data-chain-id="CC-02" style="cursor:pointer;">
         <div class="chain-head">
           <span class="chain-id">CC-02</span>
           <span class="chain-type">Cross-Domain</span>
@@ -1341,7 +1341,7 @@ footer {
         </div>
       </article>
 
-      <article class="chain" onclick="location.hash=\'chain/CC-03\'" style="cursor:pointer;">
+      <article class="chain" data-chain-id="CC-03" style="cursor:pointer;">
         <div class="chain-head">
           <span class="chain-id">CC-03</span>
           <span class="chain-type">Cross-Domain</span>
@@ -2493,7 +2493,7 @@ footer {
       list.querySelectorAll('.bet-item').forEach(function(el) {
         el.onclick = function() {
           closeBetsModal();
-          location.hash = 'detail/' + el.dataset.id;
+          history.pushState(null, '', '#detail/' + el.dataset.id); handleRoute();
         };
       });
     }
@@ -2567,7 +2567,7 @@ footer {
 
     function showDetail(id){
       var d = DETAIL_MAP[id];
-      if (!d) { location.hash = '#predictions'; return; }
+      if (!d) { history.pushState(null, '', '#predictions'); handleRoute(); return; }
       [heroEl, chainsEl, hubEl, trustEl, footerEl].forEach(function(el){ if(el) el.hidden = true; });
       if (detailEl) detailEl.hidden = false;
     const cdEl = document.getElementById("chain-detail-view"); if (cdEl) cdEl.hidden = true;;
@@ -2649,7 +2649,7 @@ footer {
       var relHtml = '';
       if (d.causalChainIds && d.causalChainIds.length) {
         relHtml = 'Related: ' + d.causalChainIds.map(function(rid){
-          return '<a href="#detail/' + rid + '">' + rid + '</a>';
+          return '<a href="#detail/' + rid + '" onclick="event.preventDefault();history.pushState(null,\'\',\'#detail/' + rid + '\');handleRoute();">' + rid + '</a>';
         }).join(', ');
       }
       document.getElementById('detail-related').innerHTML = relHtml;
@@ -2757,6 +2757,21 @@ footer {
       });
     }
 
+    // ===== 因果链卡片点击委托（WO-13 路由，避免 anchor scroll） =====
+    var chainsList = document.querySelector('.chains-list');
+    if (chainsList) {
+      chainsList.addEventListener('click', function(e) {
+        var card = e.target.closest('.chain');
+        if (!card) return;
+        var id = card.dataset.chainId;
+        if (id) {
+          e.preventDefault();
+          history.pushState(null, '', '#chain/' + id);
+          handleRoute();
+        }
+      });
+    }
+
     // ===== BET MODULE GLOBAL BINDINGS =====
     var betSubmitBtn = document.getElementById('bet-submit');
     if (betSubmitBtn) betSubmitBtn.onclick = placeBet;
@@ -2767,7 +2782,7 @@ footer {
     var betsModalBd = document.getElementById('bets-modal-backdrop');
     if (betsModalBd) betsModalBd.onclick = closeBetsModal;
     var betsMore = document.getElementById('bets-more');
-    if (betsMore) betsMore.onclick = function() { closeBetsModal(); location.hash = '#predictions'; };
+    if (betsMore) betsMore.onclick = function() { closeBetsModal(); history.pushState(null, '', '#predictions'); handleRoute(); };
     var betsClear = document.getElementById('bets-clear');
     if (betsClear) betsClear.onclick = function() {
       if (confirm('Clear all your bets? This cannot be undone.')) {
@@ -3023,7 +3038,7 @@ footer {
         const anchorChips = n.anchors.map(pid => {
           const p = PREDICTIONS.find(p => p.id === pid);
           if (!p) return '';
-          return `<a class="cd-mini-pred" href="#detail/${pid}" onclick="event.stopPropagation();">${pid} <span class="mp-score">${p.e}</span></a>`;
+          return `<a class="cd-mini-pred" href="#detail/${pid}" onclick="event.stopPropagation();event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">${pid} <span class="mp-score">${p.e}</span></a>`;
         }).join('');
         const paragraphs = n.paragraphs.map(p => `<p class="cd-node-p">${p}</p>`).join('');
         return `
@@ -3059,7 +3074,7 @@ footer {
       const predsHtml = chain.relatedPreds.map(pid => {
         const p = PREDICTIONS.find(p => p.id === pid);
         if (!p) return '';
-        return `<a class="cd-pred-row" href="#detail/${pid}">
+        return `<a class="cd-pred-row" href="#detail/${pid}" onclick="event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">
           <span class="cd-pred-id">${pid}</span>
           <span class="cd-pred-title">${p.t.replace(/\'/g,"'")}</span>
           <span class="cd-pred-score">${p.e}</span>
@@ -3082,13 +3097,13 @@ footer {
 
 
     // 给首页 chain 卡片加点击跳转
-    document.querySelectorAll('article.chain').forEach((el, i) => {
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', () => {
-        const id = el.querySelector('.chain-id').textContent;
-        location.hash = 'chain/' + id;
-      });
-    });
+    // (已迁移到 .chains-list 的 click 委托)
+
+
+
+
+
+
 
 </script>
 </body>

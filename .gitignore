@@ -19,3 +19,6 @@ Thumbs.db
 # tokens (sensitive)
 *_token
 *.pem
+
+# vercel build output
+.vercel-output/
