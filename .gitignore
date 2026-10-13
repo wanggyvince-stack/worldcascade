@@ -1,0 +1,21 @@
+# deps
+node_modules/
+
+# env
+.env
+.env.local
+
+# vercel
+.vercel
+
+# os
+.DS_Store
+Thumbs.db
+
+# ide
+.vscode/
+.idea/
+
+# tokens (sensitive)
+*_token
+*.pem
