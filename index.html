@@ -2300,10 +2300,20 @@ footer {
         var id = card.dataset.id;
         if (id) {
           e.preventDefault();
-          // 用 pushState 改 URL, 避免浏览器 anchor scroll 覆盖
           history.pushState(null, '', '#detail/' + id);
-          // 手动触发路由
           handleRoute();
+          // 终极诊断: 0ms / 50ms / 500ms 后分别抓状态
+          [0, 50, 500].forEach(function(delay) {
+            setTimeout(function() {
+              console.log('[SNAP t=' + delay + 'ms]',
+                'hero.hidden=', heroEl && heroEl.hidden,
+                'hero.display=', heroEl && getComputedStyle(heroEl).display,
+                'detail.hidden=', detailEl && detailEl.hidden,
+                'detail.display=', detailEl && getComputedStyle(detailEl).display,
+                'scrollY=', window.scrollY,
+                'hash=', location.hash);
+            }, delay);
+          });
         }
       });
       phGrid.addEventListener('keydown', function(e) {
