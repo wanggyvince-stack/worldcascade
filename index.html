@@ -1177,6 +1177,68 @@ footer {
 .te-item-meta strong { color: var(--text); font-weight: 500; }
 .te-item-method { margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px dashed var(--border); font-family: var(--mono); font-size: 0.75rem; color: var(--text-dim); font-style: italic; }
 
+
+/* ===== Chain Detail (WO-13) ===== */
+.chain-detail-view { padding: 3rem 1.5rem 5rem; background: var(--bg); }
+.cd-inner { max-width: 820px; margin: 0 auto; }
+.cd-back { display: inline-block; font-family: var(--mono); font-size: 0.88rem; color: var(--text-dim); background: transparent; border: none; cursor: pointer; padding: 0.5rem 0; margin-bottom: 2rem; transition: color 0.15s; text-align: left; }
+.cd-back:hover { color: var(--accent); }
+.cd-back-bottom { margin-top: 3rem; }
+.cd-head .cd-tag { font-family: var(--mono); font-size: 0.78rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+.cd-head .cd-title { font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.3rem); font-weight: 500; color: var(--text); margin: 0.5rem 0 0; line-height: 1.2; }
+.cd-top { margin-top: 1.5rem; padding: 1.25rem 1.5rem; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+.cd-top-nodes { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
+.cd-top-node { padding: 0.5rem 0.85rem; border-radius: 8px; font-family: var(--mono); font-size: 0.82rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); cursor: pointer; transition: all 0.15s; }
+.cd-top-node:hover { border-color: var(--accent); color: var(--accent); }
+.cd-top-node.high { border-color: var(--high); color: var(--high); }
+.cd-top-node.med { border-color: var(--med); color: var(--med); }
+.cd-top-node.low { border-color: var(--low); color: var(--low); }
+.cd-top-arrow { color: var(--text-dim); font-family: var(--mono); }
+.cd-top-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); font-family: var(--mono); font-size: 0.82rem; color: var(--text-dim); }
+.cd-top-meta strong { color: var(--text); }
+.cd-strength-bar { display: inline-flex; align-items: center; gap: 0.5rem; }
+.cd-strength-fill { display: inline-block; width: 100px; height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--high), var(--low)); position: relative; }
+.cd-strength-fill::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: calc(100% - var(--pct, 0%)); background: rgba(255,255,255,0.1); border-radius: 3px; }
+.cd-section-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; color: var(--text); margin: 3rem 0 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+.cd-nodes { display: flex; flex-direction: column; gap: 0.75rem; }
+.cd-node { border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); overflow: hidden; transition: border-color 0.2s; }
+.cd-node:hover { border-color: var(--accent); }
+.cd-node-head { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; cursor: pointer; gap: 1rem; }
+.cd-node-title-wrap { flex: 1; min-width: 0; }
+.cd-node-num { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.1em; }
+.cd-node-title { font-family: var(--serif); font-size: 1.05rem; color: var(--text); margin-top: 0.15rem; }
+.cd-node-badge { font-family: var(--mono); font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: 999px; white-space: nowrap; }
+.cd-node-badge.high { background: rgba(16,185,129,0.12); color: var(--high); }
+.cd-node-badge.med { background: rgba(245,158,11,0.12); color: var(--med); }
+.cd-node-badge.low { background: rgba(239,68,68,0.12); color: var(--low); }
+.cd-node-body { padding: 0 1.25rem 1.25rem; border-top: 1px dashed var(--border); display: none; }
+.cd-node.open .cd-node-body { display: block; }
+.cd-node-arrow { transition: transform 0.3s; color: var(--text-dim); }
+.cd-node.open .cd-node-arrow { transform: rotate(180deg); }
+.cd-node-p { font-family: var(--serif); font-size: 0.98rem; line-height: 1.65; color: var(--text); margin: 1rem 0; }
+.cd-node-p:first-child { margin-top: 1rem; }
+.cd-node-meaning { font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim); font-style: italic; padding: 0.75rem 1rem; background: rgba(99,102,241,0.04); border-left: 2px solid var(--accent); border-radius: 4px; margin: 1rem 0; }
+.cd-node-anchors { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border); }
+.cd-node-anchors-label { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.cd-mini-pred { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.7rem; margin: 0.2rem 0.3rem 0.2rem 0; border: 1px solid var(--border); border-radius: 999px; font-family: var(--mono); font-size: 0.78rem; color: var(--text); background: var(--bg); cursor: pointer; transition: all 0.15s; text-decoration: none; }
+.cd-mini-pred:hover { border-color: var(--accent); color: var(--accent); }
+.cd-mini-pred .mp-score { color: var(--high); font-weight: 500; }
+.cd-vuln { padding: 1.25rem 1.5rem; border: 1px solid var(--border); border-left: 3px solid var(--med); border-radius: 10px; background: rgba(245,158,11,0.03); font-family: var(--serif); font-size: 0.98rem; line-height: 1.65; color: var(--text); }
+.cd-vuln strong { color: var(--med); }
+.cd-preds { display: grid; gap: 0.6rem; }
+.cd-pred-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); cursor: pointer; transition: all 0.15s; text-decoration: none; color: inherit; }
+.cd-pred-row:hover { border-color: var(--accent); transform: translateX(2px); }
+.cd-pred-row .cd-pred-id { font-family: var(--mono); font-size: 0.78rem; color: var(--text-dim); min-width: 60px; }
+.cd-pred-row .cd-pred-title { flex: 1; font-family: var(--serif); font-size: 0.92rem; color: var(--text); margin: 0 1rem; }
+.cd-pred-row .cd-pred-score { font-family: var(--mono); font-size: 0.88rem; color: var(--high); font-weight: 500; }
+.cd-preds-summary { margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(16,185,129,0.05); border-radius: 8px; font-family: var(--mono); font-size: 0.85rem; color: var(--text); text-align: center; }
+.cd-preds-summary strong { color: var(--high); }
+@media (max-width: 680px) {
+  .cd-top-nodes { flex-direction: column; align-items: flex-start; }
+  .cd-top-arrow { transform: rotate(90deg); margin-left: 0.5rem; }
+  .cd-pred-row .cd-pred-title { margin: 0 0.5rem; font-size: 0.85rem; }
+}
+
 </style>
 </head>
 <body>
@@ -1233,7 +1295,7 @@ footer {
 
     <div class="chains-list">
 
-      <article class="chain">
+      <article class="chain" onclick="location.hash=\'chain/CC-01\'" style="cursor:pointer;">
         <div class="chain-head">
           <span class="chain-id">CC-01</span>
           <span class="chain-type">Cross-Domain</span>
@@ -1256,7 +1318,7 @@ footer {
         </div>
       </article>
 
-      <article class="chain">
+      <article class="chain" onclick="location.hash=\'chain/CC-02\'" style="cursor:pointer;">
         <div class="chain-head">
           <span class="chain-id">CC-02</span>
           <span class="chain-type">Cross-Domain</span>
@@ -1279,7 +1341,7 @@ footer {
         </div>
       </article>
 
-      <article class="chain">
+      <article class="chain" onclick="location.hash=\'chain/CC-03\'" style="cursor:pointer;">
         <div class="chain-head">
           <span class="chain-id">CC-03</span>
           <span class="chain-type">Cross-Domain</span>
@@ -1304,6 +1366,26 @@ footer {
 
     </div>
   </section>
+
+  <section id="chain-detail-view" class="chain-detail-view" hidden>
+    <div class="cd-inner">
+      <button type="button" class="cd-back" onclick="history.pushState(null,'','#chains');handleRoute();window.scrollTo(0,0);">← Back to Causal Chains</button>
+      <div class="cd-head" id="cd-head"></div>
+      <div class="cd-top" id="cd-top"></div>
+
+      <h3 class="cd-section-title">The Chain</h3>
+      <div class="cd-nodes" id="cd-nodes"></div>
+
+      <h3 class="cd-section-title">Chain Vulnerability</h3>
+      <div class="cd-vuln" id="cd-vuln"></div>
+
+      <h3 class="cd-section-title">All Predictions on This Chain</h3>
+      <div class="cd-preds" id="cd-preds"></div>
+
+      <button type="button" class="cd-back cd-back-bottom" onclick="history.pushState(null,'','#chains');handleRoute();window.scrollTo(0,0);">← Back to Causal Chains</button>
+    </div>
+  </section>
+
 
   <section id="predictions" aria-labelledby="predictions-title">
     <div class="section-tag">// 03 · Prediction Hub</div>
@@ -1633,6 +1715,196 @@ footer {
   'use strict';
   try {
     // ===== STARFIELD =====
+    
+    const CHAINS_DATA = [
+      {
+        id: "CC-01",
+        type: "Cross-Domain",
+        title: "AI Craves Power → Energy Map Rewritten",
+        strength: 60,  // min(HIGH=100,MEDIUM=60,LOW=30) → 60
+        nodes: [
+          {
+            id: "N1",
+            title: "AI Inference Cost Drops 100×",
+            evidence: "HIGH",
+            freshness: "🟢",
+            paragraphs: [
+              "The cost of running AI has collapsed. In late 2024, a GPT-4-class query cost roughly $10 per million output tokens. By mid-2026, open-weight models running on commodity hardware have pushed this below $0.10 — a 100-fold drop in under 18 months. This isn't incremental improvement; it's a structural phase change in the economics of intelligence.",
+              "When intelligence becomes nearly free, demand doesn't grow linearly — it explodes. Every company, every government, every individual suddenly has access to capabilities that were science fiction two years ago."
+            ],
+            meaning: "Every prediction on this chain starts here. If inference stays cheap, the rest follows. If it doesn't, the chain breaks at Node 1.",
+            anchors: ["FP-51"]
+          },
+          {
+            id: "N2",
+            title: "Data Center Electricity Demand Surges",
+            evidence: "HIGH",
+            freshness: "🟢",
+            paragraphs: [
+              "Cheap inference means more inference. More inference means more GPUs. More GPUs mean more electricity. Global data center power demand has already doubled since 2022, and the trajectory points to another doubling by 2028. This isn't a forecast — it's math. Every watt of AI compute requires 2-3 watts of cooling overhead.",
+              "The constraint is no longer chips. It's kilowatts."
+            ],
+            meaning: "If Node 1 holds, Node 2 is arithmetic. The only way this fails is if efficiency gains outpace demand growth — something that has never happened in computing history.",
+            anchors: ["FP-56"]
+          },
+          {
+            id: "N3",
+            title: "Renewable Baseline Shift",
+            evidence: "MEDIUM",
+            freshness: "🟢",
+            paragraphs: [
+              "New data centers need new power. But the grid can't just 'add more coal' — permitting takes 5-10 years, and ESG mandates block fossil expansion. The only source that can scale fast enough is renewables: solar can be deployed in 6-12 months, wind in 18-24 months. The result: renewables cross the 50% electricity generation threshold not because of climate policy, but because AI demands it.",
+              "The energy transition is being driven not by environmentalists, but by AI companies."
+            ],
+            meaning: "This is where the chain starts to depend on policy and infrastructure. If permitting reform stalls, or if grid interconnection queues don't clear, renewables can't scale fast enough.",
+            anchors: ["FP-01"]
+          },
+          {
+            id: "N4",
+            title: "Energy Geopolitics Rewrite",
+            evidence: "MEDIUM",
+            freshness: "🟡",
+            paragraphs: [
+              "When the energy source shifts from fossil fuels to electrons, the geopolitical map redraws. Saudi Arabia's leverage depends on oil. China's leverage depends on controlling rare earth processing for solar panels. The US's leverage depends on tech supremacy. The winners and losers of the AI era will be determined not by who has the best models, but by who controls the electrons that power them.",
+              "This is the weakest node in the chain — evidence strength is MEDIUM and the timeline extends to 2030+. But if Nodes 1-3 hold, this node is almost inevitable."
+            ],
+            meaning: "This node has the longest time horizon and the most political uncertainty. It's the node most likely to be delayed — but not prevented.",
+            anchors: ["FP-18"]
+          }
+        ],
+        relatedPreds: ["FP-51","FP-56","FP-01","FP-18","FP-06","FP-14","FP-29"],
+        vulnerability: {
+          node: "N4",
+          title: "Energy Geopolitics Rewrite",
+          text: "Node 4 has the lowest evidence strength (MEDIUM) and the longest time horizon. If global energy policy stalls — or if fossil fuel incumbents resist — this node may not materialize even if Nodes 1-3 play out as expected. The chain's credibility rests on Nodes 1-3; Node 4 is the bet."
+        }
+      },
+      {
+        id: "CC-02",
+        type: "Cross-Domain",
+        title: "Demographic Shift → AI Regulation Forced",
+        strength: 60,
+        nodes: [
+          {
+            id: "N1",
+            title: "Population Aging and Shrinking Accelerates",
+            evidence: "HIGH",
+            freshness: "🟢",
+            paragraphs: [
+              "Japan, Korea, China, and most of Europe are past the replacement fertility tipping point. Japan's total population fell below 120 million in 2025; Korea's fertility rate remains under 0.8; China's natural decline exceeded 2 million in a single year. This isn't a forecast — it's arithmetic from births already happening.",
+              "The window for policy reversal closed a generation ago. The only question now is how fast the shrink compounds."
+            ],
+            meaning: "This node is already locked in. Every subsequent node inherits its momentum.",
+            anchors: ["FP-52","FP-11","FP-06"]
+          },
+          {
+            id: "N2",
+            title: "Labor Shortage Becomes Structural",
+            evidence: "HIGH",
+            freshness: "🟢",
+            paragraphs: [
+              "Fewer working-age adults means fewer workers per retiree. Japan's ratio has already dropped below 2:1. China will hit that mark before 2035. The economic consequence is not abstract — it's hospitals without nurses, factories without operators, farms without harvesters.",
+              "Countries don't choose automation in this environment. They are forced into it."
+            ],
+            meaning: "If Node 1 holds, Node 2 is a lagging indicator. The only variable is the speed of adjustment.",
+            anchors: ["FP-21","FP-12"]
+          },
+          {
+            id: "N3",
+            title: "AI Adoption Forced by Necessity",
+            evidence: "MEDIUM",
+            freshness: "🟢",
+            paragraphs: [
+              "Shrinking nations adopt AI at roughly twice the global average. Not because they love technology — because they have no alternative. South Korea is deploying AI in elder care. Japan is automating logistics. China is mandating AI in manufacturing.",
+              "The adoption curve isn't driven by enthusiasm. It's driven by the absence of human workers."
+            ],
+            meaning: "This is where political and cultural friction enters. Forced adoption creates resistance — unions, privacy concerns, displaced workers demanding protection.",
+            anchors: ["FP-21","FP-55"]
+          },
+          {
+            id: "N4",
+            title: "Emergency Regulatory Frameworks",
+            evidence: "MEDIUM",
+            freshness: "🟡",
+            paragraphs: [
+              "When AI is no longer optional, governments can no longer afford to deliberate. The EU AI Act took years to pass. The next generation of AI regulation will be written in emergency sessions — because labor shortages, economic contraction, and social unrest don't wait for public consultation.",
+              "The first 'technology state of emergency' will be declared not by a tech-friendly government, but by one backed into a corner."
+            ],
+            meaning: "This is the weakest link. Emergency regulation could go either way — aggressive adoption or aggressive restriction. The direction depends on political culture.",
+            anchors: ["FP-18","FP-57"]
+          }
+        ],
+        relatedPreds: ["FP-52","FP-21","FP-55","FP-11","FP-12","FP-06","FP-18","FP-57"],
+        vulnerability: {
+          node: "N4",
+          title: "Emergency Regulatory Frameworks",
+          text: "Node 4 is the chain's political bottleneck. Emergency declarations require political will that most democracies lack until crisis hits. If Node 3 creates social friction without visible labor collapse, regulation may stall — leaving the chain half-fulfilled."
+        }
+      },
+      {
+        id: "CC-03",
+        type: "Cross-Domain",
+        title: "Automation Replaces Labor → Energy Reallocation",
+        strength: 60,
+        nodes: [
+          {
+            id: "N1",
+            title: "Global Labor Deficit Emerges",
+            evidence: "HIGH",
+            freshness: "🟢",
+            paragraphs: [
+              "By 2030, the world will have roughly 85 million unfilled jobs — not because people don't want work, but because the workers don't exist. Demographics, early retirement, and pandemic-era labor exit have created structural gaps in manufacturing, logistics, healthcare, and agriculture.",
+              "This is a global phenomenon, but it concentrates in the economies that can least afford it: aging Asia, shrinking Eastern Europe, hollowed-out rural Americas."
+            ],
+            meaning: "Labor deficit is the chain's root cause. Without it, the rest of the chain has no pressure.",
+            anchors: ["FP-21","FP-59"]
+          },
+          {
+            id: "N2",
+            title: "Automation Surge Fills the Void",
+            evidence: "HIGH",
+            freshness: "🟢",
+            paragraphs: [
+              "Robots, AI agents, and autonomous systems move from pilot projects to core infrastructure. Manufacturing robots double in 5 years. AI coding agents write over half of new enterprise software. Autonomous vehicles handle long-haul freight on major corridors.",
+              "The automation isn't replacing all labor — it's replacing the labor that isn't there."
+            ],
+            meaning: "Node 2 follows directly from Node 1. The only uncertainty is the pace of capital deployment.",
+            anchors: ["FP-54","FP-21"]
+          },
+          {
+            id: "N3",
+            title: "Energy Demand Spike",
+            evidence: "MEDIUM",
+            freshness: "🟢",
+            paragraphs: [
+              "Every robot, every data center, every autonomous truck consumes electricity. The automation wave redirects the labor deficit into an energy deficit. Global electricity demand, which grew ~2% per year for decades, jumps to 4-5% as AI and automation become the backbone of production.",
+              "The freed labor becomes redirected electricity — and a new geopolitical currency."
+            ],
+            meaning: "This is where the chain meets the energy system. If the grid can't scale, automation stalls. If it does scale, the energy map redraws.",
+            anchors: ["FP-01","FP-53"]
+          },
+          {
+            id: "N4",
+            title: "New Energy Geopolitics",
+            evidence: "MEDIUM",
+            freshness: "🟡",
+            paragraphs: [
+              "Energy becomes the primary currency of the automation age. Nations rich in solar, wind, hydro, or uranium gain structural advantage. Nations dependent on fossil exports lose relevance. The new divide isn't between developed and developing — it's between energy-exporting and energy-importing automation economies.",
+              "This is the longest-horizon node. It plays out over 2030-2040, and its outcome depends on infrastructure decisions being made today."
+            ],
+            meaning: "Node 4 is the terminal consequence of the chain. Its realization depends on every prior node — and on political choices that haven't been made yet.",
+            anchors: ["FP-18","FP-15"]
+          }
+        ],
+        relatedPreds: ["FP-21","FP-54","FP-01","FP-53","FP-18","FP-15","FP-29"],
+        vulnerability: {
+          node: "N4",
+          title: "New Energy Geopolitics",
+          text: "Node 4 inherits the uncertainty of every prior node. If automation deployment is slower than expected (Node 2), or if energy infrastructure fails to scale (Node 3), the geopolitical rewrite doesn't materialize on the predicted timeline. This is the chain's terminal bet."
+        }
+      }
+    ];
+
     const PREDICTIONS=[{id:'FP-01',t:'Renewables confirmed as the world\'s largest electricity source by 2027',d:'energy',dl:'Energy',e:96.9,o:82,v:'2027-06-30',y:259},
 {id:'FP-02',t:'Global urban population share exceeds 60% by 2030',d:'demographics',dl:'Demographics',e:64.5,o:50,v:'2031-06-30',y:1720},
 {id:'FP-03',t:'China\'s population aged 65+ exceeds 240 million by 2027',d:'demographics',dl:'Demographics',e:55.2,o:45,v:'2027-12-31',y:443},
@@ -2273,7 +2545,12 @@ footer {
 
     function handleRoute(){
       var hash = location.hash.slice(1);
-      if (hash.startsWith('detail/')) {
+      
+    if (hash.startsWith('chain/')) {
+      const chainId = hash.split('/')[1];
+      if (renderChainDetail(chainId)) return;
+    }
+    if (hash.startsWith('detail/')) {
         var id = hash.replace('detail/', '');
         showDetail(id);
       } else {
@@ -2284,6 +2561,7 @@ footer {
     function showHome(){
       [heroEl, chainsEl, hubEl, trustEl, footerEl].forEach(function(el){ if(el) el.hidden = false; });
       if (detailEl) detailEl.hidden = true;
+    const cdEl = document.getElementById("chain-detail-view"); if (cdEl) cdEl.hidden = true;;
       window.scrollTo(0, 0);
     }
 
@@ -2292,6 +2570,7 @@ footer {
       if (!d) { location.hash = '#predictions'; return; }
       [heroEl, chainsEl, hubEl, trustEl, footerEl].forEach(function(el){ if(el) el.hidden = true; });
       if (detailEl) detailEl.hidden = false;
+    const cdEl = document.getElementById("chain-detail-view"); if (cdEl) cdEl.hidden = true;;
       renderDetail(d);
       window.scrollTo(0, 0);
     }
@@ -2708,6 +2987,108 @@ footer {
       initBacktests();
       initBarAnim();
     }
+
+
+    function renderChainDetail(chainId) {
+      const chain = CHAINS_DATA.find(c => c.id === chainId);
+      const detailEl = document.getElementById('chain-detail-view');
+      if (!chain || !detailEl) return false;
+
+      // Header
+      document.getElementById('cd-head').innerHTML = `
+        <div class="cd-tag">${chain.id} · ${chain.type}</div>
+        <h1 class="cd-title">${chain.title}</h1>
+      `;
+
+      // Top view (mini node chain)
+      const topNodes = chain.nodes.map((n, i) => {
+        const arrow = i < chain.nodes.length - 1 ? '<span class="cd-top-arrow">→</span>' : '';
+        return `<button type="button" class="cd-top-node ${n.evidence.toLowerCase()}" data-node-idx="${i}" onclick="document.querySelectorAll('.cd-node')[${i}].classList.add('open');document.querySelectorAll('.cd-node')[${i}].scrollIntoView({behavior:'smooth',block:'center'});">${n.title}</button>${arrow}`;
+      }).join('');
+      const avgScore = Math.round(chain.relatedPreds.reduce((s, pid) => {
+        const p = PREDICTIONS.find(p => p.id === pid);
+        return s + (p ? p.e : 0);
+      }, 0) / chain.relatedPreds.length * 10) / 10;
+      document.getElementById('cd-top').innerHTML = `
+        <div class="cd-top-nodes">${topNodes}</div>
+        <div class="cd-top-meta">
+          <span class="cd-strength-bar">Chain strength: <span class="cd-strength-fill" style="--pct:${chain.strength}%"></span> <strong>${chain.strength}%</strong></span>
+          <span>Linked predictions: <strong>${chain.relatedPreds.length}</strong></span>
+          <span>Avg engine score: <strong>${avgScore}</strong></span>
+        </div>
+      `;
+
+      // Nodes
+      document.getElementById('cd-nodes').innerHTML = chain.nodes.map((n, i) => {
+        const anchorChips = n.anchors.map(pid => {
+          const p = PREDICTIONS.find(p => p.id === pid);
+          if (!p) return '';
+          return `<a class="cd-mini-pred" href="#detail/${pid}" onclick="event.stopPropagation();">${pid} <span class="mp-score">${p.e}</span></a>`;
+        }).join('');
+        const paragraphs = n.paragraphs.map(p => `<p class="cd-node-p">${p}</p>`).join('');
+        return `
+          <article class="cd-node${i === 0 ? ' open' : ''}" data-node="${n.id}">
+            <div class="cd-node-head" onclick="this.parentElement.classList.toggle('open')">
+              <div class="cd-node-title-wrap">
+                <div class="cd-node-num">NODE ${i+1}</div>
+                <div class="cd-node-title">${n.title}</div>
+              </div>
+              <span class="cd-node-badge ${n.evidence.toLowerCase()}">${n.evidence} · ${n.freshness}</span>
+              <svg class="cd-node-arrow" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5 L7 9 L11 5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            </div>
+            <div class="cd-node-body">
+              ${paragraphs}
+              <div class="cd-node-meaning">${n.meaning}</div>
+              <div class="cd-node-anchors">
+                <div class="cd-node-anchors-label">Anchor Predictions</div>
+                ${anchorChips}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Vulnerability
+      const v = chain.vulnerability;
+      document.getElementById('cd-vuln').innerHTML = `
+        <strong>Weakest link: ${v.title}</strong>
+        <p class="cd-node-p" style="margin-top:0.75rem;margin-bottom:0;">${v.text}</p>
+      `;
+
+      // All predictions
+      const predsHtml = chain.relatedPreds.map(pid => {
+        const p = PREDICTIONS.find(p => p.id === pid);
+        if (!p) return '';
+        return `<a class="cd-pred-row" href="#detail/${pid}">
+          <span class="cd-pred-id">${pid}</span>
+          <span class="cd-pred-title">${p.t.replace(/\'/g,"'")}</span>
+          <span class="cd-pred-score">${p.e}</span>
+        </a>`;
+      }).join('');
+      document.getElementById('cd-preds').innerHTML = `
+        ${predsHtml}
+        <div class="cd-preds-summary">Average engine score across <strong>${chain.relatedPreds.length}</strong> linked predictions: <strong>${avgScore}</strong></div>
+      `;
+
+      // Toggle visibility
+      document.getElementById('hero').hidden = true;
+      document.getElementById('chains').hidden = true;
+      document.getElementById('predictions').hidden = true;
+      document.getElementById('trust').hidden = true;
+      detailEl.hidden = false;
+      window.scrollTo(0, 0);
+      return true;
+    }
+
+
+    // 给首页 chain 卡片加点击跳转
+    document.querySelectorAll('article.chain').forEach((el, i) => {
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', () => {
+        const id = el.querySelector('.chain-id').textContent;
+        location.hash = 'chain/' + id;
+      });
+    });
 
 </script>
 </body>
