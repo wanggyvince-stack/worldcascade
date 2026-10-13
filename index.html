@@ -1774,7 +1774,7 @@ footer {
         var icon = DOMAIN_ICON[p.d] || '•';
         var sl = scoreLevel(p.e);
         var cl = confLevel(p.o);
-        return '<article class="p-card" id="' + p.id + '" data-id="' + p.id + '" style="cursor:pointer" onclick="location.hash=\'detail/' + p.id + '\'" tabindex="0" role="link" aria-label="View details for ' + p.id + '">' +
+        return '<article class="p-card" id="' + p.id + '" data-id="' + p.id + '" style="cursor:pointer" tabindex="0" role="link" aria-label="View details for ' + p.id + '">' +
           '<div class="p-card-head">' +
             '<span class="p-id">' + p.id + '</span>' +
             '<span class="p-domain-tag" style="color:' + color + '"><span>' + icon + '</span> ' + p.dl + '</span>' +
@@ -2270,6 +2270,27 @@ footer {
     window.addEventListener('hashchange', handleRoute);
     // 初始路由
     handleRoute();
+
+
+    // ===== 预测大厅卡片点击委托（WO-11 路由） =====
+    var phGrid = document.getElementById('ph-grid');
+    if (phGrid) {
+      phGrid.addEventListener('click', function(e) {
+        var card = e.target.closest('.p-card');
+        if (!card) return;
+        var id = card.dataset.id;
+        if (id) location.hash = 'detail/' + id;
+      });
+      phGrid.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          var card = e.target.closest('.p-card');
+          if (!card) return;
+          e.preventDefault();
+          var id = card.dataset.id;
+          if (id) location.hash = 'detail/' + id;
+        }
+      });
+    }
 
     // ===== BET MODULE GLOBAL BINDINGS =====
     var betSubmitBtn = document.getElementById('bet-submit');
