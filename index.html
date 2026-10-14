@@ -1369,7 +1369,7 @@ footer {
 
   <section id="chain-detail-view" class="chain-detail-view" hidden>
     <div class="cd-inner">
-      <button type="button" class="cd-back" onclick="history.pushState(null,'','#chains');handleRoute();window.scrollTo(0,0);">← Back to Causal Chains</button>
+      <button type="button" class="cd-back" onclick="history.pushState(null,'','#chains');handleRoute();">← Back to Causal Chains</button>
       <div class="cd-head" id="cd-head"></div>
       <div class="cd-top" id="cd-top"></div>
 
@@ -1382,7 +1382,7 @@ footer {
       <h3 class="cd-section-title">All Predictions on This Chain</h3>
       <div class="cd-preds" id="cd-preds"></div>
 
-      <button type="button" class="cd-back cd-back-bottom" onclick="history.pushState(null,'','#chains');handleRoute();window.scrollTo(0,0);">← Back to Causal Chains</button>
+      <button type="button" class="cd-back cd-back-bottom" onclick="history.pushState(null,'','#chains');handleRoute();">← Back to Causal Chains</button>
     </div>
   </section>
 
@@ -1420,7 +1420,7 @@ footer {
   <!-- ===== DETAIL VIEW (SPA #detail/FP-xx) ===== -->
   <section id="detail-view" class="detail-view" aria-labelledby="detail-title" hidden>
     <div class="detail-inner">
-      <button type="button" class="detail-back" onclick="history.pushState(null,'','#predictions');handleRoute();window.scrollTo(0,0);">← Back to Predictions</button>
+      <button type="button" class="detail-back" onclick="history.pushState(null,'','#predictions');handleRoute();">← Back to Predictions</button>
       <div class="detail-head">
         <span class="detail-id-tag" id="detail-id-tag"></span>
         <h2 id="detail-title" class="detail-title"></h2>
@@ -1538,7 +1538,7 @@ footer {
         </div>
       </div>
 
-      <button type="button" class="detail-back detail-back-bottom" onclick="history.pushState(null,'','#predictions');handleRoute();window.scrollTo(0,0);">← Back to Predictions</button>
+      <button type="button" class="detail-back detail-back-bottom" onclick="history.pushState(null,'','#predictions');handleRoute();">← Back to Predictions</button>
     </div>
   </section>
 
@@ -2553,6 +2553,14 @@ footer {
     if (hash.startsWith('detail/')) {
         var id = hash.replace('detail/', '');
         showDetail(id);
+      } else if (hash === 'predictions') {
+        showHome();
+        var predSec = document.getElementById('predictions');
+        if (predSec) predSec.scrollIntoView({behavior: 'smooth', block: 'start'});
+      } else if (hash === 'chains') {
+        showHome();
+        var chnSec = document.getElementById('chains');
+        if (chnSec) chnSec.scrollIntoView({behavior: 'smooth', block: 'start'});
       } else {
         showHome();
       }
