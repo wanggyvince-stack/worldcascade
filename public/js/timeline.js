@@ -756,6 +756,16 @@ function renderCausalChains(g, svg) {
       .style('cursor', 'pointer')
       .style('transition', 'opacity 0.2s, stroke-width 0.2s');
 
+    // Source/Target endpoint dots (so user can see where chain starts/ends)
+    chainG.append('circle')
+      .attr('cx', sourcePos.x).attr('cy', sourcePos.y).attr('r', 4)
+      .attr('fill', sourceColor).attr('opacity', 0.9)
+      .attr('pointer-events', 'none');
+    chainG.append('circle')
+      .attr('cx', targetPos.x).attr('cy', targetPos.y).attr('r', 5)
+      .attr('fill', targetColor).attr('opacity', 1)
+      .attr('pointer-events', 'none');
+
     // Hover: highlight this chain, fade others
     chainPath.on('mouseenter', function() {
       chainG.selectAll('path').attr('opacity', 0.15);
@@ -887,6 +897,7 @@ function showBtTooltip(event, bt) {
   };
   tooltip.querySelector('[data-action="compare-pred"]').onclick = (e) => {
     e.stopPropagation();
+    sessionStorage.setItem('lastRoute', 'timeline');
     sessionStorage.setItem('lastRoute', 'timeline');
     window.location.href = '/#detail/' + associatedFpId;
   };

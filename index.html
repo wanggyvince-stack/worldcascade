@@ -2843,6 +2843,28 @@ document.addEventListener('DOMContentLoaded', () => {
       if (detailEl) detailEl.hidden = true;
     const cdEl = document.getElementById("chain-detail-view"); if (cdEl) cdEl.hidden = true;;
       window.scrollTo(0, 0);
+
+      // UX-05: Render related predictions (from causalChains that include this FP)
+      const relatedBlock = document.getElementById('detail-related-preds-block');
+      const relatedList = document.getElementById('detail-related-preds');
+      if (relatedBlock && relatedList && typeof CHAINS_DATA !== 'undefined') {
+        const relatedIds = new Set();
+        CHAINS_DATA.forEach(c => {
+          if (c.relatedPreds && c.relatedPreds.includes(d.id)) {
+            c.relatedPreds.forEach(pid => { if (pid !== d.id) relatedIds.add(pid); });
+          }
+        });
+        if (relatedIds.size > 0) {
+          relatedBlock.hidden = false;
+          relatedList.innerHTML = Array.from(relatedIds).map(pid => {
+            const p = DETAIL_MAP[pid];
+            if (!p) return '';
+            return `<a class="cross-link-pred-chip" href="#detail/${pid}" onclick="setLastRoute(location.hash);">${pid} · ${p.title.slice(0,50)}${p.title.length>50?'...':''}</a>`;
+          }).join('');
+        } else {
+          relatedBlock.hidden = true;
+        }
+      }
     }
 
     function showDetail(id){
@@ -3407,6 +3429,49 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('predictions').hidden = true;
       document.getElementById('trust').hidden = true;
       detailEl.hidden = false;
+      // UX-05: Fill cross-links
+      // 1) Timeline link - always show
+      var tlLink = document.getElementById('crosslink-timeline-link');
+      if (tlLink) tlLink.href = '/timeline.html';
+
+      // 2) Related predictions - find chains containing this FP
+      var relatedPreds = [];
+      var relatedChain = null;
+      if (typeof CHAINS_DATA !== 'undefined') {
+        CHAINS_DATA.forEach(function(c) {
+          if (c.relatedPreds && c.relatedPreds.indexOf(d.id) >= 0) {
+            relatedChain = c;
+            c.relatedPreds.forEach(function(pid) {
+              if (pid !== d.id && relatedPreds.indexOf(pid) < 0) relatedPreds.push(pid);
+            });
+          }
+        });
+      }
+      var relatedBlock = document.getElementById('crosslink-related');
+      var relatedList = document.getElementById('crosslink-related-list');
+      if (relatedBlock && relatedList) {
+        if (relatedPreds.length > 0) {
+          relatedBlock.hidden = false;
+          relatedList.innerHTML = relatedPreds.map(function(pid) {
+            var p = DETAIL_MAP[pid];
+            if (!p) return '<a class="crosslink-chip" href="#detail/' + pid + '">' + pid + '</a>';
+            return '<a class="crosslink-chip" href="#detail/' + pid + '" onclick="setLastRoute(location.hash);">' + pid + ' · ' + p.title.slice(0,40) + (p.title.length>40?'...':'') + '</a>';
+          }).join('');
+        } else {
+          relatedBlock.hidden = true;
+        }
+      }
+
+      // 3) Related causal chain
+      var chainBlock = document.getElementById('crosslink-chain');
+      var chainLink = document.getElementById('crosslink-chain-link');
+      if (chainBlock && chainLink && relatedChain) {
+        chainBlock.hidden = false;
+        chainLink.innerHTML = '<a href="#chain/' + relatedChain.id + '" onclick="setLastRoute(location.hash);">' + relatedChain.id + ' · ' + relatedChain.title.slice(0,50) + '</a>';
+      } else if (chainBlock) {
+        chainBlock.hidden = true;
+      }
+
       window.scrollTo(0, 0);
       return true;
     }
