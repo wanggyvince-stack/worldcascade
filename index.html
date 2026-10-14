@@ -1239,6 +1239,134 @@ footer {
   .cd-pred-row .cd-pred-title { margin: 0 0.5rem; font-size: 0.85rem; }
 }
 
+
+/* === NAV LINKS (UX-01) === */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+.nav-link {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+}
+.nav-link:hover { color: var(--text); }
+.nav-link.is-active { color: var(--text); }
+.nav-link.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -0.35rem;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+/* Changelog / Backtest 暂未实现，置灰 + 加 "soon" 小标记 */
+.nav-link--changelog,
+.nav-link--backtest {
+  color: var(--text-muted);
+  pointer-events: none;
+  cursor: default;
+}
+.nav-link--changelog::before,
+.nav-link--backtest::before {
+  content: 'soon';
+  position: absolute;
+  top: -0.6rem; right: -1.2rem;
+  font-size: 0.55rem;
+  padding: 0.05rem 0.3rem;
+  background: var(--bg-elev);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+/* 移动端汉堡菜单按钮 */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+.nav-toggle span {
+  width: 22px; height: 2px;
+  background: var(--text);
+  border-radius: 1px;
+  transition: transform 0.2s ease;
+}
+@media (max-width: 768px) {
+  .nav { padding: 1rem 1.25rem; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(80vw, 320px);
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 5rem 2rem 2rem;
+    background: var(--bg-elev);
+    border-left: 1px solid var(--border);
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    z-index: 100;
+  }
+  .nav-links.is-open { transform: translateX(0); }
+  .nav-link { font-size: 1rem; }
+}
+
+/* === UX-05 Cross-links === */
+.detail-crosslinks {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.detail-crosslinks h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+}
+.crosslinks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.crosslink {
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+a.crosslink { text-decoration: none; color: inherit; }
+.crosslink:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.crosslink-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+.crosslink-label::after { content: ' →'; color: var(--accent); }
+.crosslink-desc {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
 </style>
 </head>
 <body>
@@ -1263,10 +1391,15 @@ footer {
       <span>WorldCascade</span>
     </div>
     <div class="nav-links">
-      <a href="#chains">Causal Chains</a>
-      <a href="#trust">Track Record</a>
-      <a href="#methodology">Methodology</a>
+      <a href="/" data-hub="home" class="nav-link nav-link--home">Home</a>
+      <a href="/timeline.html" data-hub="timeline" class="nav-link nav-link--timeline">Timeline</a>
+      <a href="/changelog.html" data-hub="changelog" class="nav-link nav-link--changelog">Changelog</a>
+      <a href="/backtest.html" data-hub="backtest" class="nav-link nav-link--backtest">Backtest</a>
+      <a href="#methodology" data-hub="methodology" class="nav-link nav-link--methodology">Methodology</a>
     </div>
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <div class="hero-content">
@@ -1279,6 +1412,7 @@ footer {
     <p class="hero-sub">We model 80 possible futures — and score every one with a transparent, reproducible engine. Not opinion. Not speculation. Engineered foresight.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#predictions">Explore Predictions</a>
+      <a class="btn btn-ghost" href="/timeline.html">View Global Timeline →</a>
       <a class="btn btn-ghost" href="#chains">See the Causal Chains →</a>
       <button class="btn btn-ghost" type="button" id="hero-my-bets-btn">My Bets <span id="hero-bets-count"></span> →</button>
     </div>
@@ -1369,7 +1503,7 @@ footer {
 
   <section id="chain-detail-view" class="chain-detail-view" hidden>
     <div class="cd-inner">
-      <button type="button" class="cd-back" onclick="history.pushState(null,'','#chains');handleRoute();">← Back to Causal Chains</button>
+      <button type="button" class="cd-back" id="cd-back-btn">← Back to Causal Chains</button>
       <div class="cd-head" id="cd-head"></div>
       <div class="cd-top" id="cd-top"></div>
 
@@ -1382,7 +1516,7 @@ footer {
       <h3 class="cd-section-title">All Predictions on This Chain</h3>
       <div class="cd-preds" id="cd-preds"></div>
 
-      <button type="button" class="cd-back cd-back-bottom" onclick="history.pushState(null,'','#chains');handleRoute();">← Back to Causal Chains</button>
+      <button type="button" class="cd-back cd-back-bottom" id="cd-back-btn-bottom">← Back to Causal Chains</button>
     </div>
   </section>
 
@@ -1420,7 +1554,7 @@ footer {
   <!-- ===== DETAIL VIEW (SPA #detail/FP-xx) ===== -->
   <section id="detail-view" class="detail-view" aria-labelledby="detail-title" hidden>
     <div class="detail-inner">
-      <button type="button" class="detail-back" onclick="history.pushState(null,'','#predictions');handleRoute();">← Back to Predictions</button>
+      <button type="button" class="detail-back" id="detail-back-btn">← Back to Predictions</button>
       <div class="detail-head">
         <span class="detail-id-tag" id="detail-id-tag"></span>
         <h2 id="detail-title" class="detail-title"></h2>
@@ -1538,7 +1672,26 @@ footer {
         </div>
       </div>
 
-      <button type="button" class="detail-back detail-back-bottom" onclick="history.pushState(null,'','#predictions');handleRoute();">← Back to Predictions</button>
+      <!-- ===== UX-05: CROSS-LINKS ===== -->
+      <div class="detail-crosslinks">
+        <h2>Explore Further</h2>
+        <div class="crosslinks-grid">
+          <a class="crosslink" href="/timeline.html" id="crosslink-timeline">
+            <div class="crosslink-label">View on Timeline</div>
+            <div class="crosslink-desc">See where this prediction sits in the global timeline</div>
+          </a>
+          <div class="crosslink" id="crosslink-related" hidden>
+            <div class="crosslink-label">Related Predictions</div>
+            <div class="crosslink-desc" id="crosslink-related-list"></div>
+          </div>
+          <div class="crosslink" id="crosslink-chain" hidden>
+            <div class="crosslink-label">Related Causal Chain</div>
+            <div class="crosslink-desc" id="crosslink-chain-link"></div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="detail-back detail-back-bottom" id="detail-back-btn-bottom">← Back to Predictions</button>
     </div>
   </section>
 
@@ -1711,6 +1864,84 @@ footer {
 </footer>
 
 <script>
+// ===== UX-03: Source-aware Back =====
+function setLastRoute(route) {
+  try { sessionStorage.setItem('lastRoute', route); } catch (_) {}
+}
+function getLastRoute() {
+  try { return sessionStorage.getItem('lastRoute') || ''; } catch (_) { return ''; }
+}
+// 根据 lastRoute 决定 Back 按钮文案和行为
+function updateBackButton(btn, fallbackHash, fallbackText) {
+  if (!btn) return;
+  const last = getLastRoute();
+  let label = fallbackText;
+  let handler = () => {
+    history.pushState(null, '', fallbackHash);
+    handleRoute();
+  };
+  if (last === 'timeline') {
+    label = '← Back to Timeline';
+    handler = () => { location.href = '/timeline.html'; };
+  } else if (last === 'changelog') {
+    label = '← Back to Changelog';
+    handler = () => { location.href = '/changelog.html'; };
+  } else if (last === 'backtest') {
+    label = '← Back to Backtest';
+    handler = () => { location.href = '/#backtest'; };
+  } else if (last.startsWith('#chain-detail/')) {
+    // 从 chain detail 跳过来的
+    label = '← Back to Chain';
+    handler = () => {
+      history.pushState(null, '', last);
+      handleRoute();
+    };
+  } else if (last.startsWith('#detail/')) {
+    // 从 prediction detail 跳过来的
+    label = '← Back to Prediction';
+    handler = () => {
+      history.pushState(null, '', last);
+      handleRoute();
+    };
+  } else if (!last) {
+    // Fallback：直接链接/书签 场景（见蓝图 §3.2）
+    label = '← Back to Home';
+    handler = () => { location.hash = fallbackHash; };
+  }
+  btn.textContent = label;
+  btn.onclick = handler;
+}
+
+function updateNavHighlight(hash) {
+  document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('is-active'));
+  const homeLink = document.querySelector('.nav-link--home');
+  // index.html 默认 Home 高亮
+  if (homeLink) homeLink.classList.add('is-active');
+  // 具体 section 可进一步细化（比如 #predictions 时仍高亮 Home）
+}
+
+// UX-01: mobile nav toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    // 点击任何链接后关闭菜单
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+  try { sessionStorage.setItem('lastHub', 'home'); } catch (_) {}
+  updateNavHighlight(location.hash);
+});
+
+
 (function() {
   'use strict';
   try {
@@ -2493,6 +2724,7 @@ footer {
       list.querySelectorAll('.bet-item').forEach(function(el) {
         el.onclick = function() {
           closeBetsModal();
+          setLastRoute(location.hash);
           history.pushState(null, '', '#detail/' + el.dataset.id); handleRoute();
         };
       });
@@ -2551,12 +2783,37 @@ footer {
       
     if (hash.startsWith('chain/')) {
       const chainId = hash.split('/')[1];
+      setLastRoute(location.hash);
+      updateBackButton(
+        document.getElementById('cd-back-btn'),
+        '#chains',
+        '← Back to Causal Chains'
+      );
+      updateBackButton(
+        document.getElementById('cd-back-btn-bottom'),
+        '#chains',
+        '← Back to Causal Chains'
+      );
       if (renderChainDetail(chainId)) return;
     }
     if (hash.startsWith('detail/')) {
         var id = hash.replace('detail/', '');
+        setLastRoute(location.hash);
+        updateBackButton(
+          document.getElementById('detail-back-btn'),
+          '#predictions',
+          '← Back to Predictions'
+        );
+        updateBackButton(
+          document.getElementById('detail-back-btn-bottom'),
+          '#predictions',
+          '← Back to Predictions'
+        );
         showDetail(id);
-      } else if (hash === 'predictions') {
+      } else if (hash === 'predictions' || hash === 'chains' || hash === 'backtest' || hash === 'methodology' || hash === 'trust') {
+        try { sessionStorage.setItem('lastHub', 'home'); } catch (_) {}
+      }
+      if (hash === 'predictions') {
         showHomeNoScroll();
         var predSec = document.getElementById('predictions');
         if (predSec) {
@@ -2670,7 +2927,7 @@ footer {
       var relHtml = '';
       if (d.causalChainIds && d.causalChainIds.length) {
         relHtml = 'Related: ' + d.causalChainIds.map(function(rid){
-          return '<a href="#detail/' + rid + '" onclick="event.preventDefault();history.pushState(null,\'\',\'#detail/' + rid + '\');handleRoute();">' + rid + '</a>';
+          return '<a href="#detail/' + rid + '" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,\'\',\'#detail/' + rid + '\');handleRoute();">' + rid + '</a>';
         }).join(', ');
       }
       document.getElementById('detail-related').innerHTML = relHtml;
@@ -2741,6 +2998,40 @@ footer {
       // render bet module for this prediction
       renderBetModule(d);
       document.getElementById('detail-cons').textContent = d.consensusStatus === 'aligned' ? 'Aligned' : d.consensusStatus === 'opposed' ? 'Opposed' : '—';
+
+      // ===== UX-05: Render cross-links =====
+      // Timeline link
+      const timelineLink = document.getElementById('crosslink-timeline');
+      if (timelineLink) {
+        timelineLink.onclick = (e) => {
+          e.preventDefault();
+          try { sessionStorage.setItem('pendingHighlight', d.id); } catch (_) {}
+          location.href = '/timeline.html';
+        };
+      }
+
+      // Related predictions
+      const relatedCrosslink = document.getElementById('crosslink-related');
+      const relatedList = document.getElementById('crosslink-related-list');
+      if (relatedCrosslink && relatedList && d.causalChainIds && d.causalChainIds.length > 0) {
+        relatedCrosslink.hidden = false;
+        relatedList.innerHTML = d.causalChainIds.slice(0, 3).map(rid => {
+          return `<a href="#detail/${rid}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,\'\',\'#detail/${rid}\');handleRoute();" style="color:var(--accent);">${rid}</a>`;
+        }).join(', ');
+      } else if (relatedCrosslink) {
+        relatedCrosslink.hidden = true;
+      }
+
+      // Related causal chain
+      const chainCrosslink = document.getElementById('crosslink-chain');
+      const chainLink = document.getElementById('crosslink-chain-link');
+      if (chainCrosslink && chainLink && d.causalChainIds && d.causalChainIds.length > 0) {
+        chainCrosslink.hidden = false;
+        const chainId = d.causalChainIds[0];
+        chainLink.innerHTML = `<a href="#chain/${chainId}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,\'\',\'#chain/${chainId}\');handleRoute();" style="color:var(--accent);">${chainId}</a>`;
+      } else if (chainCrosslink) {
+        chainCrosslink.hidden = true;
+      }
     }
 
     window.addEventListener('hashchange', handleRoute);
@@ -2759,6 +3050,7 @@ footer {
         var id = card.dataset.id;
         if (id) {
           e.preventDefault();
+          setLastRoute(location.hash);
           history.pushState(null, '', '#detail/' + id);
           handleRoute();
 
@@ -2787,6 +3079,7 @@ footer {
         var id = card.dataset.chainId;
         if (id) {
           e.preventDefault();
+          setLastRoute(location.hash);
           history.pushState(null, '', '#chain/' + id);
           handleRoute();
         }
@@ -3059,7 +3352,7 @@ footer {
         const anchorChips = n.anchors.map(pid => {
           const p = PREDICTIONS.find(p => p.id === pid);
           if (!p) return '';
-          return `<a class="cd-mini-pred" href="#detail/${pid}" onclick="event.stopPropagation();event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">${pid} <span class="mp-score">${p.e}</span></a>`;
+          return `<a class="cd-mini-pred" href="#detail/${pid}" onclick="setLastRoute(location.hash);event.stopPropagation();event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">${pid} <span class="mp-score">${p.e}</span></a>`;
         }).join('');
         const paragraphs = n.paragraphs.map(p => `<p class="cd-node-p">${p}</p>`).join('');
         return `
@@ -3095,7 +3388,7 @@ footer {
       const predsHtml = chain.relatedPreds.map(pid => {
         const p = PREDICTIONS.find(p => p.id === pid);
         if (!p) return '';
-        return `<a class="cd-pred-row" href="#detail/${pid}" onclick="event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">
+        return `<a class="cd-pred-row" href="#detail/${pid}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">
           <span class="cd-pred-id">${pid}</span>
           <span class="cd-pred-title">${p.t.replace(/\'/g,"'")}</span>
           <span class="cd-pred-score">${p.e}</span>
