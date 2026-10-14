@@ -2844,15 +2844,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cdEl = document.getElementById("chain-detail-view"); if (cdEl) cdEl.hidden = true;;
       window.scrollTo(0, 0);
 
-      // UX-05: Render related predictions (from causalChains that include this FP)
-      const relatedBlock = document.getElementById('detail-related-preds-block');
-      const relatedList = document.getElementById('detail-related-preds');
-      if (relatedBlock && relatedList && typeof CHAINS_DATA !== 'undefined') {
-        const relatedIds = new Set();
-        CHAINS_DATA.forEach(c => {
-          if (c.relatedPreds && c.relatedPreds.includes(d.id)) {
-            c.relatedPreds.forEach(pid => { if (pid !== d.id) relatedIds.add(pid); });
-          }
+      
+    }
         });
         if (relatedIds.size > 0) {
           relatedBlock.hidden = false;
