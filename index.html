@@ -2795,6 +2795,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '← Back to Causal Chains'
       );
       if (renderChainDetail(chainId)) return;
+      // renderChainDetail 失败 → 降级到 showHome（见下方）
     }
     if (hash.startsWith('detail/')) {
         var id = hash.replace('detail/', '');
@@ -2810,6 +2811,7 @@ document.addEventListener('DOMContentLoaded', () => {
           '← Back to Predictions'
         );
         showDetail(id);
+        return;
       } else if (hash === 'predictions' || hash === 'chains' || hash === 'backtest' || hash === 'methodology' || hash === 'trust') {
         try { sessionStorage.setItem('lastHub', 'home'); } catch (_) {}
       }

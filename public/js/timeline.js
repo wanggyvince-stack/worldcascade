@@ -709,14 +709,30 @@ function renderCausalChains(g, svg) {
     gradient.append('stop').attr('offset', '0%').attr('stop-color', sourceColor).attr('stop-opacity', 0.7);
     gradient.append('stop').attr('offset', '100%').attr('stop-color', targetColor).attr('stop-opacity', 0.7);
 
-    // Bezier curve path
+    // Bezier curve path: horizontal tangent at source & target (clean S-curves, no diagonal crossing)
     const dx = targetPos.x - sourcePos.x;
-    const dy = targetPos.y - sourcePos.y;
-    const cp1x = sourcePos.x + dx * 0.3;
-    const cp1y = sourcePos.y + dy * 0.1 - 30;
-    const cp2x = sourcePos.x + dx * 0.7;
-    const cp2y = targetPos.y - dy * 0.1 + 30;
+    const midX = sourcePos.x + dx * 0.5;
+    // Pull control points toward horizontal departure/arrival so curves flow along the time axis
+    const cp1x = sourcePos.x + Math.max(40, dx * 0.4);
+    const cp2x = targetPos.x - Math.max(40, dx * 0.4);
+    const cp1y = sourcePos.y;
+    const cp2y = targetPos.y;
     const pathD = `M ${sourcePos.x} ${sourcePos.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${targetPos.x} ${targetPos.y}`;
+
+    // Arrow marker per chain (inherits target domain color)
+    const markerId = `chain-arrow-${idx}`;
+    defs.append('marker')
+      .attr('id', markerId)
+      .attr('viewBox', '0 -5 10 10')
+      .attr('refX', 9)
+      .attr('refY', 0)
+      .attr('markerWidth', 7)
+      .attr('markerHeight', 7)
+      .attr('orient', 'auto')
+      .append('path')
+        .attr('d', 'M0,-5L10,0L0,5')
+        .attr('fill', targetColor)
+        .attr('opacity', 0.85);
 
     const chainPath = chainG.append('path')
       .attr('d', pathD)
@@ -724,7 +740,8 @@ function renderCausalChains(g, svg) {
       .attr('stroke', `url(#${gradId})`)
       .attr('stroke-width', strokeWidth)
       .attr('stroke-dasharray', '6,3')
-      .attr('opacity', 0.6)
+      .attr('opacity', 0.7)
+      .attr('marker-end', `url(#${markerId})`)
       .attr('data-chain-id', chain.id)
       .style('cursor', 'pointer')
       .style('transition', 'opacity 0.2s');
@@ -969,7 +986,7 @@ function applyDomainFilter() {
 // ============================================================
 function navigateToPrediction(fpId) {
   sessionStorage.setItem('lastRoute', 'timeline');
-  window.location.href = '/#' + fpId;
+  window.location.href = '/#detail/' + fpId;
 }
 
 // ============================================================
