@@ -1,0 +1,451 @@
+/* WorldCascade Timeline - Z0 Minimum Viable Version */
+/* Sprint 3.1 - WO-02 v1.1.0 */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #0F172A;
+  color: #E2E8F0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Header */
+.timeline-header {
+  padding: 16px 24px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(15,23,42,0.85);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-title h1 {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-title .badge {
+  font-size: 9px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(99,102,241,0.15);
+  color: #818cf8;
+  border: 1px solid rgba(99,102,241,0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Legend Bar */
+.legend-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.legend-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.25s;
+  border: 1px solid transparent;
+  user-select: none;
+  background: transparent;
+  color: #E2E8F0;
+  font-family: inherit;
+}
+
+.legend-btn:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.legend-btn.dimmed {
+  opacity: 0.25;
+}
+
+.legend-btn.all-btn {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-right: 4px;
+}
+
+.legend-btn.all-btn.active {
+  background: rgba(99,102,241,0.15);
+  border-color: rgba(99,102,241,0.3);
+  color: #a5b4fc;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-sep {
+  width: 1px;
+  height: 16px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 4px;
+}
+
+/* Main Container */
+.main-container {
+  padding: 12px 24px 24px;
+  position: relative;
+}
+
+.svg-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.svg-container svg {
+  display: block;
+}
+
+/* Stats Card */
+.stats-card {
+  position: fixed;
+  top: 80px;
+  left: 32px;
+  z-index: 90;
+  background: rgba(15,23,42,0.92);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 10px;
+  padding: 14px 18px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 220px;
+}
+
+.stats-card:hover {
+  border-color: rgba(16,185,129,0.5);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+
+.stats-card-accent {
+  width: 100%;
+  height: 3px;
+  background: #10B981;
+  opacity: 0.6;
+  border-radius: 3px 3px 0 0;
+  margin-bottom: 10px;
+}
+
+.stats-card-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #10B981;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.stats-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.stats-card-label {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.stats-card-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.stats-card-outcomes {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.stats-correct {
+  font-size: 12px;
+  font-weight: 600;
+  color: #10B981;
+}
+
+.stats-incorrect {
+  font-size: 12px;
+  font-weight: 600;
+  color: #EF4444;
+}
+
+/* Tooltip */
+.timeline-tooltip {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s;
+  z-index: 200;
+  background: rgba(15,23,42,0.95);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 14px 18px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 1px rgba(255,255,255,0.1);
+  max-width: 320px;
+  min-width: 240px;
+}
+
+.timeline-tooltip.visible {
+  opacity: 1;
+}
+
+.tooltip-title {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: #f1f5f9;
+}
+
+.tooltip-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.tooltip-label {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.tooltip-value {
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.tooltip-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.tooltip-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+.domain-badge {
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.tooltip-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 4px 0;
+}
+
+/* Back to Global View button (Z1 mode) */
+.back-global-btn {
+  position: fixed;
+  top: 80px;
+  left: 32px;
+  z-index: 95;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(15,23,42,0.9);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  backdrop-filter: blur(12px);
+}
+
+.back-global-btn:hover {
+  background: rgba(30,41,59,0.95);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* Mobile backtest toggle */
+.mobile-bt-toggle {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 95;
+  padding: 10px 20px;
+  border-radius: 24px;
+  background: rgba(16,185,129,0.15);
+  border: 1px solid rgba(16,185,129,0.3);
+  color: #10B981;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  backdrop-filter: blur(12px);
+  transition: all 0.2s;
+}
+
+.mobile-bt-toggle:hover {
+  background: rgba(16,185,129,0.25);
+}
+
+/* Node pulse animation */
+@keyframes nodePulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.85; }
+}
+
+.node-triggered-pulse {
+  animation: nodePulse 2s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* SVG text styles */
+.now-label {
+  font-size: 11px;
+  fill: #F59E0B;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.lane-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.axis-label {
+  font-size: 11px;
+  fill: #64748b;
+  font-weight: 500;
+}
+
+/* Loading state */
+.loading-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #0F172A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.3s;
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-top-color: #3B82F6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Focus styles for keyboard nav */
+.node-focus:focus {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline-header {
+    padding: 12px 16px 8px;
+  }
+  .header-title h1 {
+    font-size: 14px;
+  }
+  .legend-bar {
+    gap: 2px;
+  }
+  .legend-btn {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+  .main-container {
+    padding: 8px 8px 16px;
+  }
+  .stats-card {
+    position: sticky;
+    top: 60px;
+    left: auto;
+    right: auto;
+    margin: 0 auto 8px;
+    width: calc(100% - 16px);
+    max-width: 360px;
+  }
+  .mobile-bt-toggle {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .timeline-header {
+    padding: 14px 20px 10px;
+  }
+  .main-container {
+    padding: 10px 16px 20px;
+  }
+}

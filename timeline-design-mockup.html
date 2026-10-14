@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorldCascade — Narrative Timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:#e2e8f0;min-height:100vh;overflow-x:hidden}
+.header{padding:20px 32px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(15,23,42,0.6);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.header-title{display:flex;align-items:center;gap:12px}
+.header-title h1{font-size:18px;font-weight:600;letter-spacing:-0.3px;background:linear-gradient(135deg,#e2e8f0,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header-title .badge{font-size:10px;font-weight:500;padding:3px 8px;border-radius:4px;background:rgba(99,102,241,0.15);color:#818cf8;border:1px solid rgba(99,102,241,0.25);text-transform:uppercase;letter-spacing:0.5px}
+.controls{display:flex;align-items:center;gap:16px}
+.zoom-controls{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,0.04);border-radius:8px;padding:3px;border:1px solid rgba(255,255,255,0.06)}
+.zoom-btn{padding:6px 14px;border:none;background:transparent;color:#94a3b8;font-size:12px;font-weight:500;font-family:inherit;cursor:pointer;border-radius:6px;transition:all 0.2s}
+.zoom-btn.active{background:rgba(99,102,241,0.2);color:#a5b4fc}
+.zoom-btn:hover{color:#e2e8f0}
+.legend{display:flex;gap:6px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:11px;font-weight:500;transition:all 0.25s;border:1px solid transparent;user-select:none}
+.legend-item:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.08)}
+.legend-item.dimmed{opacity:0.25}
+.legend-dot{width:8px;height:8px;border-radius:50%}
+.legend-sep{width:1px;height:16px;background:rgba(255,255,255,0.1);margin:0 4px}
+.legend-shape{width:8px;height:8px;display:flex;align-items:center;justify-content:center}
+.main-container{padding:16px 32px 32px;position:relative}
+.svg-container{width:100%;overflow-x:auto;overflow-y:visible}
+svg{display:block}
+.tooltip{position:fixed;pointer-events:none;opacity:0;transition:opacity 0.18s;z-index:200;background:rgba(15,23,42,0.95);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 18px;backdrop-filter:blur(16px);box-shadow:0 20px 40px rgba(0,0,0,0.5),0 0 1px rgba(255,255,255,0.1);max-width:320px;min-width:240px}
+.tooltip.visible{opacity:1}
+.tooltip-title{font-size:13px;font-weight:600;line-height:1.4;margin-bottom:10px;color:#f1f5f9}
+.tooltip-meta{display:flex;flex-direction:column;gap:8px}
+.tooltip-row{display:flex;justify-content:space-between;align-items:center;font-size:11px}
+.tooltip-label{color:#94a3b8;font-weight:400}
+.tooltip-value{font-weight:600;color:#e2e8f0}
+.tooltip-bar{width:100%;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-top:2px}
+.tooltip-bar-fill{height:100%;border-radius:2px;transition:width 0.3s}
+.domain-badge{display:inline-flex;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.3px}
+.tooltip-divider{height:1px;background:rgba(255,255,255,0.08);margin:4px 0}
+.now-label{font-size:11px;fill:#f59e0b;font-weight:600;letter-spacing:0.5px}
+.axis-label{font-size:11px;fill:#64748b;font-weight:500}
+.lane-label{font-size:12px;font-weight:600;letter-spacing:-0.2px}
+.node-pulse{animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.6}}
+.bottom-legend{padding:8px 32px 24px;display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+.bottom-legend-item{display:flex;align-items:center;gap:8px;font-size:11px;color:#94a3b8}
+.bottom-legend-icon{width:16px;height:16px;display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-title">
+    <h1>WorldCascade — Narrative Timeline</h1>
+    <span class="badge">Narrative Chain</span>
+  </div>
+  <div class="controls">
+    <div class="legend" id="legend"></div>
+    <div class="zoom-controls">
+      <button class="zoom-btn active" data-zoom="1">1×</button>
+      <button class="zoom-btn" data-zoom="2">2×</button>
+    </div>
+  </div>
+</div>
+<div class="main-container">
+  <div class="svg-container" id="svg-container"></div>
+</div>
+<div class="bottom-legend" id="bottom-legend"></div>
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const domains = {
+  AI: { color: '#3B82F6', label: 'AI' },
+  Energy: { color: '#10B981', label: 'Energy' },
+  Demographics: { color: '#8B5CF6', label: 'Demographics' },
+  Climate: { color: '#06B6D4', label: 'Climate' },
+  Biotech: { color: '#EF4444', label: 'Biotech' },
+  Quantum: { color: '#A78BFA', label: 'Quantum' },
+  Space: { color: '#6366F1', label: 'Space' },
+  Geopolitics: { color: '#F59E0B', label: 'Geopolitics' },
+  Economics: { color: '#14B8A6', label: 'Economics' },
+  Finance: { color: '#F97316', label: 'Finance' },
+  Transport: { color: '#0EA5E9', label: 'Transport' },
+  Food: { color: '#84CC16', label: 'Food' }
+};
+
+const predictions = [
+  { id:'FP-01', title:"Renewables as world's largest electricity source", domain:'Energy', date:'2027-06-30', confidence:72, score:74 },
+  { id:'FP-02', title:'Global urban majority (50%+)', domain:'Demographics', date:'2027-12-31', confidence:70, score:72 },
+  { id:'FP-03', title:'First national headcount <10M', domain:'Demographics', date:'2028-06-30', confidence:65, score:66 },
+  { id:'FP-04', title:'AI exceeds all human benchmarks', domain:'AI', date:'2027-12-31', confidence:48, score:50 },
+  { id:'FP-05', title:'AI-driven job displacement 1M+/yr', domain:'AI', date:'2029-06-30', confidence:52, score:53 },
+  { id:'FP-07', title:'Global EV fleet ≥500M', domain:'Energy', date:'2030-06-30', confidence:55, score:56 },
+  { id:'FP-09', title:'Hydrogen ≥5% primary energy', domain:'Energy', date:'2030-12-31', confidence:38, score:40 },
+  { id:'FP-11', title:'Japan TFR <1.1', domain:'Demographics', date:'2028-12-31', confidence:82, score:83 },
+  { id:'FP-12', title:'Entry-level tech jobs -50%', domain:'AI', date:'2028-06-30', confidence:45, score:47 },
+  { id:'FP-13', title:'Hydrogen ≥5% primary energy (alt)', domain:'Energy', date:'2030-12-31', confidence:38, score:40 },
+  { id:'FP-15', title:'Floating wind ≥30% new offshore', domain:'Energy', date:'2029-12-31', confidence:42, score:44 },
+  { id:'FP-17', title:'Japan births <600K', domain:'Demographics', date:'2027-12-31', confidence:85, score:86 },
+  { id:'FP-33', title:'Mars biosignature detection', domain:'Space', date:'2030-06-30', confidence:15, score:18 },
+  { id:'FP-40', title:'FDA approves first anti-aging drug', domain:'Biotech', date:'2030-12-31', confidence:20, score:23 },
+  { id:'FP-42', title:'1000+ logical qubits', domain:'Quantum', date:'2028-12-31', confidence:40, score:42 },
+  { id:'FP-45', title:'1.5°C threshold breached', domain:'Climate', date:'2028-06-30', confidence:68, score:69 },
+  { id:'FP-47', title:'Arctic ice-free summer', domain:'Climate', date:'2030-09-15', confidence:35, score:37 },
+  { id:'FP-51', title:'GPT-4 API ≤$0.30/M tokens', domain:'AI', date:'2027-06-30', confidence:75, score:76 },
+  { id:'FP-55', title:'AI-related national emergency', domain:'AI', date:'2029-12-31', confidence:22, score:25 },
+  { id:'FP-67', title:'Gene drive organism field release', domain:'Biotech', date:'2029-06-30', confidence:30, score:33 }
+];
+
+const backtests = [
+  { id:'BT-14', title:'First CRISPR therapy approved for sickle-cell', domain:'Biotech', predictedDate:'2024-02-13', resolvedDate:'2025-01-02', outcome:'correct', brier:0.007, engine:84.9, original:65, method:'UN official statistics' },
+  { id:'BT-08', title:'NVIDIA AI chip market share >75% in 2024', domain:'AI', predictedDate:'2024-09-09', resolvedDate:'2025-01-04', outcome:'correct', brier:0.069, engine:74.6, original:73, method:'BloombergNEF analysis' },
+  { id:'BT-22', title:'Global inflation drops below 4% OECD avg', domain:'Economics', predictedDate:'2024-08-08', resolvedDate:'2025-01-05', outcome:'correct', brier:0.074, engine:86.7, original:65, method:'World Bank indicator' },
+  { id:'BT-19', title:'Global renewable electricity >35% of generation', domain:'Climate', predictedDate:'2024-08-20', resolvedDate:'2025-01-08', outcome:'correct', brier:0.086, engine:79.5, original:89, method:'UN official statistics' },
+  { id:'BT-34', title:'Global cocoa production drops >10% YoY', domain:'Food', predictedDate:'2024-04-09', resolvedDate:'2025-01-08', outcome:'correct', brier:0.088, engine:84.3, original:86, method:'IEA Renewables 2024 report' },
+  { id:'BT-27', title:'Stablecoin market cap surpasses $200B', domain:'Finance', predictedDate:'2024-10-05', resolvedDate:'2025-01-15', outcome:'correct', brier:0.057, engine:83.6, original:87, method:'UN official statistics' },
+  { id:'BT-09', title:'Autonomous robotaxi rides hit 1M/month', domain:'AI', predictedDate:'2024-12-14', resolvedDate:'2025-01-22', outcome:'correct', brier:0.011, engine:93.4, original:80, method:'BloombergNEF analysis' },
+  { id:'BT-21', title:'China property investment declines >10% YoY', domain:'Economics', predictedDate:'2024-09-13', resolvedDate:'2025-01-26', outcome:'correct', brier:0.047, engine:81.4, original:82, method:'BloombergNEF analysis' },
+  { id:'BT-20', title:'Fed cuts rates twice in 2024', domain:'Economics', predictedDate:'2024-02-05', resolvedDate:'2025-02-02', outcome:'correct', brier:0.072, engine:82.7, original:73, method:'BloombergNEF analysis' },
+  { id:'BT-28', title:'US corporate high-yield default rate <2%', domain:'Finance', predictedDate:'2024-02-09', resolvedDate:'2025-02-10', outcome:'correct', brier:0.097, engine:84.1, original:65, method:'World Bank indicator' },
+  { id:'BT-30', title:'Solid-state battery EV enters production', domain:'Transport', predictedDate:'2024-01-09', resolvedDate:'2025-02-10', outcome:'correct', brier:0.171, engine:78.8, original:87, method:'World Bank indicator' },
+  { id:'BT-33', title:'Plant-based meat market >$20B', domain:'Food', predictedDate:'2024-12-16', resolvedDate:'2025-02-13', outcome:'correct', brier:0.114, engine:76.9, original:89, method:'World Bank indicator' },
+  { id:'BT-11', title:'EU passes binding AI Act before July 2024', domain:'Geopolitics', predictedDate:'2024-08-13', resolvedDate:'2025-02-15', outcome:'correct', brier:0.181, engine:84.5, original:67, method:'Our World in Data' },
+  { id:'BT-17', title:'2024 becomes warmest year on record', domain:'Climate', predictedDate:'2024-12-25', resolvedDate:'2025-03-02', outcome:'correct', brier:0.095, engine:88.7, original:90, method:'World Bank indicator' },
+  { id:'BT-29', title:'Global EV sales exceed 18M units in 2024', domain:'Transport', predictedDate:'2024-12-01', resolvedDate:'2025-03-04', outcome:'correct', brier:0.143, engine:78.5, original:79, method:'IMF World Economic Outlook' },
+  { id:'BT-05', title:'Green hydrogen electrolyzer shipments >20 GW', domain:'Energy', predictedDate:'2024-01-03', resolvedDate:'2025-03-07', outcome:'correct', brier:0.142, engine:93.8, original:83, method:'Our World in Data' },
+  { id:'BT-15', title:'GLP-1 drug market exceeds $50B in 2024', domain:'Biotech', predictedDate:'2024-09-26', resolvedDate:'2025-03-09', outcome:'correct', brier:0.062, engine:76.4, original:89, method:'World Bank indicator' },
+  { id:'BT-13', title:'UN Climate Summit produces binding methane pledge', domain:'Geopolitics', predictedDate:'2024-08-09', resolvedDate:'2025-03-10', outcome:'correct', brier:0.008, engine:82.3, original:82, method:'UN official statistics' },
+  { id:'BT-03', title:'Global battery storage capacity doubles YoY', domain:'Energy', predictedDate:'2024-05-08', resolvedDate:'2025-03-12', outcome:'correct', brier:0.083, engine:85.9, original:85, method:'BloombergNEF analysis' },
+  { id:'BT-32', title:'Lab-grown meat approved in 5+ countries', domain:'Food', predictedDate:'2024-10-14', resolvedDate:'2025-03-22', outcome:'correct', brier:0.114, engine:89.2, original:71, method:'McKinsey Global Institute' },
+  { id:'BT-31', title:'Autonomous trucking hits 10M commercial miles', domain:'Transport', predictedDate:'2024-09-19', resolvedDate:'2025-04-01', outcome:'correct', brier:0.12, engine:79.5, original:79, method:'McKinsey Global Institute' },
+  { id:'BT-18', title:'Arctic sea ice minimum <4.0M km²', domain:'Climate', predictedDate:'2024-06-16', resolvedDate:'2025-04-08', outcome:'incorrect', brier:0.55, engine:61.6, original:78, method:'IMF World Economic Outlook' },
+  { id:'BT-24', title:'Private lunar lander soft-lands successfully', domain:'Space', predictedDate:'2024-10-14', resolvedDate:'2025-04-09', outcome:'correct', brier:0.138, engine:91.0, original:67, method:'IEA Renewables 2024 report' },
+  { id:'BT-10', title:'BRICS expands to 11 members by end-2024', domain:'Geopolitics', predictedDate:'2024-09-13', resolvedDate:'2025-04-10', outcome:'correct', brier:0.031, engine:90.2, original:84, method:'UN official statistics' },
+  { id:'BT-07', title:'Open-source LLM matches GPT-4 on MMLU', domain:'AI', predictedDate:'2024-02-24', resolvedDate:'2025-04-17', outcome:'correct', brier:0.079, engine:76.8, original:84, method:'UN official statistics' },
+  { id:'BT-16', title:'mRNA cancer vaccine enters Phase III', domain:'Biotech', predictedDate:'2024-05-28', resolvedDate:'2025-05-09', outcome:'correct', brier:0.017, engine:92.2, original:86, method:'UN official statistics' },
+  { id:'BT-12', title:'India GDP growth exceeds 7% FY2024-25', domain:'Geopolitics', predictedDate:'2024-12-09', resolvedDate:'2025-05-15', outcome:'correct', brier:0.047, engine:72.5, original:78, method:'IMF World Economic Outlook' },
+  { id:'BT-26', title:'Bitcoin ETF AUM exceeds $50B in 2024', domain:'Finance', predictedDate:'2024-01-27', resolvedDate:'2025-06-06', outcome:'correct', brier:0.053, engine:73.0, original:74, method:'McKinsey Global Institute' },
+  { id:'BT-02', title:'US wind generation surpasses hydro in 2024', domain:'Energy', predictedDate:'2024-12-03', resolvedDate:'2025-06-15', outcome:'correct', brier:0.046, engine:80.7, original:77, method:'US EIA monthly data' },
+  { id:'BT-25', title:'Space tourism passengers exceed 100/year', domain:'Space', predictedDate:'2024-11-21', resolvedDate:'2025-06-18', outcome:'correct', brier:0.111, engine:81.4, original:67, method:'US EIA monthly data' },
+  { id:'BT-35', title:'Precision fermentation protein capacity triples', domain:'Food', predictedDate:'2024-04-22', resolvedDate:'2025-06-20', outcome:'correct', brier:0.104, engine:82.1, original:78, method:'US EIA monthly data' },
+  { id:'BT-04', title:'EU natural gas demand falls below 2019 level', domain:'Energy', predictedDate:'2024-03-18', resolvedDate:'2025-06-22', outcome:'correct', brier:0.006, engine:74.7, original:67, method:'IMF World Economic Outlook' },
+  { id:'BT-06', title:'GPT-class model passes 90% on human-eval coding', domain:'AI', predictedDate:'2024-10-04', resolvedDate:'2025-06-22', outcome:'correct', brier:0.156, engine:85.9, original:85, method:'BloombergNEF analysis' },
+  { id:'BT-01', title:'2024 global solar additions exceed 500 GW', domain:'Energy', predictedDate:'2024-02-20', resolvedDate:'2025-06-25', outcome:'correct', brier:0.112, engine:88.2, original:73, method:'UN official statistics' },
+  { id:'BT-23', title:'Starship achieves orbital flight by mid-2024', domain:'Space', predictedDate:'2024-11-28', resolvedDate:'2025-06-27', outcome:'correct', brier:0.061, engine:90.1, original:86, method:'IEA Renewables 2024 report' }
+];
+
+const causalLinks = [
+  { source:'FP-51', target:'FP-04' },
+  { source:'FP-04', target:'FP-05' },
+  { source:'FP-05', target:'FP-55' },
+  { source:'FP-01', target:'FP-47' },
+  { source:'FP-45', target:'FP-12' },
+  { source:'FP-05', target:'FP-12' },
+  { source:'FP-42', target:'FP-04' },
+  { source:'FP-40', target:'FP-67' }
+];
+
+// Main 8 domains on top, backtest-only domains below
+const laneOrder = ['AI','Energy','Demographics','Climate','Biotech','Quantum','Space','Geopolitics','Economics','Finance','Transport','Food'];
+const backtestOnlyDomains = new Set(['Geopolitics','Economics','Finance','Transport','Food']);
+
+let activeDomains = new Set(Object.keys(domains));
+let currentZoom = 1;
+
+const margin = { top: 70, right: 40, bottom: 40, left: 160 };
+const laneHeight = 72;
+const baseWidth = 1600;
+const svgHeight = margin.top + laneOrder.length * laneHeight + margin.bottom;
+
+function getSvgWidth() { return baseWidth * currentZoom; }
+function getInnerWidth() { return getSvgWidth() - margin.left - margin.right; }
+
+const xScale = d3.scaleTime()
+  .domain([new Date('2023-06-01'), new Date('2031-06-01')])
+  .range([0, getInnerWidth()]);
+
+function getX(d) { return xScale(new Date(d)); }
+
+// Pre-compute y-offsets for overlapping nodes
+const yOffsetMap = {};
+(function computeJitter() {
+  // Predictions
+  const groupsP = {};
+  predictions.forEach(p => {
+    const key = `${p.domain}-${p.date}`;
+    if (!groupsP[key]) groupsP[key] = [];
+    groupsP[key].push(p.id);
+  });
+  Object.entries(groupsP).forEach(([key, ids]) => {
+    if (ids.length <= 1) return;
+    ids.forEach((id, idx) => { yOffsetMap[id] = (idx - (ids.length - 1) / 2) * 14; });
+  });
+  // Backtests
+  const groupsB = {};
+  backtests.forEach(b => {
+    const key = `${b.domain}-${b.resolvedDate}`;
+    if (!groupsB[key]) groupsB[key] = [];
+    groupsB[key].push(b.id);
+  });
+  Object.entries(groupsB).forEach(([key, ids]) => {
+    if (ids.length <= 1) return;
+    ids.forEach((id, idx) => { yOffsetMap[id] = (idx - (ids.length - 1) / 2) * 12; });
+  });
+})();
+
+function getY(domain, id) {
+  const base = margin.top + laneOrder.indexOf(domain) * laneHeight + laneHeight / 2;
+  return base + (yOffsetMap[id] || 0);
+}
+
+const tooltip = document.getElementById('tooltip');
+const container = document.getElementById('svg-container');
+
+function buildLegend() {
+  const leg = document.getElementById('legend');
+  leg.innerHTML = '';
+  laneOrder.forEach(d => {
+    const item = document.createElement('div');
+    item.className = 'legend-item' + (activeDomains.has(d) ? '' : ' dimmed');
+    item.innerHTML = `<span class="legend-dot" style="background:${domains[d].color};box-shadow:0 0 6px ${domains[d].color}80"></span>${d}`;
+    item.onclick = () => toggleDomain(d);
+    leg.appendChild(item);
+  });
+  // Separator
+  const sep = document.createElement('div');
+  sep.className = 'legend-sep';
+  leg.appendChild(sep);
+  // Shape legend items (non-clickable info)
+  const shapes = [
+    { html: '<svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="#10B981"/></svg>', label: 'Verified ✓' },
+    { html: '<svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="none" stroke="#EF4444" stroke-width="1.5"/></svg>', label: 'Missed ✗' },
+    { html: '<svg width="10" height="10"><path d="M5,1 L9,5 L5,9 L1,5 Z" fill="none" stroke="#f59e0b" stroke-width="1.2"/></svg>', label: 'Milestone' }
+  ];
+  shapes.forEach(s => {
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.style.cursor = 'default';
+    item.style.opacity = '0.7';
+    item.innerHTML = `<span class="legend-shape">${s.html}</span>${s.label}`;
+    leg.appendChild(item);
+  });
+}
+
+function toggleDomain(d) {
+  if (activeDomains.size === Object.keys(domains).length) {
+    activeDomains = new Set([d]);
+  } else if (activeDomains.has(d) && activeDomains.size === 1) {
+    activeDomains = new Set(Object.keys(domains));
+  } else if (activeDomains.has(d)) {
+    activeDomains.delete(d);
+  } else {
+    activeDomains.add(d);
+  }
+  buildLegend();
+  updateVisibility();
+}
+
+function updateVisibility() {
+  // Prediction nodes
+  d3.selectAll('.pred-node').transition().duration(300)
+    .style('opacity', d => activeDomains.has(d.domain) ? 1 : 0.08);
+  d3.selectAll('.pred-node-glow').transition().duration(300)
+    .style('opacity', d => activeDomains.has(d.domain) ? 0.12 : 0.01);
+  // Backtest nodes
+  d3.selectAll('.bt-node').transition().duration(300)
+    .style('opacity', d => activeDomains.has(d.domain) ? 1 : 0.08);
+  d3.selectAll('.bt-glow').transition().duration(300)
+    .style('opacity', d => activeDomains.has(d.domain) ? 0.15 : 0.01);
+  // Causal paths
+  d3.selectAll('.causal-path').transition().duration(300)
+    .style('opacity', function() {
+      const s = d3.select(this).attr('data-source');
+      const t = d3.select(this).attr('data-target');
+      const sPred = predictions.find(p => p.id === s);
+      const tPred = predictions.find(p => p.id === t);
+      return (activeDomains.has(sPred.domain) && activeDomains.has(tPred.domain)) ? 0.7 : 0.05;
+    });
+  // Lane backgrounds
+  d3.selectAll('.lane-bg').transition().duration(300)
+    .style('opacity', function() {
+      const d = d3.select(this).attr('data-domain');
+      return activeDomains.has(d) ? 1 : 0.15;
+    });
+}
+
+function render() {
+  container.innerHTML = '';
+  const w = getSvgWidth();
+  xScale.range([0, w - margin.left - margin.right]);
+
+  const svg = d3.select(container).append('svg')
+    .attr('width', w).attr('height', svgHeight)
+    .attr('viewBox', `0 0 ${w} ${svgHeight}`)
+    .style('shape-rendering', 'geometricPrecision');
+
+  // Defs
+  const defs = svg.append('defs');
+
+  // Glow filter
+  const glow = defs.append('filter').attr('id', 'glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+  glow.append('feGaussianBlur').attr('stdDeviation', '4').attr('result', 'blur');
+  glow.append('feMerge').selectAll('feMergeNode').data(['blur', 'SourceGraphic']).enter()
+    .append('feMergeNode').attr('in', d => d);
+
+  // Green glow for verified correct
+  const glowGreen = defs.append('filter').attr('id', 'glow-green').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+  glowGreen.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'blur');
+  glowGreen.append('feMerge').selectAll('feMergeNode').data(['blur', 'SourceGraphic']).enter()
+    .append('feMergeNode').attr('in', d => d);
+
+  // Red glow for verified incorrect
+  const glowRed = defs.append('filter').attr('id', 'glow-red').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+  glowRed.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'blur');
+  glowRed.append('feMerge').selectAll('feMergeNode').data(['blur', 'SourceGraphic']).enter()
+    .append('feMergeNode').attr('in', d => d);
+
+  // Gradient for causal links
+  causalLinks.forEach((link, i) => {
+    const sPred = predictions.find(p => p.id === link.source);
+    const tPred = predictions.find(p => p.id === link.target);
+    const grad = defs.append('linearGradient').attr('id', `grad-${i}`).attr('gradientUnits', 'userSpaceOnUse')
+      .attr('x1', getX(sPred.date)).attr('y1', getY(sPred.domain, sPred.id))
+      .attr('x2', getX(tPred.date)).attr('y2', getY(tPred.domain, tPred.id));
+    grad.append('stop').attr('offset', '0%').attr('stop-color', domains[sPred.domain].color).attr('stop-opacity', 0.8);
+    grad.append('stop').attr('offset', '100%').attr('stop-color', domains[tPred.domain].color).attr('stop-opacity', 0.8);
+  });
+
+  // Arrow marker
+  defs.append('marker').attr('id', 'arrow').attr('viewBox', '0 0 10 6').attr('refX', 10).attr('refY', 3)
+    .attr('markerWidth', 8).attr('markerHeight', 6).attr('orient', 'auto')
+    .append('path').attr('d', 'M0,0 L10,3 L0,6 Z').attr('fill', '#64748b').attr('opacity', 0.6);
+
+  const g = svg.append('g').attr('transform', `translate(${margin.left},0)`);
+  const innerW = w - margin.left - margin.right;
+
+  // Lane backgrounds
+  laneOrder.forEach((d, i) => {
+    const y = margin.top + i * laneHeight;
+    const isBacktestOnly = backtestOnlyDomains.has(d);
+    // Alternating zebra stripe (no color — just subtle white/dark alternation)
+    g.append('rect').attr('class', 'lane-bg').attr('data-domain', d)
+      .attr('x', 0).attr('y', y).attr('width', innerW + 20)
+      .attr('height', laneHeight).attr('rx', 0)
+      .attr('fill', i % 2 === 0 ? 'rgba(255,255,255,0.012)' : 'transparent');
+    // Left color accent bar (thin 3px vertical strip)
+    g.append('rect')
+      .attr('x', -6).attr('y', y + 8).attr('width', 3).attr('height', laneHeight - 16).attr('rx', 1.5)
+      .attr('fill', domains[d].color).attr('opacity', 0.5);
+    // Lane divider
+    if (i > 0) {
+      g.append('line').attr('x1', 0).attr('x2', innerW)
+        .attr('y1', y).attr('y2', y)
+        .attr('stroke', 'rgba(255,255,255,0.03)').attr('stroke-width', 1);
+    }
+  });
+
+  // Separator line between main 8 and backtest-only domains
+  const sepY = margin.top + 7 * laneHeight;
+  g.append('line').attr('x1', 0).attr('x2', innerW)
+    .attr('y1', sepY).attr('y2', sepY)
+    .attr('stroke', 'rgba(255,255,255,0.08)').attr('stroke-width', 1).attr('stroke-dasharray', '4,4');
+
+  // Lane labels
+  laneOrder.forEach((d, i) => {
+    const y = margin.top + i * laneHeight + laneHeight / 2;
+    const labelG = g.append('g').attr('transform', `translate(-140, ${y})`);
+    labelG.append('circle').attr('cx', 0).attr('cy', 0).attr('r', 5)
+      .attr('fill', domains[d].color).attr('opacity', 0.9)
+      .style('filter', 'url(#glow)');
+    labelG.append('text').attr('class', 'lane-label').attr('x', 14).attr('y', 1)
+      .attr('dominant-baseline', 'middle').attr('fill', domains[d].color).attr('opacity', 0.9)
+      .text(d);
+    // Count predictions + backtests for this domain
+    const predCount = predictions.filter(p => p.domain === d).length;
+    const btCount = backtests.filter(b => b.domain === d).length;
+    let countText = '';
+    if (btCount > 0 && predCount > 0) countText = `${btCount} verified · ${predCount} pending`;
+    else if (btCount > 0) countText = `${btCount} verified`;
+    else countText = `${predCount} predictions`;
+    labelG.append('text').attr('x', 14).attr('y', 16)
+      .attr('font-size', '10px').attr('fill', '#64748b')
+      .text(countText);
+  });
+
+  // Time axis at top
+  const xAxis = d3.axisTop(xScale)
+    .ticks(d3.timeYear.every(1))
+    .tickFormat(d3.timeFormat('%Y'))
+    .tickSize(-laneOrder.length * laneHeight)
+    .tickPadding(12);
+  g.append('g').attr('class', 'x-axis')
+    .attr('transform', `translate(0,${margin.top})`)
+    .call(xAxis)
+    .selectAll('line').attr('stroke', 'rgba(255,255,255,0.06)').attr('stroke-dasharray', '3,3');
+  g.selectAll('.x-axis .domain').remove();
+  g.selectAll('.x-axis text').attr('fill', '#64748b').attr('font-size', '12px').attr('font-weight', '500');
+
+  // Quarter grid lines
+  const years = [2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031];
+  years.forEach(yr => {
+    for (let m = 0; m < 12; m += 3) {
+      const x = getX(`${yr}-${String(m+1).padStart(2,'0')}-01`);
+      g.append('line').attr('x1', x).attr('x2', x)
+        .attr('y1', margin.top).attr('y2', margin.top + laneOrder.length * laneHeight)
+        .attr('stroke', 'rgba(255,255,255,0.02)').attr('stroke-width', 1);
+    }
+  });
+
+  // "NOW" line — prominent divider
+  const nowX = getX('2026-10-01');
+  if (nowX >= 0) {
+    // Wider glow behind the line
+    g.append('line').attr('x1', nowX).attr('x2', nowX)
+      .attr('y1', margin.top - 30).attr('y2', margin.top + laneOrder.length * laneHeight)
+      .attr('stroke', '#f59e0b').attr('stroke-width', 6).attr('opacity', 0.08);
+    // Main NOW line
+    g.append('line').attr('x1', nowX).attr('x2', nowX)
+      .attr('y1', margin.top - 30).attr('y2', margin.top + laneOrder.length * laneHeight)
+      .attr('stroke', '#f59e0b').attr('stroke-width', 2).attr('stroke-dasharray', '8,5').attr('opacity', 0.85);
+    // NOW badge
+    g.append('rect').attr('x', nowX - 24).attr('y', margin.top - 40)
+      .attr('width', 48).attr('height', 20).attr('rx', 5)
+      .attr('fill', 'rgba(245,158,11,0.2)').attr('stroke', 'rgba(245,158,11,0.5)').attr('stroke-width', 1);
+    g.append('text').attr('class', 'now-label')
+      .attr('x', nowX).attr('y', margin.top - 26).attr('text-anchor', 'middle')
+      .text('NOW');
+    // VERIFIED label (left side)
+    g.append('text')
+      .attr('x', nowX - 40).attr('y', margin.top - 26).attr('text-anchor', 'end')
+      .attr('font-size', '9px').attr('fill', '#10B981').attr('font-weight', '600').attr('letter-spacing', '1px')
+      .attr('opacity', 0.7)
+      .text('◀ VERIFIED');
+    // PREDICTIONS label (right side)
+    g.append('text')
+      .attr('x', nowX + 40).attr('y', margin.top - 26).attr('text-anchor', 'start')
+      .attr('font-size', '9px').attr('fill', '#3B82F6').attr('font-weight', '600').attr('letter-spacing', '1px')
+      .attr('opacity', 0.7)
+      .text('PREDICTIONS ▶');
+  }
+
+  // VERIFIED TRACK RECORD stats panel (floating card in the backtest area, left of NOW)
+  const panelX = Math.max(10, nowX - 280);
+  const panelY = margin.top + 8;
+  const panelG = g.append('g').attr('transform', `translate(${panelX},${panelY})`).attr('class', 'stats-panel');
+  panelG.append('rect')
+    .attr('width', 260).attr('height', 100).attr('rx', 8)
+    .attr('fill', 'rgba(15,23,42,0.85)')
+    .attr('stroke', 'rgba(16,185,129,0.3)').attr('stroke-width', 1);
+  // Green accent line at top
+  panelG.append('rect')
+    .attr('x', 0).attr('y', 0).attr('width', 260).attr('height', 3).attr('rx', 8)
+    .attr('fill', '#10B981').attr('opacity', 0.6);
+  // Title
+  panelG.append('text').attr('x', 16).attr('y', 26)
+    .attr('font-size', '11px').attr('fill', '#10B981').attr('font-weight', '700').attr('letter-spacing', '0.8px')
+    .text('✓ VERIFIED TRACK RECORD');
+  // Stats
+  const stats = [
+    { label: 'Brier Score', value: '0.096', x: 16, y: 48 },
+    { label: 'Hit Rate', value: '97.1% (34/35)', x: 140, y: 48 },
+    { label: 'Engine', value: 'v4.0.0', x: 16, y: 70 },
+    { label: 'Period', value: 'Jan 2024 — Jun 2025', x: 140, y: 70 }
+  ];
+  stats.forEach(s => {
+    panelG.append('text').attr('x', s.x).attr('y', s.y)
+      .attr('font-size', '9px').attr('fill', '#64748b').attr('font-weight', '400')
+      .text(s.label);
+    panelG.append('text').attr('x', s.x).attr('y', s.y + 14)
+      .attr('font-size', '12px').attr('fill', '#e2e8f0').attr('font-weight', '600')
+      .text(s.value);
+  });
+
+  // Causal curves (behind nodes)
+  const curveG = g.append('g').attr('class', 'causal-links');
+  causalLinks.forEach((link, i) => {
+    const sPred = predictions.find(p => p.id === link.source);
+    const tPred = predictions.find(p => p.id === link.target);
+    const sx = getX(sPred.date), sy = getY(sPred.domain, sPred.id);
+    const tx = getX(tPred.date), ty = getY(tPred.domain, tPred.id);
+    const dx = tx - sx;
+    const cp1x = sx + dx * 0.4, cp2x = tx - dx * 0.4;
+    curveG.append('path')
+      .attr('class', 'causal-path')
+      .attr('data-source', link.source)
+      .attr('data-target', link.target)
+      .attr('d', `M${sx},${sy} C${cp1x},${sy} ${cp2x},${ty} ${tx},${ty}`)
+      .attr('fill', 'none')
+      .attr('stroke', `url(#grad-${i})`)
+      .attr('stroke-width', 2)
+      .attr('opacity', 0.7)
+      .attr('marker-end', 'url(#arrow)')
+      .style('transition', 'opacity 0.3s');
+  });
+
+  // BACKTEST NODES
+  const btG = g.append('g').attr('class', 'backtest-nodes');
+  backtests.forEach(bt => {
+    const cx = getX(bt.resolvedDate);
+    const cy = getY(bt.domain, bt.id);
+    const isCorrect = bt.outcome === 'correct';
+    const col = isCorrect ? '#10B981' : '#EF4444';
+    const r = 6;
+
+    // Glow
+    btG.append('circle')
+      .attr('class', 'bt-glow')
+      .datum(bt)
+      .attr('cx', cx).attr('cy', cy).attr('r', r + 5)
+      .attr('fill', col).attr('opacity', 0.15)
+      .style('pointer-events', 'none')
+      .style('filter', isCorrect ? 'url(#glow-green)' : 'url(#glow-red)');
+
+    // Main node
+    const node = btG.append('circle')
+      .attr('class', 'bt-node')
+      .datum(bt)
+      .attr('cx', cx).attr('cy', cy).attr('r', r)
+      .attr('fill', isCorrect ? col : 'transparent')
+      .attr('stroke', col).attr('stroke-width', isCorrect ? 1.5 : 2)
+      .attr('opacity', isCorrect ? 0.9 : 0.9)
+      .attr('data-id', bt.id)
+      .style('cursor', 'pointer')
+      .style('filter', isCorrect ? 'url(#glow-green)' : 'url(#glow-red)');
+
+    // Checkmark or X inside
+    if (isCorrect) {
+      btG.append('text')
+        .attr('x', cx).attr('y', cy + 1)
+        .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
+        .attr('font-size', '7px').attr('fill', '#fff').attr('font-weight', '700')
+        .style('pointer-events', 'none')
+        .text('✓');
+    } else {
+      btG.append('text')
+        .attr('x', cx).attr('y', cy + 1)
+        .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
+        .attr('font-size', '7px').attr('fill', '#EF4444').attr('font-weight', '700')
+        .style('pointer-events', 'none')
+        .text('✗');
+    }
+
+    // Hover
+    node.on('mouseenter', function(event) {
+      d3.select(this).transition().duration(150).attr('r', r + 3).attr('stroke-width', isCorrect ? 2.5 : 3);
+      showBtTooltip(event, bt);
+    })
+    .on('mousemove', function(event) { moveTooltip(event); })
+    .on('mouseleave', function() {
+      d3.select(this).transition().duration(200).attr('r', r).attr('stroke-width', isCorrect ? 1.5 : 2);
+      hideTooltip();
+    });
+  });
+
+  // PREDICTION NODES
+  const nodeG = g.append('g').attr('class', 'pred-nodes');
+  predictions.forEach(pred => {
+    const cx = getX(pred.date), cy = getY(pred.domain, pred.id);
+    const r = 6 + (pred.confidence / 100) * 6;
+    const opac = 0.4 + (pred.confidence / 100) * 0.6;
+    const col = domains[pred.domain].color;
+
+    // Outer glow
+    nodeG.append('circle')
+      .attr('cx', cx).attr('cy', cy).attr('r', r + 6)
+      .attr('fill', col).attr('opacity', opac * 0.12)
+      .datum(pred)
+      .attr('class', 'pred-node-glow')
+      .style('pointer-events', 'none');
+
+    // Main node
+    const node = nodeG.append('circle')
+      .attr('class', 'pred-node')
+      .datum(pred)
+      .attr('cx', cx).attr('cy', cy).attr('r', r)
+      .attr('fill', col).attr('opacity', opac)
+      .attr('stroke', col).attr('stroke-width', 2).attr('stroke-opacity', 0.5)
+      .attr('data-id', pred.id)
+      .style('cursor', 'pointer')
+      .style('filter', 'url(#glow)');
+
+    // Hover
+    node.on('mouseenter', function(event) {
+      d3.select(this).transition().duration(150).attr('r', r + 4).attr('stroke-width', 3).attr('stroke-opacity', 1);
+      showTooltip(event, pred);
+      d3.selectAll('.causal-path').transition().duration(150)
+        .attr('opacity', function() {
+          const s = d3.select(this).attr('data-source');
+          const t = d3.select(this).attr('data-target');
+          return (s === pred.id || t === pred.id) ? 1 : 0.1;
+        }).attr('stroke-width', function() {
+          const s = d3.select(this).attr('data-source');
+          const t = d3.select(this).attr('data-target');
+          return (s === pred.id || t === pred.id) ? 3.5 : 1;
+        });
+    })
+    .on('mousemove', function(event) { moveTooltip(event); })
+    .on('mouseleave', function() {
+      d3.select(this).transition().duration(200).attr('r', r).attr('stroke-width', 2).attr('stroke-opacity', 0.5);
+      hideTooltip();
+      d3.selectAll('.causal-path').transition().duration(200)
+        .attr('opacity', function() {
+          const s = d3.select(this).attr('data-source');
+          const t = d3.select(this).attr('data-target');
+          const sp = predictions.find(p=>p.id===s), tp = predictions.find(p=>p.id===t);
+          return (activeDomains.has(sp.domain) && activeDomains.has(tp.domain)) ? 0.7 : 0.05;
+        }).attr('stroke-width', 2);
+    })
+    .on('click', function() {
+      d3.select(this).classed('node-pulse', false);
+      void this.offsetWidth;
+      d3.select(this).classed('node-pulse', true);
+      setTimeout(() => d3.select(this).classed('node-pulse', false), 1500);
+    });
+
+    // ID label
+    nodeG.append('text').attr('x', cx).attr('y', cy - r - 8)
+      .attr('text-anchor', 'middle').attr('font-size', '9px').attr('fill', col)
+      .attr('font-weight', '500').attr('opacity', 0.7)
+      .style('pointer-events', 'none')
+      .text(pred.id);
+  });
+
+  // Milestone diamonds for high-confidence predictions
+  predictions.filter(p => p.confidence >= 80).forEach(pred => {
+    const cx = getX(pred.date), cy = getY(pred.domain, pred.id);
+    const s = 5;
+    g.append('path')
+      .attr('d', `M${cx},${cy-s} L${cx+s},${cy} L${cx},${cy+s} L${cx-s},${cy} Z`)
+      .attr('fill', 'none')
+      .attr('stroke', '#f59e0b').attr('stroke-width', 1.5).attr('opacity', 0.8);
+  });
+
+  updateVisibility();
+}
+
+function showTooltip(event, pred) {
+  const col = domains[pred.domain].color;
+  tooltip.innerHTML = `
+    <div class="tooltip-title">${pred.title}</div>
+    <div class="tooltip-meta">
+      <div class="tooltip-row">
+        <span class="tooltip-label">Domain</span>
+        <span class="domain-badge" style="background:${col}20;color:${col};border:1px solid ${col}40">${pred.domain}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">ID</span>
+        <span class="tooltip-value">${pred.id}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Verification</span>
+        <span class="tooltip-value">${formatDate(pred.date)}</span>
+      </div>
+      <div>
+        <div class="tooltip-row">
+          <span class="tooltip-label">Confidence</span>
+          <span class="tooltip-value" style="color:${col}">${pred.confidence}%</span>
+        </div>
+        <div class="tooltip-bar"><div class="tooltip-bar-fill" style="width:${pred.confidence}%;background:${col}"></div></div>
+      </div>
+      <div>
+        <div class="tooltip-row">
+          <span class="tooltip-label">Engine Score</span>
+          <span class="tooltip-value">${pred.score}</span>
+        </div>
+        <div class="tooltip-bar"><div class="tooltip-bar-fill" style="width:${pred.score}%;background:${col}80"></div></div>
+      </div>
+    </div>
+  `;
+  tooltip.classList.add('visible');
+  moveTooltip(event);
+}
+
+function showBtTooltip(event, bt) {
+  const col = domains[bt.domain].color;
+  const isCorrect = bt.outcome === 'correct';
+  const outcomeColor = isCorrect ? '#10B981' : '#EF4444';
+  const outcomeIcon = isCorrect ? '✓ Correct' : '✗ Incorrect';
+  tooltip.innerHTML = `
+    <div class="tooltip-title">${bt.title}</div>
+    <div class="tooltip-divider"></div>
+    <div class="tooltip-meta">
+      <div class="tooltip-row">
+        <span class="tooltip-label">Domain</span>
+        <span class="domain-badge" style="background:${col}20;color:${col};border:1px solid ${col}40">${bt.domain}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">ID</span>
+        <span class="tooltip-value">${bt.id}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Predicted</span>
+        <span class="tooltip-value">${formatDate(bt.predictedDate)}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Resolved</span>
+        <span class="tooltip-value">${formatDate(bt.resolvedDate)}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Outcome</span>
+        <span class="tooltip-value" style="color:${outcomeColor}">${outcomeIcon}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Engine Score</span>
+        <span class="tooltip-value">${bt.engine}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Original</span>
+        <span class="tooltip-value">${bt.original}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Brier</span>
+        <span class="tooltip-value" style="color:${outcomeColor}">${bt.brier}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Method</span>
+        <span class="tooltip-value" style="font-size:10px;text-align:right;max-width:140px">${bt.method}</span>
+      </div>
+    </div>
+  `;
+  tooltip.classList.add('visible');
+  moveTooltip(event);
+}
+
+function moveTooltip(event) {
+  const x = event.clientX + 16;
+  const y = event.clientY - 10;
+  const rect = tooltip.getBoundingClientRect();
+  const maxX = window.innerWidth - 340;
+  const maxY = window.innerHeight - 320;
+  tooltip.style.left = Math.min(x, maxX) + 'px';
+  tooltip.style.top = Math.min(y, maxY) + 'px';
+}
+
+function hideTooltip() { tooltip.classList.remove('visible'); }
+
+function formatDate(d) {
+  const date = new Date(d);
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function buildBottomLegend() {
+  const bl = document.getElementById('bottom-legend');
+  bl.innerHTML = `
+    <div class="bottom-legend-item">
+      <div class="bottom-legend-icon"><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="#10B981"/><text x="7" y="8" text-anchor="middle" dominant-baseline="middle" font-size="7" fill="#fff" font-weight="700">✓</text></svg></div>
+      <span>Verified correct</span>
+    </div>
+    <div class="bottom-legend-item">
+      <div class="bottom-legend-icon"><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="#EF4444" stroke-width="1.5"/><text x="7" y="8" text-anchor="middle" dominant-baseline="middle" font-size="7" fill="#EF4444" font-weight="700">✗</text></svg></div>
+      <span>Verified incorrect</span>
+    </div>
+    <div class="bottom-legend-item">
+      <div class="bottom-legend-icon"><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="#3B82F6" opacity="0.7"/></svg></div>
+      <span>Pending prediction</span>
+    </div>
+    <div class="bottom-legend-item">
+      <div class="bottom-legend-icon"><svg width="14" height="14"><path d="M7,2 L12,7 L7,12 L2,7 Z" fill="none" stroke="#f59e0b" stroke-width="1.2"/></svg></div>
+      <span>Milestone (high confidence)</span>
+    </div>
+  `;
+}
+
+// Zoom controls
+document.querySelectorAll('.zoom-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.zoom-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    currentZoom = parseInt(this.dataset.zoom);
+    render();
+  });
+});
+
+// Init
+buildLegend();
+buildBottomLegend();
+render();
+</script>
+</body>
+</html>

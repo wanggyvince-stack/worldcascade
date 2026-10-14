@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorldCascade — Narrative Timeline</title>
+<meta name="description" content="Interactive timeline of 80 predictions and 35 verified backtests across 12 domains. Explore the cascade of global events.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="stylesheet" href="public/css/timeline.css">
+</head>
+<body>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+</div>
+
+<!-- Header with legend bar -->
+<header class="timeline-header" role="banner">
+  <div class="header-title">
+    <h1>WorldCascade — Narrative Timeline</h1>
+    <span class="badge">Z0 Global View</span>
+  </div>
+  <nav class="legend-bar" id="legend-bar" role="navigation" aria-label="Domain filter">
+    <!-- Populated by JS -->
+  </nav>
+</header>
+
+<!-- Back to Global View button (Z1 mode) -->
+<button class="back-global-btn" id="back-global-btn" aria-label="Back to global view">
+  ← Global View
+</button>
+
+<!-- Stats card (backtest track record) -->
+<div class="stats-card" id="stats-card" role="complementary" aria-label="Verified track record" tabindex="0">
+  <!-- Populated by JS -->
+</div>
+
+<!-- Main timeline container -->
+<main class="main-container" role="main">
+  <div class="svg-container" id="svg-container" aria-label="Timeline visualization">
+    <!-- SVG rendered by D3.js -->
+  </div>
+</main>
+
+<!-- Tooltip -->
+<div class="timeline-tooltip" id="timeline-tooltip" role="tooltip" aria-hidden="true"></div>
+
+<!-- Mobile backtest toggle -->
+<button class="mobile-bt-toggle" id="mobile-bt-toggle" aria-label="View verified track record">
+  📊 View Verified Track Record
+</button>
+
+<script src="public/js/timeline.js"></script>
+</body>
+</html>

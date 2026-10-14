@@ -1,0 +1,1094 @@
+/**
+ * WorldCascade Timeline - Z0 Minimum Viable Version
+ * Sprint 3.1 - WO-02 v1.1.0
+ * D3.js v7 timeline with domain swim lanes, NOW line, backtest + prediction nodes
+ */
+
+(function() {
+'use strict';
+
+// ============================================================
+// DOMAIN CONFIGURATION
+// ============================================================
+const DOMAIN_COLORS = {
+  AI: "#3B82F6", Energy: "#10B981", Demographics: "#8B5CF6", Climate: "#06B6D4",
+  Biotech: "#EF4444", Quantum: "#A78BFA", Space: "#6366F1", Health: "#14B8A6",
+  Geopolitics: "#F59E0B", Economics: "#84CC16", Finance: "#E879F9",
+  Transport: "#0EA5E9", Food: "#A3E635"
+};
+
+// Canonical lane key (PascalCase)
+const LANE_ORDER = ['AI','Energy','Demographics','Climate','Biotech','Quantum','Space','Geopolitics','Economics','Finance','Transport','Food'];
+
+// Main 8 domains on top, backtest-only domains below
+const MAIN_DOMAINS = new Set(['AI','Energy','Demographics','Climate','Biotech','Quantum','Space','Health']);
+const BACKTEST_ONLY_DOMAINS = new Set(['Geopolitics','Economics','Finance','Transport','Food']);
+
+// Map raw data domain keys to canonical lane names
+function normalizeDomain(raw) {
+  if (!raw) return null;
+  const map = {
+    'ai': 'AI', 'AI': 'AI',
+    'energy': 'Energy',
+    'demographics': 'Demographics',
+    'climate': 'Climate',
+    'biotech': 'Biotech',
+    'quantum': 'Quantum',
+    'space': 'Space', 'space-alien': 'Space', 'space-economy': 'Space',
+    'health': 'Health',
+    'geopolitics': 'Geopolitics',
+    'economics': 'Economics',
+    'finance': 'Finance',
+    'transport': 'Transport',
+    'food': 'Food',
+    // Cross-domain predictions → Geopolitics (best semantic fit: governance / emergency declarations)
+    'cross-domain': 'Geopolitics', 'cross_domain': 'Geopolitics', 'Cross-Domain': 'Geopolitics'
+  };
+  return map[raw] || null;
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let predictions = [];
+let backtests = [];
+let causalChains = [];
+let activeDomain = null; // null = all, string = single domain filter
+let currentZoom = 1;
+let isZ1Mode = false;
+let z1Domain = null;
+
+// Layout constants
+const MARGIN = { top: 70, right: 40, bottom: 40, left: 160 };
+const LANE_HEIGHT = 72;
+const BASE_WIDTH = 1800;
+const SVG_HEIGHT = MARGIN.top + LANE_ORDER.length * LANE_HEIGHT + MARGIN.bottom;
+
+// ============================================================
+// DATA LOADING
+// ============================================================
+async function loadData() {
+  try {
+    const [predResp, btResp] = await Promise.all([
+      fetch('public/data/predictions.json'),
+      fetch('public/data/backtest_timeline.json')
+    ]);
+
+    if (!predResp.ok) throw new Error(`predictions.json: ${predResp.status}`);
+    if (!btResp.ok) throw new Error(`backtest_timeline.json: ${btResp.status}`);
+
+    const predData = await predResp.json();
+    const btData = await btResp.json();
+
+    // Process predictions
+    predictions = (predData.predictions || []).map(p => {
+      const canonDomain = normalizeDomain(p.domain);
+      return {
+        id: p.id,
+        title: p.title,
+        domain: canonDomain || p.domain,
+        domainLabel: p.domainLabel || canonDomain || p.domain,
+        domainColor: DOMAIN_COLORS[canonDomain] || p.domainColor || '#94A3B8',
+        domainIcon: p.domainIcon || '',
+        verificationDate: p.verificationDate,
+        originalConfidence: p.originalConfidence || 0,
+        engineScore: p.engineScore || 0,
+        confidenceLevel: p.confidenceLevel || 'unknown',
+        status: (p.leadingSignal && p.leadingSignal.status) || 'none'
+      };
+    }).filter(p => p.domain && LANE_ORDER.includes(p.domain));
+
+    // Process backtests
+    backtests = (btData.entries || []).map(b => {
+      const canonDomain = normalizeDomain(b.domain);
+      return {
+        id: b.id,
+        title: b.title,
+        domain: canonDomain || b.domain,
+        domainLabel: b.domainLabel || canonDomain || b.domain,
+        domainColor: DOMAIN_COLORS[canonDomain] || b.domainColor || '#94A3B8',
+        domainIcon: b.domainIcon || '',
+        predictedDate: b.predictedDate,
+        resolvedDate: b.resolvedDate,
+        outcome: b.outcome,
+        brierScore: b.brierScore,
+        engineScore: b.engineScore,
+        originalConfidence: b.originalConfidence,
+        verificationMethod: b.verificationMethod
+      };
+    }).filter(b => b.domain && LANE_ORDER.includes(b.domain));
+
+    // Process causal chains (for future Sprint 3.2)
+    causalChains = predData.causalChains || [];
+
+    console.log(`[Timeline] Loaded ${predictions.length} predictions, ${backtests.length} backtests, ${causalChains.length} causal chains`);
+  } catch (err) {
+    console.error('[Timeline] Data load error:', err);
+  }
+}
+
+// ============================================================
+// LAYOUT HELPERS
+// ============================================================
+function getSvgWidth() { return BASE_WIDTH * currentZoom; }
+function getInnerWidth() { return getSvgWidth() - MARGIN.left - MARGIN.right; }
+
+function createXScale() {
+  return d3.scaleTime()
+    .domain([new Date('2023-06-01'), new Date('2031-06-01')])
+    .range([0, getInnerWidth()]);
+}
+
+// Pre-compute Y offsets to avoid overlapping nodes
+function computeYOffsets() {
+  const offsetMap = {};
+
+  // Predictions
+  const groupsP = {};
+  predictions.forEach(p => {
+    const key = `${p.domain}-${p.verificationDate}`;
+    if (!groupsP[key]) groupsP[key] = [];
+    groupsP[key].push(p.id);
+  });
+  Object.entries(groupsP).forEach(([, ids]) => {
+    if (ids.length <= 1) return;
+    ids.forEach((id, idx) => { offsetMap[id] = (idx - (ids.length - 1) / 2) * 14; });
+  });
+
+  // Backtests
+  const groupsB = {};
+  backtests.forEach(b => {
+    const key = `${b.domain}-${b.resolvedDate}`;
+    if (!groupsB[key]) groupsB[key] = [];
+    groupsB[key].push(b.id);
+  });
+  Object.entries(groupsB).forEach(([, ids]) => {
+    if (ids.length <= 1) return;
+    ids.forEach((id, idx) => { offsetMap[id] = (idx - (ids.length - 1) / 2) * 12; });
+  });
+
+  return offsetMap;
+}
+
+function getY(domain, id, offsetMap) {
+  const idx = LANE_ORDER.indexOf(domain);
+  if (idx < 0) return MARGIN.top;
+  const base = MARGIN.top + idx * LANE_HEIGHT + LANE_HEIGHT / 2;
+  return base + (offsetMap[id] || 0);
+}
+
+// Node radius based on engine score
+function getNodeRadius(score) {
+  return 4 + (score || 50) * 0.08;
+}
+
+// Status visual encoding
+function getStatusStyle(status) {
+  const styles = {
+    monitoring:     { glow: 0,   glowOpacity: 0,    strokeW: 1,   rings: 0, pulse: false },
+    none:           { glow: 0,   glowOpacity: 0,    strokeW: 1,   rings: 0, pulse: false },
+    early_signal:   { glow: 4,   glowOpacity: 0.3,  strokeW: 1.5, rings: 0, pulse: false },
+    trending:       { glow: 6,   glowOpacity: 0.5,  strokeW: 2,   rings: 0, pulse: false },
+    accelerating:   { glow: 8,   glowOpacity: 0.7,  strokeW: 2.5, rings: 1, pulse: false },
+    triggered:      { glow: 12,  glowOpacity: 0.9,  strokeW: 3,   rings: 2, pulse: true }
+  };
+  return styles[status] || styles.none;
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+let yOffsetMap = {};
+let xScale;
+
+function render() {
+  const container = document.getElementById('svg-container');
+  container.innerHTML = '';
+
+  const w = getSvgWidth();
+  xScale = createXScale();
+  xScale.range([0, w - MARGIN.left - MARGIN.right]);
+  yOffsetMap = computeYOffsets();
+
+  const svg = d3.select(container).append('svg')
+    .attr('width', w)
+    .attr('height', SVG_HEIGHT)
+    .attr('viewBox', `0 0 ${w} ${SVG_HEIGHT}`)
+    .attr('role', 'img')
+    .attr('aria-label', 'WorldCascade Timeline - 80 predictions and 35 backtests across 12 domains')
+    .style('shape-rendering', 'geometricPrecision');
+
+  // Defs - glow filters
+  const defs = svg.append('defs');
+
+  // Generic glow
+  const glowFilter = defs.append('filter').attr('id', 'glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+  glowFilter.append('feGaussianBlur').attr('stdDeviation', '4').attr('result', 'blur');
+  glowFilter.append('feMerge').selectAll('feMergeNode').data(['blur', 'SourceGraphic']).enter()
+    .append('feMergeNode').attr('in', d => d);
+
+  // Strong glow for triggered
+  const glowStrong = defs.append('filter').attr('id', 'glow-strong').attr('x', '-80%').attr('y', '-80%').attr('width', '260%').attr('height', '260%');
+  glowStrong.append('feGaussianBlur').attr('stdDeviation', '8').attr('result', 'blur');
+  glowStrong.append('feMerge').selectAll('feMergeNode').data(['blur', 'SourceGraphic']).enter()
+    .append('feMergeNode').attr('in', d => d);
+
+  // Green glow for backtest correct
+  const glowGreen = defs.append('filter').attr('id', 'glow-green').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+  glowGreen.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'blur');
+  glowGreen.append('feMerge').selectAll('feMergeNode').data(['blur', 'SourceGraphic']).enter()
+    .append('feMergeNode').attr('in', d => d);
+
+  // Red glow for backtest incorrect
+  const glowRed = defs.append('filter').attr('id', 'glow-red').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+  glowRed.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'blur');
+  glowRed.append('feMerge').selectAll('feMergeNode').data(['blur', 'SourceGraphic']).enter()
+    .append('feMergeNode').attr('in', d => d);
+
+  const g = svg.append('g').attr('transform', `translate(${MARGIN.left},0)`);
+  const innerW = w - MARGIN.left - MARGIN.right;
+
+  // --- Lane backgrounds ---
+  renderLanes(g, innerW);
+
+  // --- Time axis + grid ---
+  renderTimeAxis(g, innerW);
+
+  // --- NOW line ---
+  renderNowLine(g, innerW);
+
+  // --- Stats card ---
+  renderStatsCard();
+
+  // --- Backtest nodes ---
+  renderBacktestNodes(g);
+
+  // --- Prediction nodes ---
+  renderPredictionNodes(g);
+
+  // --- Apply domain filter ---
+  applyDomainFilter();
+}
+
+function renderLanes(g, innerW) {
+  // Determine separator position: after main 8 domains (index 7 = Space, but Health is index 7 too)
+  // Actually: LANE_ORDER = AI,Energy,Demographics,Climate,Biotech,Quantum,Space,Geopolitics,Economics,Finance,Transport,Food
+  // Main 8 = AI..Space (indices 0-6), backtest-only starts at Geopolitics (index 7)
+  const mainCount = 7; // AI through Space
+
+  LANE_ORDER.forEach((domain, i) => {
+    const y = MARGIN.top + i * LANE_HEIGHT;
+    const color = DOMAIN_COLORS[domain] || '#94A3B8';
+
+    // Zebra stripe
+    g.append('rect')
+      .attr('class', 'lane-bg')
+      .attr('data-domain', domain)
+      .attr('x', 0).attr('y', y)
+      .attr('width', innerW + 20)
+      .attr('height', LANE_HEIGHT)
+      .attr('fill', i % 2 === 0 ? 'rgba(255,255,255,0.012)' : 'transparent');
+
+    // Left 3px color bar
+    g.append('rect')
+      .attr('class', 'lane-accent')
+      .attr('data-domain', domain)
+      .attr('x', -6).attr('y', y + 8)
+      .attr('width', 3).attr('height', LANE_HEIGHT - 16)
+      .attr('rx', 1.5)
+      .attr('fill', color).attr('opacity', 0.5);
+
+    // Lane divider
+    if (i > 0) {
+      g.append('line')
+        .attr('x1', 0).attr('x2', innerW)
+        .attr('y1', y).attr('y2', y)
+        .attr('stroke', 'rgba(255,255,255,0.03)').attr('stroke-width', 1);
+    }
+
+    // Lane label
+    const labelY = y + LANE_HEIGHT / 2;
+    const labelG = g.append('g').attr('transform', `translate(-140, ${labelY})`);
+    labelG.append('circle').attr('cx', 0).attr('cy', 0).attr('r', 5)
+      .attr('fill', color).attr('opacity', 0.9)
+      .style('filter', 'url(#glow)');
+    labelG.append('text')
+      .attr('class', 'lane-label')
+      .attr('x', 14).attr('y', 1)
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', color).attr('opacity', 0.9)
+      .text(domain);
+
+    // Count
+    const predCount = predictions.filter(p => p.domain === domain).length;
+    const btCount = backtests.filter(b => b.domain === domain).length;
+    let countText = '';
+    if (btCount > 0 && predCount > 0) countText = `${btCount} verified · ${predCount} pending`;
+    else if (btCount > 0) countText = `${btCount} verified`;
+    else countText = `${predCount} predictions`;
+    labelG.append('text')
+      .attr('x', 14).attr('y', 16)
+      .attr('font-size', '10px').attr('fill', '#64748b')
+      .text(countText);
+
+    // Double-click for Z1 (future)
+    labelG.style('cursor', 'pointer')
+      .on('dblclick', function() {
+        enterZ1(domain);
+      });
+  });
+
+  // Separator dashed line between main and backtest-only
+  const sepY = MARGIN.top + mainCount * LANE_HEIGHT;
+  g.append('line')
+    .attr('x1', 0).attr('x2', innerW)
+    .attr('y1', sepY).attr('y2', sepY)
+    .attr('stroke', 'rgba(255,255,255,0.08)')
+    .attr('stroke-width', 1)
+    .attr('stroke-dasharray', '4,4');
+}
+
+function renderTimeAxis(g, innerW) {
+  // Year axis at top
+  const xAxis = d3.axisTop(xScale)
+    .ticks(d3.timeYear.every(1))
+    .tickFormat(d3.timeFormat('%Y'))
+    .tickSize(-LANE_ORDER.length * LANE_HEIGHT)
+    .tickPadding(12);
+
+  const axisG = g.append('g')
+    .attr('class', 'x-axis')
+    .attr('transform', `translate(0,${MARGIN.top})`)
+    .call(xAxis);
+
+  axisG.selectAll('line')
+    .attr('stroke', 'rgba(255,255,255,0.06)')
+    .attr('stroke-dasharray', '3,3');
+  axisG.selectAll('.domain').remove();
+  axisG.selectAll('text')
+    .attr('fill', '#64748b')
+    .attr('font-size', '12px')
+    .attr('font-weight', '500');
+
+  // Quarter grid lines
+  const years = [2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031];
+  years.forEach(yr => {
+    for (let m = 0; m < 12; m += 3) {
+      const x = xScale(new Date(`${yr}-${String(m + 1).padStart(2, '0')}-01`));
+      g.append('line')
+        .attr('x1', x).attr('x2', x)
+        .attr('y1', MARGIN.top)
+        .attr('y2', MARGIN.top + LANE_ORDER.length * LANE_HEIGHT)
+        .attr('stroke', 'rgba(255,255,255,0.02)').attr('stroke-width', 1);
+    }
+  });
+}
+
+function renderNowLine(g, innerW) {
+  const now = new Date();
+  const nowX = xScale(now);
+
+  if (nowX < 0 || nowX > getInnerWidth()) return;
+
+  // Glow
+  g.append('line')
+    .attr('x1', nowX).attr('x2', nowX)
+    .attr('y1', MARGIN.top - 30)
+    .attr('y2', MARGIN.top + LANE_ORDER.length * LANE_HEIGHT)
+    .attr('stroke', '#F59E0B').attr('stroke-width', 6).attr('opacity', 0.08);
+
+  // Main line
+  g.append('line')
+    .attr('x1', nowX).attr('x2', nowX)
+    .attr('y1', MARGIN.top - 30)
+    .attr('y2', MARGIN.top + LANE_ORDER.length * LANE_HEIGHT)
+    .attr('stroke', '#F59E0B').attr('stroke-width', 2)
+    .attr('stroke-dasharray', '8,5').attr('opacity', 0.85);
+
+  // NOW badge
+  g.append('rect')
+    .attr('x', nowX - 28).attr('y', MARGIN.top - 42)
+    .attr('width', 56).attr('height', 20).attr('rx', 5)
+    .attr('fill', 'rgba(245,158,11,0.2)')
+    .attr('stroke', 'rgba(245,158,11,0.5)').attr('stroke-width', 1);
+
+  const nowStr = `NOW · ${now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+  g.append('text')
+    .attr('class', 'now-label')
+    .attr('x', nowX).attr('y', MARGIN.top - 28)
+    .attr('text-anchor', 'middle')
+    .attr('font-size', '9px')
+    .text(nowStr);
+
+  // VERIFIED label (left)
+  g.append('text')
+    .attr('x', nowX - 36).attr('y', MARGIN.top - 28)
+    .attr('text-anchor', 'end')
+    .attr('font-size', '9px').attr('fill', '#10B981')
+    .attr('font-weight', '600').attr('letter-spacing', '1px').attr('opacity', 0.7)
+    .text('◀ VERIFIED');
+
+  // PREDICTIONS label (right)
+  g.append('text')
+    .attr('x', nowX + 36).attr('y', MARGIN.top - 28)
+    .attr('text-anchor', 'start')
+    .attr('font-size', '9px').attr('fill', '#3B82F6')
+    .attr('font-weight', '600').attr('letter-spacing', '1px').attr('opacity', 0.7)
+    .text('PREDICTIONS ▶');
+}
+
+function renderStatsCard() {
+  const card = document.getElementById('stats-card');
+  if (!card || backtests.length === 0) return;
+
+  const correct = backtests.filter(b => b.outcome === 'correct').length;
+  const incorrect = backtests.length - correct;
+  const avgBrier = backtests.reduce((s, b) => s + b.brierScore, 0) / backtests.length;
+  const hitRate = ((correct / backtests.length) * 100).toFixed(1);
+
+  // Get period
+  const dates = backtests.map(b => b.resolvedDate).sort();
+  const earliest = dates[0];
+  const latest = dates[dates.length - 1];
+  const fmtPeriod = (d) => {
+    const dt = new Date(d);
+    return dt.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+  };
+
+  card.innerHTML = `
+    <div class="stats-card-accent"></div>
+    <div class="stats-card-title">✓ VERIFIED TRACK RECORD</div>
+    <div class="stats-card-outcomes">
+      <span class="stats-correct">✓ ${correct} correct</span>
+      <span class="stats-incorrect">✗ ${incorrect} incorrect</span>
+    </div>
+    <div class="stats-card-row">
+      <span class="stats-card-label">Brier Score</span>
+      <span class="stats-card-value">${avgBrier.toFixed(3)}</span>
+    </div>
+    <div class="stats-card-row">
+      <span class="stats-card-label">Hit Rate</span>
+      <span class="stats-card-value">${hitRate}%</span>
+    </div>
+    <div class="stats-card-row">
+      <span class="stats-card-label">Period</span>
+      <span class="stats-card-value" style="font-size:11px">${fmtPeriod(earliest)} → ${fmtPeriod(latest)}</span>
+    </div>
+  `;
+
+  card.onclick = () => {
+    sessionStorage.setItem('lastRoute', 'timeline');
+    window.location.href = '/#backtest';
+  };
+}
+
+function renderBacktestNodes(g) {
+  const btG = g.append('g').attr('class', 'backtest-nodes');
+
+  backtests.forEach(bt => {
+    const cx = xScale(new Date(bt.resolvedDate));
+    const cy = getY(bt.domain, bt.id, yOffsetMap);
+    const isCorrect = bt.outcome === 'correct';
+    const col = isCorrect ? '#10B981' : '#EF4444';
+    const r = 6;
+
+    // Glow
+    btG.append('circle')
+      .attr('class', 'bt-glow')
+      .datum(bt)
+      .attr('cx', cx).attr('cy', cy).attr('r', r + 5)
+      .attr('fill', col).attr('opacity', 0.15)
+      .style('pointer-events', 'none')
+      .style('filter', isCorrect ? 'url(#glow-green)' : 'url(#glow-red)');
+
+    // Main node
+    const node = btG.append('circle')
+      .attr('class', 'bt-node')
+      .datum(bt)
+      .attr('cx', cx).attr('cy', cy).attr('r', r)
+      .attr('fill', isCorrect ? col : 'transparent')
+      .attr('stroke', col).attr('stroke-width', isCorrect ? 1.5 : 2)
+      .attr('opacity', 0.9)
+      .attr('data-id', bt.id)
+      .attr('tabindex', 0)
+      .attr('role', 'button')
+      .attr('aria-label', `${bt.id}: ${bt.title} - ${isCorrect ? 'Correct' : 'Incorrect'}`)
+      .style('cursor', 'pointer')
+      .style('filter', isCorrect ? 'url(#glow-green)' : 'url(#glow-red)');
+
+    // Checkmark or X
+    if (isCorrect) {
+      btG.append('text')
+        .attr('x', cx).attr('y', cy + 1)
+        .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
+        .attr('font-size', '7px').attr('fill', '#fff').attr('font-weight', '700')
+        .style('pointer-events', 'none')
+        .text('✓');
+    } else {
+      btG.append('text')
+        .attr('x', cx).attr('y', cy + 1)
+        .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
+        .attr('font-size', '7px').attr('fill', '#EF4444').attr('font-weight', '700')
+        .style('pointer-events', 'none')
+        .text('✗');
+    }
+
+    // Hover
+    node.on('mouseenter', function(event) {
+      d3.select(this).transition().duration(150).attr('r', r + 3);
+      showBtTooltip(event, bt);
+    })
+    .on('mousemove', function(event) { moveTooltip(event); })
+    .on('mouseleave', function() {
+      d3.select(this).transition().duration(200).attr('r', r);
+      hideTooltip();
+    })
+    .on('click', function(event) {
+      showBtTooltip(event, bt);
+    })
+    .on('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        showBtTooltip(event, bt);
+      }
+    });
+  });
+}
+
+function renderPredictionNodes(g) {
+  const nodeG = g.append('g').attr('class', 'pred-nodes');
+
+  predictions.forEach(pred => {
+    const cx = xScale(new Date(pred.verificationDate));
+    const cy = getY(pred.domain, pred.id, yOffsetMap);
+    const r = getNodeRadius(pred.engineScore);
+    const col = pred.domainColor || DOMAIN_COLORS[pred.domain] || '#94A3B8';
+    const statusStyle = getStatusStyle(pred.status);
+
+    // Outer glow
+    if (statusStyle.glow > 0) {
+      nodeG.append('circle')
+        .attr('class', 'pred-node-glow')
+        .datum(pred)
+        .attr('cx', cx).attr('cy', cy).attr('r', r + statusStyle.glow)
+        .attr('fill', col).attr('opacity', statusStyle.glowOpacity * 0.15)
+        .style('pointer-events', 'none')
+        .style('filter', statusStyle.glow > 8 ? 'url(#glow-strong)' : 'url(#glow)');
+    }
+
+    // Outer rings for accelerating/triggered
+    for (let i = 0; i < statusStyle.rings; i++) {
+      nodeG.append('circle')
+        .attr('class', 'pred-node-ring')
+        .datum(pred)
+        .attr('cx', cx).attr('cy', cy)
+        .attr('r', r + 4 + i * 4)
+        .attr('fill', 'none').attr('stroke', col)
+        .attr('stroke-width', 1).attr('opacity', 0.3 - i * 0.1)
+        .style('pointer-events', 'none');
+    }
+
+    // Main node
+    const node = nodeG.append('circle')
+      .attr('class', 'pred-node' + (statusStyle.pulse ? ' node-triggered-pulse' : ''))
+      .datum(pred)
+      .attr('cx', cx).attr('cy', cy).attr('r', r)
+      .attr('fill', col)
+      .attr('stroke', col).attr('stroke-width', statusStyle.strokeW)
+      .attr('opacity', 0.85)
+      .attr('data-id', pred.id)
+      .attr('tabindex', 0)
+      .attr('role', 'button')
+      .attr('aria-label', `${pred.id}: ${pred.title} - Score: ${pred.engineScore} - Status: ${pred.status}`)
+      .style('cursor', 'pointer');
+
+    // ID label (small, above node)
+    nodeG.append('text')
+      .attr('x', cx).attr('y', cy - r - 6)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '8px').attr('fill', col)
+      .attr('font-weight', '500').attr('opacity', 0.6)
+      .style('pointer-events', 'none')
+      .text(pred.id);
+
+    // Hover
+    node.on('mouseenter', function(event) {
+      d3.select(this).transition().duration(150).attr('r', r * 1.2);
+      showPredTooltip(event, pred);
+    })
+    .on('mousemove', function(event) { moveTooltip(event); })
+    .on('mouseleave', function() {
+      d3.select(this).transition().duration(200).attr('r', r);
+      hideTooltip();
+    })
+    .on('click', function() {
+      navigateToPrediction(pred.id);
+    })
+    .on('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        navigateToPrediction(pred.id);
+      }
+    });
+  });
+}
+
+// ============================================================
+// TOOLTIP
+// ============================================================
+function showPredTooltip(event, pred) {
+  const col = pred.domainColor || DOMAIN_COLORS[pred.domain] || '#94A3B8';
+  const tooltip = document.getElementById('timeline-tooltip');
+  tooltip.innerHTML = `
+    <div class="tooltip-title">${pred.title}</div>
+    <div class="tooltip-meta">
+      <div class="tooltip-row">
+        <span class="tooltip-label">ID</span>
+        <span class="tooltip-value">${pred.id}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Domain</span>
+        <span class="domain-badge" style="background:${col}20;color:${col};border:1px solid ${col}40">${pred.domain}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Score</span>
+        <span class="tooltip-value" style="color:${col}">${pred.engineScore}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Status</span>
+        <span class="tooltip-value">${pred.status}</span>
+      </div>
+      <div>
+        <div class="tooltip-row">
+          <span class="tooltip-label">Engine Score</span>
+          <span class="tooltip-value">${pred.engineScore}</span>
+        </div>
+        <div class="tooltip-bar"><div class="tooltip-bar-fill" style="width:${pred.engineScore}%;background:${col}80"></div></div>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Verdict</span>
+        <span class="tooltip-value">${formatDate(pred.verificationDate)}</span>
+      </div>
+    </div>
+  `;
+  tooltip.classList.add('visible');
+  moveTooltip(event);
+}
+
+function showBtTooltip(event, bt) {
+  const col = DOMAIN_COLORS[bt.domain] || '#94A3B8';
+  const isCorrect = bt.outcome === 'correct';
+  const outcomeColor = isCorrect ? '#10B981' : '#EF4444';
+  const outcomeIcon = isCorrect ? '✓ Correct' : '✗ Incorrect';
+  const tooltip = document.getElementById('timeline-tooltip');
+  tooltip.innerHTML = `
+    <div class="tooltip-title">${bt.title}</div>
+    <div class="tooltip-divider"></div>
+    <div class="tooltip-meta">
+      <div class="tooltip-row">
+        <span class="tooltip-label">Domain</span>
+        <span class="domain-badge" style="background:${col}20;color:${col};border:1px solid ${col}40">${bt.domain}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">ID</span>
+        <span class="tooltip-value">${bt.id}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Predicted</span>
+        <span class="tooltip-value">${formatDate(bt.predictedDate)}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Resolved</span>
+        <span class="tooltip-value">${formatDate(bt.resolvedDate)}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Outcome</span>
+        <span class="tooltip-value" style="color:${outcomeColor}">${outcomeIcon}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Brier</span>
+        <span class="tooltip-value" style="color:${outcomeColor}">${bt.brierScore}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Engine Score</span>
+        <span class="tooltip-value">${bt.engineScore}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Method</span>
+        <span class="tooltip-value" style="font-size:10px;text-align:right;max-width:140px">${bt.verificationMethod}</span>
+      </div>
+    </div>
+  `;
+  tooltip.classList.add('visible');
+  moveTooltip(event);
+}
+
+function moveTooltip(event) {
+  const tooltip = document.getElementById('timeline-tooltip');
+  const x = event.clientX + 16;
+  const y = event.clientY - 10;
+  const maxX = window.innerWidth - 340;
+  const maxY = window.innerHeight - 320;
+  tooltip.style.left = Math.min(x, maxX) + 'px';
+  tooltip.style.top = Math.min(y, maxY) + 'px';
+}
+
+function hideTooltip() {
+  const tooltip = document.getElementById('timeline-tooltip');
+  tooltip.classList.remove('visible');
+}
+
+function formatDate(d) {
+  if (!d) return 'N/A';
+  const date = new Date(d);
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+// ============================================================
+// DOMAIN FILTER (T-07)
+// ============================================================
+function buildLegend() {
+  const legendBar = document.getElementById('legend-bar');
+  legendBar.innerHTML = '';
+
+  // All button
+  const allBtn = document.createElement('button');
+  allBtn.className = 'legend-btn all-btn' + (activeDomain === null ? ' active' : '');
+  allBtn.textContent = 'All';
+  allBtn.setAttribute('aria-label', 'Show all domains');
+  allBtn.onclick = () => {
+    activeDomain = null;
+    window.location.hash = 'all';
+    buildLegend();
+    applyDomainFilter();
+  };
+  legendBar.appendChild(allBtn);
+
+  // Separator
+  const sep = document.createElement('div');
+  sep.className = 'legend-sep';
+  legendBar.appendChild(sep);
+
+  // Domain buttons
+  LANE_ORDER.forEach(domain => {
+    const btn = document.createElement('button');
+    const isActive = activeDomain === null || activeDomain === domain;
+    btn.className = 'legend-btn' + (isActive ? '' : ' dimmed');
+    const color = DOMAIN_COLORS[domain] || '#94A3B8';
+    btn.innerHTML = `<span class="legend-dot" style="background:${color};box-shadow:0 0 6px ${color}80"></span>${domain}`;
+    btn.setAttribute('aria-label', `Filter by ${domain}`);
+    btn.onclick = () => {
+      if (activeDomain === domain) {
+        activeDomain = null;
+        window.location.hash = 'all';
+      } else {
+        activeDomain = domain;
+        window.location.hash = domain.toLowerCase();
+      }
+      buildLegend();
+      applyDomainFilter();
+    };
+    legendBar.appendChild(btn);
+  });
+}
+
+function applyDomainFilter() {
+  const isAll = activeDomain === null;
+
+  // Prediction nodes
+  d3.selectAll('.pred-node').transition().duration(300)
+    .style('opacity', d => (isAll || d.domain === activeDomain) ? 0.85 : 0.08);
+  d3.selectAll('.pred-node-glow').transition().duration(300)
+    .style('opacity', d => (isAll || d.domain === activeDomain) ? 0.12 : 0.01);
+  d3.selectAll('.pred-node-ring').transition().duration(300)
+    .style('opacity', d => (isAll || d.domain === activeDomain) ? 0.3 : 0.02);
+
+  // Backtest nodes
+  d3.selectAll('.bt-node').transition().duration(300)
+    .style('opacity', d => (isAll || d.domain === activeDomain) ? 0.9 : 0.08);
+  d3.selectAll('.bt-glow').transition().duration(300)
+    .style('opacity', d => (isAll || d.domain === activeDomain) ? 0.15 : 0.01);
+
+  // Lane backgrounds
+  d3.selectAll('.lane-bg').transition().duration(300)
+    .style('opacity', function() {
+      const d = d3.select(this).attr('data-domain');
+      return (isAll || d === activeDomain) ? 1 : 0.15;
+    });
+
+  // Lane accents
+  d3.selectAll('.lane-accent').transition().duration(300)
+    .attr('opacity', function() {
+      const d = d3.select(this).attr('data-domain');
+      return (isAll || d === activeDomain) ? 0.5 : 0.1;
+    });
+}
+
+// ============================================================
+// NAVIGATION (T-09, T-11)
+// ============================================================
+function navigateToPrediction(fpId) {
+  sessionStorage.setItem('lastRoute', 'timeline');
+  window.location.href = '/#' + fpId;
+}
+
+// ============================================================
+// Z1 MODE (T-10 placeholder)
+// ============================================================
+function enterZ1(domain) {
+  isZ1Mode = true;
+  z1Domain = domain;
+  activeDomain = domain;
+  window.location.hash = domain.toLowerCase();
+  buildLegend();
+  applyDomainFilter();
+
+  // Show back button
+  const backBtn = document.getElementById('back-global-btn');
+  if (backBtn) {
+    backBtn.style.display = 'flex';
+    backBtn.textContent = `← Global View`;
+    backBtn.onclick = exitZ1;
+  }
+}
+
+function exitZ1() {
+  isZ1Mode = false;
+  z1Domain = null;
+  activeDomain = null;
+  window.location.hash = 'all';
+  buildLegend();
+  applyDomainFilter();
+
+  const backBtn = document.getElementById('back-global-btn');
+  if (backBtn) backBtn.style.display = 'none';
+}
+
+// ============================================================
+// ZOOM (T-10)
+// ============================================================
+function setupZoom() {
+  const container = document.getElementById('svg-container');
+
+  // Mouse wheel zoom
+  container.addEventListener('wheel', function(event) {
+    if (event.shiftKey) {
+      // Shift+wheel = vertical scroll
+      return;
+    }
+    event.preventDefault();
+    const delta = event.deltaY > 0 ? -0.1 : 0.1;
+    currentZoom = Math.max(0.5, Math.min(5, currentZoom + delta));
+    render();
+  }, { passive: false });
+
+  // Touch pinch zoom
+  let lastTouchDist = 0;
+  container.addEventListener('touchstart', function(event) {
+    if (event.touches.length === 2) {
+      lastTouchDist = Math.hypot(
+        event.touches[0].clientX - event.touches[1].clientX,
+        event.touches[0].clientY - event.touches[1].clientY
+      );
+    }
+  }, { passive: true });
+
+  container.addEventListener('touchmove', function(event) {
+    if (event.touches.length === 2) {
+      const dist = Math.hypot(
+        event.touches[0].clientX - event.touches[1].clientX,
+        event.touches[0].clientY - event.touches[1].clientY
+      );
+      const delta = (dist - lastTouchDist) * 0.005;
+      currentZoom = Math.max(0.5, Math.min(5, currentZoom + delta));
+      lastTouchDist = dist;
+      render();
+    }
+  }, { passive: true });
+}
+
+// ============================================================
+// KEYBOARD NAV (T-12)
+// ============================================================
+function setupKeyboard() {
+  document.addEventListener('keydown', function(event) {
+    const key = event.key;
+
+    // Arrow keys - horizontal scroll
+    if (key === 'ArrowLeft') {
+      event.preventDefault();
+      const container = document.getElementById('svg-container');
+      container.scrollLeft -= 100;
+    } else if (key === 'ArrowRight') {
+      event.preventDefault();
+      const container = document.getElementById('svg-container');
+      container.scrollLeft += 100;
+    }
+
+    // +/- zoom
+    else if (key === '+' || key === '=') {
+      event.preventDefault();
+      currentZoom = Math.min(5, currentZoom + 0.2);
+      render();
+    } else if (key === '-' || key === '_') {
+      event.preventDefault();
+      currentZoom = Math.max(0.5, currentZoom - 0.2);
+      render();
+    }
+
+    // A = all
+    else if (key === 'a' || key === 'A') {
+      if (document.activeElement.tagName !== 'INPUT') {
+        event.preventDefault();
+        activeDomain = null;
+        window.location.hash = 'all';
+        buildLegend();
+        applyDomainFilter();
+      }
+    }
+
+    // 1-9, 0, -, = for domain quick switch
+    else if (key >= '1' && key <= '9') {
+      const idx = parseInt(key) - 1;
+      if (idx < LANE_ORDER.length) {
+        activeDomain = LANE_ORDER[idx];
+        window.location.hash = activeDomain.toLowerCase();
+        buildLegend();
+        applyDomainFilter();
+      }
+    } else if (key === '0') {
+      if (LANE_ORDER.length > 9) {
+        activeDomain = LANE_ORDER[9];
+        window.location.hash = activeDomain.toLowerCase();
+        buildLegend();
+        applyDomainFilter();
+      }
+    }
+
+    // Esc
+    else if (key === 'Escape') {
+      if (isZ1Mode) {
+        exitZ1();
+      } else {
+        hideTooltip();
+        activeDomain = null;
+        window.location.hash = 'all';
+        buildLegend();
+        applyDomainFilter();
+      }
+    }
+  });
+}
+
+// ============================================================
+// HASH ROUTING
+// ============================================================
+function handleHash() {
+  const hash = window.location.hash.replace('#', '').toLowerCase();
+  if (!hash || hash === 'all') {
+    activeDomain = null;
+  } else {
+    // Find matching domain
+    const match = LANE_ORDER.find(d => d.toLowerCase() === hash);
+    if (match) {
+      activeDomain = match;
+    }
+  }
+  buildLegend();
+  applyDomainFilter();
+}
+
+// ============================================================
+// MOBILE RESPONSIVE (T-13)
+// ============================================================
+function setupMobile() {
+  const toggle = document.getElementById('mobile-bt-toggle');
+  if (!toggle) return;
+
+  toggle.addEventListener('click', function() {
+    const svgContainer = document.getElementById('svg-container');
+    // Scroll to left (backtest area)
+    svgContainer.scrollTo({ left: 0, behavior: 'smooth' });
+  });
+
+  // Check viewport
+  function checkMobile() {
+    if (window.innerWidth < 768) {
+      toggle.style.display = 'block';
+    } else {
+      toggle.style.display = 'none';
+    }
+  }
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+}
+
+// ============================================================
+// LONG PRESS for mobile Z1
+// ============================================================
+function setupLongPress() {
+  const container = document.getElementById('svg-container');
+  let pressTimer = null;
+
+  container.addEventListener('touchstart', function(event) {
+    if (event.touches.length !== 1) return;
+    pressTimer = setTimeout(() => {
+      // Find which lane was pressed based on Y coordinate
+      const rect = container.getBoundingClientRect();
+      const y = event.touches[0].clientY - rect.top + container.scrollTop;
+      const laneIdx = Math.floor((y - MARGIN.top) / LANE_HEIGHT);
+      if (laneIdx >= 0 && laneIdx < LANE_ORDER.length) {
+        enterZ1(LANE_ORDER[laneIdx]);
+      }
+    }, 300);
+  }, { passive: true });
+
+  container.addEventListener('touchend', () => {
+    if (pressTimer) clearTimeout(pressTimer);
+  }, { passive: true });
+
+  container.addEventListener('touchmove', () => {
+    if (pressTimer) clearTimeout(pressTimer);
+  }, { passive: true });
+}
+
+// ============================================================
+// INIT
+// ============================================================
+async function init() {
+  // Set sessionStorage for back navigation
+  sessionStorage.setItem('lastRoute', 'timeline');
+
+  // Build legend
+  buildLegend();
+
+  // Load data
+  await loadData();
+
+  // Render
+  render();
+
+  // Setup interactions
+  setupZoom();
+  setupKeyboard();
+  setupMobile();
+  setupLongPress();
+
+  // Handle initial hash
+  handleHash();
+  window.addEventListener('hashchange', handleHash);
+
+  // Hide loading
+  const loading = document.getElementById('loading-overlay');
+  if (loading) loading.classList.add('hidden');
+  setTimeout(() => { if (loading) loading.remove(); }, 500);
+}
+
+// Start
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+})();

@@ -1,0 +1,21 @@
+{
+  "name": "worldcascade-e2e-tests",
+  "version": "1.0.0",
+  "description": "Playwright end-to-end tests for WorldCascade prediction aggregation website",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "test:report": "npx playwright show-report",
+    "test:homepage": "npx playwright test homepage.spec.ts",
+    "test:navigation": "npx playwright test navigation.spec.ts",
+    "test:detail": "npx playwright test detail-content.spec.ts",
+    "test:mobile": "npx playwright test mobile-responsive.spec.ts",
+    "test:performance": "npx playwright test performance.spec.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
