@@ -1,7 +1,8 @@
 /**
  * WorldCascade Timeline - Z0 Minimum Viable Version
- * Sprint 3.1 - WO-02 v1.1.0
+ * Sprint 3.1 - WO-02 v1.1.0 (data-contract v2 compatible)
  * D3.js v7 timeline with domain swim lanes, NOW line, backtest + prediction nodes
+ * Supports both v1 (flat domain string) and v2 (nested domain object) data formats
  */
 
 (function() {
@@ -25,26 +26,39 @@ const MAIN_DOMAINS = new Set(['AI','Energy','Demographics','Climate','Biotech','
 const BACKTEST_ONLY_DOMAINS = new Set(['Geopolitics','Economics','Finance','Transport','Food']);
 
 // Map raw data domain keys to canonical lane names
+const DOMAIN_KEY_MAP = {
+  'ai': 'AI', 'AI': 'AI',
+  'energy': 'Energy',
+  'demographics': 'Demographics',
+  'climate': 'Climate',
+  'biotech': 'Biotech',
+  'quantum': 'Quantum',
+  'space': 'Space', 'space-alien': 'Space', 'space-economy': 'Space',
+  'health': 'Health',
+  'geopolitics': 'Geopolitics',
+  'economics': 'Economics',
+  'finance': 'Finance',
+  'transport': 'Transport',
+  'food': 'Food',
+  // Cross-domain predictions → Geopolitics (best semantic fit: governance / emergency declarations)
+  'cross-domain': 'Geopolitics', 'cross_domain': 'Geopolitics', 'Cross-Domain': 'Geopolitics'
+};
+
 function normalizeDomain(raw) {
   if (!raw) return null;
-  const map = {
-    'ai': 'AI', 'AI': 'AI',
-    'energy': 'Energy',
-    'demographics': 'Demographics',
-    'climate': 'Climate',
-    'biotech': 'Biotech',
-    'quantum': 'Quantum',
-    'space': 'Space', 'space-alien': 'Space', 'space-economy': 'Space',
-    'health': 'Health',
-    'geopolitics': 'Geopolitics',
-    'economics': 'Economics',
-    'finance': 'Finance',
-    'transport': 'Transport',
-    'food': 'Food',
-    // Cross-domain predictions → Geopolitics (best semantic fit: governance / emergency declarations)
-    'cross-domain': 'Geopolitics', 'cross_domain': 'Geopolitics', 'Cross-Domain': 'Geopolitics'
-  };
-  return map[raw] || null;
+  // v2 format: domain is a nested object { key, label, color, icon }
+  if (typeof raw === 'object' && raw.key) {
+    return DOMAIN_KEY_MAP[raw.key] || null;
+  }
+  // v1 format: domain is a plain string
+  return DOMAIN_KEY_MAP[raw] || null;
+}
+
+// Extract domain key string from either format
+function extractDomainKey(raw) {
+  if (!raw) return null;
+  if (typeof raw === 'object') return raw.key || null;
+  return raw;
 }
 
 // ============================================================
@@ -80,16 +94,18 @@ async function loadData() {
     const predData = await predResp.json();
     const btData = await btResp.json();
 
-    // Process predictions
+    // Process predictions — support both v1 (flat) and v2 (nested domain object) formats
     predictions = (predData.predictions || []).map(p => {
       const canonDomain = normalizeDomain(p.domain);
+      const rawKey = extractDomainKey(p.domain);
+      const domainObj = (typeof p.domain === 'object') ? p.domain : null;
       return {
         id: p.id,
         title: p.title,
-        domain: canonDomain || p.domain,
-        domainLabel: p.domainLabel || canonDomain || p.domain,
-        domainColor: DOMAIN_COLORS[canonDomain] || p.domainColor || '#94A3B8',
-        domainIcon: p.domainIcon || '',
+        domain: canonDomain || rawKey || (typeof p.domain === 'string' ? p.domain : null),
+        domainLabel: p.domainLabel || (domainObj && domainObj.label) || canonDomain || rawKey || '',
+        domainColor: DOMAIN_COLORS[canonDomain] || (domainObj && domainObj.color) || p.domainColor || '#94A3B8',
+        domainIcon: p.domainIcon || (domainObj && domainObj.icon) || '',
         verificationDate: p.verificationDate,
         originalConfidence: p.originalConfidence || 0,
         engineScore: p.engineScore || 0,
@@ -98,16 +114,18 @@ async function loadData() {
       };
     }).filter(p => p.domain && LANE_ORDER.includes(p.domain));
 
-    // Process backtests
+    // Process backtests — same dual-format support
     backtests = (btData.entries || []).map(b => {
       const canonDomain = normalizeDomain(b.domain);
+      const rawKey = extractDomainKey(b.domain);
+      const domainObj = (typeof b.domain === 'object') ? b.domain : null;
       return {
         id: b.id,
         title: b.title,
-        domain: canonDomain || b.domain,
-        domainLabel: b.domainLabel || canonDomain || b.domain,
-        domainColor: DOMAIN_COLORS[canonDomain] || b.domainColor || '#94A3B8',
-        domainIcon: b.domainIcon || '',
+        domain: canonDomain || rawKey || (typeof b.domain === 'string' ? b.domain : null),
+        domainLabel: b.domainLabel || (domainObj && domainObj.label) || canonDomain || rawKey || '',
+        domainColor: DOMAIN_COLORS[canonDomain] || (domainObj && domainObj.color) || b.domainColor || '#94A3B8',
+        domainIcon: b.domainIcon || (domainObj && domainObj.icon) || '',
         predictedDate: b.predictedDate,
         resolvedDate: b.resolvedDate,
         outcome: b.outcome,
