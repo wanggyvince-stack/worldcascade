@@ -1,15 +1,146 @@
 /* WorldCascade Timeline - Z0 Minimum Viable Version */
 /* Sprint 3.1 - WO-02 v1.1.0 */
 
+:root {
+  --bg: #0A0A0F;
+  --bg-card: #13131A;
+  --bg-elev: #1A1A26;
+  --text: #E8E8ED;
+  --text-dim: #8888A0;
+  --text-muted: #5A5A70;
+  --accent: #6366F1;
+  --accent-glow: rgba(99, 102, 241, 0.35);
+  --border: #1E1E2E;
+  --high: #10B981;
+  --med: #F59E0B;
+  --low: #EF4444;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Roboto, sans-serif;
+  --display: 'Avenir Next', 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: #0F172A;
-  color: #E2E8F0;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+a { color: inherit; text-decoration: none; }
+
+/* ===== SITE NAV (from index.html) ===== */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+.nav-link {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+}
+.nav-link:hover { color: var(--text); }
+.nav-link.is-active { color: var(--text); }
+.nav-link.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -0.35rem;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+.nav-link--changelog,
+.nav-link--backtest {
+  color: var(--text-muted);
+  pointer-events: none;
+  cursor: default;
+}
+.nav-link--changelog::before,
+.nav-link--backtest::before {
+  content: 'soon';
+  position: absolute;
+  top: -0.6rem; right: -1.2rem;
+  font-size: 0.55rem;
+  padding: 0.05rem 0.3rem;
+  background: var(--bg-elev);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+.nav-toggle span {
+  width: 22px; height: 2px;
+  background: var(--text);
+  border-radius: 1px;
+  transition: transform 0.2s ease;
+}
+
+/* ===== BT TOOLTIP CTA ===== */
+.tooltip-cta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255,255,255,0.08);
+}
+.tooltip-cta {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent, #6366F1);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  text-align: left;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+.tooltip-cta:hover { color: #a5b4fc; }
 
 /* Header */
 .timeline-header {
@@ -411,6 +542,25 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .site-nav { padding: 1rem 1.25rem; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(80vw, 320px);
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 5rem 2rem 2rem;
+    background: var(--bg-elev);
+    border-left: 1px solid var(--border);
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    z-index: 100;
+  }
+  .nav-links.is-open { transform: translateX(0); }
+  .nav-link { font-size: 1rem; }
   .timeline-header {
     padding: 12px 16px 8px;
   }

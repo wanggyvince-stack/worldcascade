@@ -284,6 +284,9 @@ function render() {
   // --- Prediction nodes ---
   renderPredictionNodes(g);
 
+  // --- Causal chain curves ---
+  renderCausalChains(g, svg);
+
   // --- Apply domain filter ---
   applyDomainFilter();
 }
@@ -652,6 +655,96 @@ function renderPredictionNodes(g) {
 }
 
 // ============================================================
+// CAUSAL CHAINS (P3)
+// ============================================================
+function renderCausalChains(g, svg) {
+  if (!causalChains || causalChains.length === 0) return;
+
+  // Build prediction position lookup
+  const predPos = {};
+  predictions.forEach(p => {
+    const cx = xScale(new Date(p.verificationDate));
+    const cy = getY(p.domain, p.id, yOffsetMap);
+    predPos[p.id] = { x: cx + MARGIN.left, y: cy, domain: p.domain, domainColor: p.domainColor };
+  });
+
+  // Add SVG defs container for gradients (append to the main svg, not the translated g)
+  const defs = svg.select('defs');
+
+  // Evidence strength to stroke width mapping
+  const strengthMap = { HIGH: 3, MEDIUM: 1.75, LOW: 0.5 };
+  function getStrokeWidth(chain) {
+    // Use average evidence strength of chain nodes
+    if (!chain.nodes || chain.nodes.length === 0) return 1;
+    const avg = chain.nodes.reduce((sum, n) => sum + (strengthMap[n.evidence_strength] || 1), 0) / chain.nodes.length;
+    return Math.max(0.5, Math.min(3, avg));
+  }
+
+  const chainG = g.append('g').attr('class', 'causal-chains');
+
+  causalChains.forEach((chain, idx) => {
+    const linkedIds = chain.linkedPredictions || [];
+    if (linkedIds.length < 2) return;
+
+    // Find source (first FP) and target (last FP) positions
+    const sourceId = linkedIds[0];
+    const targetId = linkedIds[linkedIds.length - 1];
+    const sourcePos = predPos[sourceId];
+    const targetPos = predPos[targetId];
+    if (!sourcePos || !targetPos) return;
+
+    const sourceDomain = sourcePos.domain;
+    const targetDomain = targetPos.domain;
+    const sourceColor = sourcePos.domainColor || DOMAIN_COLORS[sourceDomain] || '#94A3B8';
+    const targetColor = targetPos.domainColor || DOMAIN_COLORS[targetDomain] || '#94A3B8';
+    const strokeWidth = getStrokeWidth(chain);
+
+    // Create linear gradient
+    const gradId = `chain-grad-${idx}`;
+    const gradient = defs.append('linearGradient')
+      .attr('id', gradId)
+      .attr('gradientUnits', 'userSpaceOnUse')
+      .attr('x1', sourcePos.x).attr('y1', sourcePos.y)
+      .attr('x2', targetPos.x).attr('y2', targetPos.y);
+    gradient.append('stop').attr('offset', '0%').attr('stop-color', sourceColor).attr('stop-opacity', 0.7);
+    gradient.append('stop').attr('offset', '100%').attr('stop-color', targetColor).attr('stop-opacity', 0.7);
+
+    // Bezier curve path
+    const dx = targetPos.x - sourcePos.x;
+    const dy = targetPos.y - sourcePos.y;
+    const cp1x = sourcePos.x + dx * 0.3;
+    const cp1y = sourcePos.y + dy * 0.1 - 30;
+    const cp2x = sourcePos.x + dx * 0.7;
+    const cp2y = targetPos.y - dy * 0.1 + 30;
+    const pathD = `M ${sourcePos.x} ${sourcePos.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${targetPos.x} ${targetPos.y}`;
+
+    const chainPath = chainG.append('path')
+      .attr('d', pathD)
+      .attr('fill', 'none')
+      .attr('stroke', `url(#${gradId})`)
+      .attr('stroke-width', strokeWidth)
+      .attr('stroke-dasharray', '6,3')
+      .attr('opacity', 0.6)
+      .attr('data-chain-id', chain.id)
+      .style('cursor', 'pointer')
+      .style('transition', 'opacity 0.2s');
+
+    // Hover
+    chainPath.on('mouseenter', function() {
+      d3.select(this).attr('opacity', 0.9).attr('stroke-width', strokeWidth + 1);
+    }).on('mouseleave', function() {
+      d3.select(this).attr('opacity', 0.6).attr('stroke-width', strokeWidth);
+    });
+
+    // Click → navigate to chain detail
+    chainPath.on('click', function() {
+      sessionStorage.setItem('lastRoute', 'timeline');
+      window.location.href = '/#chain/' + chain.id;
+    });
+  });
+}
+
+// ============================================================
 // TOOLTIP
 // ============================================================
 function showPredTooltip(event, pred) {
@@ -698,6 +791,19 @@ function showBtTooltip(event, bt) {
   const isCorrect = bt.outcome === 'correct';
   const outcomeColor = isCorrect ? '#10B981' : '#EF4444';
   const outcomeIcon = isCorrect ? '✓ Correct' : '✗ Incorrect';
+  const verdict = isCorrect ? 'VERIFIED CORRECT' : 'VERIFIED INCORRECT';
+  // Compute hit rate
+  const totalBt = backtests.length;
+  const correctBt = backtests.filter(b => b.outcome === 'correct').length;
+  const hitRate = totalBt > 0 ? ((correctBt / totalBt) * 100).toFixed(1) : '0.0';
+  // Find associated prediction (closest verification date, same domain)
+  const samePreds = predictions.filter(p => p.domain === bt.domain);
+  let associatedFpId = '';
+  if (samePreds.length > 0) {
+    const btDate = new Date(bt.resolvedDate);
+    samePreds.sort((a, b) => Math.abs(new Date(a.verificationDate) - btDate) - Math.abs(new Date(b.verificationDate) - btDate));
+    associatedFpId = samePreds[0].id;
+  }
   const tooltip = document.getElementById('timeline-tooltip');
   tooltip.innerHTML = `
     <div class="tooltip-title">${bt.title}</div>
@@ -712,6 +818,22 @@ function showBtTooltip(event, bt) {
         <span class="tooltip-value">${bt.id}</span>
       </div>
       <div class="tooltip-row">
+        <span class="tooltip-label">Outcome</span>
+        <span class="tooltip-value" style="color:${outcomeColor};font-weight:700">${outcomeIcon}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Verdict</span>
+        <span class="tooltip-value" style="color:${outcomeColor};font-size:10px">${verdict}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Brier Score</span>
+        <span class="tooltip-value" style="color:${outcomeColor}">${bt.brierScore.toFixed(3)}</span>
+      </div>
+      <div class="tooltip-row">
+        <span class="tooltip-label">Hit Rate</span>
+        <span class="tooltip-value">${hitRate}%</span>
+      </div>
+      <div class="tooltip-row">
         <span class="tooltip-label">Predicted</span>
         <span class="tooltip-value">${formatDate(bt.predictedDate)}</span>
       </div>
@@ -719,26 +841,26 @@ function showBtTooltip(event, bt) {
         <span class="tooltip-label">Resolved</span>
         <span class="tooltip-value">${formatDate(bt.resolvedDate)}</span>
       </div>
-      <div class="tooltip-row">
-        <span class="tooltip-label">Outcome</span>
-        <span class="tooltip-value" style="color:${outcomeColor}">${outcomeIcon}</span>
-      </div>
-      <div class="tooltip-row">
-        <span class="tooltip-label">Brier</span>
-        <span class="tooltip-value" style="color:${outcomeColor}">${bt.brierScore}</span>
-      </div>
-      <div class="tooltip-row">
-        <span class="tooltip-label">Engine Score</span>
-        <span class="tooltip-value">${bt.engineScore}</span>
-      </div>
-      <div class="tooltip-row">
-        <span class="tooltip-label">Method</span>
-        <span class="tooltip-value" style="font-size:10px;text-align:right;max-width:140px">${bt.verificationMethod}</span>
+      <div class="tooltip-cta-row">
+        <button class="tooltip-cta" data-action="backtest-archive">View backtest archive →</button>
+        <button class="tooltip-cta" data-action="compare-pred" data-fp="${associatedFpId}">Compare to current prediction →</button>
       </div>
     </div>
   `;
   tooltip.classList.add('visible');
+  tooltip.style.pointerEvents = 'auto';
   moveTooltip(event);
+  // CTA handlers
+  tooltip.querySelector('[data-action="backtest-archive"]').onclick = (e) => {
+    e.stopPropagation();
+    sessionStorage.setItem('lastRoute', 'timeline');
+    window.location.href = '/#trust';
+  };
+  tooltip.querySelector('[data-action="compare-pred"]').onclick = (e) => {
+    e.stopPropagation();
+    sessionStorage.setItem('lastRoute', 'timeline');
+    window.location.href = '/#detail/' + associatedFpId;
+  };
 }
 
 function moveTooltip(event) {
@@ -888,12 +1010,9 @@ function exitZ1() {
 function setupZoom() {
   const container = document.getElementById('svg-container');
 
-  // Mouse wheel zoom
+  // Mouse wheel zoom — Ctrl/Cmd+wheel = zoom, plain wheel = native scroll
   container.addEventListener('wheel', function(event) {
-    if (event.shiftKey) {
-      // Shift+wheel = vertical scroll
-      return;
-    }
+    if (!event.ctrlKey && !event.metaKey) return;
     event.preventDefault();
     const delta = event.deltaY > 0 ? -0.1 : 0.1;
     currentZoom = Math.max(0.5, Math.min(5, currentZoom + delta));
@@ -1076,6 +1195,23 @@ function setupLongPress() {
 async function init() {
   // Set sessionStorage for back navigation
   sessionStorage.setItem('lastRoute', 'timeline');
+  try { sessionStorage.setItem('lastHub', 'timeline'); } catch (_) {}
+
+  // Nav toggle (hamburger menu)
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // Build legend
   buildLegend();
