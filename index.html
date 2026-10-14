@@ -2951,7 +2951,7 @@ document.addEventListener('DOMContentLoaded', () => {
       var relHtml = '';
       if (d.causalChainIds && d.causalChainIds.length) {
         relHtml = 'Related: ' + d.causalChainIds.map(function(rid){
-          return '<a href="#detail/' + rid + '" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,\'\',\'#detail/' + rid + '\');handleRoute();">' + rid + '</a>';
+          return '<a href="#chain/' + rid + '" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,\'\',\'#chain/' + rid + '\');handleRoute();">' + rid + '</a>';
         }).join(', ');
       }
       document.getElementById('detail-related').innerHTML = relHtml;
@@ -3040,7 +3040,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (relatedCrosslink && relatedList && d.causalChainIds && d.causalChainIds.length > 0) {
         relatedCrosslink.hidden = false;
         relatedList.innerHTML = d.causalChainIds.slice(0, 3).map(rid => {
-          return `<a href="#detail/${rid}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,\'\',\'#detail/${rid}\');handleRoute();" style="color:var(--accent);">${rid}</a>`;
+          return `<a href="#chain/${rid}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,\'\',\'#detail/${rid}\');handleRoute();" style="color:var(--accent);">${rid}</a>`;
         }).join(', ');
       } else if (relatedCrosslink) {
         relatedCrosslink.hidden = true;
