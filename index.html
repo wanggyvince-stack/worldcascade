@@ -3033,7 +3033,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (relatedCrosslink && relatedList && d.causalChainIds && d.causalChainIds.length > 0) {
         relatedCrosslink.hidden = false;
         relatedList.innerHTML = d.causalChainIds.slice(0, 3).map(rid => {
-          return `<a href="#chain/${rid}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,\'\',\'#detail/${rid}\');handleRoute();" style="color:var(--accent);">${rid}</a>`;
+          return `<a href="#chain/${rid}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,\'\',\'#chain/${rid}\');handleRoute();" style="color:var(--accent);">${rid}</a>`;
         }).join(', ');
       } else if (relatedCrosslink) {
         relatedCrosslink.hidden = true;
