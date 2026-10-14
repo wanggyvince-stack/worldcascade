@@ -2534,6 +2534,9 @@ footer {
     var DETAIL_MAP = {};
     DETAIL_DATA.forEach(function(d){ DETAIL_MAP[d.id] = d; });
 
+    // Expose handleRoute for inline onclick handlers (button/nav)
+    window.handleRoute = handleRoute;
+
     var heroEl = document.getElementById('hero');
     var chainsEl = document.getElementById('chains');
     var hubEl = document.getElementById('predictions');
