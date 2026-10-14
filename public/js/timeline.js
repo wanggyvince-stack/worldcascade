@@ -668,25 +668,29 @@ function renderCausalChains(g, svg) {
     predPos[p.id] = { x: cx + MARGIN.left, y: cy, domain: p.domain, domainColor: p.domainColor };
   });
 
-  // Add SVG defs container for gradients (append to the main svg, not the translated g)
+  // Add SVG defs container for gradients
   const defs = svg.select('defs');
 
   // Evidence strength to stroke width mapping
   const strengthMap = { HIGH: 3, MEDIUM: 1.75, LOW: 0.5 };
   function getStrokeWidth(chain) {
-    // Use average evidence strength of chain nodes
     if (!chain.nodes || chain.nodes.length === 0) return 1;
     const avg = chain.nodes.reduce((sum, n) => sum + (strengthMap[n.evidence_strength] || 1), 0) / chain.nodes.length;
     return Math.max(0.5, Math.min(3, avg));
   }
 
+  // Filter: only show chains with strength >= 60 (core chains)
+  const visibleChains = causalChains.filter(c => c.strength >= 60);
+  
+  // Sort by strength descending (strongest first, drawn last = on top)
+  visibleChains.sort((a, b) => b.strength - a.strength);
+
   const chainG = g.append('g').attr('class', 'causal-chains');
 
-  causalChains.forEach((chain, idx) => {
+  visibleChains.forEach((chain, idx) => {
     const linkedIds = chain.linkedPredictions || [];
     if (linkedIds.length < 2) return;
 
-    // Find source (first FP) and target (last FP) positions
     const sourceId = linkedIds[0];
     const targetId = linkedIds[linkedIds.length - 1];
     const sourcePos = predPos[sourceId];
@@ -709,13 +713,13 @@ function renderCausalChains(g, svg) {
     gradient.append('stop').attr('offset', '0%').attr('stop-color', sourceColor).attr('stop-opacity', 0.7);
     gradient.append('stop').attr('offset', '100%').attr('stop-color', targetColor).attr('stop-opacity', 0.7);
 
-    // Stair-step path: horizontal → vertical → horizontal (circuit-like, instantly readable direction)
-    // 1) Source departs horizontally
-    // 2) Vertical segment at midpoint (or at source x if target is to the left)
-    // 3) Arrives horizontally at target
+    // Stair-step path with OFFSET vertical segment (avoid overlap)
+    // Each chain's vertical segment is at a different x position based on index
     const dx = targetPos.x - sourcePos.x;
-    const turnX = sourcePos.x + Math.max(50, dx * 0.5);  // vertical turn column (midpoint, but min 50px from source)
-    const smoothR = 8;  // small rounded corner at each turn
+    const turnOffset = 0.35 + (idx % 5) * 0.06;  // 35%, 41%, 47%, 53%, 59%, then wrap
+    const turnX = sourcePos.x + dx * turnOffset;
+    const smoothR = 6;
+    
     const pathD = [
       `M ${sourcePos.x} ${sourcePos.y}`,
       `L ${turnX - smoothR} ${sourcePos.y}`,
@@ -725,7 +729,7 @@ function renderCausalChains(g, svg) {
       `L ${targetPos.x - 10} ${targetPos.y}`
     ].join(' ');
 
-    // Arrow marker per chain (inherits target domain color)
+    // Arrow marker
     const markerId = `chain-arrow-${idx}`;
     defs.append('marker')
       .attr('id', markerId)
@@ -750,13 +754,15 @@ function renderCausalChains(g, svg) {
       .attr('marker-end', `url(#${markerId})`)
       .attr('data-chain-id', chain.id)
       .style('cursor', 'pointer')
-      .style('transition', 'opacity 0.2s');
+      .style('transition', 'opacity 0.2s, stroke-width 0.2s');
 
-    // Hover
+    // Hover: highlight this chain, fade others
     chainPath.on('mouseenter', function() {
-      d3.select(this).attr('opacity', 0.9).attr('stroke-width', strokeWidth + 1);
+      chainG.selectAll('path').attr('opacity', 0.15);
+      d3.select(this).attr('opacity', 1).attr('stroke-width', strokeWidth + 1.5);
     }).on('mouseleave', function() {
-      d3.select(this).attr('opacity', 0.6).attr('stroke-width', strokeWidth);
+      chainG.selectAll('path').attr('opacity', 0.75);
+      d3.select(this).attr('opacity', 0.75).attr('stroke-width', strokeWidth);
     });
 
     // Click → navigate to chain detail
