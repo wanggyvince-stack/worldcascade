@@ -9,7 +9,7 @@
     "avgOriginalConfidence": 49.0,
     "avgBias": 1.8,
     "domainCount": 10,
-    "chainCount": 21,
+    "chainCount": 17,
     "earliestVerdict": "2027-06-30",
     "latestVerdict": "2031-06-30"
   },
@@ -145,7 +145,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-001"
+        "CC-CROSS-001",
+        "CC-CROSS-007"
       ],
       "leadingSignal": {
         "indicator": "Global renewable energy power generation share",
@@ -225,8 +226,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-001",
-        "CC-CROSS-003"
+        "CC-CROSS-003",
+        "CC-DEMO-002"
       ],
       "leadingSignal": {
         "indicator": "Global urban population share",
@@ -286,6 +287,7 @@
         }
       ],
       "causalChainIds": [
+        "CC-CROSS-003",
         "CC-DEMO-001"
       ],
       "leadingSignal": {
@@ -379,8 +381,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-002",
-        "CC-CROSS-002"
+        "CC-CROSS-002",
+        "CC-CROSS-010"
       ],
       "leadingSignal": {
         "indicator": "AI benchmark quarter-over-quarter growth",
@@ -486,7 +488,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-002"
+        "CC-CROSS-002",
+        "CC-DEMO-002"
       ],
       "leadingSignal": {
         "indicator": "AI-induced job displacement count (millions)",
@@ -566,7 +569,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-001"
+        "CC-CROSS-001",
+        "CC-DEMO-002"
       ],
       "leadingSignal": {
         "indicator": "Global population share aged 65+",
@@ -659,7 +663,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-001"
+        "CC-EN-008"
       ],
       "leadingSignal": {
         "indicator": "Global EV fleet size",
@@ -739,7 +743,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-002"
+        "CC-CROSS-001",
+        "CC-CROSS-010"
       ],
       "leadingSignal": {
         "indicator": "AI manufacturing employment impact",
@@ -819,7 +824,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-001"
+        "CC-EN-008"
       ],
       "leadingSignal": {
         "indicator": "Solar installed capacity annual growth rate",
@@ -906,7 +911,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-002"
+        "CC-CROSS-014"
       ],
       "leadingSignal": {
         "indicator": "China NEV monthly penetration rate",
@@ -1066,8 +1071,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-002",
-        "CC-CROSS-002"
+        "CC-CROSS-002",
+        "CC-CROSS-004"
       ],
       "leadingSignal": {
         "indicator": "US entry-level tech position hiring change rate",
@@ -1153,7 +1158,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-002"
+        "CC-EN-008"
       ],
       "leadingSignal": {
         "indicator": "Global hydrogen share of primary energy",
@@ -1245,7 +1250,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-003"
+        "CC-CROSS-001",
+        "CC-AI-005"
       ],
       "leadingSignal": {
         "indicator": "AI legal assistance capability progress",
@@ -1332,7 +1338,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-001"
+        "CC-EN-008"
       ],
       "leadingSignal": {
         "indicator": "Global offshore wind installation growth rate",
@@ -1412,7 +1418,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-001"
+        "CC-DEMO-002"
       ],
       "leadingSignal": {
         "indicator": "China natural population decrease",
@@ -1572,7 +1578,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-001"
+        "CC-CROSS-001",
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "G20 country technology regulation legislation count",
@@ -1658,7 +1665,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-003"
+        "CC-CROSS-003",
+        "CC-DEMO-001"
       ],
       "leadingSignal": {
         "indicator": "Nigeria population vs Pakistan population gap",
@@ -1744,7 +1752,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-003"
+        "CC-CROSS-010"
       ],
       "leadingSignal": {
         "indicator": "AI Turing test pass rate",
@@ -1824,7 +1832,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-003"
+        "CC-CROSS-003",
+        "CC-AI-005"
       ],
       "leadingSignal": {
         "indicator": "Manufacturing AI automation adoption rate",
@@ -1904,8 +1913,9 @@
         }
       ],
       "causalChainIds": [
+        "CC-CROSS-001",
         "CC-CROSS-003",
-        "CC-CROSS-001"
+        "CC-CROSS-010"
       ],
       "leadingSignal": {
         "indicator": "Japan-Korea per capita electricity consumption trend",
@@ -2005,7 +2015,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-001"
+        "CC-AI-005"
       ],
       "leadingSignal": {
         "indicator": "AI-generated content share of new internet content (%)",
@@ -2071,7 +2081,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-002"
+        "CC-DEMO-001"
       ],
       "leadingSignal": {
         "indicator": "Korea quarterly TFR",
@@ -2164,7 +2174,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-003"
+        "CC-EN-008"
       ],
       "leadingSignal": {
         "indicator": "Solid-state battery lab energy density",
@@ -2251,7 +2261,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-003"
+        "CC-EN-008"
       ],
       "leadingSignal": {
         "indicator": "Lithium price annual change",
@@ -2324,7 +2334,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-001"
+        "CC-AI-005"
       ],
       "leadingSignal": {
         "indicator": "AI comprehensive capability benchmark",
@@ -2410,7 +2420,6 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-001",
         "CC-CROSS-002",
         "CC-CROSS-003"
       ],
@@ -2498,7 +2507,8 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-001"
+        "CC-CROSS-001",
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "Global UBI pilot program progress",
@@ -2670,7 +2680,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-SA-013"
+      ],
       "leadingSignal": {
         "indicator": "UAP legislation progress",
         "status": "trending",
@@ -2748,7 +2760,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-SP-011"
+      ],
       "leadingSignal": {
         "indicator": "Exoplanet atmosphere detection progress",
         "status": "trending",
@@ -2832,7 +2846,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-SA-013"
+      ],
       "leadingSignal": {
         "indicator": "Mars Sample Return mission progress",
         "status": "trending",
@@ -2916,7 +2932,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-SA-013"
+      ],
       "leadingSignal": {
         "indicator": "JWST exoplanet atmosphere observation progress",
         "status": "trending",
@@ -3072,7 +3090,9 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CROSS-006"
+      ],
       "leadingSignal": {
         "indicator": "UAP video declassification progress",
         "status": "monitoring",
@@ -3157,7 +3177,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-SE-012"
+      ],
       "leadingSignal": {
         "indicator": "Private interstellar probe progress",
         "status": "monitoring",
@@ -3235,7 +3257,9 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-SP-011"
+      ],
       "leadingSignal": {
         "indicator": "Lunar south pole water ice detection",
         "status": "monitoring",
@@ -3306,7 +3330,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CROSS-007"
+      ],
       "leadingSignal": {
         "indicator": "Enzymatic PFAS degradation rate",
         "status": "monitoring",
@@ -3404,7 +3430,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CROSS-007"
+      ],
       "leadingSignal": {
         "indicator": "Anti-aging drug clinical trial progress",
         "status": "accelerating",
@@ -3482,7 +3510,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CROSS-007"
+      ],
       "leadingSignal": {
         "indicator": "Aging biomarker reversal count",
         "status": "accelerating",
@@ -3566,7 +3596,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CROSS-006"
+      ],
       "leadingSignal": {
         "indicator": "Qubit count progress",
         "status": "accelerating",
@@ -3644,7 +3676,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CROSS-006"
+      ],
       "leadingSignal": {
         "indicator": "Number of logical qubits",
         "status": "accelerating",
@@ -3722,7 +3756,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CROSS-004"
+      ],
       "leadingSignal": {
         "indicator": "Quantum speedup factor",
         "status": "accelerating",
@@ -3814,7 +3850,9 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CL-009"
+      ],
       "leadingSignal": {
         "indicator": "Global annual mean temperature anomaly",
         "status": "early_signal",
@@ -3892,7 +3930,9 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CL-009"
+      ],
       "leadingSignal": {
         "indicator": "Coral bleaching event grade",
         "status": "monitoring",
@@ -3977,7 +4017,9 @@
           "evidence_strength": "LOW"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CL-009"
+      ],
       "leadingSignal": {
         "indicator": "Arctic summer minimum sea ice area",
         "status": "early_signal",
@@ -4055,7 +4097,9 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-CROSS-006"
+      ],
       "leadingSignal": {
         "indicator": "On-orbit refueling quantity",
         "status": "accelerating",
@@ -4133,7 +4177,9 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-SE-012"
+      ],
       "leadingSignal": {
         "indicator": "Space tourism market size (USD millions)",
         "status": "trending",
@@ -4217,7 +4263,9 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "causalChainIds": [],
+      "causalChainIds": [
+        "CC-SP-011"
+      ],
       "leadingSignal": {
         "indicator": "Lunar south pole base progress",
         "status": "monitoring",
@@ -4303,7 +4351,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-004"
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "GPT-4 class model API price",
@@ -4383,7 +4431,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-003"
+        "CC-DEMO-001"
       ],
       "leadingSignal": {
         "indicator": "India-China population difference",
@@ -4463,7 +4511,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-004"
+        "CC-CROSS-010"
       ],
       "leadingSignal": {
         "indicator": "Global energy storage annual new installations",
@@ -4543,7 +4591,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-004"
+        "CC-CROSS-004"
       ],
       "leadingSignal": {
         "indicator": "AI-generated code share",
@@ -4623,7 +4671,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-004"
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "AI-related security incident severity",
@@ -4703,7 +4751,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-004"
+        "CC-AI-005"
       ],
       "leadingSignal": {
         "indicator": "Sovereign AI initiative investment amount",
@@ -4783,7 +4831,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-004"
+        "CC-CROSS-004"
       ],
       "leadingSignal": {
         "indicator": "EU AI Act enforcement progress",
@@ -4863,7 +4911,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-004"
+        "CC-EN-008"
       ],
       "leadingSignal": {
         "indicator": "Global energy storage cumulative operating capacity",
@@ -4936,7 +4984,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-003"
+        "CC-DEMO-001"
       ],
       "leadingSignal": {
         "indicator": "Japan total population",
@@ -5016,7 +5064,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-004"
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "AI climate model accuracy improvement",
@@ -5089,7 +5137,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-ET-005"
+        "CC-SP-011"
       ],
       "leadingSignal": {
         "indicator": "Planetary defense mission progress",
@@ -5169,7 +5217,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-BIO-003"
+        "CC-CROSS-007"
       ],
       "leadingSignal": {
         "indicator": "mRNA cancer vaccine clinical stage",
@@ -5249,7 +5297,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SE-003"
+        "CC-CROSS-006"
       ],
       "leadingSignal": {
         "indicator": "Space-based solar power technology maturity",
@@ -5329,7 +5377,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-QC-002"
+        "CC-CROSS-004"
       ],
       "leadingSignal": {
         "indicator": "Quantum sensor navigation precision",
@@ -5409,7 +5457,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CL-003"
+        "CC-CL-009"
       ],
       "leadingSignal": {
         "indicator": "AMOC strength (Sv)",
@@ -5489,7 +5537,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-004"
+        "CC-AI-005"
       ],
       "leadingSignal": {
         "indicator": "AI-generated content share",
@@ -5569,7 +5617,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-BIO-003"
+        "CC-CROSS-007"
       ],
       "leadingSignal": {
         "indicator": "Gene drive mosquito field trial progress",
@@ -5642,7 +5690,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-QC-002"
+        "CC-CROSS-004"
       ],
       "leadingSignal": {
         "indicator": "Topological qubit research progress",
@@ -5722,7 +5770,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SE-003"
+        "CC-SE-012"
       ],
       "leadingSignal": {
         "indicator": "Commercial space station construction progress",
@@ -5795,7 +5843,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-003"
+        "CC-DEMO-002"
       ],
       "leadingSignal": {
         "indicator": "Korea TFR",
@@ -5875,7 +5923,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-004"
+        "CC-CROSS-010"
       ],
       "leadingSignal": {
         "indicator": "Floating wind power commercialization progress",
@@ -5948,7 +5996,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-ET-005"
+        "CC-SP-011"
       ],
       "leadingSignal": {
         "indicator": "Europa exploration mission progress",
@@ -6028,7 +6076,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-005"
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "Geoengineering governance discussion progress",
@@ -6101,7 +6149,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-BIO-003"
+        "CC-CROSS-014"
       ],
       "leadingSignal": {
         "indicator": "Synthetic organism ecological restoration effectiveness",
@@ -6181,7 +6229,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-QC-002"
+        "CC-CROSS-004"
       ],
       "leadingSignal": {
         "indicator": "Quantum internet technology maturity",
@@ -6261,7 +6309,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SE-003"
+        "CC-SE-012"
       ],
       "leadingSignal": {
         "indicator": "Asteroid mining mission progress",
@@ -6334,7 +6382,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-004"
+        "CC-AI-005"
       ],
       "leadingSignal": {
         "indicator": "AI Turing test passage progress",
@@ -6414,7 +6462,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-BIO-003"
+        "CC-CROSS-014"
       ],
       "leadingSignal": {
         "indicator": "Xenotransplantation cumulative survival count",
@@ -6487,7 +6535,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-QC-002"
+        "CC-CROSS-006"
       ],
       "leadingSignal": {
         "indicator": "Quantum computing key-breaking capability (logical qubit count)",
@@ -6560,7 +6608,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CL-003"
+        "CC-CL-009"
       ],
       "leadingSignal": {
         "indicator": "Antarctic ice shelf stability index",
@@ -6691,505 +6739,616 @@
       ]
     },
     {
-      "id": "CC-CROSS-004",
-      "title": "AI安全威胁→国家安全紧急响应",
-      "titleEn": "AI Safety Threats → National Security Emergency Response",
-      "type": "cross-domain",
-      "domains": [
-        "AI",
-        "cross-domain"
-      ],
-      "linkedPredictions": [
-        "FP-55",
-        "FP-60"
-      ],
-      "nodes": [
-        {
-          "step": "AI 能力快速扩展至安全敏感领域",
-          "evidence_strength": "MEDIUM"
-        },
-        {
-          "step": "重大 AI 安全事件发生",
-          "evidence_strength": "LOW"
-        },
-        {
-          "step": "国家级紧急响应启动",
-          "evidence_strength": "LOW"
-        }
-      ]
-    },
-    {
-      "id": "CC-CROSS-005",
-      "title": "气候危机→地球工程→全球治理",
-      "titleEn": "Climate Crisis → Geoengineering → Global Governance",
-      "type": "cross-domain",
-      "domains": [
-        "climate",
-        "cross-domain"
-      ],
-      "linkedPredictions": [
-        "FP-73"
-      ],
-      "nodes": [
-        {
-          "step": "全球温控目标持续偏离",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "地球工程从禁忌变为选项",
-          "evidence_strength": "MEDIUM"
-        },
-        {
-          "step": "国际治理条约被迫签署",
-          "evidence_strength": "LOW"
-        }
-      ]
-    },
-    {
-      "id": "CC-AI-001",
-      "title": "AI基准饱和→能力跃迁",
-      "titleEn": "AI Benchmark Saturation → Capability Leap",
-      "type": "intra-domain",
-      "domains": [
-        "AI"
-      ],
-      "linkedPredictions": [
-        "FP-27",
-        "FP-23"
-      ],
-      "nodes": [
-        {
-          "step": "主流基准接近饱和",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "新评估体系需要重建",
-          "evidence_strength": "MEDIUM"
-        },
-        {
-          "step": "能力跃迁在新维度发生",
-          "evidence_strength": "LOW"
-        }
-      ]
-    },
-    {
-      "id": "CC-AI-002",
-      "title": "AI Agent商业化→就业结构重塑",
-      "titleEn": "AI Agent Commercialization → Employment Restructuring",
-      "type": "intra-domain",
-      "domains": [
-        "AI"
-      ],
-      "linkedPredictions": [
-        "FP-12",
-        "FP-04",
-        "FP-05",
-        "FP-08"
-      ],
-      "nodes": [
-        {
-          "step": "AI Agent 支出爆发",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "企业采用率快速攀升",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "就业市场结构性变化",
-          "evidence_strength": "MEDIUM"
-        }
-      ]
-    },
-    {
-      "id": "CC-AI-003",
-      "title": "AI法律决策→司法体系变革",
-      "titleEn": "AI Legal Decision-Making → Judicial System Transformation",
-      "type": "intra-domain",
-      "domains": [
-        "AI"
-      ],
-      "linkedPredictions": [
-        "FP-14",
-        "FP-20"
-      ],
-      "nodes": [
-        {
-          "step": "AI 法律推理能力达到专家级",
-          "evidence_strength": "MEDIUM"
-        },
-        {
-          "step": "独立生成高级法律判决",
-          "evidence_strength": "LOW"
-        }
-      ]
-    },
-    {
-      "id": "CC-AI-004",
-      "title": "AI成本曲线→普及加速→社会冲击",
-      "titleEn": "AI Cost Curve → Accelerated Adoption → Social Impact",
-      "type": "intra-domain",
-      "domains": [
-        "AI"
-      ],
-      "linkedPredictions": [
-        "FP-51",
-        "FP-54",
-        "FP-56",
-        "FP-57",
-        "FP-77",
-        "FP-66"
-      ],
-      "nodes": [
-        {
-          "step": "AI 推理成本指数下降",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "开发者/企业大规模采用",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "社会结构受冲击",
-          "evidence_strength": "MEDIUM"
-        }
-      ]
-    },
-    {
       "id": "CC-DEMO-001",
-      "title": "人口萎缩→经济增长模式重构",
-      "titleEn": "Population Decline → Economic Growth Model Restructuring",
-      "type": "intra-domain",
-      "domains": [
-        "demographics"
-      ],
-      "linkedPredictions": [
-        "FP-03",
-        "FP-16",
-        "FP-11",
-        "FP-17",
-        "FP-02"
-      ],
-      "nodes": [
-        {
-          "step": "TFR 持续低于替代水平",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "劳动年龄人口加速萎缩",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "经济增长模式被迫调整",
-          "evidence_strength": "MEDIUM"
-        }
-      ]
-    },
-    {
-      "id": "CC-DEMO-002",
-      "title": "生育政策刺激→短暂反弹→再次回落",
-      "titleEn": "Fertility Policy Stimulus → Brief Rebound → Decline Resumes",
-      "type": "intra-domain",
-      "domains": [
-        "demographics"
-      ],
-      "linkedPredictions": [
-        "FP-24",
-        "FP-30"
-      ],
-      "nodes": [
-        {
-          "step": "政府推出强力生育激励",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "TFR 短暂反弹",
-          "evidence_strength": "MEDIUM"
-        },
-        {
-          "step": "结构性因素使反弹不可持续",
-          "evidence_strength": "MEDIUM"
-        }
-      ]
-    },
-    {
-      "id": "CC-DEMO-003",
-      "title": "人口结构重分布→地缘政治转移",
-      "titleEn": "Population Redistribution → Geopolitical Shift",
-      "type": "intra-domain",
+      "title": "Demographics Chain: India's population officially surpasses →Nigeria becomes the world's 3rd most pop",
+      "titleEn": "Demographics Chain: India's population officially surpasses →Nigeria becomes the world's 3rd most pop",
+      "type": "demographics",
       "domains": [
         "demographics"
       ],
       "linkedPredictions": [
         "FP-52",
+        "FP-03",
+        "FP-24",
+        "FP-11",
+        "FP-17",
         "FP-59",
-        "FP-70"
+        "FP-19"
       ],
       "nodes": [
         {
-          "step": "印度人口超越中国",
+          "step": "India annual growth ~8M vs China annual decline ~2M",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "日本人口持续萎缩",
+          "step": "Fertility rate sustained below 1.0",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "地缘政治影响力转移",
-          "evidence_strength": "MEDIUM"
+          "step": "Government increases pro-natalist investment",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "2025 TFR hits record low of 1.14",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "2025 newborns hit record low of 671,200",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Japan population ~123.2M in 2025",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Nigeria fertility rate sustained high (TFR>5.0)",
+          "evidence_strength": "HIGH"
         }
-      ]
+      ],
+      "strength": 30,
+      "source": "auto"
     },
     {
-      "id": "CC-EN-001",
-      "title": "可再生能源超越煤电→能源版图重写",
-      "titleEn": "Renewables Surpass Coal → Energy Map Redrawn",
-      "type": "intra-domain",
+      "id": "CC-DEMO-002",
+      "title": "Demographics Chain: China's natural population decline excee→Global urban population share exceeds 60",
+      "titleEn": "Demographics Chain: China's natural population decline excee→Global urban population share exceeds 60",
+      "type": "demographics",
+      "domains": [
+        "demographics"
+      ],
+      "linkedPredictions": [
+        "FP-16",
+        "FP-30",
+        "FP-70",
+        "FP-06",
+        "FP-05",
+        "FP-02"
+      ],
+      "nodes": [
+        {
+          "step": "Births continued decline to ~7-8 million",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Recovery primarily driven by marriage recovery + demographic structure",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "Korea TFR slight recovery to 0.72 in 2024",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Global aging trend continues",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "AI technical capabilities continued improvement",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Global urbanization sustained acceleration",
+          "evidence_strength": "HIGH"
+        }
+      ],
+      "strength": 30,
+      "source": "auto"
+    },
+    {
+      "id": "CC-CROSS-003",
+      "title": "Cross-Domain: AI inference cost falls to 1/1→At least 3 countries enact tec",
+      "titleEn": "Cross-Domain: AI inference cost falls to 1/1→At least 3 countries enact tec",
+      "type": "Cross-Domain",
+      "domains": [
+        "AI",
+        "cross-domain"
+      ],
+      "linkedPredictions": [
+        "FP-51",
+        "FP-55",
+        "FP-60",
+        "FP-73",
+        "FP-29",
+        "FP-18",
+        "FP-28"
+      ],
+      "nodes": [
+        {
+          "step": "2024 GPT-4 inference $30/M tokens",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "AI deepfakes interfere with elections across multiple countries",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "AI climate models 10,000x faster forecasting",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "UNEA discussions began in 2024",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "UBI trials demonstrate effectiveness",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "AI/technology risk awareness rising",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Global digital rights awareness rising",
+          "evidence_strength": "MEDIUM"
+        }
+      ],
+      "strength": 30,
+      "source": "auto"
+    },
+    {
+      "id": "CC-CROSS-004",
+      "title": "Cross-Domain: First major EU AI Act enforcem→Quantum-internet protocol demo",
+      "titleEn": "Cross-Domain: First major EU AI Act enforcem→Quantum-internet protocol demo",
+      "type": "Cross-Domain",
+      "domains": [
+        "AI",
+        "quantum"
+      ],
+      "linkedPredictions": [
+        "FP-57",
+        "FP-54",
+        "FP-12",
+        "FP-68",
+        "FP-44",
+        "FP-64",
+        "FP-75"
+      ],
+      "nodes": [
+        {
+          "step": "AI Act prohibitive provisions effective February 2025",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Google 2025 confirms 25%+ code AI-generated",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "AI coding tools rapidly replacing entry-level programming jobs",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Microsoft demonstrates stronger Majorana evidence",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "Quantum-classical hybrid algorithms achieve ~5x speedup by 2025",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "Quantum accelerometer lab demonstrates 10-100x precision improvement",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "China Beijing-Shanghai 2000km quantum key distribution",
+          "evidence_strength": "HIGH"
+        }
+      ],
+      "strength": 30,
+      "source": "auto"
+    },
+    {
+      "id": "CC-AI-005",
+      "title": "Artificial Intelligence Chain: First AI system passes a strict-definiti→AI independently produces rulings at sup",
+      "titleEn": "Artificial Intelligence Chain: First AI system passes a strict-definiti→AI independently produces rulings at sup",
+      "type": "AI",
+      "domains": [
+        "AI"
+      ],
+      "linkedPredictions": [
+        "FP-27",
+        "FP-56",
+        "FP-77",
+        "FP-21",
+        "FP-66",
+        "FP-23",
+        "FP-14"
+      ],
+      "nodes": [
+        {
+          "step": "GPT-5 class models approach human level",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "France Stargate Europe €22B announced",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "GPT-4/Claude informal testing approaches 70%",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "Population pressure drives automation acceleration",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "AI content on X approximately 15-20% in 2025",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "Generative AI tools continue widespread adoption (ChatGPT/Midjourney/Sora, etc.)",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "AI legal research capabilities continued improvement",
+          "evidence_strength": "HIGH"
+        }
+      ],
+      "strength": 30,
+      "source": "auto"
+    },
+    {
+      "id": "CC-CROSS-006",
+      "title": "Cross-Domain: The US formally declassifies a→Quantum computer reaches 1 mil",
+      "titleEn": "Cross-Domain: The US formally declassifies a→Quantum computer reaches 1 mil",
+      "type": "Cross-Domain",
+      "domains": [
+        "space",
+        "space-economy",
+        "quantum"
+      ],
+      "linkedPredictions": [
+        "FP-36",
+        "FP-48",
+        "FP-63",
+        "FP-79",
+        "FP-43",
+        "FP-42"
+      ],
+      "nodes": [
+        {
+          "step": "2024 AARO reports no alien evidence",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "MEV-3 completes ~25kg propellant transfer in 2025",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Caltech SSPP 2023 on-orbit microwave transmission verification",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Breaking RSA-2048 requires ~4,000 logical qubits",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Reach ~50 logical qubits by 2025",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Physical qubit count grows exponentially",
+          "evidence_strength": "MEDIUM"
+        }
+      ],
+      "strength": 30,
+      "source": "auto"
+    },
+    {
+      "id": "CC-CROSS-007",
+      "title": "Cross-Domain: Renewables confirmed as the wo→First anti-aging drug receives",
+      "titleEn": "Cross-Domain: Renewables confirmed as the wo→First anti-aging drug receives",
+      "type": "Cross-Domain",
+      "domains": [
+        "energy",
+        "biotech"
+      ],
+      "linkedPredictions": [
+        "FP-01",
+        "FP-67",
+        "FP-39",
+        "FP-41",
+        "FP-62",
+        "FP-40"
+      ],
+      "nodes": [
+        {
+          "step": "Renewable energy share surpasses coal",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Target Malaria limited field trials in Burkina Faso",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Natural PFAS-degrading enzymes discovered",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Phase 1 trials show 1-2 biomarker reversals",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "mRNA-4157 Phase IIb reduces recurrence risk by 44%",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Anti-aging basic research breakthroughs (senolytics/mTOR inhibition, etc.)",
+          "evidence_strength": "HIGH"
+        }
+      ],
+      "strength": 30,
+      "source": "auto"
+    },
+    {
+      "id": "CC-EN-008",
+      "title": "Energy Chain: Cumulative global battery storage deploy→Global offshore wind capacity exceeds 20",
+      "titleEn": "Energy Chain: Cumulative global battery storage deploy→Global offshore wind capacity exceeds 20",
+      "type": "energy",
       "domains": [
         "energy"
       ],
       "linkedPredictions": [
-        "FP-01",
+        "FP-58",
         "FP-07",
+        "FP-26",
+        "FP-25",
+        "FP-13",
         "FP-09",
         "FP-15"
       ],
       "nodes": [
         {
-          "step": "可再生能源份额超过煤电",
+          "step": "Cumulative ~180GWh by end of 2024",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "太阳能持续高增长",
+          "step": "EV annual sales sustained growth",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "煤电份额持续下降",
-          "evidence_strength": "HIGH"
-        }
-      ]
-    },
-    {
-      "id": "CC-EN-002",
-      "title": "电动车+氢能→化石燃料需求达峰",
-      "titleEn": "EVs + Hydrogen → Fossil Fuel Demand Peak",
-      "type": "intra-domain",
-      "domains": [
-        "energy"
-      ],
-      "linkedPredictions": [
-        "FP-10",
-        "FP-13"
-      ],
-      "nodes": [
-        {
-          "step": "EV 渗透率加速",
-          "evidence_strength": "HIGH"
-        },
-        {
-          "step": "氢能开始规模化",
-          "evidence_strength": "LOW"
-        },
-        {
-          "step": "化石燃料需求见顶",
-          "evidence_strength": "MEDIUM"
-        }
-      ]
-    },
-    {
-      "id": "CC-EN-003",
-      "title": "固态电池+锂短缺→电池技术范式转换",
-      "titleEn": "Solid-State Batteries + Lithium Shortage → Battery Tech Paradigm Shift",
-      "type": "intra-domain",
-      "domains": [
-        "energy"
-      ],
-      "linkedPredictions": [
-        "FP-25",
-        "FP-26"
-      ],
-      "nodes": [
-        {
-          "step": "锂矿供应缺口扩大",
+          "step": "EV demand explosive growth",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "固态电池能量密度突破",
-          "evidence_strength": "LOW"
+          "step": "Lab energy density exceeds 500Wh/kg",
+          "evidence_strength": "HIGH"
         },
         {
-          "step": "电池技术范式转换",
-          "evidence_strength": "LOW"
+          "step": "Green hydrogen electrolyzer capacity expansion",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "Solar costs continue declining (LCOE below fossil fuels)",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Offshore wind technology maturity continued improvement",
+          "evidence_strength": "HIGH"
         }
-      ]
+      ],
+      "strength": 30,
+      "source": "auto"
     },
     {
-      "id": "CC-EN-004",
-      "title": "储能规模化→可再生能源稳定性",
-      "titleEn": "Energy Storage Scale-Up → Renewable Energy Reliability",
-      "type": "intra-domain",
+      "id": "CC-CL-009",
+      "title": "Climate Chain: Global mean temperature rise exceeds 1.5→Antarctic ice-shelf collapse triggers ac",
+      "titleEn": "Climate Chain: Global mean temperature rise exceeds 1.5→Antarctic ice-shelf collapse triggers ac",
+      "type": "climate",
       "domains": [
-        "energy"
+        "climate"
+      ],
+      "linkedPredictions": [
+        "FP-45",
+        "FP-46",
+        "FP-65",
+        "FP-47",
+        "FP-80"
+      ],
+      "nodes": [
+        {
+          "step": "Greenhouse gas concentrations continue rising",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Fourth global bleaching event in 2023-2024 (~54% affected)",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "RAPID observations show AMOC slowed 15% over past 20 years",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Global warming continues driving Arctic sea ice loss",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Thwaites bottom accelerating melt",
+          "evidence_strength": "HIGH"
+        }
+      ],
+      "strength": 30,
+      "source": "auto"
+    },
+    {
+      "id": "CC-CROSS-010",
+      "title": "Cross-Domain: Global battery storage deploym→AI creates more new jobs than ",
+      "titleEn": "Cross-Domain: Global battery storage deploym→AI creates more new jobs than ",
+      "type": "Cross-Domain",
+      "domains": [
+        "energy",
+        "AI"
       ],
       "linkedPredictions": [
         "FP-53",
-        "FP-58",
-        "FP-71"
+        "FP-22",
+        "FP-71",
+        "FP-20",
+        "FP-04",
+        "FP-08"
       ],
       "nodes": [
         {
-          "step": "储能装机爆发增长",
+          "step": "2024 ~75GW → 2025 ~120GW (+60% YoY)",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "累计部署超 TWh 级",
-          "evidence_strength": "MEDIUM"
+          "step": "Japan/Korea population decline typically reduces total electricity use",
+          "evidence_strength": "HIGH"
         },
         {
-          "step": "可再生能源间歇性问题解决",
-          "evidence_strength": "MEDIUM"
+          "step": "Global floating wind <200MW in 2025",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Large language model capabilities continued improvement",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "AI capabilities sustained exponential growth",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "AI capabilities continue advancing and penetrating manufacturing",
+          "evidence_strength": "LOW"
         }
-      ]
+      ],
+      "strength": 30,
+      "source": "auto"
     },
     {
-      "id": "CC-ET-005",
-      "title": "行星防御/太阳系探索→文明能力标志",
-      "titleEn": "Planetary Defense / Solar System Exploration → Civilization Capability Milestone",
-      "type": "intra-domain",
+      "id": "CC-SP-011",
+      "title": "Space Chain: NASA issues a \"strong biosignature\" stat→China completes a research base at the l",
+      "titleEn": "Space Chain: NASA issues a \"strong biosignature\" stat→China completes a research base at the l",
+      "type": "space",
       "domains": [
         "space"
       ],
       "linkedPredictions": [
+        "FP-32",
+        "FP-38",
         "FP-61",
-        "FP-72"
+        "FP-72",
+        "FP-50"
       ],
       "nodes": [
         {
-          "step": "小行星偏转技术验证",
-          "evidence_strength": "MEDIUM"
+          "step": "JWST has detected DMS on K2-18b",
+          "evidence_strength": "HIGH"
         },
         {
-          "step": "太阳系天体直接观测",
-          "evidence_strength": "LOW"
+          "step": "Remote sensing data identifies water ice signals",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "DART 2022 successfully altered Dimorphos orbit by 33 minutes",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Europa Clipper launches 2024, arrives 2030",
+          "evidence_strength": "HIGH"
+        },
+        {
+          "step": "Chang'e-6 completes lunar far-side sample return in 2024",
+          "evidence_strength": "HIGH"
         }
-      ]
+      ],
+      "strength": 30,
+      "source": "auto"
     },
     {
-      "id": "CC-SE-003",
-      "title": "太空基础设施多元化→太空经济新业态",
-      "titleEn": "Space Infrastructure Diversification → New Space Economy",
-      "type": "intra-domain",
+      "id": "CC-SE-012",
+      "title": "Space Economy Chain: Global space-tourism market surpasses $1→Asteroid-mining sample return confirms p",
+      "titleEn": "Space Economy Chain: Global space-tourism market surpasses $1→Asteroid-mining sample return confirms p",
+      "type": "space-economy",
       "domains": [
         "space-economy"
       ],
       "linkedPredictions": [
-        "FP-63",
+        "FP-49",
+        "FP-37",
         "FP-69",
         "FP-76"
       ],
       "nodes": [
         {
-          "step": "商业空间站独立运行",
-          "evidence_strength": "MEDIUM"
-        },
-        {
-          "step": "天基太阳能验证",
-          "evidence_strength": "LOW"
-        },
-        {
-          "step": "小行星采矿起步",
-          "evidence_strength": "LOW"
-        }
-      ]
-    },
-    {
-      "id": "CC-BIO-003",
-      "title": "AI+合成生物→精准医疗与生态干预",
-      "titleEn": "AI + Synthetic Biology → Precision Medicine & Ecological Intervention",
-      "type": "intra-domain",
-      "domains": [
-        "biotech"
-      ],
-      "linkedPredictions": [
-        "FP-67",
-        "FP-62",
-        "FP-74",
-        "FP-78"
-      ],
-      "nodes": [
-        {
-          "step": "AI 加速蛋白质/药物设计",
+          "step": "2025 market size approximately $180M",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "mRNA/CRISPR 技术成熟",
+          "step": "Breakthrough Starshot initiative advancing",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "临床应用与生态释放",
-          "evidence_strength": "LOW"
+          "step": "Axiom/Vast plan launches in 2026-2027",
+          "evidence_strength": "MEDIUM"
+        },
+        {
+          "step": "AstroForge 2024 inaugural mission failed",
+          "evidence_strength": "HIGH"
         }
-      ]
+      ],
+      "strength": 30,
+      "source": "auto"
     },
     {
-      "id": "CC-QC-002",
-      "title": "量子硬件路线多元化→商用化渐进",
-      "titleEn": "Quantum Hardware Diversification → Gradual Commercialization",
-      "type": "intra-domain",
+      "id": "CC-SA-013",
+      "title": "Astrobiology Chain: Ancient microbial fossil evidence discov→The US passes a comprehensive UAP disclo",
+      "titleEn": "Astrobiology Chain: Ancient microbial fossil evidence discov→The US passes a comprehensive UAP disclo",
+      "type": "space-alien",
       "domains": [
-        "quantum"
+        "space-alien"
       ],
       "linkedPredictions": [
-        "FP-68",
-        "FP-64",
-        "FP-75",
-        "FP-79"
+        "FP-33",
+        "FP-34",
+        "FP-31"
       ],
       "nodes": [
         {
-          "step": "量子传感器率先商用",
-          "evidence_strength": "MEDIUM"
+          "step": "Perseverance collects samples containing organic matter",
+          "evidence_strength": "HIGH"
         },
         {
-          "step": "拓扑量子比特突破",
-          "evidence_strength": "LOW"
+          "step": "JWST possesses exoplanet atmosphere analysis capability",
+          "evidence_strength": "HIGH"
         },
         {
-          "step": "城市级量子网络",
-          "evidence_strength": "LOW"
-        },
-        {
-          "step": "破解加密（远期）",
-          "evidence_strength": "LOW"
+          "step": "Bipartisan support for UAP disclosure continues to strengthen",
+          "evidence_strength": "HIGH"
         }
-      ]
+      ],
+      "strength": 30,
+      "source": "auto"
     },
     {
-      "id": "CC-CL-003",
-      "title": "气候临界点连续触发→不可逆加速",
-      "titleEn": "Climate Tipping Points Cascading → Irreversible Acceleration",
-      "type": "intra-domain",
+      "id": "CC-CROSS-014",
+      "title": "Cross-Domain: Synthetic biology creates engi→NEVs account for over 70% of C",
+      "titleEn": "Cross-Domain: Synthetic biology creates engi→NEVs account for over 70% of C",
+      "type": "Cross-Domain",
       "domains": [
-        "climate"
+        "biotech",
+        "energy"
       ],
       "linkedPredictions": [
-        "FP-65",
-        "FP-80"
+        "FP-74",
+        "FP-78",
+        "FP-10"
       ],
       "nodes": [
         {
-          "step": "AMOC 持续减速确认",
+          "step": "Pivot Bio engineered nitrogen-fixing microbes tested",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "冰架崩塌加速",
-          "evidence_strength": "LOW"
+          "step": "First porcine kidney transplant in 2024",
+          "evidence_strength": "HIGH"
         },
         {
-          "step": "海平面加速上升",
-          "evidence_strength": "LOW"
+          "step": "NEV penetration surpasses 50% inflection point",
+          "evidence_strength": "HIGH"
         }
-      ]
+      ],
+      "strength": 30,
+      "source": "auto"
     }
   ]
 }
