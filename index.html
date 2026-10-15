@@ -1867,6 +1867,7 @@ a.crosslink { text-decoration: none; color: inherit; }
 // ===== UX-03: Source-aware Back =====
 function setLastRoute(route) {
   try { sessionStorage.setItem('lastRoute', route); } catch (_) {}
+  window.setLastRoute = setLastRoute;
 }
 function getLastRoute() {
   try { return sessionStorage.getItem('lastRoute') || ''; } catch (_) { return ''; }
@@ -3038,7 +3039,7 @@ document.addEventListener('DOMContentLoaded', () => {
     DETAIL_DATA.forEach(function(d){ DETAIL_MAP[d.id] = d; });
 
     // Expose handleRoute for inline onclick handlers (button/nav)
-    window.handleRoute = handleRoute;
+
 
     var heroEl = document.getElementById('hero');
     var chainsEl = document.getElementById('chains');
@@ -3048,6 +3049,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var detailEl = document.getElementById('detail-view');
 
     function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+
 
     function handleRoute(){
       var hash = location.hash.slice(1);
@@ -3067,6 +3069,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (renderChainDetail(chainId)) return;
       // renderChainDetail 失败 → 降级到 showHome（见下方）
     }
+  window.handleRoute = handleRoute;
     if (hash.startsWith('detail/')) {
         var id = hash.replace('detail/', '');
         updateBackButton(
