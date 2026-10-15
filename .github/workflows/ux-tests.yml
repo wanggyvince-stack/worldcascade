@@ -16,7 +16,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: 'npm'
       
       - name: Install dependencies
         run: npm ci
@@ -24,8 +23,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
       
-      - name: Run UX Regression Tests
-        run: npx playwright test tests/ux-regression.spec.ts
+      - name: Run UX Regression Tests (against production)
+        run: npx playwright test
+        env:
+          CI: true
       
       - uses: actions/upload-artifact@v4
         if: always()
