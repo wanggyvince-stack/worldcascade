@@ -2140,6 +2140,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Artificial Intelligence Chain (CC-AI-001)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2148,6 +2149,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Artificial Intelligence Chain (CC-AI-002)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2156,6 +2158,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Artificial Intelligence Chain (CC-AI-003)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2164,6 +2167,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Artificial Intelligence Chain (CC-AI-004)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2172,6 +2176,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Biology & Health Chain (CC-BIO-003)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2180,6 +2185,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Climate Chain (CC-CL-003)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2188,6 +2194,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Cross-Domain Chain (CC-CROSS-004)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2196,6 +2203,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Cross-Domain Chain (CC-CROSS-005)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2204,6 +2212,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Demographics Chain (CC-DEMO-001)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2212,6 +2221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Demographics Chain (CC-DEMO-002)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2220,6 +2230,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Demographics Chain (CC-DEMO-003)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2228,6 +2239,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Energy Chain (CC-EN-001)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2236,6 +2248,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Energy Chain (CC-EN-002)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2244,6 +2257,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Energy Chain (CC-EN-003)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2252,6 +2266,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Energy Chain (CC-EN-004)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2260,6 +2275,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Emerging Tech Chain (CC-ET-005)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2268,6 +2284,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Quantum Computing Chain (CC-QC-002)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     },
     {
@@ -2276,6 +2293,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Space Economy Chain (CC-SE-003)",
       strength: 0,
       nodes: [],
+      relatedPreds: [],
       description: "Detailed causal chain data will be added in Sprint 4."
     }
   ];
@@ -3560,15 +3578,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const arrow = i < chain.nodes.length - 1 ? '<span class="cd-top-arrow">→</span>' : '';
         return `<button type="button" class="cd-top-node ${n.evidence.toLowerCase()}" data-node-idx="${i}" onclick="document.querySelectorAll('.cd-node')[${i}].classList.add('open');document.querySelectorAll('.cd-node')[${i}].scrollIntoView({behavior:'smooth',block:'center'});">${n.title}</button>${arrow}`;
       }).join('');
-      const avgScore = Math.round(chain.relatedPreds.reduce((s, pid) => {
+      const avgScore = Math.round((chain.relatedPreds || []).reduce((s, pid) => {
         const p = PREDICTIONS.find(p => p.id === pid);
         return s + (p ? p.e : 0);
-      }, 0) / chain.relatedPreds.length * 10) / 10;
+      }, 0) / (chain.relatedPreds || []).length * 10) / 10;
       document.getElementById('cd-top').innerHTML = `
         <div class="cd-top-nodes">${topNodes}</div>
         <div class="cd-top-meta">
           <span class="cd-strength-bar">Chain strength: <span class="cd-strength-fill" style="--pct:${chain.strength}%"></span> <strong>${chain.strength}%</strong></span>
-          <span>Linked predictions: <strong>${chain.relatedPreds.length}</strong></span>
+          <span>Linked predictions: <strong>${(chain.relatedPreds || []).length}</strong></span>
           <span>Avg engine score: <strong>${avgScore}</strong></span>
         </div>
       `;
@@ -3622,7 +3640,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }).join('');
       document.getElementById('cd-preds').innerHTML = `
         ${predsHtml}
-        <div class="cd-preds-summary">Average engine score across <strong>${chain.relatedPreds.length}</strong> linked predictions: <strong>${avgScore}</strong></div>
+        <div class="cd-preds-summary">Average engine score across <strong>${(chain.relatedPreds || []).length}</strong> linked predictions: <strong>${avgScore}</strong></div>
       `;
 
       // Toggle visibility
