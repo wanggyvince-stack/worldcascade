@@ -461,8 +461,13 @@ test.describe('6. 导航流程', () => {
     await page.locator('.detail-back, #detail-back-btn').first().click();
     await page.waitForTimeout(500);
     
-    // 应该回到首页
-    await expect(page).toHaveURL(/\/(#|$)/);
+    // 应该回到首页（URL 可能是 /、/#、或 /#predictions）
+    await expect(page).toHaveURL(/\/(#|$|\/#predictions)/);
+    
+    // 首页内容应该可见
+    const cards = page.locator('.p-card');
+    const count = await cards.count();
+    expect(count).toBeGreaterThan(0);
   });
 
   test('6.2 首页 → Timeline → 节点 → 详情 → Back → Timeline', async ({ page }) => {
@@ -479,6 +484,11 @@ test.describe('6. 导航流程', () => {
     const backBtn = page.locator('.detail-back, #detail-back-btn').first();
     const text = await backBtn.textContent();
     expect(text).toContain('Timeline');
+    
+    // 点击 Back 应该跳转到 timeline.html
+    await backBtn.click();
+    await page.waitForTimeout(1000);
+    await expect(page).toHaveURL(/timeline\.html/);
   });
 
   test('6.3 直接 URL 访问 #detail/FP-01', async ({ page }) => {
@@ -505,6 +515,29 @@ test.describe('6. 导航流程', () => {
     const cards = page.locator('.p-card');
     const count = await cards.count();
     expect(count).toBeGreaterThan(0);
+  });
+
+  test('6.6 Back 按钮文案根据来源动态变化', async ({ page }) => {
+    // 场景 1: 从首页进入 → "Back to Home" 或 "Back to Predictions"
+    await page.evaluate(() => sessionStorage.clear());
+    await page.goto('/#detail/FP-01');
+    await page.waitForSelector('#detail-view:not([hidden])', { timeout: 10_000 });
+    let backText = await page.locator('#detail-back-btn').textContent();
+    expect(backText).toMatch(/Back/);
+    
+    // 场景 2: 从 Timeline 进入 → "Back to Timeline"
+    await page.evaluate(() => sessionStorage.setItem('lastRoute', 'timeline'));
+    await page.goto('/#detail/FP-01');
+    await page.waitForSelector('#detail-view:not([hidden])', { timeout: 10_000 });
+    backText = await page.locator('#detail-back-btn').textContent();
+    expect(backText).toContain('Timeline');
+    
+    // 场景 3: 从另一个详情进入 → "Back to Prediction"
+    await page.evaluate(() => sessionStorage.setItem('lastRoute', '#detail/FP-02'));
+    await page.goto('/#detail/FP-01');
+    await page.waitForSelector('#detail-view:not([hidden])', { timeout: 10_000 });
+    backText = await page.locator('#detail-back-btn').textContent();
+    expect(backText).toContain('Prediction');
   });
 });
 
