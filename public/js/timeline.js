@@ -673,17 +673,31 @@ function renderCausalChains(g, svg) {
 
   // Evidence strength to stroke width mapping
   const strengthMap = { HIGH: 3, MEDIUM: 1.75, LOW: 0.5 };
+  
+  // Calculate chain strength from nodes' evidence_strength (HIGH=3, MEDIUM=2, LOW=1)
+  function calcChainStrength(chain) {
+    if (!chain.nodes || chain.nodes.length === 0) return 50; // default
+    const score = chain.nodes.reduce((sum, n) => {
+      const es = n.evidence_strength;
+      if (es === 'HIGH') return sum + 3;
+      if (es === 'MEDIUM') return sum + 2;
+      if (es === 'LOW') return sum + 1;
+      return sum + 1; // default
+    }, 0);
+    return Math.round((score / chain.nodes.length) * 33.3); // normalize to 0-100
+  }
+  
   function getStrokeWidth(chain) {
     if (!chain.nodes || chain.nodes.length === 0) return 1;
     const avg = chain.nodes.reduce((sum, n) => sum + (strengthMap[n.evidence_strength] || 1), 0) / chain.nodes.length;
     return Math.max(0.5, Math.min(3, avg));
   }
 
-  // Filter: only show chains with strength >= 60 (core chains)
-  const visibleChains = causalChains.filter(c => c.strength >= 60);
+  // Filter: only show chains with calculated strength >= 60 (core chains)
+  const visibleChains = causalChains.filter(c => calcChainStrength(c) >= 60);
   
   // Sort by strength descending (strongest first, drawn last = on top)
-  visibleChains.sort((a, b) => b.strength - a.strength);
+  visibleChains.sort((a, b) => calcChainStrength(b) - calcChainStrength(a));
 
   const chainG = g.append('g').attr('class', 'causal-chains');
 
