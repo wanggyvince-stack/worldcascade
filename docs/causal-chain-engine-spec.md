@@ -1,9 +1,9 @@
 # 因果链推导规则引擎 - 产品方案
 
-**版本**: v1.0  
+**版本**: v1.1 (Anna 审阅修订版)  
 **日期**: 2026-10-15  
 **作者**: 产品扣子  
-**审阅**: Anna
+**技术审阅**: Anna
 
 ---
 
@@ -41,30 +41,34 @@
 
 ### 3.1 候选配对规则（哪些 FP 之间可能有因果关系？）
 
-**规则 R1: 时间约束**
+**规则 R1: 时间约束 (Anna 修订)**
 ```
 如果 FP-A 可能导致 FP-B，则：
-  FP-A.verification_date <= FP-B.verification_date
+  FP-B.verification_date - FP-A.verification_date >= 1年
+  （同域内可放宽至同日）
 ```
 - 原因先于结果，这是硬约束
-- 允许相同日期（同日发生的多米诺效应）
+- **新增**: 最小因果间隔 ≥ 1 年，避免同日 21 个 FP 形成虚假边
+- 同日 21 个 FP (2030-12-31) 会形成 414 条虚假边，必须排除
 
-**规则 R2: 域相关性**
+**规则 R2: 域相关性 (Anna 修订)**
 ```
 FP-A 和 FP-B 的域必须满足以下之一：
   a) 同域（intra-domain）: FP-A.domain == FP-B.domain
-  b) 跨域传导（cross-domain）: 域对存在于"允许跨域表"中
+  b) 跨域传导（cross-domain）: 域亲和度矩阵中 affinity >= 0.5
 ```
 
-允许跨域表（基于现有数据分析）:
+域亲和度矩阵（基于域共现分析，不依赖手工 CC）:
 ```
-AI → demographics (4次)
-AI → cross-domain (2次)  
-AI → energy (待验证)
-demographics → AI (4次)
-energy → demographics (1次)
-biotech → health (待验证)
+// domain_affinity.json
+{
+  "AI": {"AI": 1.0, "demographics": 0.7, "energy": 0.6, "cross-domain": 0.5},
+  "demographics": {"demographics": 1.0, "AI": 0.6, "energy": 0.4},
+  "energy": {"energy": 1.0, "AI": 0.5, "climate": 0.8},
+  ...
+}
 ```
+**注意**: 不能用手工 CC 的统计数据（数据本身有错误）
 
 **规则 R3: 语义相似度**
 ```
@@ -144,21 +148,71 @@ def generate_candidate_pairs(fixtures):
     return pairs
 ```
 
-### 4.2 链构建（图算法）
+### 4.2 链构建（Anna 修订：贪心最长路径，替代 DFS）
+
+**为什么不用 DFS**：
+- 80 节点规模下，DFS 路径数约 12.8 亿条（从 FP-01 出发）
+- 2030-12-31 有 21 个 FP 扎堆，导致出度极高
+- DFS 必爆，必须替换
+
+**新算法：贪心最长路径**
 ```python
-def build_chains(pairs, fixtures):
-    # 构建有向图
-    graph = defaultdict(list)
-    for a, b in pairs:
-        graph[a].append(b)
-    
-    # 找出所有路径（DFS）
+def build_chains_greedy(edge_weights, fixtures):
+    """
+    贪心构建因果链
+    复杂度: O(N² × max_len) = 80² × 7 = 44,800 次操作
+    """
+    used_nodes = set()
     chains = []
-    for start in fixtures:
-        paths = dfs(graph, start.id, max_length=7)
-        for path in paths:
-            if len(path) >= 2:  # R4: 最小长度
-                chains.append(path)
+    
+    # 按边权重降序排列
+    sorted_edges = sorted(edge_weights.items(), key=lambda x: -x[1])
+    
+    for (a, b), weight in sorted_edges:
+        if a in used_nodes or b in used_nodes:
+            continue
+        
+        # 从最强边开始构建链
+        chain = [a, b]
+        used_nodes.add(a)
+        used_nodes.add(b)
+        
+        # 向前扩展（找 chain[0] 的前驱）
+        while len(chain) < 7:
+            best_pred = None
+            best_weight = 0
+            for fp in fixtures:
+                if fp in used_nodes:
+                    continue
+                w = edge_weights.get((fp, chain[0]), 0)
+                if w > best_weight and fp.date <= chain[0].date:
+                    best_pred = fp
+                    best_weight = w
+            if best_pred:
+                chain.insert(0, best_pred.id)
+                used_nodes.add(best_pred.id)
+            else:
+                break
+        
+        # 向后扩展（找 chain[-1] 的后继）
+        while len(chain) < 7:
+            best_succ = None
+            best_weight = 0
+            for fp in fixtures:
+                if fp in used_nodes:
+                    continue
+                w = edge_weights.get((chain[-1], fp), 0)
+                if w > best_weight and fp.date >= chain[-1].date:
+                    best_succ = fp
+                    best_weight = w
+            if best_succ:
+                chain.append(best_succ.id)
+                used_nodes.add(best_succ.id)
+            else:
+                break
+        
+        if len(chain) >= 2:
+            chains.append(chain)
     
     return chains
 ```
@@ -267,21 +321,36 @@ prediction-engine/
 
 ---
 
-## 9. 排期建议
+## 9. 排期建议 (Anna 修订)
 
-| 任务 | 工时 | 优先级 |
+| 任务 | 工时 | 优先级 | 状态 |
+|---|---|---|---|
+| 短期止血（排序修复） | 0.5h | P0 本周 | ✅ 已完成 (ff631d8) |
+| 域亲和度矩阵设计 | 2h | P1 | Sprint 4 |
+| 边权重计算（时间+域亲和+语义） | 3h | P1 | Sprint 4 |
+| 贪心最长路径算法 | 2h | P1 | Sprint 4 |
+| 验证规则实现 | 2h | P1 | Sprint 4 |
+| 人工审阅流程 | 1h | P2 | Sprint 4 |
+| **总计** | ~10h | Sprint 4 | 
+
+---
+
+## 10. 审阅记录
+
+### v1.0 → v1.1 (Anna 审阅)
+
+| 问题 | 原方案 | 修订后 |
 |---|---|---|
-| 短期止血（排序修复） | 0.5h | P0 本周 |
-| 域亲和度矩阵设计 | 2h | P1 |
-| 候选配对算法 | 4h | P1 |
-| 链构建算法 | 4h | P1 |
-| 验证规则实现 | 3h | P1 |
-| 人工审阅流程 | 2h | P2 |
-| **总计** | ~15h | Sprint 4 |
+| DFS 路径爆炸 | 用 DFS 找所有路径 | 改为贪心最长路径 O(N²×7) |
+| R1 同日配对 | 允许同日 | 加最小间隔 ≥ 1 年 |
+| R2 跨域表 | 依赖手工 CC 统计 | 改为域共现分析 |
+| V2 因果步骤 | nodes ≥ FPs - 1 | 改为语义连贯性验证 |
+| 语义相似度 | 关键词或 LLM | 混合：Phase 1 TF-IDF + Phase 2 LLM |
+| 工时估算 | 15h | 10h（贪心方案更简单） |
 
 ---
 
 **下一步**：
-1. Vincent 确认方案方向
-2. Anna 审阅技术可行性
-3. 确认后我开始实现
+1. ~~Vincent 确认方案方向~~ ✅
+2. ~~Anna 审阅技术可行性~~ ✅
+3. Sprint 4 开始实现
