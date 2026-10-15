@@ -80,14 +80,55 @@ test.describe('1. 首页 (index.html)', () => {
   });
 
   test('1.6 点击因果链卡片进入链详情', async ({ page }) => {
+    const jsErrors: string[] = [];
+    page.on('pageerror', (err) => jsErrors.push(err.message));
+    
     const firstChain = page.locator('.chain').first();
     const chainId = await firstChain.getAttribute('data-chain-id');
     
     await firstChain.click();
+    
+    // 等待详情页显示
     await page.waitForSelector('#chain-detail-view:not([hidden])', { timeout: 10_000 });
     
     // URL 应该变成 #chain/CC-xx
     await expect(page).toHaveURL(new RegExp(`#chain/${chainId}`));
+    
+    // 验证详情页内容渲染（不只是 visible）
+    const cdTitle = page.locator('#chain-detail-view .cd-title');
+    await expect(cdTitle).toBeVisible({ timeout: 5_000 });
+    
+    // 验证节点列表渲染
+    const cdNodes = page.locator('#chain-detail-view .cd-node');
+    expect(await cdNodes.count()).toBeGreaterThan(0);
+    
+    // 验证没有 JS 错误（捕获类似 d.id undefined 的 ReferenceError）
+    const criticalErrors = jsErrors.filter(e => 
+      e.includes('ReferenceError') || 
+      e.includes('TypeError') ||
+      e.includes('is not defined')
+    );
+    expect(criticalErrors).toHaveLength(0);
+  });
+
+  test('1.6.1 因果链详情页 Back 按钮', async ({ page }) => {
+    const firstChain = page.locator('.chain').first();
+    await firstChain.click();
+    await page.waitForSelector('#chain-detail-view:not([hidden])', { timeout: 10_000 });
+    
+    // 点击 Back 按钮
+    const backBtn = page.locator('#cd-back-btn');
+    await expect(backBtn).toBeVisible();
+    await backBtn.click();
+    
+    // 应该回到首页，因果链区可见
+    await page.waitForTimeout(500);
+    const chainsSection = page.locator('#chains');
+    await expect(chainsSection).toBeVisible({ timeout: 5_000 });
+    
+    // chain-detail-view 应该被隐藏
+    const chainDetail = page.locator('#chain-detail-view');
+    expect(await chainDetail.getAttribute('hidden')).not.toBeNull();
   });
 
   test('1.7 Hero 区 Timeline CTA 链接', async ({ page }) => {
@@ -499,12 +540,25 @@ test.describe('6. 导航流程', () => {
     await expect(title).toBeVisible();
   });
 
-  test('6.4 直接 URL 访问 #chain/CC-1', async ({ page }) => {
-    await page.goto('/#chain/CC-1');
+  test('6.4 直接 URL 访问 #chain/CC-01', async ({ page }) => {
+    const jsErrors: string[] = [];
+    page.on('pageerror', (err) => jsErrors.push(err.message));
+    
+    await page.goto('/#chain/CC-01');
     await page.waitForSelector('#chain-detail-view:not([hidden])', { timeout: 10_000 });
     
-    const title = page.locator('#chain-detail-view h2, .cd-title').first();
+    const title = page.locator('.cd-title').first();
     await expect(title).toBeVisible();
+    
+    // 验证节点渲染
+    const nodes = page.locator('#chain-detail-view .cd-node');
+    expect(await nodes.count()).toBeGreaterThan(0);
+    
+    // 验证没有 JS 错误
+    const criticalErrors = jsErrors.filter(e => 
+      e.includes('ReferenceError') || e.includes('TypeError')
+    );
+    expect(criticalErrors).toHaveLength(0);
   });
 
   test('6.5 无效 Hash 降级到首页', async ({ page }) => {
@@ -604,5 +658,38 @@ test.describe('7. 回归测试', () => {
     }
     
     expect(outOfOrder).toBe(0);
+  });
+
+  test('7.4 回归: CC 链点击不会崩溃 (renderChainDetail ReferenceError)', async ({ page }) => {
+    // 这个测试捕获之前的 bug：renderChainDetail 里引用了不存在的 d.id 变量
+    // 导致点击 CC 链后函数崩溃，虽然详情页短暂显示但 JS 报错
+    const jsErrors: string[] = [];
+    page.on('pageerror', (err) => jsErrors.push(err.message));
+    
+    await page.goto('/');
+    await waitForPageLoad(page);
+    
+    // 点击第一个 CC 链
+    const firstChain = page.locator('.chain').first();
+    await firstChain.click();
+    
+    // 等待详情页稳定显示（等待足够时间让潜在的异步错误暴露）
+    await page.waitForTimeout(1000);
+    
+    // 验证详情页仍然可见（没有被 showHome 覆盖）
+    const chainDetail = page.locator('#chain-detail-view');
+    expect(await chainDetail.getAttribute('hidden')).toBeNull();
+    
+    // 验证内容渲染完整
+    const title = page.locator('.cd-title');
+    await expect(title).toBeVisible();
+    
+    // 关键：验证没有 ReferenceError
+    const refErrors = jsErrors.filter(e => 
+      e.includes('ReferenceError') || 
+      e.includes('is not defined') ||
+      e.includes('TypeError')
+    );
+    expect(refErrors).toHaveLength(0);
   });
 });
