@@ -655,7 +655,7 @@ function renderPredictionNodes(g) {
 }
 
 // ============================================================
-// CAUSAL CHAINS (P3)
+// CAUSAL CHAINS (P3) — Bezier curve rendering
 // ============================================================
 function renderCausalChains(g, svg) {
   if (!causalChains || causalChains.length === 0) return;
@@ -688,16 +688,17 @@ function renderCausalChains(g, svg) {
   }
   
   function getStrokeWidth(chain) {
-    if (!chain.nodes || chain.nodes.length === 0) return 1;
+    if (!chain.nodes || chain.nodes.length === 0) return 1.5;
     const avg = chain.nodes.reduce((sum, n) => sum + (strengthMap[n.evidence_strength] || 1), 0) / chain.nodes.length;
-    return Math.max(0.5, Math.min(3, avg));
+    return Math.max(1, Math.min(3, avg));
   }
 
-  // Filter: only show chains with calculated strength >= 60 (core chains)
-  const visibleChains = causalChains.filter(c => calcChainStrength(c) >= 60);
+  // Sort all chains by strength descending
+  const allSorted = [...causalChains].sort((a, b) => calcChainStrength(b) - calcChainStrength(a));
   
-  // Sort by strength descending (strongest first, drawn last = on top)
-  visibleChains.sort((a, b) => calcChainStrength(b) - calcChainStrength(a));
+  // Show top 5 core chains by default (rest available via sidebar in WO-S4-06)
+  const maxVisible = 5;
+  const visibleChains = allSorted.slice(0, maxVisible);
 
   const chainG = g.append('g').attr('class', 'causal-chains');
 
@@ -705,43 +706,23 @@ function renderCausalChains(g, svg) {
     const linkedIds = chain.linkedPredictions || [];
     if (linkedIds.length < 2) return;
 
-    const sourceId = linkedIds[0];
-    const targetId = linkedIds[linkedIds.length - 1];
-    const sourcePos = predPos[sourceId];
-    const targetPos = predPos[targetId];
-    if (!sourcePos || !targetPos) return;
+    // Get positions for all linked FPs
+    const positions = linkedIds.map(id => predPos[id]).filter(Boolean);
+    if (positions.length < 2) return;
 
-    const sourceDomain = sourcePos.domain;
-    const targetDomain = targetPos.domain;
-    const sourceColor = sourcePos.domainColor || DOMAIN_COLORS[sourceDomain] || '#94A3B8';
-    const targetColor = targetPos.domainColor || DOMAIN_COLORS[targetDomain] || '#94A3B8';
+    const sourceColor = positions[0].domainColor || DOMAIN_COLORS[positions[0].domain] || '#94A3B8';
+    const targetColor = positions[positions.length - 1].domainColor || DOMAIN_COLORS[positions[positions.length - 1].domain] || '#94A3B8';
     const strokeWidth = getStrokeWidth(chain);
 
-    // Create linear gradient
+    // Create linear gradient spanning full chain extent
     const gradId = `chain-grad-${idx}`;
     const gradient = defs.append('linearGradient')
       .attr('id', gradId)
       .attr('gradientUnits', 'userSpaceOnUse')
-      .attr('x1', sourcePos.x).attr('y1', sourcePos.y)
-      .attr('x2', targetPos.x).attr('y2', targetPos.y);
-    gradient.append('stop').attr('offset', '0%').attr('stop-color', sourceColor).attr('stop-opacity', 0.7);
-    gradient.append('stop').attr('offset', '100%').attr('stop-color', targetColor).attr('stop-opacity', 0.7);
-
-    // Stair-step path with OFFSET vertical segment (avoid overlap)
-    // Each chain's vertical segment is at a different x position based on index
-    const dx = targetPos.x - sourcePos.x;
-    const turnOffset = 0.35 + (idx % 5) * 0.06;  // 35%, 41%, 47%, 53%, 59%, then wrap
-    const turnX = sourcePos.x + dx * turnOffset;
-    const smoothR = 6;
-    
-    const pathD = [
-      `M ${sourcePos.x} ${sourcePos.y}`,
-      `L ${turnX - smoothR} ${sourcePos.y}`,
-      `Q ${turnX} ${sourcePos.y} ${turnX} ${sourcePos.y + Math.sign(targetPos.y - sourcePos.y) * smoothR}`,
-      `L ${turnX} ${targetPos.y - Math.sign(targetPos.y - sourcePos.y) * smoothR}`,
-      `Q ${turnX} ${targetPos.y} ${turnX + smoothR} ${targetPos.y}`,
-      `L ${targetPos.x - 10} ${targetPos.y}`
-    ].join(' ');
+      .attr('x1', positions[0].x).attr('y1', positions[0].y)
+      .attr('x2', positions[positions.length - 1].x).attr('y2', positions[positions.length - 1].y);
+    gradient.append('stop').attr('offset', '0%').attr('stop-color', sourceColor).attr('stop-opacity', 0.75);
+    gradient.append('stop').attr('offset', '100%').attr('stop-color', targetColor).attr('stop-opacity', 0.75);
 
     // Arrow marker
     const markerId = `chain-arrow-${idx}`;
@@ -750,51 +731,91 @@ function renderCausalChains(g, svg) {
       .attr('viewBox', '0 -5 10 10')
       .attr('refX', 9)
       .attr('refY', 0)
-      .attr('markerWidth', 8)
-      .attr('markerHeight', 8)
+      .attr('markerWidth', 7)
+      .attr('markerHeight', 7)
       .attr('orient', 'auto')
       .append('path')
-        .attr('d', 'M0,-5L10,0L0,5')
+        .attr('d', 'M0,-4L10,0L0,4')
         .attr('fill', targetColor)
         .attr('opacity', 0.9);
 
-    const chainPath = chainG.append('path')
-      .attr('d', pathD)
-      .attr('fill', 'none')
-      .attr('stroke', `url(#${gradId})`)
-      .attr('stroke-width', strokeWidth)
-      .attr('stroke-dasharray', '4,3')
-      .attr('opacity', 0.75)
-      .attr('marker-end', `url(#${markerId})`)
-      .attr('data-chain-id', chain.id)
-      .style('cursor', 'pointer')
-      .style('transition', 'opacity 0.2s, stroke-width 0.2s');
+    // Draw bezier curve segments between adjacent FPs
+    const segmentPaths = [];
+    for (let i = 0; i < positions.length - 1; i++) {
+      const src = positions[i];
+      const tgt = positions[i + 1];
+      const dx = tgt.x - src.x;
+      const dy = tgt.y - src.y;
+      
+      // Bezier control points: smooth S-curve
+      // Horizontal bias: control points at 40% and 60% of x-distance
+      const cp1x = src.x + dx * 0.4;
+      const cp1y = src.y;
+      const cp2x = src.x + dx * 0.6;
+      const cp2y = tgt.y;
+      
+      // For short horizontal distances, add vertical offset to avoid overlap
+      const minDx = Math.abs(dx);
+      let cpOffsetY = 0;
+      if (minDx < 60) {
+        cpOffsetY = (i % 2 === 0 ? -1 : 1) * 15; // alternate up/down
+      }
+      
+      const pathD = `M${src.x},${src.y} C${cp1x},${cp1y + cpOffsetY} ${cp2x},${cp2y + cpOffsetY} ${tgt.x},${tgt.y}`;
+      
+      const isLast = (i === positions.length - 2);
+      
+      chainG.append('path')
+        .attr('d', pathD)
+        .attr('fill', 'none')
+        .attr('stroke', `url(#${gradId})`)
+        .attr('stroke-width', strokeWidth)
+        .attr('opacity', 0.7)
+        .attr('marker-end', isLast ? `url(#${markerId})` : null)
+        .attr('data-chain-id', chain.id)
+        .attr('data-chain-segment', i)
+        .style('cursor', 'pointer')
+        .style('transition', 'opacity 0.2s, stroke-width 0.2s');
+      
+      segmentPaths.push(pathD);
+    }
 
-    // Source/Target endpoint dots (so user can see where chain starts/ends)
+    // Endpoint dots
     chainG.append('circle')
-      .attr('cx', sourcePos.x).attr('cy', sourcePos.y).attr('r', 4)
+      .attr('cx', positions[0].x).attr('cy', positions[0].y).attr('r', 4)
       .attr('fill', sourceColor).attr('opacity', 0.9)
       .attr('pointer-events', 'none');
     chainG.append('circle')
-      .attr('cx', targetPos.x).attr('cy', targetPos.y).attr('r', 5)
+      .attr('cx', positions[positions.length - 1].x).attr('cy', positions[positions.length - 1].y).attr('r', 5)
       .attr('fill', targetColor).attr('opacity', 1)
       .attr('pointer-events', 'none');
 
-    // Hover: highlight this chain, fade others
-    chainPath.on('mouseenter', function() {
-      chainG.selectAll('path').attr('opacity', 0.15);
-      d3.select(this).attr('opacity', 1).attr('stroke-width', strokeWidth + 1.5);
-    }).on('mouseleave', function() {
-      chainG.selectAll('path').attr('opacity', 0.75);
-      d3.select(this).attr('opacity', 0.75).attr('stroke-width', strokeWidth);
-    });
+    // Hover: highlight this chain's segments, fade others
+    chainG.selectAll(`path[data-chain-id="${chain.id}"]`)
+      .on('mouseenter', function() {
+        chainG.selectAll('path').attr('opacity', 0.12);
+        chainG.selectAll(`path[data-chain-id="${chain.id}"]`).attr('opacity', 1).attr('stroke-width', strokeWidth + 1.5);
+      })
+      .on('mouseleave', function() {
+        chainG.selectAll('path[data-chain-id]').attr('opacity', 0.7).attr('stroke-width', strokeWidth);
+      });
 
     // Click → navigate to chain detail
-    chainPath.on('click', function() {
-      sessionStorage.setItem('lastRoute', 'timeline');
-      window.location.href = '/#chain/' + chain.id;
-    });
+    chainG.selectAll(`path[data-chain-id="${chain.id}"]`)
+      .on('click', function() {
+        sessionStorage.setItem('lastRoute', 'timeline');
+        window.location.href = '/#chain/' + chain.id;
+      });
   });
+  
+  // Info label: how many chains visible
+  chainG.append('text')
+    .attr('x', MARGIN.left + 10)
+    .attr('y', 20)
+    .attr('font-size', '11px')
+    .attr('fill', '#94A3B8')
+    .attr('opacity', 0.7)
+    .text(`Top ${visibleChains.length} of ${causalChains.length} causal chains`);
 }
 
 // ============================================================
