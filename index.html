@@ -3041,6 +3041,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ===== BET MODULE GLOBAL BINDINGS =====
+    var betSubmitBtn = document.getElementById('bet-submit');
+    if (betSubmitBtn) betSubmitBtn.onclick = placeBet;
+    var heroBetsBtn = document.getElementById('hero-my-bets-btn');
+    if (heroBetsBtn) heroBetsBtn.onclick = openBetsModal;
+    var betsModalClose = document.getElementById('bets-modal-close');
+    if (betsModalClose) betsModalClose.onclick = closeBetsModal;
+    var betsModalBd = document.getElementById('bets-modal-backdrop');
+    if (betsModalBd) betsModalBd.onclick = closeBetsModal;
+    var betsMore = document.getElementById('bets-more');
+    if (betsMore) betsMore.onclick = function() { closeBetsModal(); history.pushState(null, '', '#predictions'); handleRoute(); };
+    var betsClear = document.getElementById('bets-clear');
+    if (betsClear) betsClear.onclick = function() {
+      if (confirm('Clear all your bets? This cannot be undone.')) {
+        clearAllBets();
+        renderBetsModal();
+        refreshBetBadges();
+        refreshHeroBetsCount();
+      }
+    };
+    // ESC 关闭 modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeBetsModal();
+    });
+
+    // 初始刷新 badges + hero count
+    // 延迟到首次 render 后执行
+    setTimeout(function() {
+      refreshBetBadges();
+      refreshHeroBetsCount();
+    }, 100);
+
+
+    render();
+  } catch (e) {
+    // silent
+  }
+
     // ===== 预测大厅卡片点击委托（WO-11 路由） =====
     var phGrid = document.getElementById('ph-grid');
     if (phGrid) {
@@ -3086,43 +3169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // ===== BET MODULE GLOBAL BINDINGS =====
-    var betSubmitBtn = document.getElementById('bet-submit');
-    if (betSubmitBtn) betSubmitBtn.onclick = placeBet;
-    var heroBetsBtn = document.getElementById('hero-my-bets-btn');
-    if (heroBetsBtn) heroBetsBtn.onclick = openBetsModal;
-    var betsModalClose = document.getElementById('bets-modal-close');
-    if (betsModalClose) betsModalClose.onclick = closeBetsModal;
-    var betsModalBd = document.getElementById('bets-modal-backdrop');
-    if (betsModalBd) betsModalBd.onclick = closeBetsModal;
-    var betsMore = document.getElementById('bets-more');
-    if (betsMore) betsMore.onclick = function() { closeBetsModal(); history.pushState(null, '', '#predictions'); handleRoute(); };
-    var betsClear = document.getElementById('bets-clear');
-    if (betsClear) betsClear.onclick = function() {
-      if (confirm('Clear all your bets? This cannot be undone.')) {
-        clearAllBets();
-        renderBetsModal();
-        refreshBetBadges();
-        refreshHeroBetsCount();
-      }
-    };
-    // ESC 关闭 modal
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeBetsModal();
-    });
 
-    // 初始刷新 badges + hero count
-    // 延迟到首次 render 后执行
-    setTimeout(function() {
-      refreshBetBadges();
-      refreshHeroBetsCount();
-    }, 100);
-
-
-    render();
-  } catch (e) {
-    // silent
-  }
 })();
 
     // ===== BACKTESTS (WO-14) =====
