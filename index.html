@@ -2783,7 +2783,6 @@ document.addEventListener('DOMContentLoaded', () => {
       
     if (hash.startsWith('chain/')) {
       const chainId = hash.split('/')[1];
-      setLastRoute(location.hash);
       updateBackButton(
         document.getElementById('cd-back-btn'),
         '#chains',
@@ -2799,7 +2798,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (hash.startsWith('detail/')) {
         var id = hash.replace('detail/', '');
-        setLastRoute(location.hash);
         updateBackButton(
           document.getElementById('detail-back-btn'),
           '#predictions',
