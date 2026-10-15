@@ -2843,21 +2843,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (detailEl) detailEl.hidden = true;
     const cdEl = document.getElementById("chain-detail-view"); if (cdEl) cdEl.hidden = true;;
       window.scrollTo(0, 0);
-
-      
-    }
-        });
-        if (relatedIds.size > 0) {
-          relatedBlock.hidden = false;
-          relatedList.innerHTML = Array.from(relatedIds).map(pid => {
-            const p = DETAIL_MAP[pid];
-            if (!p) return '';
-            return `<a class="cross-link-pred-chip" href="#detail/${pid}" onclick="setLastRoute(location.hash);">${pid} · ${p.title.slice(0,50)}${p.title.length>50?'...':''}</a>`;
-          }).join('');
-        } else {
-          relatedBlock.hidden = true;
-        }
-      }
     }
 
     function showDetail(id){
