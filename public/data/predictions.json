@@ -146,7 +146,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-001",
-        "CC-CROSS-007"
+        "CC-CROSS-011"
       ],
       "leadingSignal": {
         "indicator": "Global renewable energy power generation share",
@@ -227,7 +227,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-003",
-        "CC-DEMO-002"
+        "CC-DEMO-004"
       ],
       "leadingSignal": {
         "indicator": "Global urban population share",
@@ -288,7 +288,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-003",
-        "CC-DEMO-001"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "Annual net increase in 65+ population",
@@ -382,7 +382,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-002",
-        "CC-CROSS-010"
+        "CC-CROSS-012"
       ],
       "leadingSignal": {
         "indicator": "AI benchmark quarter-over-quarter growth",
@@ -489,7 +489,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-002",
-        "CC-DEMO-002"
+        "CC-DEMO-004"
       ],
       "leadingSignal": {
         "indicator": "AI-induced job displacement count (millions)",
@@ -570,7 +570,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-001",
-        "CC-DEMO-002"
+        "CC-DEMO-004"
       ],
       "leadingSignal": {
         "indicator": "Global population share aged 65+",
@@ -663,7 +663,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-008"
+        "CC-EN-009"
       ],
       "leadingSignal": {
         "indicator": "Global EV fleet size",
@@ -744,7 +744,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-001",
-        "CC-CROSS-010"
+        "CC-CROSS-012"
       ],
       "leadingSignal": {
         "indicator": "AI manufacturing employment impact",
@@ -824,7 +824,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-008"
+        "CC-EN-009"
       ],
       "leadingSignal": {
         "indicator": "Solar installed capacity annual growth rate",
@@ -911,7 +911,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-014"
+        "CC-CROSS-015"
       ],
       "leadingSignal": {
         "indicator": "China NEV monthly penetration rate",
@@ -991,7 +991,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-001"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "Japan total fertility rate",
@@ -1072,7 +1072,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-002",
-        "CC-CROSS-004"
+        "CC-CROSS-008"
       ],
       "leadingSignal": {
         "indicator": "US entry-level tech position hiring change rate",
@@ -1158,7 +1158,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-008"
+        "CC-EN-009"
       ],
       "leadingSignal": {
         "indicator": "Global hydrogen share of primary energy",
@@ -1251,7 +1251,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-001",
-        "CC-AI-005"
+        "CC-AI-006"
       ],
       "leadingSignal": {
         "indicator": "AI legal assistance capability progress",
@@ -1338,7 +1338,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-008"
+        "CC-EN-009"
       ],
       "leadingSignal": {
         "indicator": "Global offshore wind installation growth rate",
@@ -1418,7 +1418,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-002"
+        "CC-DEMO-004"
       ],
       "leadingSignal": {
         "indicator": "China natural population decrease",
@@ -1498,7 +1498,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-001"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "Japan annual birth count",
@@ -1579,7 +1579,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-001",
-        "CC-CROSS-003"
+        "CC-CROSS-005"
       ],
       "leadingSignal": {
         "indicator": "G20 country technology regulation legislation count",
@@ -1666,7 +1666,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-003",
-        "CC-DEMO-001"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "Nigeria population vs Pakistan population gap",
@@ -1752,7 +1752,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-010"
+        "CC-CROSS-012"
       ],
       "leadingSignal": {
         "indicator": "AI Turing test pass rate",
@@ -1833,7 +1833,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-003",
-        "CC-AI-005"
+        "CC-AI-006"
       ],
       "leadingSignal": {
         "indicator": "Manufacturing AI automation adoption rate",
@@ -1915,7 +1915,7 @@
       "causalChainIds": [
         "CC-CROSS-001",
         "CC-CROSS-003",
-        "CC-CROSS-010"
+        "CC-CROSS-012"
       ],
       "leadingSignal": {
         "indicator": "Japan-Korea per capita electricity consumption trend",
@@ -2015,7 +2015,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-005"
+        "CC-AI-006"
       ],
       "leadingSignal": {
         "indicator": "AI-generated content share of new internet content (%)",
@@ -2081,7 +2081,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-001"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "Korea quarterly TFR",
@@ -2174,7 +2174,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-008"
+        "CC-EN-009"
       ],
       "leadingSignal": {
         "indicator": "Solid-state battery lab energy density",
@@ -2261,7 +2261,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-008"
+        "CC-EN-009"
       ],
       "leadingSignal": {
         "indicator": "Lithium price annual change",
@@ -2334,7 +2334,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-005"
+        "CC-AI-006"
       ],
       "leadingSignal": {
         "indicator": "AI comprehensive capability benchmark",
@@ -2421,7 +2421,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-002",
-        "CC-CROSS-003"
+        "CC-CROSS-005"
       ],
       "leadingSignal": {
         "indicator": "Digital rights/data protection legislation trend",
@@ -2508,7 +2508,7 @@
       ],
       "causalChainIds": [
         "CC-CROSS-001",
-        "CC-CROSS-003"
+        "CC-CROSS-005"
       ],
       "leadingSignal": {
         "indicator": "Global UBI pilot program progress",
@@ -2588,7 +2588,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-002"
+        "CC-DEMO-004"
       ],
       "leadingSignal": {
         "indicator": "Korea TFR trend",
@@ -2681,7 +2681,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SA-013"
+        "CC-SA-014"
       ],
       "leadingSignal": {
         "indicator": "UAP legislation progress",
@@ -2761,7 +2761,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SP-011"
+        "CC-SP-012"
       ],
       "leadingSignal": {
         "indicator": "Exoplanet atmosphere detection progress",
@@ -2847,7 +2847,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SA-013"
+        "CC-SA-014"
       ],
       "leadingSignal": {
         "indicator": "Mars Sample Return mission progress",
@@ -2933,7 +2933,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SA-013"
+        "CC-SA-014"
       ],
       "leadingSignal": {
         "indicator": "JWST exoplanet atmosphere observation progress",
@@ -3091,7 +3091,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-006"
+        "CC-CROSS-009"
       ],
       "leadingSignal": {
         "indicator": "UAP video declassification progress",
@@ -3178,7 +3178,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SE-012"
+        "CC-SE-013"
       ],
       "leadingSignal": {
         "indicator": "Private interstellar probe progress",
@@ -3258,7 +3258,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SP-011"
+        "CC-SP-012"
       ],
       "leadingSignal": {
         "indicator": "Lunar south pole water ice detection",
@@ -3331,7 +3331,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-007"
+        "CC-CROSS-011"
       ],
       "leadingSignal": {
         "indicator": "Enzymatic PFAS degradation rate",
@@ -3431,7 +3431,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-007"
+        "CC-CROSS-011"
       ],
       "leadingSignal": {
         "indicator": "Anti-aging drug clinical trial progress",
@@ -3511,7 +3511,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-007"
+        "CC-CROSS-011"
       ],
       "leadingSignal": {
         "indicator": "Aging biomarker reversal count",
@@ -3597,7 +3597,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-006"
+        "CC-CROSS-009"
       ],
       "leadingSignal": {
         "indicator": "Qubit count progress",
@@ -3677,7 +3677,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-006"
+        "CC-CROSS-009"
       ],
       "leadingSignal": {
         "indicator": "Number of logical qubits",
@@ -3757,7 +3757,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-004"
+        "CC-CROSS-008"
       ],
       "leadingSignal": {
         "indicator": "Quantum speedup factor",
@@ -3851,7 +3851,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CL-009"
+        "CC-CL-010"
       ],
       "leadingSignal": {
         "indicator": "Global annual mean temperature anomaly",
@@ -3931,7 +3931,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CL-009"
+        "CC-CL-010"
       ],
       "leadingSignal": {
         "indicator": "Coral bleaching event grade",
@@ -4018,7 +4018,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CL-009"
+        "CC-CL-010"
       ],
       "leadingSignal": {
         "indicator": "Arctic summer minimum sea ice area",
@@ -4098,7 +4098,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-006"
+        "CC-CROSS-009"
       ],
       "leadingSignal": {
         "indicator": "On-orbit refueling quantity",
@@ -4178,7 +4178,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SE-012"
+        "CC-SE-013"
       ],
       "leadingSignal": {
         "indicator": "Space tourism market size (USD millions)",
@@ -4264,7 +4264,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SP-011"
+        "CC-SP-012"
       ],
       "leadingSignal": {
         "indicator": "Lunar south pole base progress",
@@ -4351,7 +4351,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-003"
+        "CC-CROSS-005"
       ],
       "leadingSignal": {
         "indicator": "GPT-4 class model API price",
@@ -4431,7 +4431,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-001"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "India-China population difference",
@@ -4511,7 +4511,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-010"
+        "CC-CROSS-012"
       ],
       "leadingSignal": {
         "indicator": "Global energy storage annual new installations",
@@ -4591,7 +4591,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-004"
+        "CC-CROSS-008"
       ],
       "leadingSignal": {
         "indicator": "AI-generated code share",
@@ -4671,7 +4671,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-003"
+        "CC-CROSS-005"
       ],
       "leadingSignal": {
         "indicator": "AI-related security incident severity",
@@ -4751,7 +4751,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-005"
+        "CC-AI-006"
       ],
       "leadingSignal": {
         "indicator": "Sovereign AI initiative investment amount",
@@ -4831,7 +4831,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-004"
+        "CC-CROSS-008"
       ],
       "leadingSignal": {
         "indicator": "EU AI Act enforcement progress",
@@ -4911,7 +4911,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-EN-008"
+        "CC-EN-009"
       ],
       "leadingSignal": {
         "indicator": "Global energy storage cumulative operating capacity",
@@ -4984,7 +4984,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-001"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "Japan total population",
@@ -5064,7 +5064,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-003"
+        "CC-CROSS-005"
       ],
       "leadingSignal": {
         "indicator": "AI climate model accuracy improvement",
@@ -5137,7 +5137,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SP-011"
+        "CC-SP-012"
       ],
       "leadingSignal": {
         "indicator": "Planetary defense mission progress",
@@ -5217,7 +5217,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-007"
+        "CC-CROSS-011"
       ],
       "leadingSignal": {
         "indicator": "mRNA cancer vaccine clinical stage",
@@ -5297,7 +5297,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-006"
+        "CC-CROSS-009"
       ],
       "leadingSignal": {
         "indicator": "Space-based solar power technology maturity",
@@ -5377,7 +5377,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-004"
+        "CC-CROSS-008"
       ],
       "leadingSignal": {
         "indicator": "Quantum sensor navigation precision",
@@ -5457,7 +5457,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CL-009"
+        "CC-CL-010"
       ],
       "leadingSignal": {
         "indicator": "AMOC strength (Sv)",
@@ -5537,7 +5537,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-005"
+        "CC-AI-006"
       ],
       "leadingSignal": {
         "indicator": "AI-generated content share",
@@ -5617,7 +5617,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-007"
+        "CC-CROSS-011"
       ],
       "leadingSignal": {
         "indicator": "Gene drive mosquito field trial progress",
@@ -5690,7 +5690,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-004"
+        "CC-CROSS-008"
       ],
       "leadingSignal": {
         "indicator": "Topological qubit research progress",
@@ -5770,7 +5770,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SE-012"
+        "CC-SE-013"
       ],
       "leadingSignal": {
         "indicator": "Commercial space station construction progress",
@@ -5843,7 +5843,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-DEMO-002"
+        "CC-DEMO-004"
       ],
       "leadingSignal": {
         "indicator": "Korea TFR",
@@ -5923,7 +5923,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-010"
+        "CC-CROSS-012"
       ],
       "leadingSignal": {
         "indicator": "Floating wind power commercialization progress",
@@ -5996,7 +5996,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SP-011"
+        "CC-SP-012"
       ],
       "leadingSignal": {
         "indicator": "Europa exploration mission progress",
@@ -6076,7 +6076,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-003"
+        "CC-CROSS-005"
       ],
       "leadingSignal": {
         "indicator": "Geoengineering governance discussion progress",
@@ -6149,7 +6149,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-014"
+        "CC-CROSS-015"
       ],
       "leadingSignal": {
         "indicator": "Synthetic organism ecological restoration effectiveness",
@@ -6229,7 +6229,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-004"
+        "CC-CROSS-008"
       ],
       "leadingSignal": {
         "indicator": "Quantum internet technology maturity",
@@ -6309,7 +6309,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-SE-012"
+        "CC-SE-013"
       ],
       "leadingSignal": {
         "indicator": "Asteroid mining mission progress",
@@ -6382,7 +6382,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-AI-005"
+        "CC-AI-006"
       ],
       "leadingSignal": {
         "indicator": "AI Turing test passage progress",
@@ -6462,7 +6462,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-014"
+        "CC-CROSS-015"
       ],
       "leadingSignal": {
         "indicator": "Xenotransplantation cumulative survival count",
@@ -6535,7 +6535,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CROSS-006"
+        "CC-CROSS-009"
       ],
       "leadingSignal": {
         "indicator": "Quantum computing key-breaking capability (logical qubit count)",
@@ -6608,7 +6608,7 @@
         }
       ],
       "causalChainIds": [
-        "CC-CL-009"
+        "CC-CL-010"
       ],
       "leadingSignal": {
         "indicator": "Antarctic ice shelf stability index",
@@ -6661,7 +6661,8 @@
           "step": "可再生能源被迫加速",
           "evidence_strength": "HIGH"
         }
-      ]
+      ],
+      "strength": 90
     },
     {
       "id": "CC-CROSS-002",
@@ -6696,7 +6697,8 @@
           "step": "政策监管加速响应",
           "evidence_strength": "MEDIUM"
         }
-      ]
+      ],
+      "strength": 80
     },
     {
       "id": "CC-CROSS-003",
@@ -6736,12 +6738,13 @@
           "step": "正反馈循环形成",
           "evidence_strength": "LOW"
         }
-      ]
+      ],
+      "strength": 70
     },
     {
-      "id": "CC-DEMO-001",
-      "title": "Demographics Chain: India's population officially surpasses →Nigeria becomes the world's 3rd most pop",
-      "titleEn": "Demographics Chain: India's population officially surpasses →Nigeria becomes the world's 3rd most pop",
+      "id": "CC-DEMO-003",
+      "title": "Demographics: India's population officially surpasses... → Nigeria becomes the world's 3rd most...",
+      "titleEn": "Demographics: India's population officially surpasses... → Nigeria becomes the world's 3rd most...",
       "type": "demographics",
       "domains": [
         "demographics"
@@ -6785,13 +6788,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 86,
       "source": "auto"
     },
     {
-      "id": "CC-DEMO-002",
-      "title": "Demographics Chain: China's natural population decline excee→Global urban population share exceeds 60",
-      "titleEn": "Demographics Chain: China's natural population decline excee→Global urban population share exceeds 60",
+      "id": "CC-DEMO-004",
+      "title": "Demographics: China's natural population decline exceeds 5... → Global urban population share exceeds 60% by...",
+      "titleEn": "Demographics: China's natural population decline exceeds 5... → Global urban population share exceeds 60% by...",
       "type": "demographics",
       "domains": [
         "demographics"
@@ -6830,13 +6833,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 76,
       "source": "auto"
     },
     {
-      "id": "CC-CROSS-003",
-      "title": "Cross-Domain: AI inference cost falls to 1/1→At least 3 countries enact tec",
-      "titleEn": "Cross-Domain: AI inference cost falls to 1/1→At least 3 countries enact tec",
+      "id": "CC-CROSS-005",
+      "title": "Cross-Domain: AI inference cost falls to 1/100 of... → At least 3 countries enact...",
+      "titleEn": "Cross-Domain: AI inference cost falls to 1/100 of... → At least 3 countries enact...",
       "type": "Cross-Domain",
       "domains": [
         "AI",
@@ -6881,13 +6884,13 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "strength": 30,
+      "strength": 57,
       "source": "auto"
     },
     {
-      "id": "CC-CROSS-004",
-      "title": "Cross-Domain: First major EU AI Act enforcem→Quantum-internet protocol demo",
-      "titleEn": "Cross-Domain: First major EU AI Act enforcem→Quantum-internet protocol demo",
+      "id": "CC-CROSS-008",
+      "title": "Cross-Domain: First major EU AI Act enforcement fine... → Quantum-internet protocol demonstrated...",
+      "titleEn": "Cross-Domain: First major EU AI Act enforcement fine... → Quantum-internet protocol demonstrated...",
       "type": "Cross-Domain",
       "domains": [
         "AI",
@@ -6932,13 +6935,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 71,
       "source": "auto"
     },
     {
-      "id": "CC-AI-005",
-      "title": "Artificial Intelligence Chain: First AI system passes a strict-definiti→AI independently produces rulings at sup",
-      "titleEn": "Artificial Intelligence Chain: First AI system passes a strict-definiti→AI independently produces rulings at sup",
+      "id": "CC-AI-006",
+      "title": "Artificial Intelligence: First AI system passes a strict-definition... → AI independently produces rulings at...",
+      "titleEn": "Artificial Intelligence: First AI system passes a strict-definition... → AI independently produces rulings at...",
       "type": "AI",
       "domains": [
         "AI"
@@ -6982,13 +6985,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 68,
       "source": "auto"
     },
     {
-      "id": "CC-CROSS-006",
-      "title": "Cross-Domain: The US formally declassifies a→Quantum computer reaches 1 mil",
-      "titleEn": "Cross-Domain: The US formally declassifies a→Quantum computer reaches 1 mil",
+      "id": "CC-CROSS-009",
+      "title": "Cross-Domain: The US formally declassifies and... → Quantum computer reaches 1 million...",
+      "titleEn": "Cross-Domain: The US formally declassifies and... → Quantum computer reaches 1 million...",
       "type": "Cross-Domain",
       "domains": [
         "space",
@@ -7029,13 +7032,13 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "strength": 30,
+      "strength": 69,
       "source": "auto"
     },
     {
-      "id": "CC-CROSS-007",
-      "title": "Cross-Domain: Renewables confirmed as the wo→First anti-aging drug receives",
-      "titleEn": "Cross-Domain: Renewables confirmed as the wo→First anti-aging drug receives",
+      "id": "CC-CROSS-011",
+      "title": "Cross-Domain: Renewables confirmed as the world's... → First anti-aging drug receives FDA...",
+      "titleEn": "Cross-Domain: Renewables confirmed as the world's... → First anti-aging drug receives FDA...",
       "type": "Cross-Domain",
       "domains": [
         "energy",
@@ -7075,13 +7078,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 69,
       "source": "auto"
     },
     {
-      "id": "CC-EN-008",
-      "title": "Energy Chain: Cumulative global battery storage deploy→Global offshore wind capacity exceeds 20",
-      "titleEn": "Energy Chain: Cumulative global battery storage deploy→Global offshore wind capacity exceeds 20",
+      "id": "CC-EN-009",
+      "title": "Energy: Cumulative global battery storage deployment... → Global offshore wind capacity exceeds 200 GW...",
+      "titleEn": "Energy: Cumulative global battery storage deployment... → Global offshore wind capacity exceeds 200 GW...",
       "type": "energy",
       "domains": [
         "energy"
@@ -7125,13 +7128,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 63,
       "source": "auto"
     },
     {
-      "id": "CC-CL-009",
-      "title": "Climate Chain: Global mean temperature rise exceeds 1.5→Antarctic ice-shelf collapse triggers ac",
-      "titleEn": "Climate Chain: Global mean temperature rise exceeds 1.5→Antarctic ice-shelf collapse triggers ac",
+      "id": "CC-CL-010",
+      "title": "Climate: Global mean temperature rise exceeds 1.5°C... → Antarctic ice-shelf collapse triggers...",
+      "titleEn": "Climate: Global mean temperature rise exceeds 1.5°C... → Antarctic ice-shelf collapse triggers...",
       "type": "climate",
       "domains": [
         "climate"
@@ -7165,13 +7168,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 83,
       "source": "auto"
     },
     {
-      "id": "CC-CROSS-010",
-      "title": "Cross-Domain: Global battery storage deploym→AI creates more new jobs than ",
-      "titleEn": "Cross-Domain: Global battery storage deploym→AI creates more new jobs than ",
+      "id": "CC-CROSS-012",
+      "title": "Cross-Domain: Global battery storage deployment... → AI creates more new jobs than it...",
+      "titleEn": "Cross-Domain: Global battery storage deployment... → AI creates more new jobs than it...",
       "type": "Cross-Domain",
       "domains": [
         "energy",
@@ -7211,13 +7214,13 @@
           "evidence_strength": "LOW"
         }
       ],
-      "strength": 30,
+      "strength": 64,
       "source": "auto"
     },
     {
-      "id": "CC-SP-011",
-      "title": "Space Chain: NASA issues a \"strong biosignature\" stat→China completes a research base at the l",
-      "titleEn": "Space Chain: NASA issues a \"strong biosignature\" stat→China completes a research base at the l",
+      "id": "CC-SP-012",
+      "title": "Space: NASA issues a \"strong biosignature\"... → China completes a research base at the lunar...",
+      "titleEn": "Space: NASA issues a \"strong biosignature\"... → China completes a research base at the lunar...",
       "type": "space",
       "domains": [
         "space"
@@ -7251,13 +7254,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 69,
       "source": "auto"
     },
     {
-      "id": "CC-SE-012",
-      "title": "Space Economy Chain: Global space-tourism market surpasses $1→Asteroid-mining sample return confirms p",
-      "titleEn": "Space Economy Chain: Global space-tourism market surpasses $1→Asteroid-mining sample return confirms p",
+      "id": "CC-SE-013",
+      "title": "Space Economy: Global space-tourism market surpasses $1... → Asteroid-mining sample return confirms...",
+      "titleEn": "Space Economy: Global space-tourism market surpasses $1... → Asteroid-mining sample return confirms...",
       "type": "space-economy",
       "domains": [
         "space-economy"
@@ -7286,13 +7289,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 72,
       "source": "auto"
     },
     {
-      "id": "CC-SA-013",
-      "title": "Astrobiology Chain: Ancient microbial fossil evidence discov→The US passes a comprehensive UAP disclo",
-      "titleEn": "Astrobiology Chain: Ancient microbial fossil evidence discov→The US passes a comprehensive UAP disclo",
+      "id": "CC-SA-014",
+      "title": "Astrobiology: Ancient microbial fossil evidence discovered... → The US passes a comprehensive UAP disclosure...",
+      "titleEn": "Astrobiology: Ancient microbial fossil evidence discovered... → The US passes a comprehensive UAP disclosure...",
       "type": "space-alien",
       "domains": [
         "space-alien"
@@ -7316,13 +7319,13 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 50,
       "source": "auto"
     },
     {
-      "id": "CC-CROSS-014",
-      "title": "Cross-Domain: Synthetic biology creates engi→NEVs account for over 70% of C",
-      "titleEn": "Cross-Domain: Synthetic biology creates engi→NEVs account for over 70% of C",
+      "id": "CC-CROSS-015",
+      "title": "Cross-Domain: Synthetic biology creates engineered... → NEVs account for over 70% of China's...",
+      "titleEn": "Cross-Domain: Synthetic biology creates engineered... → NEVs account for over 70% of China's...",
       "type": "Cross-Domain",
       "domains": [
         "biotech",
@@ -7347,7 +7350,7 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30,
+      "strength": 71,
       "source": "auto"
     }
   ]

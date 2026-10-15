@@ -1,7 +1,7 @@
 {
   "metadata": {
     "generator": "causal_chain_engine_v1",
-    "generatedAt": "2026-10-15T07:24:37.354602",
+    "generatedAt": "2026-10-15T09:19:33.354615",
     "chainCount": 14,
     "algorithm": "greedy_longest_path",
     "inputPredictions": 80
@@ -9,8 +9,8 @@
   "causalChains": [
     {
       "id": "CC-DEMO-001",
-      "title": "Demographics Chain: India's population officially surpasses →Nigeria becomes the world's 3rd most pop",
-      "titleEn": "Demographics Chain: India's population officially surpasses →Nigeria becomes the world's 3rd most pop",
+      "title": "Demographics: India's population officially surpasses... → Nigeria becomes the world's 3rd most...",
+      "titleEn": "Demographics: India's population officially surpasses... → Nigeria becomes the world's 3rd most...",
       "type": "demographics",
       "domains": [
         "demographics"
@@ -54,12 +54,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 86
     },
     {
       "id": "CC-DEMO-002",
-      "title": "Demographics Chain: China's natural population decline excee→Global urban population share exceeds 60",
-      "titleEn": "Demographics Chain: China's natural population decline excee→Global urban population share exceeds 60",
+      "title": "Demographics: China's natural population decline exceeds 5... → Global urban population share exceeds 60% by...",
+      "titleEn": "Demographics: China's natural population decline exceeds 5... → Global urban population share exceeds 60% by...",
       "type": "demographics",
       "domains": [
         "demographics"
@@ -98,12 +98,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 76
     },
     {
-      "id": "CC-CROSS-003",
-      "title": "Cross-Domain: AI inference cost falls to 1/1→At least 3 countries enact tec",
-      "titleEn": "Cross-Domain: AI inference cost falls to 1/1→At least 3 countries enact tec",
+      "id": "CC-CROSS-004",
+      "title": "Cross-Domain: AI inference cost falls to 1/100 of... → At least 3 countries enact...",
+      "titleEn": "Cross-Domain: AI inference cost falls to 1/100 of... → At least 3 countries enact...",
       "type": "Cross-Domain",
       "domains": [
         "AI",
@@ -148,12 +148,12 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "strength": 30
+      "strength": 57
     },
     {
-      "id": "CC-CROSS-004",
-      "title": "Cross-Domain: First major EU AI Act enforcem→Quantum-internet protocol demo",
-      "titleEn": "Cross-Domain: First major EU AI Act enforcem→Quantum-internet protocol demo",
+      "id": "CC-CROSS-006",
+      "title": "Cross-Domain: First major EU AI Act enforcement fine... → Quantum-internet protocol demonstrated...",
+      "titleEn": "Cross-Domain: First major EU AI Act enforcement fine... → Quantum-internet protocol demonstrated...",
       "type": "Cross-Domain",
       "domains": [
         "AI",
@@ -198,12 +198,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 71
     },
     {
       "id": "CC-AI-005",
-      "title": "Artificial Intelligence Chain: First AI system passes a strict-definiti→AI independently produces rulings at sup",
-      "titleEn": "Artificial Intelligence Chain: First AI system passes a strict-definiti→AI independently produces rulings at sup",
+      "title": "Artificial Intelligence: First AI system passes a strict-definition... → AI independently produces rulings at...",
+      "titleEn": "Artificial Intelligence: First AI system passes a strict-definition... → AI independently produces rulings at...",
       "type": "AI",
       "domains": [
         "AI"
@@ -247,12 +247,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 68
     },
     {
-      "id": "CC-CROSS-006",
-      "title": "Cross-Domain: The US formally declassifies a→Quantum computer reaches 1 mil",
-      "titleEn": "Cross-Domain: The US formally declassifies a→Quantum computer reaches 1 mil",
+      "id": "CC-CROSS-007",
+      "title": "Cross-Domain: The US formally declassifies and... → Quantum computer reaches 1 million...",
+      "titleEn": "Cross-Domain: The US formally declassifies and... → Quantum computer reaches 1 million...",
       "type": "Cross-Domain",
       "domains": [
         "space",
@@ -293,12 +293,12 @@
           "evidence_strength": "MEDIUM"
         }
       ],
-      "strength": 30
+      "strength": 69
     },
     {
-      "id": "CC-CROSS-007",
-      "title": "Cross-Domain: Renewables confirmed as the wo→First anti-aging drug receives",
-      "titleEn": "Cross-Domain: Renewables confirmed as the wo→First anti-aging drug receives",
+      "id": "CC-CROSS-010",
+      "title": "Cross-Domain: Renewables confirmed as the world's... → First anti-aging drug receives FDA...",
+      "titleEn": "Cross-Domain: Renewables confirmed as the world's... → First anti-aging drug receives FDA...",
       "type": "Cross-Domain",
       "domains": [
         "energy",
@@ -338,12 +338,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 69
     },
     {
       "id": "CC-EN-008",
-      "title": "Energy Chain: Cumulative global battery storage deploy→Global offshore wind capacity exceeds 20",
-      "titleEn": "Energy Chain: Cumulative global battery storage deploy→Global offshore wind capacity exceeds 20",
+      "title": "Energy: Cumulative global battery storage deployment... → Global offshore wind capacity exceeds 200 GW...",
+      "titleEn": "Energy: Cumulative global battery storage deployment... → Global offshore wind capacity exceeds 200 GW...",
       "type": "energy",
       "domains": [
         "energy"
@@ -387,12 +387,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 63
     },
     {
       "id": "CC-CL-009",
-      "title": "Climate Chain: Global mean temperature rise exceeds 1.5→Antarctic ice-shelf collapse triggers ac",
-      "titleEn": "Climate Chain: Global mean temperature rise exceeds 1.5→Antarctic ice-shelf collapse triggers ac",
+      "title": "Climate: Global mean temperature rise exceeds 1.5°C... → Antarctic ice-shelf collapse triggers...",
+      "titleEn": "Climate: Global mean temperature rise exceeds 1.5°C... → Antarctic ice-shelf collapse triggers...",
       "type": "climate",
       "domains": [
         "climate"
@@ -426,12 +426,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 83
     },
     {
-      "id": "CC-CROSS-010",
-      "title": "Cross-Domain: Global battery storage deploym→AI creates more new jobs than ",
-      "titleEn": "Cross-Domain: Global battery storage deploym→AI creates more new jobs than ",
+      "id": "CC-CROSS-013",
+      "title": "Cross-Domain: Global battery storage deployment... → AI creates more new jobs than it...",
+      "titleEn": "Cross-Domain: Global battery storage deployment... → AI creates more new jobs than it...",
       "type": "Cross-Domain",
       "domains": [
         "energy",
@@ -471,12 +471,12 @@
           "evidence_strength": "LOW"
         }
       ],
-      "strength": 30
+      "strength": 64
     },
     {
       "id": "CC-SP-011",
-      "title": "Space Chain: NASA issues a \"strong biosignature\" stat→China completes a research base at the l",
-      "titleEn": "Space Chain: NASA issues a \"strong biosignature\" stat→China completes a research base at the l",
+      "title": "Space: NASA issues a \"strong biosignature\"... → China completes a research base at the lunar...",
+      "titleEn": "Space: NASA issues a \"strong biosignature\"... → China completes a research base at the lunar...",
       "type": "space",
       "domains": [
         "space"
@@ -510,12 +510,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 69
     },
     {
       "id": "CC-SE-012",
-      "title": "Space Economy Chain: Global space-tourism market surpasses $1→Asteroid-mining sample return confirms p",
-      "titleEn": "Space Economy Chain: Global space-tourism market surpasses $1→Asteroid-mining sample return confirms p",
+      "title": "Space Economy: Global space-tourism market surpasses $1... → Asteroid-mining sample return confirms...",
+      "titleEn": "Space Economy: Global space-tourism market surpasses $1... → Asteroid-mining sample return confirms...",
       "type": "space-economy",
       "domains": [
         "space-economy"
@@ -544,12 +544,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 72
     },
     {
       "id": "CC-SA-013",
-      "title": "Astrobiology Chain: Ancient microbial fossil evidence discov→The US passes a comprehensive UAP disclo",
-      "titleEn": "Astrobiology Chain: Ancient microbial fossil evidence discov→The US passes a comprehensive UAP disclo",
+      "title": "Astrobiology: Ancient microbial fossil evidence discovered... → The US passes a comprehensive UAP disclosure...",
+      "titleEn": "Astrobiology: Ancient microbial fossil evidence discovered... → The US passes a comprehensive UAP disclosure...",
       "type": "space-alien",
       "domains": [
         "space-alien"
@@ -573,12 +573,12 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 50
     },
     {
       "id": "CC-CROSS-014",
-      "title": "Cross-Domain: Synthetic biology creates engi→NEVs account for over 70% of C",
-      "titleEn": "Cross-Domain: Synthetic biology creates engi→NEVs account for over 70% of C",
+      "title": "Cross-Domain: Synthetic biology creates engineered... → NEVs account for over 70% of China's...",
+      "titleEn": "Cross-Domain: Synthetic biology creates engineered... → NEVs account for over 70% of China's...",
       "type": "Cross-Domain",
       "domains": [
         "biotech",
@@ -603,7 +603,7 @@
           "evidence_strength": "HIGH"
         }
       ],
-      "strength": 30
+      "strength": 71
     }
   ]
 }

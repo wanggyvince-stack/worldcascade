@@ -299,31 +299,40 @@ DOMAIN_ABBREVS = {
     'space-economy': 'SE', 'space-alien': 'SA', 'cross-domain': 'CROSS'
 }
 
-def format_chain_id(domains, seq):
-    """Generate chain ID: CC-{domain}-{seq:03d}"""
+def format_chain_id(domains, seq, existing_ids=None):
+    """Generate chain ID: CC-{domain}-{seq:03d}, avoiding conflicts with existing IDs."""
     if len(domains) == 1:
         abbrev = DOMAIN_ABBREVS.get(domains[0], 'UNK')
     elif len(domains) > 1:
         abbrev = 'CROSS'
     else:
         abbrev = 'UNK'
-    return f"CC-{abbrev}-{seq:03d}"
+    
+    chain_id = f"CC-{abbrev}-{seq:03d}"
+    
+    # Avoid conflicts with existing IDs
+    if existing_ids:
+        while chain_id in existing_ids:
+            seq += 1
+            chain_id = f"CC-{abbrev}-{seq:03d}"
+    
+    return chain_id
 
 
-def chain_to_output(chain_indices, predictions, seq):
+def chain_to_output(chain_indices, predictions, seq, existing_ids=None):
     """Convert chain indices to output format."""
     fps = [predictions[i] for i in chain_indices]
     domains = list(dict.fromkeys(fp['domain'] for fp in fps))  # unique, ordered
     
-    chain_id = format_chain_id(domains, seq)
+    chain_id = format_chain_id(domains, seq, existing_ids)
     
-    # Calculate strength
+    # Calculate strength (avg, not min — Anna review fix)
     evidence_values = []
     for fp in fps:
         for node in fp.get('causalChainNodes', []):
             s = node.get('evidence_strength', 'LOW')
             evidence_values.append({'HIGH': 100, 'MEDIUM': 60, 'LOW': 30}.get(s, 30))
-    strength = min(evidence_values) if evidence_values else 0
+    strength = round(sum(evidence_values) / len(evidence_values)) if evidence_values else 50
     
     # Build nodes
     nodes = []
@@ -335,12 +344,26 @@ def chain_to_output(chain_indices, predictions, seq):
                 "evidence_strength": cc_nodes[0].get('evidence_strength', 'MEDIUM')
             })
     
-    # Title
+    # Title — use full prediction titles, not truncated
+    first_title = fps[0]['title']
+    last_title = fps[-1]['title']
+    
+    # Smart truncation: keep first 50 chars but don't break mid-word
+    def smart_truncate(text, max_len=50):
+        if len(text) <= max_len:
+            return text
+        truncated = text[:max_len]
+        # Don't break mid-word
+        last_space = truncated.rfind(' ')
+        if last_space > max_len * 0.6:
+            return truncated[:last_space] + '...'
+        return truncated + '...'
+    
     if len(domains) == 1:
         domain_label = predictions[chain_indices[0]].get('domainLabel', domains[0])
-        title = f"{domain_label} Chain: {fps[0]['title'][:40]}→{fps[-1]['title'][:40]}"
+        title = f"{domain_label}: {smart_truncate(first_title, 45)} → {smart_truncate(last_title, 45)}"
     else:
-        title = f"Cross-Domain: {fps[0]['title'][:30]}→{fps[-1]['title'][:30]}"
+        title = f"Cross-Domain: {smart_truncate(first_title, 40)} → {smart_truncate(last_title, 40)}"
     
     return {
         "id": chain_id,
@@ -381,12 +404,24 @@ def main():
     print(f"  {len(raw_chains)} raw chains built")
     
     print("Validating chains...")
+    
+    # Collect existing chain IDs from predictions.json to avoid conflicts
+    existing_chain_ids = set()
+    try:
+        with open(args.input, 'r') as f:
+            input_data = json.load(f)
+        for c in input_data.get('causalChains', []):
+            existing_chain_ids.add(c['id'])
+    except Exception:
+        pass
+    
     valid_chains = []
     seq = 1
     for chain in raw_chains:
         passed, msg = validate_chain(chain, predictions, tfidf_vectors, matrix)
         if passed:
-            output = chain_to_output(chain, predictions, seq)
+            output = chain_to_output(chain, predictions, seq, existing_chain_ids)
+            existing_chain_ids.add(output['id'])  # Track used IDs
             valid_chains.append(output)
             seq += 1
         else:
