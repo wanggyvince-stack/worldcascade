@@ -17,63 +17,63 @@
     "AI": {
       "label": "Artificial Intelligence",
       "color": "#3B82F6",
-      "icon": "🤖"
+      "icon": "\ud83e\udd16"
     },
     "demographics": {
       "label": "Demographics",
       "color": "#8B5CF6",
-      "icon": "👥"
+      "icon": "\ud83d\udc65"
     },
     "energy": {
       "label": "Energy",
       "color": "#10B981",
-      "icon": "⚡"
+      "icon": "\u26a1"
     },
     "cross-domain": {
       "label": "Cross-Domain",
       "color": "#F59E0B",
-      "icon": "🔗"
+      "icon": "\ud83d\udd17"
     },
     "space": {
       "label": "Space",
       "color": "#6366F1",
-      "icon": "🚀"
+      "icon": "\ud83d\ude80"
     },
     "space-alien": {
       "label": "Astrobiology",
       "color": "#EC4899",
-      "icon": "👽"
+      "icon": "\ud83d\udc7d"
     },
     "space-economy": {
       "label": "Space Economy",
       "color": "#14B8A6",
-      "icon": "🛰️"
+      "icon": "\ud83d\udef0\ufe0f"
     },
     "biotech": {
       "label": "Biotech",
       "color": "#EF4444",
-      "icon": "🧬"
+      "icon": "\ud83e\uddec"
     },
     "quantum": {
       "label": "Quantum",
       "color": "#A78BFA",
-      "icon": "⚛️"
+      "icon": "\u269b\ufe0f"
     },
     "climate": {
       "label": "Climate",
       "color": "#06B6D4",
-      "icon": "🌡️"
+      "icon": "\ud83c\udf21\ufe0f"
     }
   },
   "predictions": [
     {
       "id": "FP-01",
       "title": "Renewables confirmed as the world's largest electricity source by 2027",
-      "titleZh": "可再生能源2027年确认为全球最大电力来源",
+      "titleZh": "\u53ef\u518d\u751f\u80fd\u6e902027\u5e74\u786e\u8ba4\u4e3a\u5168\u7403\u6700\u5927\u7535\u529b\u6765\u6e90",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "Global electricity generation data for 2026 will confirm renewable energy as the largest power source for the first time (surpassing coal), with this milestone formally confirmed upon 2027 data release",
       "verificationCriteria": "Ember Global Electricity Review 2027 annual report confirms renewables as the largest power source in 2026",
       "verificationDate": "2027-06-30",
@@ -127,25 +127,25 @@
       "causalChainNodes": [
         {
           "step": "Renewable energy share surpasses coal",
-          "stepZh": "可再生能源份额超过煤电",
+          "stepZh": "\u53ef\u518d\u751f\u80fd\u6e90\u4efd\u989d\u8d85\u8fc7\u7164\u7535",
           "stepEn": "Renewable energy share surpasses coal",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Solar energy sustained high growth",
-          "stepZh": "太阳能持续高增长",
+          "stepZh": "\u592a\u9633\u80fd\u6301\u7eed\u9ad8\u589e\u957f",
           "stepEn": "Solar energy sustained high growth",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Coal power share continued decline",
-          "stepZh": "煤电份额持续下降",
+          "stepZh": "\u7164\u7535\u4efd\u989d\u6301\u7eed\u4e0b\u964d",
           "stepEn": "Coal power share continued decline",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "EN-C1"
+        "CC-EN-001"
       ],
       "leadingSignal": {
         "indicator": "Global renewable energy power generation share",
@@ -163,11 +163,11 @@
     {
       "id": "FP-02",
       "title": "Global urban population share exceeds 60% by 2030",
-      "titleZh": "2030年全球城市人口占比超过60%",
+      "titleZh": "2030\u5e74\u5168\u7403\u57ce\u5e02\u4eba\u53e3\u5360\u6bd4\u8d85\u8fc760%",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "By end of 2030, the proportion of the world's population living in urban areas will exceed 60% of the total population",
       "verificationCriteria": "UN World Urbanization Prospects or World Bank World Development Indicators annual data confirmation",
       "verificationDate": "2031-06-30",
@@ -207,26 +207,26 @@
       "causalChainNodes": [
         {
           "step": "Global urbanization sustained acceleration",
-          "stepZh": "全球城市化持续加速",
+          "stepZh": "\u5168\u7403\u57ce\u5e02\u5316\u6301\u7eed\u52a0\u901f",
           "stepEn": "Global urbanization sustained acceleration",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Urbanization in developing countries as primary growth driver",
-          "stepZh": "发展中国家城市化为主要增长动力",
+          "stepZh": "\u53d1\u5c55\u4e2d\u56fd\u5bb6\u57ce\u5e02\u5316\u4e3a\u4e3b\u8981\u589e\u957f\u52a8\u529b",
           "stepEn": "Urbanization in developing countries as primary growth driver",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Reach 60% threshold by 2030",
-          "stepZh": "2030年达到60%阈值",
+          "stepZh": "2030\u5e74\u8fbe\u523060%\u9608\u503c",
           "stepEn": "Reach 60% threshold by 2030",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "DE-C1",
-        "CC-3"
+        "CC-DEMO-001",
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "Global urban population share",
@@ -244,13 +244,13 @@
     {
       "id": "FP-03",
       "title": "China's population aged 65+ exceeds 240 million by 2027",
-      "titleZh": "2027年中国65岁以上人口超过2.4亿",
+      "titleZh": "2027\u5e74\u4e2d\u56fd65\u5c81\u4ee5\u4e0a\u4eba\u53e3\u8d85\u8fc72.4\u4ebf",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "China's population aged 65+ will exceed 240 million by 2027",
-      "verificationCriteria": "National Bureau of Statistics annual population communiqué",
+      "verificationCriteria": "National Bureau of Statistics annual population communiqu\u00e9",
       "verificationDate": "2027-12-31",
       "originalConfidence": 45,
       "engineScore": 55.2,
@@ -264,7 +264,7 @@
       "consensusStatus": "neutral",
       "evidence": [
         {
-          "name": "国家统计局2024公报",
+          "name": "\u56fd\u5bb6\u7edf\u8ba1\u5c402024\u516c\u62a5",
           "institution": "NBS",
           "tier": 1,
           "url": "https://www.stats.gov.cn/",
@@ -274,19 +274,19 @@
       "causalChainNodes": [
         {
           "step": "Fertility rate sustained below 1.0",
-          "stepZh": "生育率持续低于1.0",
+          "stepZh": "\u751f\u80b2\u7387\u6301\u7eed\u4f4e\u4e8e1.0",
           "stepEn": "Fertility rate sustained below 1.0",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Population 65+ accelerated growth",
-          "stepZh": "65+人口加速增长",
+          "stepZh": "65+\u4eba\u53e3\u52a0\u901f\u589e\u957f",
           "stepEn": "Population 65+ accelerated growth",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "DE-C1"
+        "CC-DEMO-001"
       ],
       "leadingSignal": {
         "indicator": "Annual net increase in 65+ population",
@@ -304,11 +304,11 @@
     {
       "id": "FP-04",
       "title": "AI reaches full expert-level consensus in at least 5 domains by 2030",
-      "titleZh": "2030年AI在至少5个领域达到完全一致的人类专家水平",
+      "titleZh": "2030\u5e74AI\u5728\u81f3\u5c115\u4e2a\u9886\u57df\u8fbe\u5230\u5b8c\u5168\u4e00\u81f4\u7684\u4eba\u7c7b\u4e13\u5bb6\u6c34\u5e73",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By 2030, AI systems will achieve performance 'fully consistent' with top human experts in at least 5 distinct professional domains (e.g., medical diagnosis, legal analysis, scientific research, financial forecasting, code engineering)",
       "verificationCriteria": "Standardized benchmarks (MMLU, HumanEval, ARC-AGI, etc.) + independent third-party evaluation reports",
       "verificationDate": "2030-12-31",
@@ -355,32 +355,32 @@
       "causalChainNodes": [
         {
           "step": "AI capabilities sustained exponential growth",
-          "stepZh": "AI能力持续指数增长",
+          "stepZh": "AI\u80fd\u529b\u6301\u7eed\u6307\u6570\u589e\u957f",
           "stepEn": "AI capabilities sustained exponential growth",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Currently reached expert level in 2 domains",
-          "stepZh": "当前2个领域已达专家水平",
+          "stepZh": "\u5f53\u524d2\u4e2a\u9886\u57df\u5df2\u8fbe\u4e13\u5bb6\u6c34\u5e73",
           "stepEn": "Currently reached expert level in 2 domains",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Expansion to 5 domains requires general reasoning breakthrough",
-          "stepZh": "扩展至5个领域需要通用推理突破",
+          "stepZh": "\u6269\u5c55\u81f35\u4e2a\u9886\u57df\u9700\u8981\u901a\u7528\u63a8\u7406\u7a81\u7834",
           "stepEn": "Expansion to 5 domains requires general reasoning breakthrough",
           "evidence_strength": "LOW"
         },
         {
           "step": "Fully consistent definition made operationalizable",
-          "stepZh": "完全一致的定义可操作化",
+          "stepZh": "\u5b8c\u5168\u4e00\u81f4\u7684\u5b9a\u4e49\u53ef\u64cd\u4f5c\u5316",
           "stepEn": "Fully consistent definition made operationalizable",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "AI-C2",
-        "CC-2"
+        "CC-AI-002",
+        "CC-CROSS-002"
       ],
       "leadingSignal": {
         "indicator": "AI benchmark quarter-over-quarter growth",
@@ -398,11 +398,11 @@
     {
       "id": "FP-05",
       "title": "AI replaces at least 1 million US jobs by 2030",
-      "titleZh": "2030年AI替代美国至少100万个就业岗位",
+      "titleZh": "2030\u5e74AI\u66ff\u4ee3\u7f8e\u56fd\u81f3\u5c11100\u4e07\u4e2a\u5c31\u4e1a\u5c97\u4f4d",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "By 2030, AI and automation will displace at least 1 million full-time jobs in the United States (complete positions eliminated or significantly reduced, not merely task-level automation)",
       "verificationCriteria": "US Bureau of Labor Statistics (BLS) employment data and McKinsey/WEF automation impact reports",
       "verificationDate": "2030-12-31",
@@ -456,37 +456,37 @@
       "causalChainNodes": [
         {
           "step": "AI technical capabilities continued improvement",
-          "stepZh": "AI技术能力持续提升",
+          "stepZh": "AI\u6280\u672f\u80fd\u529b\u6301\u7eed\u63d0\u5347",
           "stepEn": "AI technical capabilities continued improvement",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Enterprises accelerating AI deployment to replace labor",
-          "stepZh": "企业加速部署AI替代人工",
+          "stepZh": "\u4f01\u4e1a\u52a0\u901f\u90e8\u7f72AI\u66ff\u4ee3\u4eba\u5de5",
           "stepEn": "Enterprises accelerating AI deployment to replace labor",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Net job reduction reaches 1 million",
-          "stepZh": "岗位净减少达到100万",
+          "stepZh": "\u5c97\u4f4d\u51c0\u51cf\u5c11\u8fbe\u5230100\u4e07",
           "stepEn": "Net job reduction reaches 1 million",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Policy intervention fails to effectively halt replacement",
-          "stepZh": "政策干预未有效阻止替代",
+          "stepZh": "\u653f\u7b56\u5e72\u9884\u672a\u6709\u6548\u963b\u6b62\u66ff\u4ee3",
           "stepEn": "Policy intervention fails to effectively halt replacement",
           "evidence_strength": "LOW"
         },
         {
           "step": "Union resistance fails to significantly slow process",
-          "stepZh": "工会阻力未显著减缓进程",
+          "stepZh": "\u5de5\u4f1a\u963b\u529b\u672a\u663e\u8457\u51cf\u7f13\u8fdb\u7a0b",
           "stepEn": "Union resistance fails to significantly slow process",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "AI-C2"
+        "CC-AI-002"
       ],
       "leadingSignal": {
         "indicator": "AI-induced job displacement count (millions)",
@@ -504,13 +504,13 @@
     {
       "id": "FP-06",
       "title": "Global population share aged 65+ exceeds 15% by 2030",
-      "titleZh": "2030年全球65岁以上人口占比超过15%",
+      "titleZh": "2030\u5e74\u5168\u740365\u5c81\u4ee5\u4e0a\u4eba\u53e3\u5360\u6bd4\u8d85\u8fc715%",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "By 2030, the global population aged 65+ will exceed 15% of the total population",
-      "verificationCriteria": "UN World Population Prospects 2030 revision confirms global 65+ population share ≥15%",
+      "verificationCriteria": "UN World Population Prospects 2030 revision confirms global 65+ population share \u226515%",
       "verificationDate": "2030-12-31",
       "originalConfidence": 72,
       "engineScore": 65.4,
@@ -548,25 +548,25 @@
       "causalChainNodes": [
         {
           "step": "Global aging trend continues",
-          "stepZh": "全球老龄化趋势持续",
+          "stepZh": "\u5168\u7403\u8001\u9f84\u5316\u8d8b\u52bf\u6301\u7eed",
           "stepEn": "Global aging trend continues",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Medical advances extend life expectancy",
-          "stepZh": "医疗进步延长预期寿命",
+          "stepZh": "\u533b\u7597\u8fdb\u6b65\u5ef6\u957f\u9884\u671f\u5bff\u547d",
           "stepEn": "Medical advances extend life expectancy",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Fertility rate continued decline",
-          "stepZh": "生育率持续下降",
+          "stepZh": "\u751f\u80b2\u7387\u6301\u7eed\u4e0b\u964d",
           "stepEn": "Fertility rate continued decline",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "CC-1"
+        "CC-CROSS-001"
       ],
       "leadingSignal": {
         "indicator": "Global population share aged 65+",
@@ -584,13 +584,13 @@
     {
       "id": "FP-07",
       "title": "Global EV fleet surpasses 500 million by 2030",
-      "titleZh": "2030年全球电动车保有量超过5亿辆",
+      "titleZh": "2030\u5e74\u5168\u7403\u7535\u52a8\u8f66\u4fdd\u6709\u91cf\u8d85\u8fc75\u4ebf\u8f86",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By 2030, the global electric vehicle fleet will exceed 500 million units",
-      "verificationCriteria": "IEA or BNEF annual data confirms global EV stock ≥500 million",
+      "verificationCriteria": "IEA or BNEF annual data confirms global EV stock \u2265500 million",
       "verificationDate": "2030-12-31",
       "originalConfidence": 55,
       "engineScore": 53.8,
@@ -635,31 +635,31 @@
       "causalChainNodes": [
         {
           "step": "EV annual sales sustained growth",
-          "stepZh": "EV年销量持续增长",
+          "stepZh": "EV\u5e74\u9500\u91cf\u6301\u7eed\u589e\u957f",
           "stepEn": "EV annual sales sustained growth",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Annual growth rate maintained at 30-40%",
-          "stepZh": "年增速维持在30-40%",
+          "stepZh": "\u5e74\u589e\u901f\u7ef4\u6301\u572830-40%",
           "stepEn": "Annual growth rate maintained at 30-40%",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Charging infrastructure keeps pace",
-          "stepZh": "充电基础设施跟上",
+          "stepZh": "\u5145\u7535\u57fa\u7840\u8bbe\u65bd\u8ddf\u4e0a",
           "stepEn": "Charging infrastructure keeps pace",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Cumulative fleet reaches 500 million",
-          "stepZh": "累计保有量达5亿",
+          "stepZh": "\u7d2f\u8ba1\u4fdd\u6709\u91cf\u8fbe5\u4ebf",
           "stepEn": "Cumulative fleet reaches 500 million",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "EN-C1"
+        "CC-EN-001"
       ],
       "leadingSignal": {
         "indicator": "Global EV fleet size",
@@ -677,11 +677,11 @@
     {
       "id": "FP-08",
       "title": "AI creates more new jobs than it displaces in manufacturing by 2030",
-      "titleZh": "2030年AI在制造业创造的新岗位超过替代的岗位",
+      "titleZh": "2030\u5e74AI\u5728\u5236\u9020\u4e1a\u521b\u9020\u7684\u65b0\u5c97\u4f4d\u8d85\u8fc7\u66ff\u4ee3\u7684\u5c97\u4f4d",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By 2030, the net number of new jobs created by AI and automation in manufacturing will exceed the number of jobs displaced",
       "verificationCriteria": "WEF Future of Jobs Report or ILO Global Employment Trends annual report confirms positive net AI employment in manufacturing",
       "verificationDate": "2031-01-31",
@@ -721,25 +721,25 @@
       "causalChainNodes": [
         {
           "step": "AI capabilities continue advancing and penetrating manufacturing",
-          "stepZh": "AI技术能力持续提升并渗透制造业",
+          "stepZh": "AI\u6280\u672f\u80fd\u529b\u6301\u7eed\u63d0\u5347\u5e76\u6e17\u900f\u5236\u9020\u4e1a",
           "stepEn": "AI capabilities continue advancing and penetrating manufacturing",
           "evidence_strength": "LOW"
         },
         {
           "step": "New manufacturing jobs created by AI increase",
-          "stepZh": "AI创造的制造业新岗位数量增长",
+          "stepZh": "AI\u521b\u9020\u7684\u5236\u9020\u4e1a\u65b0\u5c97\u4f4d\u6570\u91cf\u589e\u957f",
           "stepEn": "New manufacturing jobs created by AI increase",
           "evidence_strength": "LOW"
         },
         {
           "step": "New jobs exceed displaced positions",
-          "stepZh": "新岗位数量超过被替代岗位",
+          "stepZh": "\u65b0\u5c97\u4f4d\u6570\u91cf\u8d85\u8fc7\u88ab\u66ff\u4ee3\u5c97\u4f4d",
           "stepEn": "New jobs exceed displaced positions",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "AI-C2"
+        "CC-AI-002"
       ],
       "leadingSignal": {
         "indicator": "AI manufacturing employment impact",
@@ -757,11 +757,11 @@
     {
       "id": "FP-09",
       "title": "Global solar power generation exceeds nuclear by 2030",
-      "titleZh": "2030年全球太阳能发电量超过核能发电量",
+      "titleZh": "2030\u5e74\u5168\u7403\u592a\u9633\u80fd\u53d1\u7535\u91cf\u8d85\u8fc7\u6838\u80fd\u53d1\u7535\u91cf",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By 2030, global solar installed capacity (TW) will surpass nuclear power capacity. Solar ~2.3TW vs nuclear ~3.7TW in 2024; solar growing 25% annually vs nuclear ~2%. At this trajectory, solar overtakes nuclear ~2028",
       "verificationCriteria": "IEA/IRENA annual World Energy Outlook global installed capacity data",
       "verificationDate": "2030-12-31",
@@ -801,25 +801,25 @@
       "causalChainNodes": [
         {
           "step": "Solar costs continue declining (LCOE below fossil fuels)",
-          "stepZh": "太阳能成本持续下降（LCOE已低于化石燃料）",
+          "stepZh": "\u592a\u9633\u80fd\u6210\u672c\u6301\u7eed\u4e0b\u964d\uff08LCOE\u5df2\u4f4e\u4e8e\u5316\u77f3\u71c3\u6599\uff09",
           "stepEn": "Solar costs continue declining (LCOE below fossil fuels)",
           "evidence_strength": "HIGH"
         },
         {
           "step": "National renewable energy policies drive capacity expansion",
-          "stepZh": "各国可再生能源政策推动装机扩张",
+          "stepZh": "\u5404\u56fd\u53ef\u518d\u751f\u80fd\u6e90\u653f\u7b56\u63a8\u52a8\u88c5\u673a\u6269\u5f20",
           "stepEn": "National renewable energy policies drive capacity expansion",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "Solar annual growth 25% sustained → exceeding 3.7TW by 2028",
-          "stepZh": "太阳能年增速25%维持→2028年超3.7TW",
-          "stepEn": "Solar annual growth 25% sustained → exceeding 3.7TW by 2028",
+          "step": "Solar annual growth 25% sustained \u2192 exceeding 3.7TW by 2028",
+          "stepZh": "\u592a\u9633\u80fd\u5e74\u589e\u901f25%\u7ef4\u6301\u21922028\u5e74\u8d853.7TW",
+          "stepEn": "Solar annual growth 25% sustained \u2192 exceeding 3.7TW by 2028",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "EN-C1"
+        "CC-EN-001"
       ],
       "leadingSignal": {
         "indicator": "Solar installed capacity annual growth rate",
@@ -837,13 +837,13 @@
     {
       "id": "FP-10",
       "title": "NEVs account for over 70% of China's new car sales by 2030",
-      "titleZh": "2030年中国新能源汽车销量占比超过70%",
+      "titleZh": "2030\u5e74\u4e2d\u56fd\u65b0\u80fd\u6e90\u6c7d\u8f66\u9500\u91cf\u5360\u6bd4\u8d85\u8fc770%",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By 2030, annual sales of new energy vehicles (BEV+PHEV) in China will exceed 70% of total passenger vehicle sales",
-      "verificationCriteria": "China Association of Automobile Manufacturers or Passenger Car Association annual data confirms NEV sales share ≥70%",
+      "verificationCriteria": "China Association of Automobile Manufacturers or Passenger Car Association annual data confirms NEV sales share \u226570%",
       "verificationDate": "2030-12-31",
       "originalConfidence": 80,
       "engineScore": 71.0,
@@ -857,14 +857,14 @@
       "consensusStatus": "aligned",
       "evidence": [
         {
-          "name": "中汽协2025年汽车产销数据",
+          "name": "\u4e2d\u6c7d\u534f2025\u5e74\u6c7d\u8f66\u4ea7\u9500\u6570\u636e",
           "institution": "CAAM",
           "tier": 1,
           "url": "http://www.caam.org.cn/",
           "publishDate": "2026-01-15"
         },
         {
-          "name": "乘联会2025年12月NEV渗透率报告",
+          "name": "\u4e58\u8054\u4f1a2025\u5e7412\u6708NEV\u6e17\u900f\u7387\u62a5\u544a",
           "institution": "CPCA",
           "tier": 1,
           "url": "http://www.cpcaauto.com/",
@@ -888,25 +888,25 @@
       "causalChainNodes": [
         {
           "step": "NEV penetration surpasses 50% inflection point",
-          "stepZh": "NEV渗透率突破50%拐点",
+          "stepZh": "NEV\u6e17\u900f\u7387\u7a81\u783450%\u62d0\u70b9",
           "stepEn": "NEV penetration surpasses 50% inflection point",
           "evidence_strength": "HIGH"
         },
         {
           "step": "ICE vehicle market share accelerated contraction",
-          "stepZh": "燃油车市场份额加速萎缩",
+          "stepZh": "\u71c3\u6cb9\u8f66\u5e02\u573a\u4efd\u989d\u52a0\u901f\u840e\u7f29",
           "stepEn": "ICE vehicle market share accelerated contraction",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Price war drives NEV price parity",
-          "stepZh": "价格战推动NEV平价化",
+          "stepZh": "\u4ef7\u683c\u6218\u63a8\u52a8NEV\u5e73\u4ef7\u5316",
           "stepEn": "Price war drives NEV price parity",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "EN-C2"
+        "CC-EN-002"
       ],
       "leadingSignal": {
         "indicator": "China NEV monthly penetration rate",
@@ -924,11 +924,11 @@
     {
       "id": "FP-11",
       "title": "Japan's TFR drops below 1.1 by 2027",
-      "titleZh": "日本TFR 2027年跌破1.1",
+      "titleZh": "\u65e5\u672cTFR 2027\u5e74\u8dcc\u78341.1",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "Japan's total fertility rate will fall below 1.1 by 2027",
       "verificationCriteria": "Japan Ministry of Health, Labour and Welfare data confirms TFR <1.1",
       "verificationDate": "2028-06-30",
@@ -944,8 +944,8 @@
       "consensusStatus": "aligned",
       "evidence": [
         {
-          "name": "日本厚生劳动省人口动态统计2025",
-          "institution": "厚生劳动省",
+          "name": "\u65e5\u672c\u539a\u751f\u52b3\u52a8\u7701\u4eba\u53e3\u52a8\u6001\u7edf\u8ba12025",
+          "institution": "\u539a\u751f\u52b3\u52a8\u7701",
           "tier": 1,
           "url": "https://www.mhlw.go.jp/",
           "publishDate": "2026-06-01"
@@ -968,30 +968,30 @@
       "causalChainNodes": [
         {
           "step": "2025 TFR hits record low of 1.14",
-          "stepZh": "2025年TFR 1.14创新低",
+          "stepZh": "2025\u5e74TFR 1.14\u521b\u65b0\u4f4e",
           "stepEn": "2025 TFR hits record low of 1.14",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Annual decline of 0.02-0.03 trend continues",
-          "stepZh": "年降0.02-0.03趋势持续",
+          "stepZh": "\u5e74\u964d0.02-0.03\u8d8b\u52bf\u6301\u7eed",
           "stepEn": "Annual decline of 0.02-0.03 trend continues",
           "evidence_strength": "HIGH"
         },
         {
           "step": "2027 approximately 1.08-1.10, at 1.1 boundary",
-          "stepZh": "2027年约1.08-1.10，处于1.1边界",
+          "stepZh": "2027\u5e74\u7ea61.08-1.10\uff0c\u5904\u4e8e1.1\u8fb9\u754c",
           "stepEn": "2027 approximately 1.08-1.10, at 1.1 boundary",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "DE-C1"
+        "CC-DEMO-001"
       ],
       "leadingSignal": {
         "indicator": "Japan total fertility rate",
         "status": "early_signal",
-        "source": "厚生劳动省",
+        "source": "\u539a\u751f\u52b3\u52a8\u7701",
         "changePct": -2.6,
         "durationMonths": 24,
         "reachedThreshold": false,
@@ -1004,13 +1004,13 @@
     {
       "id": "FP-12",
       "title": "US entry-level tech hiring falls >50% by 2027 vs 2024",
-      "titleZh": "美国入门级技术岗位招聘2027年较2024年下降超50%",
+      "titleZh": "\u7f8e\u56fd\u5165\u95e8\u7ea7\u6280\u672f\u5c97\u4f4d\u62db\u80582027\u5e74\u8f832024\u5e74\u4e0b\u964d\u8d8550%",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "US hiring for entry-level software development, data analysis, and IT support positions will decline more than 50% from 2024 levels by end of 2027",
-      "verificationCriteria": "BLS quarterly employment reports or LinkedIn/Indeed hiring platform data shows entry-level tech job postings down ≥50% vs Q4 2024",
+      "verificationCriteria": "BLS quarterly employment reports or LinkedIn/Indeed hiring platform data shows entry-level tech job postings down \u226550% vs Q4 2024",
       "verificationDate": "2028-06-30",
       "originalConfidence": 68,
       "engineScore": 75.6,
@@ -1048,26 +1048,26 @@
       "causalChainNodes": [
         {
           "step": "AI coding tools rapidly replacing entry-level programming jobs",
-          "stepZh": "AI编码工具快速替代初级编程工作",
+          "stepZh": "AI\u7f16\u7801\u5de5\u5177\u5feb\u901f\u66ff\u4ee3\u521d\u7ea7\u7f16\u7a0b\u5de5\u4f5c",
           "stepEn": "AI coding tools rapidly replacing entry-level programming jobs",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Enterprises achieving more with fewer workers",
-          "stepZh": "企业用更少的人做更多的事",
+          "stepZh": "\u4f01\u4e1a\u7528\u66f4\u5c11\u7684\u4eba\u505a\u66f4\u591a\u7684\u4e8b",
           "stepEn": "Enterprises achieving more with fewer workers",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Entry-level position hiring continued decline",
-          "stepZh": "入门级岗位招聘持续下降",
+          "stepZh": "\u5165\u95e8\u7ea7\u5c97\u4f4d\u62db\u8058\u6301\u7eed\u4e0b\u964d",
           "stepEn": "Entry-level position hiring continued decline",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "AI-C2",
-        "CC-2"
+        "CC-AI-002",
+        "CC-CROSS-002"
       ],
       "leadingSignal": {
         "indicator": "US entry-level tech position hiring change rate",
@@ -1085,13 +1085,13 @@
     {
       "id": "FP-13",
       "title": "Hydrogen accounts for over 5% of global primary energy by 2030",
-      "titleZh": "2030年全球氢能产量占一次能源5%以上",
+      "titleZh": "2030\u5e74\u5168\u7403\u6c22\u80fd\u4ea7\u91cf\u5360\u4e00\u6b21\u80fd\u6e905%\u4ee5\u4e0a",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By 2030, global hydrogen production (including gray, blue, and green hydrogen) will account for more than 5% of total primary energy consumption",
-      "verificationCriteria": "IEA World Energy Stats confirms hydrogen ≥5% of primary energy",
+      "verificationCriteria": "IEA World Energy Stats confirms hydrogen \u22655% of primary energy",
       "verificationDate": "2030-12-31",
       "originalConfidence": 30,
       "engineScore": 33.5,
@@ -1129,31 +1129,31 @@
       "causalChainNodes": [
         {
           "step": "Green hydrogen electrolyzer capacity expansion",
-          "stepZh": "绿氢电解槽产能扩张",
+          "stepZh": "\u7eff\u6c22\u7535\u89e3\u69fd\u4ea7\u80fd\u6269\u5f20",
           "stepEn": "Green hydrogen electrolyzer capacity expansion",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Hydrogen costs decline to commercial viability",
-          "stepZh": "氢能成本下降至可商业化",
+          "stepZh": "\u6c22\u80fd\u6210\u672c\u4e0b\u964d\u81f3\u53ef\u5546\u4e1a\u5316",
           "stepEn": "Hydrogen costs decline to commercial viability",
           "evidence_strength": "LOW"
         },
         {
           "step": "Large-scale adoption in industrial/transport sectors",
-          "stepZh": "工业/交通领域大规模采用",
+          "stepZh": "\u5de5\u4e1a/\u4ea4\u901a\u9886\u57df\u5927\u89c4\u6a21\u91c7\u7528",
           "stepEn": "Large-scale adoption in industrial/transport sectors",
           "evidence_strength": "LOW"
         },
         {
           "step": "Share of primary energy reaches 5%",
-          "stepZh": "占一次能源比例达5%",
+          "stepZh": "\u5360\u4e00\u6b21\u80fd\u6e90\u6bd4\u4f8b\u8fbe5%",
           "stepEn": "Share of primary energy reaches 5%",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "EN-C2"
+        "CC-EN-002"
       ],
       "leadingSignal": {
         "indicator": "Global hydrogen share of primary energy",
@@ -1171,11 +1171,11 @@
     {
       "id": "FP-14",
       "title": "AI independently produces rulings at supreme-court level in at least 3 legal domains by 2030",
-      "titleZh": "2030年AI在至少3个领域独立生成最高法院级别法律判决",
+      "titleZh": "2030\u5e74AI\u5728\u81f3\u5c113\u4e2a\u9886\u57df\u72ec\u7acb\u751f\u6210\u6700\u9ad8\u6cd5\u9662\u7ea7\u522b\u6cd5\u5f8b\u5224\u51b3",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By 2030, AI systems will independently generate judicial opinions adopted by supreme courts or equivalent tribunals in at least 3 distinct legal domains (e.g., contract law, intellectual property, immigration law)",
       "verificationCriteria": "Supreme court official judgment explicitly cites AI-generated legal analysis as basis for ruling",
       "verificationDate": "2030-12-31",
@@ -1215,37 +1215,37 @@
       "causalChainNodes": [
         {
           "step": "AI legal research capabilities continued improvement",
-          "stepZh": "AI法律研究能力持续提升",
+          "stepZh": "AI\u6cd5\u5f8b\u7814\u7a76\u80fd\u529b\u6301\u7eed\u63d0\u5347",
           "stepEn": "AI legal research capabilities continued improvement",
           "evidence_strength": "HIGH"
         },
         {
           "step": "AI explainability breakthrough meets judicial requirements",
-          "stepZh": "AI可解释性突破满足司法要求",
+          "stepZh": "AI\u53ef\u89e3\u91ca\u6027\u7a81\u7834\u6ee1\u8db3\u53f8\u6cd5\u8981\u6c42",
           "stepEn": "AI explainability breakthrough meets judicial requirements",
           "evidence_strength": "LOW"
         },
         {
           "step": "Legal accountability framework adapts to AI rulings",
-          "stepZh": "法律问责框架适配AI判决",
+          "stepZh": "\u6cd5\u5f8b\u95ee\u8d23\u6846\u67b6\u9002\u914dAI\u5224\u51b3",
           "stepEn": "Legal accountability framework adapts to AI rulings",
           "evidence_strength": "LOW"
         },
         {
           "step": "Public and judicial system accept AI rulings",
-          "stepZh": "公众和司法系统接受AI判决",
+          "stepZh": "\u516c\u4f17\u548c\u53f8\u6cd5\u7cfb\u7edf\u63a5\u53d7AI\u5224\u51b3",
           "stepEn": "Public and judicial system accept AI rulings",
           "evidence_strength": "LOW"
         },
         {
           "step": "Supreme court adoption in at least 3 domains",
-          "stepZh": "至少3个领域最高法院采纳",
+          "stepZh": "\u81f3\u5c113\u4e2a\u9886\u57df\u6700\u9ad8\u6cd5\u9662\u91c7\u7eb3",
           "stepEn": "Supreme court adoption in at least 3 domains",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "AI-C3"
+        "CC-AI-003"
       ],
       "leadingSignal": {
         "indicator": "AI legal assistance capability progress",
@@ -1256,18 +1256,18 @@
         "reachedThreshold": false,
         "thresholdValue": null,
         "currentValue": null,
-        "notes": "By 2025, AI assists legal research and document drafting (e.g., Harvey AI) but cannot render independent judgments. Supreme court-level rulings remain distant—requiring explainability breakthroughs, accountability frameworks, and public trust accumulation"
+        "notes": "By 2025, AI assists legal research and document drafting (e.g., Harvey AI) but cannot render independent judgments. Supreme court-level rulings remain distant\u2014requiring explainability breakthroughs, accountability frameworks, and public trust accumulation"
       },
       "timeWindowYears": 4.2
     },
     {
       "id": "FP-15",
       "title": "Global offshore wind capacity exceeds 200 GW by 2030",
-      "titleZh": "2030年全球海上风电装机容量超过200GW",
+      "titleZh": "2030\u5e74\u5168\u7403\u6d77\u4e0a\u98ce\u7535\u88c5\u673a\u5bb9\u91cf\u8d85\u8fc7200GW",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By end of 2030, global cumulative offshore wind installed capacity will exceed 200GW",
       "verificationCriteria": "GWEC Global Offshore Wind Report or IEA annual energy data confirmation",
       "verificationDate": "2031-03-31",
@@ -1314,25 +1314,25 @@
       "causalChainNodes": [
         {
           "step": "Offshore wind technology maturity continued improvement",
-          "stepZh": "海上风电技术成熟度持续提升",
+          "stepZh": "\u6d77\u4e0a\u98ce\u7535\u6280\u672f\u6210\u719f\u5ea6\u6301\u7eed\u63d0\u5347",
           "stepEn": "Offshore wind technology maturity continued improvement",
           "evidence_strength": "HIGH"
         },
         {
           "step": "National policies support offshore wind expansion",
-          "stepZh": "各国政策支持海上风电扩张",
+          "stepZh": "\u5404\u56fd\u653f\u7b56\u652f\u6301\u6d77\u4e0a\u98ce\u7535\u6269\u5f20",
           "stepEn": "National policies support offshore wind expansion",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Annual installation growth maintained above 20%",
-          "stepZh": "年装机增速维持20%以上",
+          "stepZh": "\u5e74\u88c5\u673a\u589e\u901f\u7ef4\u630120%\u4ee5\u4e0a",
           "stepEn": "Annual installation growth maintained above 20%",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "EN-C1"
+        "CC-EN-001"
       ],
       "leadingSignal": {
         "indicator": "Global offshore wind installation growth rate",
@@ -1350,13 +1350,13 @@
     {
       "id": "FP-16",
       "title": "China's natural population decline exceeds 5 million by 2027",
-      "titleZh": "中国2027年人口自然减少超过500万",
+      "titleZh": "\u4e2d\u56fd2027\u5e74\u4eba\u53e3\u81ea\u7136\u51cf\u5c11\u8d85\u8fc7500\u4e07",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "China's natural population decrease (deaths minus births) will exceed 5 million in 2027",
-      "verificationCriteria": "National Bureau of Statistics annual communiqué confirms natural population decrease ≥5 million",
+      "verificationCriteria": "National Bureau of Statistics annual communiqu\u00e9 confirms natural population decrease \u22655 million",
       "verificationDate": "2028-03-31",
       "originalConfidence": 65,
       "engineScore": 64.2,
@@ -1370,15 +1370,15 @@
       "consensusStatus": "aligned",
       "evidence": [
         {
-          "name": "中国2025年国民经济和社会发展统计公报",
-          "institution": "国家统计局",
+          "name": "\u4e2d\u56fd2025\u5e74\u56fd\u6c11\u7ecf\u6d4e\u548c\u793e\u4f1a\u53d1\u5c55\u7edf\u8ba1\u516c\u62a5",
+          "institution": "\u56fd\u5bb6\u7edf\u8ba1\u5c40",
           "tier": 1,
           "url": "https://www.stats.gov.cn/",
           "publishDate": "2026-02-28"
         },
         {
-          "name": "中国人口与发展研究报告2025",
-          "institution": "卫健委",
+          "name": "\u4e2d\u56fd\u4eba\u53e3\u4e0e\u53d1\u5c55\u7814\u7a76\u62a5\u544a2025",
+          "institution": "\u536b\u5065\u59d4",
           "tier": 1,
           "url": "http://www.nhc.gov.cn/",
           "publishDate": "2025-12-01"
@@ -1394,30 +1394,30 @@
       "causalChainNodes": [
         {
           "step": "Births continued decline to ~7-8 million",
-          "stepZh": "出生人数持续下降至~700-800万",
+          "stepZh": "\u51fa\u751f\u4eba\u6570\u6301\u7eed\u4e0b\u964d\u81f3~700-800\u4e07",
           "stepEn": "Births continued decline to ~7-8 million",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Deaths continue rising due to aging to ~11.5M+",
-          "stepZh": "死亡人数因老龄化继续增加至~1150万+",
+          "stepZh": "\u6b7b\u4ea1\u4eba\u6570\u56e0\u8001\u9f84\u5316\u7ee7\u7eed\u589e\u52a0\u81f3~1150\u4e07+",
           "stepEn": "Deaths continue rising due to aging to ~11.5M+",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Natural decrease gap widens to 5M+",
-          "stepZh": "自然减少缺口扩大至500万+",
+          "stepZh": "\u81ea\u7136\u51cf\u5c11\u7f3a\u53e3\u6269\u5927\u81f3500\u4e07+",
           "stepEn": "Natural decrease gap widens to 5M+",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "DE-C1"
+        "CC-DEMO-001"
       ],
       "leadingSignal": {
         "indicator": "China natural population decrease",
         "status": "accelerating",
-        "source": "国家统计局",
+        "source": "\u56fd\u5bb6\u7edf\u8ba1\u5c40",
         "changePct": 69.6,
         "durationMonths": 24,
         "reachedThreshold": false,
@@ -1430,11 +1430,11 @@
     {
       "id": "FP-17",
       "title": "Japan's annual births drop below 600,000 by 2027",
-      "titleZh": "日本新生儿2027年跌破60万",
+      "titleZh": "\u65e5\u672c\u65b0\u751f\u513f2027\u5e74\u8dcc\u783460\u4e07",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "Japan's annual birth count will fall below 600,000 by 2027",
       "verificationCriteria": "Japan MHLW vital statistics data confirms births <600,000",
       "verificationDate": "2028-06-30",
@@ -1450,8 +1450,8 @@
       "consensusStatus": "aligned",
       "evidence": [
         {
-          "name": "日本厚生劳动省人口动态统计2025",
-          "institution": "厚生劳动省",
+          "name": "\u65e5\u672c\u539a\u751f\u52b3\u52a8\u7701\u4eba\u53e3\u52a8\u6001\u7edf\u8ba12025",
+          "institution": "\u539a\u751f\u52b3\u52a8\u7701",
           "tier": 1,
           "url": "https://www.mhlw.go.jp/",
           "publishDate": "2026-01-15"
@@ -1474,30 +1474,30 @@
       "causalChainNodes": [
         {
           "step": "2025 newborns hit record low of 671,200",
-          "stepZh": "2025年新生儿67.12万创新低",
+          "stepZh": "2025\u5e74\u65b0\u751f\u513f67.12\u4e07\u521b\u65b0\u4f4e",
           "stepEn": "2025 newborns hit record low of 671,200",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Annual decline of ~15,000 trend continues",
-          "stepZh": "年减约1.5万趋势持续",
+          "stepZh": "\u5e74\u51cf\u7ea61.5\u4e07\u8d8b\u52bf\u6301\u7eed",
           "stepEn": "Annual decline of ~15,000 trend continues",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Falling below 600K by 2027 requires accelerated decline",
-          "stepZh": "2027年跌破60万需要加速下降",
+          "stepZh": "2027\u5e74\u8dcc\u783460\u4e07\u9700\u8981\u52a0\u901f\u4e0b\u964d",
           "stepEn": "Falling below 600K by 2027 requires accelerated decline",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "DE-C1"
+        "CC-DEMO-001"
       ],
       "leadingSignal": {
         "indicator": "Japan annual birth count",
         "status": "early_signal",
-        "source": "厚生劳动省",
+        "source": "\u539a\u751f\u52b3\u52a8\u7701",
         "changePct": -3.0,
         "durationMonths": 24,
         "reachedThreshold": false,
@@ -1510,11 +1510,11 @@
     {
       "id": "FP-18",
       "title": "At least one G7 nation declares a technology state of emergency before 2030",
-      "titleZh": "2030年前至少一个G20国家宣布技术紧急状态",
+      "titleZh": "2030\u5e74\u524d\u81f3\u5c11\u4e00\u4e2aG20\u56fd\u5bb6\u5ba3\u5e03\u6280\u672f\u7d27\u6025\u72b6\u6001",
       "domain": "cross-domain",
       "domainLabel": "Cross-Domain",
       "domainColor": "#F59E0B",
-      "domainIcon": "🔗",
+      "domainIcon": "\ud83d\udd17",
       "predictionContent": "Before end of 2030, at least one G20 member state (e.g., US, major EU nation, Japan, India) will formally declare a 'Technology Emergency,' analogous to climate emergency declarations",
       "verificationCriteria": "G7 member state government/parliament official announcement or head of state executive order",
       "verificationDate": "2030-12-31",
@@ -1554,25 +1554,25 @@
       "causalChainNodes": [
         {
           "step": "AI/technology risk awareness rising",
-          "stepZh": "AI/技术风险认知提升",
+          "stepZh": "AI/\u6280\u672f\u98ce\u9669\u8ba4\u77e5\u63d0\u5347",
           "stepEn": "AI/technology risk awareness rising",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Multiple countries strengthening technology regulation legislation",
-          "stepZh": "多国加强技术监管立法",
+          "stepZh": "\u591a\u56fd\u52a0\u5f3a\u6280\u672f\u76d1\u7ba1\u7acb\u6cd5",
           "stepEn": "Multiple countries strengthening technology regulation legislation",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "A G20 nation escalates to 'emergency' level declaration",
-          "stepZh": "某G20国家升级到'紧急状态'级别宣告",
+          "stepZh": "\u67d0G20\u56fd\u5bb6\u5347\u7ea7\u5230'\u7d27\u6025\u72b6\u6001'\u7ea7\u522b\u5ba3\u544a",
           "stepEn": "A G20 nation escalates to 'emergency' level declaration",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "CC-1"
+        "CC-CROSS-001"
       ],
       "leadingSignal": {
         "indicator": "G20 country technology regulation legislation count",
@@ -1590,11 +1590,11 @@
     {
       "id": "FP-19",
       "title": "Nigeria becomes the world's 3rd most populous country by 2030",
-      "titleZh": "2030年尼日利亚成为世界第三人口大国",
+      "titleZh": "2030\u5e74\u5c3c\u65e5\u5229\u4e9a\u6210\u4e3a\u4e16\u754c\u7b2c\u4e09\u4eba\u53e3\u5927\u56fd",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "By 2030, Nigeria's population will surpass Pakistan (and the United States), becoming the world's third most populous nation after India and China",
       "verificationCriteria": "UN Population Division annual World Population Prospects report or Nigeria national census data",
       "verificationDate": "2030-07-01",
@@ -1634,31 +1634,31 @@
       "causalChainNodes": [
         {
           "step": "Nigeria fertility rate sustained high (TFR>5.0)",
-          "stepZh": "尼日利亚生育率维持高位（TFR>5.0）",
+          "stepZh": "\u5c3c\u65e5\u5229\u4e9a\u751f\u80b2\u7387\u7ef4\u6301\u9ad8\u4f4d\uff08TFR>5.0\uff09",
           "stepEn": "Nigeria fertility rate sustained high (TFR>5.0)",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Annual net population growth stabilized at ~6 million",
-          "stepZh": "人口年净增稳定在600万左右",
+          "stepZh": "\u4eba\u53e3\u5e74\u51c0\u589e\u7a33\u5b9a\u5728600\u4e07\u5de6\u53f3",
           "stepEn": "Annual net population growth stabilized at ~6 million",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Pakistan growth rate slows or remains stable",
-          "stepZh": "巴基斯坦增速放缓或保持稳定",
+          "stepZh": "\u5df4\u57fa\u65af\u5766\u589e\u901f\u653e\u7f13\u6216\u4fdd\u6301\u7a33\u5b9a",
           "stepEn": "Pakistan growth rate slows or remains stable",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Nigeria population surpasses Pakistan in 2028-2030",
-          "stepZh": "尼日利亚人口在2028-2030超越巴基斯坦",
+          "stepZh": "\u5c3c\u65e5\u5229\u4e9a\u4eba\u53e3\u57282028-2030\u8d85\u8d8a\u5df4\u57fa\u65af\u5766",
           "stepEn": "Nigeria population surpasses Pakistan in 2028-2030",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "CC-3"
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "Nigeria population vs Pakistan population gap",
@@ -1676,11 +1676,11 @@
     {
       "id": "FP-20",
       "title": "Over 80% of tested AI systems pass a standardized Turing test by 2030",
-      "titleZh": "2030年AI通过图灵测试的比例超过80%",
+      "titleZh": "2030\u5e74AI\u901a\u8fc7\u56fe\u7075\u6d4b\u8bd5\u7684\u6bd4\u4f8b\u8d85\u8fc780%",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By 2030, over 80% of AI systems will pass standardized Turing tests (i.e., evaluators cannot distinguish AI from human with accuracy significantly above chance)",
       "verificationCriteria": "Loebner Prize or AAAI standardized Turing test protocol results summary",
       "verificationDate": "2030-12-31",
@@ -1720,31 +1720,31 @@
       "causalChainNodes": [
         {
           "step": "Large language model capabilities continued improvement",
-          "stepZh": "大语言模型能力持续提升",
+          "stepZh": "\u5927\u8bed\u8a00\u6a21\u578b\u80fd\u529b\u6301\u7eed\u63d0\u5347",
           "stepEn": "Large language model capabilities continued improvement",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Pass rate on domain-specific Turing tests increases",
-          "stepZh": "特定场景图灵测试通过率上升",
+          "stepZh": "\u7279\u5b9a\u573a\u666f\u56fe\u7075\u6d4b\u8bd5\u901a\u8fc7\u7387\u4e0a\u5347",
           "stepEn": "Pass rate on domain-specific Turing tests increases",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "General-domain Turing test pass rate approaches 80%",
-          "stepZh": "通用场景图灵测试通过率接近80%",
+          "stepZh": "\u901a\u7528\u573a\u666f\u56fe\u7075\u6d4b\u8bd5\u901a\u8fc7\u7387\u63a5\u8fd180%",
           "stepEn": "General-domain Turing test pass rate approaches 80%",
           "evidence_strength": "LOW"
         },
         {
           "step": "AI community validates test standards",
-          "stepZh": "AI社区认可测试标准为有效",
+          "stepZh": "AI\u793e\u533a\u8ba4\u53ef\u6d4b\u8bd5\u6807\u51c6\u4e3a\u6709\u6548",
           "stepEn": "AI community validates test standards",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "AI-C3"
+        "CC-AI-003"
       ],
       "leadingSignal": {
         "indicator": "AI Turing test pass rate",
@@ -1761,12 +1761,12 @@
     },
     {
       "id": "FP-21",
-      "title": "Shrinking-population nations adopt AI automation at 2× the global average by 2028",
-      "titleZh": "人口萎缩国家AI自动化采用率2028年前超全球平均2倍",
+      "title": "Shrinking-population nations adopt AI automation at 2\u00d7 the global average by 2028",
+      "titleZh": "\u4eba\u53e3\u840e\u7f29\u56fd\u5bb6AI\u81ea\u52a8\u5316\u91c7\u7528\u73872028\u5e74\u524d\u8d85\u5168\u7403\u5e73\u57472\u500d",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "At least 2 of China/Japan/Korea will have manufacturing AI automation adoption rates exceeding twice the global average before 2028",
       "verificationCriteria": "McKinsey/WEF automation adoption rate survey report confirmation",
       "verificationDate": "2028-12-31",
@@ -1806,25 +1806,25 @@
       "causalChainNodes": [
         {
           "step": "Population pressure drives automation acceleration",
-          "stepZh": "人口压力推动自动化加速",
+          "stepZh": "\u4eba\u53e3\u538b\u529b\u63a8\u52a8\u81ea\u52a8\u5316\u52a0\u901f",
           "stepEn": "Population pressure drives automation acceleration",
           "evidence_strength": "HIGH"
         },
         {
           "step": "China/Japan/Korea robot density far exceeds global average",
-          "stepZh": "中日韩机器人密度已远超全球平均",
+          "stepZh": "\u4e2d\u65e5\u97e9\u673a\u5668\u4eba\u5bc6\u5ea6\u5df2\u8fdc\u8d85\u5168\u7403\u5e73\u5747",
           "stepEn": "China/Japan/Korea robot density far exceeds global average",
           "evidence_strength": "HIGH"
         },
         {
           "step": "AI automation adoption rate continues to lead",
-          "stepZh": "AI自动化采用率持续领先",
+          "stepZh": "AI\u81ea\u52a8\u5316\u91c7\u7528\u7387\u6301\u7eed\u9886\u5148",
           "stepEn": "AI automation adoption rate continues to lead",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "CC-3"
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "Manufacturing AI automation adoption rate",
@@ -1842,11 +1842,11 @@
     {
       "id": "FP-22",
       "title": "AI-driven per-capita electricity use keeps rising in shrinking-population nations through 2028",
-      "titleZh": "人口萎缩国家人均用电量2028年保持增长（AI驱动）",
+      "titleZh": "\u4eba\u53e3\u840e\u7f29\u56fd\u5bb6\u4eba\u5747\u7528\u7535\u91cf2028\u5e74\u4fdd\u6301\u589e\u957f\uff08AI\u9a71\u52a8\uff09",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "Japan and Korea's per capita electricity consumption will continue growing through 2028 despite population decline, driven primarily by AI and data center demand",
       "verificationCriteria": "IEA/EIA per capita electricity data confirms positive YoY growth in Japan/Korea per capita consumption",
       "verificationDate": "2029-06-30",
@@ -1886,26 +1886,26 @@
       "causalChainNodes": [
         {
           "step": "Japan/Korea population decline typically reduces total electricity use",
-          "stepZh": "日韩人口负增长通常导致总用电下降",
+          "stepZh": "\u65e5\u97e9\u4eba\u53e3\u8d1f\u589e\u957f\u901a\u5e38\u5bfc\u81f4\u603b\u7528\u7535\u4e0b\u964d",
           "stepEn": "Japan/Korea population decline typically reduces total electricity use",
           "evidence_strength": "HIGH"
         },
         {
           "step": "But AI data center + automation demand grows",
-          "stepZh": "但AI数据中心+自动化需求增长",
+          "stepZh": "\u4f46AI\u6570\u636e\u4e2d\u5fc3+\u81ea\u52a8\u5316\u9700\u6c42\u589e\u957f",
           "stepEn": "But AI data center + automation demand grows",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "Per capita = total/population; denominator shrinks + numerator holds → per capita rises",
-          "stepZh": "人均=总用电/人口，分母减少+分子不减 → 人均上升",
-          "stepEn": "Per capita = total/population; denominator shrinks + numerator holds → per capita rises",
+          "step": "Per capita = total/population; denominator shrinks + numerator holds \u2192 per capita rises",
+          "stepZh": "\u4eba\u5747=\u603b\u7528\u7535/\u4eba\u53e3\uff0c\u5206\u6bcd\u51cf\u5c11+\u5206\u5b50\u4e0d\u51cf \u2192 \u4eba\u5747\u4e0a\u5347",
+          "stepEn": "Per capita = total/population; denominator shrinks + numerator holds \u2192 per capita rises",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "CC-3",
-        "CC-1"
+        "CC-CROSS-003",
+        "CC-CROSS-001"
       ],
       "leadingSignal": {
         "indicator": "Japan-Korea per capita electricity consumption trend",
@@ -1923,11 +1923,11 @@
     {
       "id": "FP-23",
       "title": "AI-generated content exceeds 50% of all new internet content by 2030",
-      "titleZh": "2030年AI生成内容占全球互联网新内容的50%以上",
+      "titleZh": "2030\u5e74AI\u751f\u6210\u5185\u5bb9\u5360\u5168\u7403\u4e92\u8054\u7f51\u65b0\u5185\u5bb9\u768450%\u4ee5\u4e0a",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By 2030, AI-generated or AI-assisted content will account for over 50% of all new internet content globally (including text, images, video, audio)",
       "verificationCriteria": "Content Authenticity Initiative report, Google/Cloudflare traffic analysis reports",
       "verificationDate": "2030-12-31",
@@ -1981,31 +1981,31 @@
       "causalChainNodes": [
         {
           "step": "Generative AI tools continue widespread adoption (ChatGPT/Midjourney/Sora, etc.)",
-          "stepZh": "生成式AI工具持续普及（ChatGPT/Midjourney/Sora等）",
+          "stepZh": "\u751f\u6210\u5f0fAI\u5de5\u5177\u6301\u7eed\u666e\u53ca\uff08ChatGPT/Midjourney/Sora\u7b49\uff09",
           "stepEn": "Generative AI tools continue widespread adoption (ChatGPT/Midjourney/Sora, etc.)",
           "evidence_strength": "HIGH"
         },
         {
           "step": "AI content production cost far below human labor",
-          "stepZh": "AI内容生产成本远低于人工",
+          "stepZh": "AI\u5185\u5bb9\u751f\u4ea7\u6210\u672c\u8fdc\u4f4e\u4e8e\u4eba\u5de5",
           "stepEn": "AI content production cost far below human labor",
           "evidence_strength": "HIGH"
         },
         {
           "step": "AI-generated content share continued rise",
-          "stepZh": "AI生成内容占比持续攀升",
+          "stepZh": "AI\u751f\u6210\u5185\u5bb9\u5360\u6bd4\u6301\u7eed\u6500\u5347",
           "stepEn": "AI-generated content share continued rise",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Detection and definition methods keep pace with development",
-          "stepZh": "检测和定义方法跟上发展速度",
+          "stepZh": "\u68c0\u6d4b\u548c\u5b9a\u4e49\u65b9\u6cd5\u8ddf\u4e0a\u53d1\u5c55\u901f\u5ea6",
           "stepEn": "Detection and definition methods keep pace with development",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "AI-C1"
+        "CC-AI-001"
       ],
       "leadingSignal": {
         "indicator": "AI-generated content share of new internet content (%)",
@@ -2023,11 +2023,11 @@
     {
       "id": "FP-24",
       "title": "South Korea's TFR rebounds to 1.0 by 2027",
-      "titleZh": "2027年韩国TFR回升至1.0",
+      "titleZh": "2027\u5e74\u97e9\u56fdTFR\u56de\u5347\u81f31.0",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "South Korea's total fertility rate (TFR) will recover to 1.0 in 2027",
       "verificationCriteria": "Statistics Korea (KOSTAT) annual TFR data",
       "verificationDate": "2027-12-31",
@@ -2053,25 +2053,25 @@
       "causalChainNodes": [
         {
           "step": "Government increases pro-natalist investment",
-          "stepZh": "政府加大鼓励生育投入",
+          "stepZh": "\u653f\u5e9c\u52a0\u5927\u9f13\u52b1\u751f\u80b2\u6295\u5165",
           "stepEn": "Government increases pro-natalist investment",
           "evidence_strength": "HIGH"
         },
         {
           "step": "TFR stabilizes and recovers",
-          "stepZh": "TFR企稳回升",
+          "stepZh": "TFR\u4f01\u7a33\u56de\u5347",
           "stepEn": "TFR stabilizes and recovers",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "TFR reaches 1.0",
-          "stepZh": "TFR达到1.0",
+          "stepZh": "TFR\u8fbe\u52301.0",
           "stepEn": "TFR reaches 1.0",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "DE-C2"
+        "CC-DEMO-002"
       ],
       "leadingSignal": {
         "indicator": "Korea quarterly TFR",
@@ -2089,13 +2089,13 @@
     {
       "id": "FP-25",
       "title": "Solid-state battery energy density exceeds 500 Wh/kg by 2030",
-      "titleZh": "2030年固态电池能量密度超过500Wh/kg",
+      "titleZh": "2030\u5e74\u56fa\u6001\u7535\u6c60\u80fd\u91cf\u5bc6\u5ea6\u8d85\u8fc7500Wh/kg",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By 2030, at least one commercially mass-produced solid-state battery cell will exceed 500Wh/kg energy density",
-      "verificationCriteria": "Toyota/Samsung SDI/CATL mass-produced solid-state battery specs confirm cell energy density ≥500Wh/kg",
+      "verificationCriteria": "Toyota/Samsung SDI/CATL mass-produced solid-state battery specs confirm cell energy density \u2265500Wh/kg",
       "verificationDate": "2030-12-31",
       "originalConfidence": 45,
       "engineScore": 48.2,
@@ -2140,31 +2140,31 @@
       "causalChainNodes": [
         {
           "step": "Lab energy density exceeds 500Wh/kg",
-          "stepZh": "实验室能量密度突破500Wh/kg",
+          "stepZh": "\u5b9e\u9a8c\u5ba4\u80fd\u91cf\u5bc6\u5ea6\u7a81\u7834500Wh/kg",
           "stepEn": "Lab energy density exceeds 500Wh/kg",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Solid electrolyte mass production process matures",
-          "stepZh": "固态电解质量产工艺成熟",
+          "stepZh": "\u56fa\u6001\u7535\u89e3\u8d28\u91cf\u4ea7\u5de5\u827a\u6210\u719f",
           "stepEn": "Solid electrolyte mass production process matures",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Yield rate improves to commercial levels",
-          "stepZh": "良率提升至商业化水平",
+          "stepZh": "\u826f\u7387\u63d0\u5347\u81f3\u5546\u4e1a\u5316\u6c34\u5e73",
           "stepEn": "Yield rate improves to commercial levels",
           "evidence_strength": "LOW"
         },
         {
           "step": "Automotive-grade mass production product released",
-          "stepZh": "车规级量产产品发布",
+          "stepZh": "\u8f66\u89c4\u7ea7\u91cf\u4ea7\u4ea7\u54c1\u53d1\u5e03",
           "stepEn": "Automotive-grade mass production product released",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "EN-C3"
+        "CC-EN-003"
       ],
       "leadingSignal": {
         "indicator": "Solid-state battery lab energy density",
@@ -2182,11 +2182,11 @@
     {
       "id": "FP-26",
       "title": "Global lithium supply gap exceeds 20% by 2030",
-      "titleZh": "2030年全球锂矿供应缺口超过20%",
+      "titleZh": "2030\u5e74\u5168\u7403\u9502\u77ff\u4f9b\u5e94\u7f3a\u53e3\u8d85\u8fc720%",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By 2030, global lithium supply (LCE equivalent) will face a supply-demand gap exceeding 20% (demand surpassing supply by more than 20%)",
       "verificationCriteria": "USGS mineral commodity summaries / Roskill lithium forecast / Benchmark Mineral Intelligence",
       "verificationDate": "2030-12-31",
@@ -2233,25 +2233,25 @@
       "causalChainNodes": [
         {
           "step": "EV demand explosive growth",
-          "stepZh": "EV需求爆发式增长",
+          "stepZh": "EV\u9700\u6c42\u7206\u53d1\u5f0f\u589e\u957f",
           "stepEn": "EV demand explosive growth",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Lithium mine development lag causes supply shortfall",
-          "stepZh": "锂矿开发滞后导致供给不足",
+          "stepZh": "\u9502\u77ff\u5f00\u53d1\u6ede\u540e\u5bfc\u81f4\u4f9b\u7ed9\u4e0d\u8db3",
           "stepEn": "Lithium mine development lag causes supply shortfall",
           "evidence_strength": "LOW"
         },
         {
           "step": "Supply-demand gap exceeds 20%",
-          "stepZh": "供需缺口超过20%",
+          "stepZh": "\u4f9b\u9700\u7f3a\u53e3\u8d85\u8fc720%",
           "stepEn": "Supply-demand gap exceeds 20%",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "EN-C3"
+        "CC-EN-003"
       ],
       "leadingSignal": {
         "indicator": "Lithium price annual change",
@@ -2269,11 +2269,11 @@
     {
       "id": "FP-27",
       "title": "First AI system passes a strict-definition Turing test before 2027",
-      "titleZh": "2027年前出现首个通过图灵测试的AI系统（严格定义）",
+      "titleZh": "2027\u5e74\u524d\u51fa\u73b0\u9996\u4e2a\u901a\u8fc7\u56fe\u7075\u6d4b\u8bd5\u7684AI\u7cfb\u7edf\uff08\u4e25\u683c\u5b9a\u4e49\uff09",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "Under strictly defined Turing test protocols (multi-round dialogue, professional domains, expert panel evaluation), the first AI system will successfully pass",
       "verificationCriteria": "Peer-reviewed academic paper or authoritative institution certified Turing test passage event",
       "verificationDate": "2027-12-31",
@@ -2306,25 +2306,25 @@
       "causalChainNodes": [
         {
           "step": "GPT-5 class models approach human level",
-          "stepZh": "GPT-5级别模型接近人类水平",
+          "stepZh": "GPT-5\u7ea7\u522b\u6a21\u578b\u63a5\u8fd1\u4eba\u7c7b\u6c34\u5e73",
           "stepEn": "GPT-5 class models approach human level",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "But strict Turing test requires multi-domain consistency",
-          "stepZh": "但严格图灵测试需多领域一致性",
+          "stepZh": "\u4f46\u4e25\u683c\u56fe\u7075\u6d4b\u8bd5\u9700\u591a\u9886\u57df\u4e00\u81f4\u6027",
           "stepEn": "But strict Turing test requires multi-domain consistency",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Possibility within 2-year window exists but unlikely",
-          "stepZh": "2年窗口内通过可能性存在但不高",
+          "stepZh": "2\u5e74\u7a97\u53e3\u5185\u901a\u8fc7\u53ef\u80fd\u6027\u5b58\u5728\u4f46\u4e0d\u9ad8",
           "stepEn": "Possibility within 2-year window exists but unlikely",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "AI-C1"
+        "CC-AI-001"
       ],
       "leadingSignal": {
         "indicator": "AI comprehensive capability benchmark",
@@ -2342,11 +2342,11 @@
     {
       "id": "FP-28",
       "title": "At least 3 countries enact technology-citizenship laws before 2030",
-      "titleZh": "2030年前全球至少3个国家实施技术公民权立法",
+      "titleZh": "2030\u5e74\u524d\u5168\u7403\u81f3\u5c113\u4e2a\u56fd\u5bb6\u5b9e\u65bd\u6280\u672f\u516c\u6c11\u6743\u7acb\u6cd5",
       "domain": "cross-domain",
       "domainLabel": "Cross-Domain",
       "domainColor": "#F59E0B",
-      "domainIcon": "🔗",
+      "domainIcon": "\ud83d\udd17",
       "predictionContent": "By end of 2030, at least 3 countries will enact 'Technology Citizenship' legislation, establishing statutory rights frameworks for citizens regarding AI decisions, data rights, and algorithmic transparency",
       "verificationCriteria": "Relevant legislation passed by national parliaments, UN/UNESCO technology citizenship framework reports",
       "verificationDate": "2030-12-31",
@@ -2386,33 +2386,33 @@
       "causalChainNodes": [
         {
           "step": "Global digital rights awareness rising",
-          "stepZh": "全球数字权利意识提升",
+          "stepZh": "\u5168\u7403\u6570\u5b57\u6743\u5229\u610f\u8bc6\u63d0\u5347",
           "stepEn": "Global digital rights awareness rising",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Multiple countries discuss technology citizenship concept",
-          "stepZh": "多国讨论技术公民权概念",
+          "stepZh": "\u591a\u56fd\u8ba8\u8bba\u6280\u672f\u516c\u6c11\u6743\u6982\u5ff5",
           "stepEn": "Multiple countries discuss technology citizenship concept",
           "evidence_strength": "LOW"
         },
         {
           "step": "At least 3 countries enact formal legislation",
-          "stepZh": "至少3国正式立法",
+          "stepZh": "\u81f3\u5c113\u56fd\u6b63\u5f0f\u7acb\u6cd5",
           "stepEn": "At least 3 countries enact formal legislation",
           "evidence_strength": "LOW"
         },
         {
           "step": "Legislative framework becomes enforceable",
-          "stepZh": "立法框架可执行",
+          "stepZh": "\u7acb\u6cd5\u6846\u67b6\u53ef\u6267\u884c",
           "stepEn": "Legislative framework becomes enforceable",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "CC-1",
-        "CC-2",
-        "CC-3"
+        "CC-CROSS-001",
+        "CC-CROSS-002",
+        "CC-CROSS-003"
       ],
       "leadingSignal": {
         "indicator": "Digital rights/data protection legislation trend",
@@ -2430,11 +2430,11 @@
     {
       "id": "FP-29",
       "title": "At least one country maintains a national UBI program for 3+ consecutive years by 2030",
-      "titleZh": "2030年至少一个国家实现全民基本收入(UBI)超过3年",
+      "titleZh": "2030\u5e74\u81f3\u5c11\u4e00\u4e2a\u56fd\u5bb6\u5b9e\u73b0\u5168\u6c11\u57fa\u672c\u6536\u5165(UBI)\u8d85\u8fc73\u5e74",
       "domain": "cross-domain",
       "domainLabel": "Cross-Domain",
       "domainColor": "#F59E0B",
-      "domainIcon": "🔗",
+      "domainIcon": "\ud83d\udd17",
       "predictionContent": "By 2030, at least one country will have formally implemented a Universal Basic Income (UBI) program sustained for more than 3 years",
       "verificationCriteria": "Nation passes UBI legislation, actual payments for 3+ years (36+ months from first payment to end of 2030)",
       "verificationDate": "2030-12-31",
@@ -2474,31 +2474,31 @@
       "causalChainNodes": [
         {
           "step": "UBI trials demonstrate effectiveness",
-          "stepZh": "UBI试验证明有效性",
+          "stepZh": "UBI\u8bd5\u9a8c\u8bc1\u660e\u6709\u6548\u6027",
           "stepEn": "UBI trials demonstrate effectiveness",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Government expands pilots into formal policy",
-          "stepZh": "政府将试点扩展为正式政策",
+          "stepZh": "\u653f\u5e9c\u5c06\u8bd5\u70b9\u6269\u5c55\u4e3a\u6b63\u5f0f\u653f\u7b56",
           "stepEn": "Government expands pilots into formal policy",
           "evidence_strength": "LOW"
         },
         {
           "step": "Legislature passes UBI bill",
-          "stepZh": "立法通过UBI法案",
+          "stepZh": "\u7acb\u6cd5\u901a\u8fc7UBI\u6cd5\u6848",
           "stepEn": "Legislature passes UBI bill",
           "evidence_strength": "LOW"
         },
         {
           "step": "UBI sustained disbursement exceeds 3 years",
-          "stepZh": "UBI持续发放超过3年",
+          "stepZh": "UBI\u6301\u7eed\u53d1\u653e\u8d85\u8fc73\u5e74",
           "stepEn": "UBI sustained disbursement exceeds 3 years",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "CC-1"
+        "CC-CROSS-001"
       ],
       "leadingSignal": {
         "indicator": "Global UBI pilot program progress",
@@ -2516,11 +2516,11 @@
     {
       "id": "FP-30",
       "title": "South Korea's TFR rebound stalls or reverses before 2028",
-      "titleZh": "韩国TFR回升趋势2028年前中断或停滞",
+      "titleZh": "\u97e9\u56fdTFR\u56de\u5347\u8d8b\u52bf2028\u5e74\u524d\u4e2d\u65ad\u6216\u505c\u6ede",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "South Korea's TFR recovery trend will be interrupted before 2028 (year-on-year decline or stagnation), rather than continuing its upward trajectory",
       "verificationCriteria": "Statistics Korea data shows TFR decline or stabilization YoY",
       "verificationDate": "2029-06-30",
@@ -2560,25 +2560,25 @@
       "causalChainNodes": [
         {
           "step": "Recovery primarily driven by marriage recovery + demographic structure",
-          "stepZh": "回升主要由婚姻回升+人口结构驱动",
+          "stepZh": "\u56de\u5347\u4e3b\u8981\u7531\u5a5a\u59fb\u56de\u5347+\u4eba\u53e3\u7ed3\u6784\u9a71\u52a8",
           "stepEn": "Recovery primarily driven by marriage recovery + demographic structure",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Structural factors such as housing costs + education competition unchanged",
-          "stepZh": "住房成本+教育竞争等结构性因素未变",
+          "stepZh": "\u4f4f\u623f\u6210\u672c+\u6559\u80b2\u7ade\u4e89\u7b49\u7ed3\u6784\u6027\u56e0\u7d20\u672a\u53d8",
           "stepEn": "Structural factors such as housing costs + education competition unchanged",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Interruption before 2028 would be premature",
-          "stepZh": "2028年前中断偏早",
+          "stepZh": "2028\u5e74\u524d\u4e2d\u65ad\u504f\u65e9",
           "stepEn": "Interruption before 2028 would be premature",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "DE-C2"
+        "CC-DEMO-002"
       ],
       "leadingSignal": {
         "indicator": "Korea TFR trend",
@@ -2589,18 +2589,18 @@
         "reachedThreshold": false,
         "thresholdValue": null,
         "currentValue": null,
-        "notes": "Korea TFR rose for 25 consecutive months (0.72→0.80→0.93), but structural factors like housing costs and education competition remain unchanged. Recovery may be a temporary demographic rebound"
+        "notes": "Korea TFR rose for 25 consecutive months (0.72\u21920.80\u21920.93), but structural factors like housing costs and education competition remain unchanged. Recovery may be a temporary demographic rebound"
       },
       "timeWindowYears": 3.0
     },
     {
       "id": "FP-31",
       "title": "The US passes a comprehensive UAP disclosure act by 2030",
-      "titleZh": "2030年美国通过UAP全面公开法案",
+      "titleZh": "2030\u5e74\u7f8e\u56fd\u901a\u8fc7UAP\u5168\u9762\u516c\u5f00\u6cd5\u6848",
       "domain": "space-alien",
       "domainLabel": "Astrobiology",
       "domainColor": "#EC4899",
-      "domainIcon": "👽",
+      "domainIcon": "\ud83d\udc7d",
       "predictionContent": "By 2030, the US Congress will pass comprehensive UAP (Unidentified Anomalous Phenomena) disclosure legislation, requiring the government to declassify and release all UAP-related records and establish a standing oversight mechanism",
       "verificationCriteria": "US Congress passes and President signs comprehensive UAP disclosure act (full version similar to UAP Disclosure Act)",
       "verificationDate": "2030-12-31",
@@ -2647,25 +2647,25 @@
       "causalChainNodes": [
         {
           "step": "Bipartisan support for UAP disclosure continues to strengthen",
-          "stepZh": "两党对UAP公开的支持持续增强",
+          "stepZh": "\u4e24\u515a\u5bf9UAP\u516c\u5f00\u7684\u652f\u6301\u6301\u7eed\u589e\u5f3a",
           "stepEn": "Bipartisan support for UAP disclosure continues to strengthen",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Public pressure and whistleblowers drive legislation",
-          "stepZh": "公众压力和Whistleblower推动立法",
+          "stepZh": "\u516c\u4f17\u538b\u529b\u548cWhistleblower\u63a8\u52a8\u7acb\u6cd5",
           "stepEn": "Public pressure and whistleblowers drive legislation",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Military and intelligence agencies cease obstruction",
-          "stepZh": "军方和情报机构不再阻挠",
+          "stepZh": "\u519b\u65b9\u548c\u60c5\u62a5\u673a\u6784\u4e0d\u518d\u963b\u6320",
           "stepEn": "Military and intelligence agencies cease obstruction",
           "evidence_strength": "LOW"
         },
         {
           "step": "Bill passes both chambers and is signed",
-          "stepZh": "法案在参众两院通过并签署",
+          "stepZh": "\u6cd5\u6848\u5728\u53c2\u4f17\u4e24\u9662\u901a\u8fc7\u5e76\u7b7e\u7f72",
           "stepEn": "Bill passes both chambers and is signed",
           "evidence_strength": "LOW"
         }
@@ -2687,11 +2687,11 @@
     {
       "id": "FP-32",
       "title": "NASA issues a \"strong biosignature\" statement for an exoplanet atmosphere",
-      "titleZh": "NASA发布系外行星大气'强生物标志物'声明",
+      "titleZh": "NASA\u53d1\u5e03\u7cfb\u5916\u884c\u661f\u5927\u6c14'\u5f3a\u751f\u7269\u6807\u5fd7\u7269'\u58f0\u660e",
       "domain": "space",
       "domainLabel": "Space",
       "domainColor": "#6366F1",
-      "domainIcon": "🚀",
+      "domainIcon": "\ud83d\ude80",
       "predictionContent": "NASA will formally announce detection of a 'strong biosignature' combination in at least one exoplanet atmosphere (e.g., non-chemical-equilibrium combination of DMS+CH4+CO2), stated as 'consistent with biological activity but requiring further confirmation'",
       "verificationCriteria": "NASA official press conference or peer-reviewed paper publication",
       "verificationDate": "2028-06-30",
@@ -2731,19 +2731,19 @@
       "causalChainNodes": [
         {
           "step": "JWST has detected DMS on K2-18b",
-          "stepZh": "JWST已在K2-18b检测到DMS",
+          "stepZh": "JWST\u5df2\u5728K2-18b\u68c0\u6d4b\u5230DMS",
           "stepEn": "JWST has detected DMS on K2-18b",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Additional observations will narrow candidate planets",
-          "stepZh": "更多观测将缩小候选行星范围",
+          "stepZh": "\u66f4\u591a\u89c2\u6d4b\u5c06\u7f29\u5c0f\u5019\u9009\u884c\u661f\u8303\u56f4",
           "stepEn": "Additional observations will narrow candidate planets",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "But 'strong biosignature' claim threshold is extremely high",
-          "stepZh": "但'强生物标志物'声明门槛极高",
+          "stepZh": "\u4f46'\u5f3a\u751f\u7269\u6807\u5fd7\u7269'\u58f0\u660e\u95e8\u69db\u6781\u9ad8",
           "stepEn": "But 'strong biosignature' claim threshold is extremely high",
           "evidence_strength": "LOW"
         }
@@ -2758,19 +2758,19 @@
         "reachedThreshold": false,
         "thresholdValue": null,
         "currentValue": null,
-        "notes": "JWST detected DMS on K2-18b. 2025-2026 observations will narrow candidate planets. But 'strong biosignature' claim threshold is extremely high—abiogenic sources must be excluded"
+        "notes": "JWST detected DMS on K2-18b. 2025-2026 observations will narrow candidate planets. But 'strong biosignature' claim threshold is extremely high\u2014abiogenic sources must be excluded"
       },
       "timeWindowYears": 2.0
     },
     {
       "id": "FP-33",
       "title": "Ancient microbial fossil evidence discovered in Mars samples",
-      "titleZh": "火星样本中发现古代微生物化石证据",
+      "titleZh": "\u706b\u661f\u6837\u672c\u4e2d\u53d1\u73b0\u53e4\u4ee3\u5fae\u751f\u7269\u5316\u77f3\u8bc1\u636e",
       "domain": "space-alien",
       "domainLabel": "Astrobiology",
       "domainColor": "#EC4899",
-      "domainIcon": "👽",
-      "predictionContent": "The Mars Sample Return mission or Perseverance rover in-situ analysis will discover fossil evidence consistent with ancient microbial activity (stromatolite structures + carbon isotope anomaly δ13C<-25‰)",
+      "domainIcon": "\ud83d\udc7d",
+      "predictionContent": "The Mars Sample Return mission or Perseverance rover in-situ analysis will discover fossil evidence consistent with ancient microbial activity (stromatolite structures + carbon isotope anomaly \u03b413C<-25\u2030)",
       "verificationCriteria": "NASA/ESA official confirmation or Science/Nature peer-reviewed paper publication",
       "verificationDate": "2028-12-31",
       "originalConfidence": 25,
@@ -2809,25 +2809,25 @@
       "causalChainNodes": [
         {
           "step": "Perseverance collects samples containing organic matter",
-          "stepZh": "Perseverance采集含有机物样本",
+          "stepZh": "Perseverance\u91c7\u96c6\u542b\u6709\u673a\u7269\u6837\u672c",
           "stepEn": "Perseverance collects samples containing organic matter",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Samples contain stromatolite structures + carbon isotope anomalies",
-          "stepZh": "样本含叠层石结构+碳同位素异常",
+          "stepZh": "\u6837\u672c\u542b\u53e0\u5c42\u77f3\u7ed3\u6784+\u78b3\u540c\u4f4d\u7d20\u5f02\u5e38",
           "stepEn": "Samples contain stromatolite structures + carbon isotope anomalies",
           "evidence_strength": "LOW"
         },
         {
           "step": "Exclude abiotic origins",
-          "stepZh": "排除非生物成因",
+          "stepZh": "\u6392\u9664\u975e\u751f\u7269\u6210\u56e0",
           "stepEn": "Exclude abiotic origins",
           "evidence_strength": "LOW"
         },
         {
           "step": "Official confirmation / peer-reviewed publication",
-          "stepZh": "官方确认/同行评审发表",
+          "stepZh": "\u5b98\u65b9\u786e\u8ba4/\u540c\u884c\u8bc4\u5ba1\u53d1\u8868",
           "stepEn": "Official confirmation / peer-reviewed publication",
           "evidence_strength": "LOW"
         }
@@ -2849,11 +2849,11 @@
     {
       "id": "FP-34",
       "title": "Biosignatures detected in an exoplanet atmosphere before 2030",
-      "titleZh": "2030年前发现系外行星大气中的生物标志物",
+      "titleZh": "2030\u5e74\u524d\u53d1\u73b0\u7cfb\u5916\u884c\u661f\u5927\u6c14\u4e2d\u7684\u751f\u7269\u6807\u5fd7\u7269",
       "domain": "space-alien",
       "domainLabel": "Astrobiology",
       "domainColor": "#EC4899",
-      "domainIcon": "👽",
+      "domainIcon": "\ud83d\udc7d",
       "predictionContent": "Before 2030, JWST or other telescopes will detect biosignatures (e.g., oxygen+methane combination, phosphine, etc.) in exoplanet atmospheres, confirmed through peer review",
       "verificationCriteria": "Nature/Science peer-reviewed paper on exoplanet atmospheric biosignature detection, or NASA/ESA official confirmation",
       "verificationDate": "2030-06-30",
@@ -2893,25 +2893,25 @@
       "causalChainNodes": [
         {
           "step": "JWST possesses exoplanet atmosphere analysis capability",
-          "stepZh": "JWST具备系外行星大气分析能力",
+          "stepZh": "JWST\u5177\u5907\u7cfb\u5916\u884c\u661f\u5927\u6c14\u5206\u6790\u80fd\u529b",
           "stepEn": "JWST possesses exoplanet atmosphere analysis capability",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Candidate biosignature signals already detected",
-          "stepZh": "已检测到候选生物标志物信号",
+          "stepZh": "\u5df2\u68c0\u6d4b\u5230\u5019\u9009\u751f\u7269\u6807\u5fd7\u7269\u4fe1\u53f7",
           "stepEn": "Candidate biosignature signals already detected",
           "evidence_strength": "LOW"
         },
         {
           "step": "Exclude abiotic interference",
-          "stepZh": "排除非生物成因干扰",
+          "stepZh": "\u6392\u9664\u975e\u751f\u7269\u6210\u56e0\u5e72\u6270",
           "stepEn": "Exclude abiotic interference",
           "evidence_strength": "LOW"
         },
         {
           "step": "Peer review confirms as biosignature",
-          "stepZh": "同行评审确认为生物标志物",
+          "stepZh": "\u540c\u884c\u8bc4\u5ba1\u786e\u8ba4\u4e3a\u751f\u7269\u6807\u5fd7\u7269",
           "stepEn": "Peer review confirms as biosignature",
           "evidence_strength": "LOW"
         }
@@ -2933,11 +2933,11 @@
     {
       "id": "FP-35",
       "title": "First widely accepted interstellar visitor shows non-solar isotopic ratios",
-      "titleZh": "首个被科学界广泛接受的星际访客中发现非太阳系同位素比例",
+      "titleZh": "\u9996\u4e2a\u88ab\u79d1\u5b66\u754c\u5e7f\u6cdb\u63a5\u53d7\u7684\u661f\u9645\u8bbf\u5ba2\u4e2d\u53d1\u73b0\u975e\u592a\u9633\u7cfb\u540c\u4f4d\u7d20\u6bd4\u4f8b",
       "domain": "space",
       "domainLabel": "Space",
       "domainColor": "#6366F1",
-      "domainIcon": "🚀",
+      "domainIcon": "\ud83d\ude80",
       "predictionContent": "Spectroscopic analysis of an 'Oumuamua-type interstellar visitor will reveal isotopic ratios systematically different from solar system material, widely accepted by the scientific community as 'confirming evidence of non-solar-system origin'",
       "verificationCriteria": "IAU official statement or 3+ independent observation team confirmations",
       "verificationDate": "2029-12-31",
@@ -2977,19 +2977,19 @@
       "causalChainNodes": [
         {
           "step": "'Oumuamua anomalous acceleration not fully explainable",
-          "stepZh": "'Oumuamua异常加速无法完全解释",
+          "stepZh": "'Oumuamua\u5f02\u5e38\u52a0\u901f\u65e0\u6cd5\u5b8c\u5168\u89e3\u91ca",
           "stepEn": "'Oumuamua anomalous acceleration not fully explainable",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "JWST and NEO Surveyor may provide sufficient resolution",
-          "stepZh": "JWST和NEO Surveyor可能提供足够分辨率",
+          "stepZh": "JWST\u548cNEO Surveyor\u53ef\u80fd\u63d0\u4f9b\u8db3\u591f\u5206\u8fa8\u7387",
           "stepEn": "JWST and NEO Surveyor may provide sufficient resolution",
           "evidence_strength": "LOW"
         },
         {
           "step": "1-2 new interstellar visitors expected in 2027-2029",
-          "stepZh": "2027-2029年预计有1-2个新星际访客",
+          "stepZh": "2027-2029\u5e74\u9884\u8ba1\u67091-2\u4e2a\u65b0\u661f\u9645\u8bbf\u5ba2",
           "stepEn": "1-2 new interstellar visitors expected in 2027-2029",
           "evidence_strength": "LOW"
         }
@@ -3011,11 +3011,11 @@
     {
       "id": "FP-36",
       "title": "The US formally declassifies and releases UAP footage of non-human origin",
-      "titleZh": "美国正式解密并公开UAP非人类来源视频",
+      "titleZh": "\u7f8e\u56fd\u6b63\u5f0f\u89e3\u5bc6\u5e76\u516c\u5f00UAP\u975e\u4eba\u7c7b\u6765\u6e90\u89c6\u9891",
       "domain": "space",
       "domainLabel": "Space",
       "domainColor": "#6366F1",
-      "domainIcon": "🚀",
+      "domainIcon": "\ud83d\ude80",
       "predictionContent": "The US government will formally declassify and release at least one military/intelligence-verified UAP video, described as 'unexplainable by known technology but requiring further analysis'",
       "verificationCriteria": "Pentagon CDAO office official declassification release",
       "verificationDate": "2027-06-30",
@@ -3055,19 +3055,19 @@
       "causalChainNodes": [
         {
           "step": "2024 AARO reports no alien evidence",
-          "stepZh": "2024年AARO报告称无外星证据",
+          "stepZh": "2024\u5e74AARO\u62a5\u544a\u79f0\u65e0\u5916\u661f\u8bc1\u636e",
           "stepEn": "2024 AARO reports no alien evidence",
           "evidence_strength": "HIGH"
         },
         {
           "step": "2025 Congress requests partial video declassification",
-          "stepZh": "2025年国会已要求解密部分视频",
+          "stepZh": "2025\u5e74\u56fd\u4f1a\u5df2\u8981\u6c42\u89e3\u5bc6\u90e8\u5206\u89c6\u9891",
           "stepEn": "2025 Congress requests partial video declassification",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Multiple military-captured UAP videos partially released",
-          "stepZh": "多段军方拍摄UAP视频已部分公开",
+          "stepZh": "\u591a\u6bb5\u519b\u65b9\u62cd\u6444UAP\u89c6\u9891\u5df2\u90e8\u5206\u516c\u5f00",
           "stepEn": "Multiple military-captured UAP videos partially released",
           "evidence_strength": "MEDIUM"
         }
@@ -3089,11 +3089,11 @@
     {
       "id": "FP-37",
       "title": "First privately funded interstellar probe launches",
-      "titleZh": "首个私人资助的星际探测器正式发射",
+      "titleZh": "\u9996\u4e2a\u79c1\u4eba\u8d44\u52a9\u7684\u661f\u9645\u63a2\u6d4b\u5668\u6b63\u5f0f\u53d1\u5c04",
       "domain": "space-economy",
       "domainLabel": "Space Economy",
       "domainColor": "#14B8A6",
-      "domainIcon": "🛰️",
+      "domainIcon": "\ud83d\udef0\ufe0f",
       "predictionContent": "A privately funded interstellar probe will be formally launched",
       "verificationCriteria": "Successful rocket launch with confirmed trajectory",
       "verificationDate": "2029-12-31",
@@ -3140,19 +3140,19 @@
       "causalChainNodes": [
         {
           "step": "Breakthrough Starshot initiative advancing",
-          "stepZh": "Breakthrough Starshot计划推进中",
+          "stepZh": "Breakthrough Starshot\u8ba1\u5212\u63a8\u8fdb\u4e2d",
           "stepEn": "Breakthrough Starshot initiative advancing",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Complete critical laser propulsion technology verification in 2025",
-          "stepZh": "2025年完成关键激光推进技术验证",
+          "stepZh": "2025\u5e74\u5b8c\u6210\u5173\u952e\u6fc0\u5149\u63a8\u8fdb\u6280\u672f\u9a8c\u8bc1",
           "stepEn": "Complete critical laser propulsion technology verification in 2025",
           "evidence_strength": "HIGH"
         },
         {
           "step": "But full-scale probe still requires funding and technology breakthroughs",
-          "stepZh": "但全尺寸探测器仍需资金和技术突破",
+          "stepZh": "\u4f46\u5168\u5c3a\u5bf8\u63a2\u6d4b\u5668\u4ecd\u9700\u8d44\u91d1\u548c\u6280\u672f\u7a81\u7834",
           "stepEn": "But full-scale probe still requires funding and technology breakthroughs",
           "evidence_strength": "LOW"
         }
@@ -3174,11 +3174,11 @@
     {
       "id": "FP-38",
       "title": "Large-scale exploitable water-ice deposits confirmed at the lunar south pole",
-      "titleZh": "月球南极确认存在大规模可开采水冰沉积",
+      "titleZh": "\u6708\u7403\u5357\u6781\u786e\u8ba4\u5b58\u5728\u5927\u89c4\u6a21\u53ef\u5f00\u91c7\u6c34\u51b0\u6c89\u79ef",
       "domain": "space",
       "domainLabel": "Space",
       "domainColor": "#6366F1",
-      "domainIcon": "🚀",
+      "domainIcon": "\ud83d\ude80",
       "predictionContent": "NASA CLPS payload or LCROSS follow-up mission will confirm large-scale (>1% mass ratio) water ice deposits in permanently shadowed regions of the lunar south pole, with distribution supporting future resource utilization",
       "verificationCriteria": "NASA/ESA official confirmation + peer-reviewed paper",
       "verificationDate": "2028-12-31",
@@ -3218,19 +3218,19 @@
       "causalChainNodes": [
         {
           "step": "Remote sensing data identifies water ice signals",
-          "stepZh": "遥感数据已识别水冰信号",
+          "stepZh": "\u9065\u611f\u6570\u636e\u5df2\u8bc6\u522b\u6c34\u51b0\u4fe1\u53f7",
           "stepEn": "Remote sensing data identifies water ice signals",
           "evidence_strength": "HIGH"
         },
         {
           "step": "CLPS lander will conduct in-situ measurements",
-          "stepZh": "CLPS着陆器将进行原位测量",
+          "stepZh": "CLPS\u7740\u9646\u5668\u5c06\u8fdb\u884c\u539f\u4f4d\u6d4b\u91cf",
           "stepEn": "CLPS lander will conduct in-situ measurements",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Confirm >1% mass ratio large-scale deposits",
-          "stepZh": "确认>1%质量比大规模沉积",
+          "stepZh": "\u786e\u8ba4>1%\u8d28\u91cf\u6bd4\u5927\u89c4\u6a21\u6c89\u79ef",
           "stepEn": "Confirm >1% mass ratio large-scale deposits",
           "evidence_strength": "MEDIUM"
         }
@@ -3252,12 +3252,12 @@
     {
       "id": "FP-39",
       "title": "First AI-designed synthetic enzyme achieves industrial-scale PFAS degradation",
-      "titleZh": "首个AI设计合成酶实现工业级PFAS降解",
+      "titleZh": "\u9996\u4e2aAI\u8bbe\u8ba1\u5408\u6210\u9176\u5b9e\u73b0\u5de5\u4e1a\u7ea7PFAS\u964d\u89e3",
       "domain": "biotech",
       "domainLabel": "Biotech",
       "domainColor": "#EF4444",
-      "domainIcon": "🧬",
-      "predictionContent": "By end of 2028, at least one company will demonstrate that an AI-designed synthetic enzyme can effectively degrade at least one PFAS compound (PFOA/PFOS) under industrial conditions (>50°C, pH 6-8) with degradation rate >90%",
+      "domainIcon": "\ud83e\uddec",
+      "predictionContent": "By end of 2028, at least one company will demonstrate that an AI-designed synthetic enzyme can effectively degrade at least one PFAS compound (PFOA/PFOS) under industrial conditions (>50\u00b0C, pH 6-8) with degradation rate >90%",
       "verificationCriteria": "Peer-reviewed paper or company official release with third-party verified data",
       "verificationDate": "2028-12-31",
       "originalConfidence": 60,
@@ -3289,19 +3289,19 @@
       "causalChainNodes": [
         {
           "step": "Natural PFAS-degrading enzymes discovered",
-          "stepZh": "天然PFAS降解酶已发现",
+          "stepZh": "\u5929\u7136PFAS\u964d\u89e3\u9176\u5df2\u53d1\u73b0",
           "stepEn": "Natural PFAS-degrading enzymes discovered",
           "evidence_strength": "HIGH"
         },
         {
           "step": "AI protein design tools can accelerate optimization",
-          "stepZh": "AI蛋白质设计工具可加速优化",
+          "stepZh": "AI\u86cb\u767d\u8d28\u8bbe\u8ba1\u5de5\u5177\u53ef\u52a0\u901f\u4f18\u5316",
           "stepEn": "AI protein design tools can accelerate optimization",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Stability under industrial conditions is primary challenge",
-          "stepZh": "工业条件下稳定性是主要挑战",
+          "stepZh": "\u5de5\u4e1a\u6761\u4ef6\u4e0b\u7a33\u5b9a\u6027\u662f\u4e3b\u8981\u6311\u6218",
           "stepEn": "Stability under industrial conditions is primary challenge",
           "evidence_strength": "LOW"
         }
@@ -3323,11 +3323,11 @@
     {
       "id": "FP-40",
       "title": "First anti-aging drug receives FDA approval by 2030",
-      "titleZh": "2030年首个抗衰老药物获FDA批准",
+      "titleZh": "2030\u5e74\u9996\u4e2a\u6297\u8870\u8001\u836f\u7269\u83b7FDA\u6279\u51c6",
       "domain": "biotech",
       "domainLabel": "Biotech",
       "domainColor": "#EF4444",
-      "domainIcon": "🧬",
+      "domainIcon": "\ud83e\uddec",
       "predictionContent": "By 2030, the FDA will approve at least one drug with 'delaying/reversing aging' or 'extending healthspan' as an indication (e.g., metformin, rapamycin analog, or senolytic-class drug)",
       "verificationCriteria": "FDA formal approval letter, indication including aging-related markers (frailty index, biological age, etc.)",
       "verificationDate": "2030-12-31",
@@ -3381,25 +3381,25 @@
       "causalChainNodes": [
         {
           "step": "Anti-aging basic research breakthroughs (senolytics/mTOR inhibition, etc.)",
-          "stepZh": "抗衰老基础研究取得突破（senolytics/mTOR抑制等）",
+          "stepZh": "\u6297\u8870\u8001\u57fa\u7840\u7814\u7a76\u53d6\u5f97\u7a81\u7834\uff08senolytics/mTOR\u6291\u5236\u7b49\uff09",
           "stepEn": "Anti-aging basic research breakthroughs (senolytics/mTOR inhibition, etc.)",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Candidate drugs pass Phase 2/3 clinical trials",
-          "stepZh": "候选药物通过Phase 2/3临床试验",
+          "stepZh": "\u5019\u9009\u836f\u7269\u901a\u8fc7Phase 2/3\u4e34\u5e8a\u8bd5\u9a8c",
           "stepEn": "Candidate drugs pass Phase 2/3 clinical trials",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "FDA establishes approval pathway for anti-aging drugs",
-          "stepZh": "FDA建立抗衰老药物的审批路径",
+          "stepZh": "FDA\u5efa\u7acb\u6297\u8870\u8001\u836f\u7269\u7684\u5ba1\u6279\u8def\u5f84",
           "stepEn": "FDA establishes approval pathway for anti-aging drugs",
           "evidence_strength": "LOW"
         },
         {
           "step": "Drug receives FDA formal approval",
-          "stepZh": "药物获得FDA正式批准",
+          "stepZh": "\u836f\u7269\u83b7\u5f97FDA\u6b63\u5f0f\u6279\u51c6",
           "stepEn": "Drug receives FDA formal approval",
           "evidence_strength": "LOW"
         }
@@ -3421,11 +3421,11 @@
     {
       "id": "FP-41",
       "title": "First AI-driven anti-aging therapy reverses at least 3 hallmarks of aging in human trials",
-      "titleZh": "首个基于AI的抗衰老疗法在人体试验中显示至少3个衰老标志物逆转",
+      "titleZh": "\u9996\u4e2a\u57fa\u4e8eAI\u7684\u6297\u8870\u8001\u7597\u6cd5\u5728\u4eba\u4f53\u8bd5\u9a8c\u4e2d\u663e\u793a\u81f3\u5c113\u4e2a\u8870\u8001\u6807\u5fd7\u7269\u9006\u8f6c",
       "domain": "biotech",
       "domainLabel": "Biotech",
       "domainColor": "#EF4444",
-      "domainIcon": "🧬",
+      "domainIcon": "\ud83e\uddec",
       "predictionContent": "AI-designed anti-aging therapy will produce significant reversal of at least 3 aging biomarkers in human clinical trials",
       "verificationCriteria": "FDA-approved Phase 2/3 trial data published",
       "verificationDate": "2028-12-31",
@@ -3465,19 +3465,19 @@
       "causalChainNodes": [
         {
           "step": "Phase 1 trials show 1-2 biomarker reversals",
-          "stepZh": "Phase 1试验显示1-2个标志物逆转",
+          "stepZh": "Phase 1\u8bd5\u9a8c\u663e\u793a1-2\u4e2a\u6807\u5fd7\u7269\u9006\u8f6c",
           "stepEn": "Phase 1 trials show 1-2 biomarker reversals",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "AI drug design tools can accelerate target discovery",
-          "stepZh": "AI药物设计工具可加速靶点发现",
+          "stepZh": "AI\u836f\u7269\u8bbe\u8ba1\u5de5\u5177\u53ef\u52a0\u901f\u9776\u70b9\u53d1\u73b0",
           "stepEn": "AI drug design tools can accelerate target discovery",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "But simultaneous multi-biomarker reversal requires larger sample validation",
-          "stepZh": "但多标志物同时逆转仍需更大样本验证",
+          "stepZh": "\u4f46\u591a\u6807\u5fd7\u7269\u540c\u65f6\u9006\u8f6c\u4ecd\u9700\u66f4\u5927\u6837\u672c\u9a8c\u8bc1",
           "stepEn": "But simultaneous multi-biomarker reversal requires larger sample validation",
           "evidence_strength": "LOW"
         }
@@ -3499,11 +3499,11 @@
     {
       "id": "FP-42",
       "title": "Quantum computer reaches 1 million logical qubits by 2030",
-      "titleZh": "2030年量子计算机实现百万逻辑量子比特",
+      "titleZh": "2030\u5e74\u91cf\u5b50\u8ba1\u7b97\u673a\u5b9e\u73b0\u767e\u4e07\u903b\u8f91\u91cf\u5b50\u6bd4\u7279",
       "domain": "quantum",
       "domainLabel": "Quantum",
       "domainColor": "#A78BFA",
-      "domainIcon": "⚛️",
+      "domainIcon": "\u269b\ufe0f",
       "predictionContent": "By 2030, quantum computers will achieve at least 1 million logical qubits (error-corrected, usable qubits), requiring over 1 billion physical qubits",
       "verificationCriteria": "IBM/Google/IonQ etc. official logical qubit count + third-party verification (Nature/Science papers)",
       "verificationDate": "2030-12-31",
@@ -3543,25 +3543,25 @@
       "causalChainNodes": [
         {
           "step": "Physical qubit count grows exponentially",
-          "stepZh": "物理量子比特数量指数增长",
+          "stepZh": "\u7269\u7406\u91cf\u5b50\u6bd4\u7279\u6570\u91cf\u6307\u6570\u589e\u957f",
           "stepEn": "Physical qubit count grows exponentially",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Error correction code efficiency continues improving",
-          "stepZh": "纠错码效率持续提升",
+          "stepZh": "\u7ea0\u9519\u7801\u6548\u7387\u6301\u7eed\u63d0\u5347",
           "stepEn": "Error correction code efficiency continues improving",
           "evidence_strength": "LOW"
         },
         {
           "step": "From 1K to 1B physical qubits (10^6x)",
-          "stepZh": "从1K物理→1B物理量子比特(10^6倍)",
+          "stepZh": "\u4ece1K\u7269\u7406\u21921B\u7269\u7406\u91cf\u5b50\u6bd4\u7279(10^6\u500d)",
           "stepEn": "From 1K to 1B physical qubits (10^6x)",
           "evidence_strength": "LOW"
         },
         {
           "step": "Maintaining quantum coherence at ultra-large scale",
-          "stepZh": "维持量子相干性在超大规模系统",
+          "stepZh": "\u7ef4\u6301\u91cf\u5b50\u76f8\u5e72\u6027\u5728\u8d85\u5927\u89c4\u6a21\u7cfb\u7edf",
           "stepEn": "Maintaining quantum coherence at ultra-large scale",
           "evidence_strength": "LOW"
         }
@@ -3576,18 +3576,18 @@
         "reachedThreshold": false,
         "thresholdValue": 1000000,
         "currentValue": 50,
-        "notes": "IBM Heron processor: 1000+ physical qubits (2024). Logical qubits remain experimental (~50). Error correction progressing but million logical qubits require 1B+ physical qubits—vast gap remains"
+        "notes": "IBM Heron processor: 1000+ physical qubits (2024). Logical qubits remain experimental (~50). Error correction progressing but million logical qubits require 1B+ physical qubits\u2014vast gap remains"
       },
       "timeWindowYears": 4.2
     },
     {
       "id": "FP-43",
       "title": "Quantum computer achieves 1 million logical qubits milestone",
-      "titleZh": "量子计算机达到100万个逻辑量子比特",
+      "titleZh": "\u91cf\u5b50\u8ba1\u7b97\u673a\u8fbe\u5230100\u4e07\u4e2a\u903b\u8f91\u91cf\u5b50\u6bd4\u7279",
       "domain": "quantum",
       "domainLabel": "Quantum",
       "domainColor": "#A78BFA",
-      "domainIcon": "⚛️",
+      "domainIcon": "\u269b\ufe0f",
       "predictionContent": "Quantum computers will achieve 1 million logical qubits",
       "verificationCriteria": "Independently verified logical qubit count reaches 1 million",
       "verificationDate": "2030-12-31",
@@ -3627,19 +3627,19 @@
       "causalChainNodes": [
         {
           "step": "Reach ~50 logical qubits by 2025",
-          "stepZh": "2025年达到约50个逻辑量子比特",
+          "stepZh": "2025\u5e74\u8fbe\u5230\u7ea650\u4e2a\u903b\u8f91\u91cf\u5b50\u6bd4\u7279",
           "stepEn": "Reach ~50 logical qubits by 2025",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Significant advances in error correction",
-          "stepZh": "误差校正技术进步显著",
+          "stepZh": "\u8bef\u5dee\u6821\u6b63\u6280\u672f\u8fdb\u6b65\u663e\u8457",
           "stepEn": "Significant advances in error correction",
           "evidence_strength": "HIGH"
         },
         {
           "step": "But from 50 to 1M requires 4 orders of magnitude improvement",
-          "stepZh": "但从50到100万需提升4个数量级",
+          "stepZh": "\u4f46\u4ece50\u5230100\u4e07\u9700\u63d0\u53474\u4e2a\u6570\u91cf\u7ea7",
           "stepEn": "But from 50 to 1M requires 4 orders of magnitude improvement",
           "evidence_strength": "LOW"
         }
@@ -3660,12 +3660,12 @@
     },
     {
       "id": "FP-44",
-      "title": "Quantum computing achieves 100× speedup over classical computers in drug discovery",
-      "titleZh": "量子计算在药物发现中实现超过经典计算机100倍加速",
+      "title": "Quantum computing achieves 100\u00d7 speedup over classical computers in drug discovery",
+      "titleZh": "\u91cf\u5b50\u8ba1\u7b97\u5728\u836f\u7269\u53d1\u73b0\u4e2d\u5b9e\u73b0\u8d85\u8fc7\u7ecf\u5178\u8ba1\u7b97\u673a100\u500d\u52a0\u901f",
       "domain": "quantum",
       "domainLabel": "Quantum",
       "domainColor": "#A78BFA",
-      "domainIcon": "⚛️",
+      "domainIcon": "\u269b\ufe0f",
       "predictionContent": "Quantum computing will achieve over 100x speedup versus classical computers in drug molecule simulation",
       "verificationCriteria": "Peer-reviewed paper published with reproducible results",
       "verificationDate": "2029-12-31",
@@ -3705,19 +3705,19 @@
       "causalChainNodes": [
         {
           "step": "Quantum-classical hybrid algorithms achieve ~5x speedup by 2025",
-          "stepZh": "2025年量子-经典混合算法实现约5倍加速",
+          "stepZh": "2025\u5e74\u91cf\u5b50-\u7ecf\u5178\u6df7\u5408\u7b97\u6cd5\u5b9e\u73b0\u7ea65\u500d\u52a0\u901f",
           "stepEn": "Quantum-classical hybrid algorithms achieve ~5x speedup by 2025",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "100x speedup requires larger-scale quantum computers",
-          "stepZh": "100倍加速需更大规模量子计算机",
+          "stepZh": "100\u500d\u52a0\u901f\u9700\u66f4\u5927\u89c4\u6a21\u91cf\u5b50\u8ba1\u7b97\u673a",
           "stepEn": "100x speedup requires larger-scale quantum computers",
           "evidence_strength": "LOW"
         },
         {
           "step": "And improved algorithms",
-          "stepZh": "和更好的算法",
+          "stepZh": "\u548c\u66f4\u597d\u7684\u7b97\u6cd5",
           "stepEn": "And improved algorithms",
           "evidence_strength": "LOW"
         }
@@ -3738,13 +3738,13 @@
     },
     {
       "id": "FP-45",
-      "title": "Global mean temperature rise exceeds 1.5°C for the first time in 2027",
-      "titleZh": "2027年全球年均温升首次突破1.5°C",
+      "title": "Global mean temperature rise exceeds 1.5\u00b0C for the first time in 2027",
+      "titleZh": "2027\u5e74\u5168\u7403\u5e74\u5747\u6e29\u5347\u9996\u6b21\u7a81\u78341.5\u00b0C",
       "domain": "climate",
       "domainLabel": "Climate",
       "domainColor": "#06B6D4",
-      "domainIcon": "🌡️",
-      "predictionContent": "Global mean surface temperature in 2027 will exceed 1.5°C above pre-industrial levels (1850-1900 baseline), marking the first complete calendar year above the 1.5°C threshold",
+      "domainIcon": "\ud83c\udf21\ufe0f",
+      "predictionContent": "Global mean surface temperature in 2027 will exceed 1.5\u00b0C above pre-industrial levels (1850-1900 baseline), marking the first complete calendar year above the 1.5\u00b0C threshold",
       "verificationCriteria": "WMO/NASA/NOAA/Met Office Hadley Centre annual confirmation (multi-institution average as authoritative)",
       "verificationDate": "2028-01-31",
       "originalConfidence": 70,
@@ -3797,20 +3797,20 @@
       "causalChainNodes": [
         {
           "step": "Greenhouse gas concentrations continue rising",
-          "stepZh": "温室气体浓度持续上升",
+          "stepZh": "\u6e29\u5ba4\u6c14\u4f53\u6d53\u5ea6\u6301\u7eed\u4e0a\u5347",
           "stepEn": "Greenhouse gas concentrations continue rising",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Annual mean temperature continues reaching record highs",
-          "stepZh": "年均温度持续创新高",
+          "stepZh": "\u5e74\u5747\u6e29\u5ea6\u6301\u7eed\u521b\u65b0\u9ad8",
           "stepEn": "Annual mean temperature continues reaching record highs",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "Gap to 1.5°C threshold continues narrowing",
-          "stepZh": "距1.5°C阈值差距持续缩小",
-          "stepEn": "Gap to 1.5°C threshold continues narrowing",
+          "step": "Gap to 1.5\u00b0C threshold continues narrowing",
+          "stepZh": "\u8ddd1.5\u00b0C\u9608\u503c\u5dee\u8ddd\u6301\u7eed\u7f29\u5c0f",
+          "stepEn": "Gap to 1.5\u00b0C threshold continues narrowing",
           "evidence_strength": "HIGH"
         }
       ],
@@ -3824,18 +3824,18 @@
         "reachedThreshold": false,
         "thresholdValue": 1.5,
         "currentValue": 1.45,
-        "notes": "Already reached 1.45°C in 2023 (only 3.3% from threshold), 2024 expected to set new records. Long-term trend converging toward threshold; even La Niña years only temporarily slow progress"
+        "notes": "Already reached 1.45\u00b0C in 2023 (only 3.3% from threshold), 2024 expected to set new records. Long-term trend converging toward threshold; even La Ni\u00f1a years only temporarily slow progress"
       },
       "timeWindowYears": 1.3
     },
     {
       "id": "FP-46",
       "title": "Global coral reefs undergo the first Category-5 mass bleaching event",
-      "titleZh": "全球珊瑚礁经历首次大规模五级白化事件",
+      "titleZh": "\u5168\u7403\u73ca\u745a\u7901\u7ecf\u5386\u9996\u6b21\u5927\u89c4\u6a21\u4e94\u7ea7\u767d\u5316\u4e8b\u4ef6",
       "domain": "climate",
       "domainLabel": "Climate",
       "domainColor": "#06B6D4",
-      "domainIcon": "🌡️",
+      "domainIcon": "\ud83c\udf21\ufe0f",
       "predictionContent": "Global coral reefs will experience the first scientifically confirmed Grade 5 mass bleaching event (>80% of global coral reefs affected)",
       "verificationCriteria": "NOAA/ICSU joint statement confirms Level 5 bleaching",
       "verificationDate": "2028-12-31",
@@ -3875,19 +3875,19 @@
       "causalChainNodes": [
         {
           "step": "Fourth global bleaching event in 2023-2024 (~54% affected)",
-          "stepZh": "2023-2024年发生第四次全球白化事件（影响约54%）",
+          "stepZh": "2023-2024\u5e74\u53d1\u751f\u7b2c\u56db\u6b21\u5168\u7403\u767d\u5316\u4e8b\u4ef6\uff08\u5f71\u54cd\u7ea654%\uff09",
           "stepEn": "Fourth global bleaching event in 2023-2024 (~54% affected)",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Ocean temperatures remain persistently elevated in 2025",
-          "stepZh": "2025年海温持续偏高",
+          "stepZh": "2025\u5e74\u6d77\u6e29\u6301\u7eed\u504f\u9ad8",
           "stepEn": "Ocean temperatures remain persistently elevated in 2025",
           "evidence_strength": "HIGH"
         },
         {
           "step": "But Grade 5 requires >80% affected",
-          "stepZh": "但五级需>80%受影响",
+          "stepZh": "\u4f46\u4e94\u7ea7\u9700>80%\u53d7\u5f71\u54cd",
           "stepEn": "But Grade 5 requires >80% affected",
           "evidence_strength": "MEDIUM"
         }
@@ -3909,12 +3909,12 @@
     {
       "id": "FP-47",
       "title": "Ice-free Arctic summers by 2030",
-      "titleZh": "2030年北极夏季无冰",
+      "titleZh": "2030\u5e74\u5317\u6781\u590f\u5b63\u65e0\u51b0",
       "domain": "climate",
       "domainLabel": "Climate",
       "domainColor": "#06B6D4",
-      "domainIcon": "🌡️",
-      "predictionContent": "September 2030 Arctic sea ice minimum extent will fall below 1 million km² ('ice-free' standard), meaning >95% of summer sea ice has disappeared",
+      "domainIcon": "\ud83c\udf21\ufe0f",
+      "predictionContent": "September 2030 Arctic sea ice minimum extent will fall below 1 million km\u00b2 ('ice-free' standard), meaning >95% of summer sea ice has disappeared",
       "verificationCriteria": "NSIDC Sea Ice Index or NASA Arctic Sea Ice Minimum September 2030 data confirmation",
       "verificationDate": "2030-10-31",
       "originalConfidence": 50,
@@ -3960,20 +3960,20 @@
       "causalChainNodes": [
         {
           "step": "Global warming continues driving Arctic sea ice loss",
-          "stepZh": "全球变暖持续驱动北极海冰减少",
+          "stepZh": "\u5168\u7403\u53d8\u6696\u6301\u7eed\u9a71\u52a8\u5317\u6781\u6d77\u51b0\u51cf\u5c11",
           "stepEn": "Global warming continues driving Arctic sea ice loss",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Annual sea ice area decline rate sustained or accelerated",
-          "stepZh": "海冰面积年下降速率维持或加速",
+          "stepZh": "\u6d77\u51b0\u9762\u79ef\u5e74\u4e0b\u964d\u901f\u7387\u7ef4\u6301\u6216\u52a0\u901f",
           "stepEn": "Annual sea ice area decline rate sustained or accelerated",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "Decline below 1M km² before 2030",
-          "stepZh": "2030年前降至100万km²以下",
-          "stepEn": "Decline below 1M km² before 2030",
+          "step": "Decline below 1M km\u00b2 before 2030",
+          "stepZh": "2030\u5e74\u524d\u964d\u81f3100\u4e07km\u00b2\u4ee5\u4e0b",
+          "stepEn": "Decline below 1M km\u00b2 before 2030",
           "evidence_strength": "LOW"
         }
       ],
@@ -3987,18 +3987,18 @@
         "reachedThreshold": false,
         "thresholdValue": 1.0,
         "currentValue": 4.2,
-        "notes": "Arctic minimum sea ice ~4.3M km² in 2024, declining ~50K km²/year. At current rate, only ~200K km² reduction by 2030—far insufficient for <1M km² target"
+        "notes": "Arctic minimum sea ice ~4.3M km\u00b2 in 2024, declining ~50K km\u00b2/year. At current rate, only ~200K km\u00b2 reduction by 2030\u2014far insufficient for <1M km\u00b2 target"
       },
       "timeWindowYears": 4.0
     },
     {
       "id": "FP-48",
       "title": "First in-orbit refueling of 100+ kg of propellant",
-      "titleZh": "首次在轨完成超过100kg推进剂加注",
+      "titleZh": "\u9996\u6b21\u5728\u8f68\u5b8c\u6210\u8d85\u8fc7100kg\u63a8\u8fdb\u5242\u52a0\u6ce8",
       "domain": "space-economy",
       "domainLabel": "Space Economy",
       "domainColor": "#14B8A6",
-      "domainIcon": "🛰️",
+      "domainIcon": "\ud83d\udef0\ufe0f",
       "predictionContent": "A single on-orbit refueling operation exceeding 100kg of cryogenic propellant will be completed",
       "verificationCriteria": "Mission complete with verified propellant transfer >100kg",
       "verificationDate": "2028-06-30",
@@ -4038,19 +4038,19 @@
       "causalChainNodes": [
         {
           "step": "MEV-3 completes ~25kg propellant transfer in 2025",
-          "stepZh": "2025年MEV-3完成约25kg推进剂转移",
+          "stepZh": "2025\u5e74MEV-3\u5b8c\u6210\u7ea625kg\u63a8\u8fdb\u5242\u8f6c\u79fb",
           "stepEn": "MEV-3 completes ~25kg propellant transfer in 2025",
           "evidence_strength": "HIGH"
         },
         {
           "step": "NASA OSAM program advancing",
-          "stepZh": "NASA OSAM项目推进中",
+          "stepZh": "NASA OSAM\u9879\u76ee\u63a8\u8fdb\u4e2d",
           "stepEn": "NASA OSAM program advancing",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "But 100kg refueling requires new infrastructure",
-          "stepZh": "但100kg加注需新基础设施",
+          "stepZh": "\u4f46100kg\u52a0\u6ce8\u9700\u65b0\u57fa\u7840\u8bbe\u65bd",
           "stepEn": "But 100kg refueling requires new infrastructure",
           "evidence_strength": "MEDIUM"
         }
@@ -4072,11 +4072,11 @@
     {
       "id": "FP-49",
       "title": "Global space-tourism market surpasses $1 billion",
-      "titleZh": "全球太空旅游市场规模超过10亿美元",
+      "titleZh": "\u5168\u7403\u592a\u7a7a\u65c5\u6e38\u5e02\u573a\u89c4\u6a21\u8d85\u8fc710\u4ebf\u7f8e\u5143",
       "domain": "space-economy",
       "domainLabel": "Space Economy",
       "domainColor": "#14B8A6",
-      "domainIcon": "🛰️",
+      "domainIcon": "\ud83d\udef0\ufe0f",
       "predictionContent": "Global space tourism market annual revenue will exceed $1 billion",
       "verificationCriteria": "SpaceReport or Tauri Group annual report confirmation",
       "verificationDate": "2028-12-31",
@@ -4116,19 +4116,19 @@
       "causalChainNodes": [
         {
           "step": "2025 market size approximately $180M",
-          "stepZh": "2025年市场规模约1.8亿美元",
+          "stepZh": "2025\u5e74\u5e02\u573a\u89c4\u6a21\u7ea61.8\u4ebf\u7f8e\u5143",
           "stepEn": "2025 market size approximately $180M",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Virgin Galactic and Blue Origin resume suborbital flights",
-          "stepZh": "Virgin Galactic和Blue Origin恢复亚轨道飞行",
+          "stepZh": "Virgin Galactic\u548cBlue Origin\u6062\u590d\u4e9a\u8f68\u9053\u98de\u884c",
           "stepEn": "Virgin Galactic and Blue Origin resume suborbital flights",
           "evidence_strength": "HIGH"
         },
         {
           "step": "But $1B requires higher frequency and more participants",
-          "stepZh": "但10亿美元需更高频次和更多参与者",
+          "stepZh": "\u4f4610\u4ebf\u7f8e\u5143\u9700\u66f4\u9ad8\u9891\u6b21\u548c\u66f4\u591a\u53c2\u4e0e\u8005",
           "stepEn": "But $1B requires higher frequency and more participants",
           "evidence_strength": "MEDIUM"
         }
@@ -4150,11 +4150,11 @@
     {
       "id": "FP-50",
       "title": "China completes a research base at the lunar south pole",
-      "titleZh": "中国建成月球南极科研基地",
+      "titleZh": "\u4e2d\u56fd\u5efa\u6210\u6708\u7403\u5357\u6781\u79d1\u7814\u57fa\u5730",
       "domain": "space",
       "domainLabel": "Space",
       "domainColor": "#6366F1",
-      "domainIcon": "🚀",
+      "domainIcon": "\ud83d\ude80",
       "predictionContent": "China will establish a permanent research base at the lunar south pole with long-duration habitation capability",
       "verificationCriteria": "National space agency officially announces completion and operational status",
       "verificationDate": "2030-12-31",
@@ -4194,25 +4194,25 @@
       "causalChainNodes": [
         {
           "step": "Chang'e-6 completes lunar far-side sample return in 2024",
-          "stepZh": "2024年嫦娥六号完成月球背面采样",
+          "stepZh": "2024\u5e74\u5ae6\u5a25\u516d\u53f7\u5b8c\u6210\u6708\u7403\u80cc\u9762\u91c7\u6837",
           "stepEn": "Chang'e-6 completes lunar far-side sample return in 2024",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Chang'e-7 mission planned for 2025",
-          "stepZh": "2025年嫦娥七号任务规划中",
+          "stepZh": "2025\u5e74\u5ae6\u5a25\u4e03\u53f7\u4efb\u52a1\u89c4\u5212\u4e2d",
           "stepEn": "Chang'e-7 mission planned for 2025",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "ILRS international lunar research station plan advancing",
-          "stepZh": "ILRS国际月球科研站计划推进",
+          "stepZh": "ILRS\u56fd\u9645\u6708\u7403\u79d1\u7814\u7ad9\u8ba1\u5212\u63a8\u8fdb",
           "stepEn": "ILRS international lunar research station plan advancing",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "But south pole base requires multiple launches and long-term investment",
-          "stepZh": "但南极基地需多次发射和长期投入",
+          "stepZh": "\u4f46\u5357\u6781\u57fa\u5730\u9700\u591a\u6b21\u53d1\u5c04\u548c\u957f\u671f\u6295\u5165",
           "stepEn": "But south pole base requires multiple launches and long-term investment",
           "evidence_strength": "MEDIUM"
         }
@@ -4234,13 +4234,13 @@
     {
       "id": "FP-51",
       "title": "AI inference cost falls to 1/100 of 2024 levels",
-      "titleZh": "AI推理成本降至2024年的1/100",
+      "titleZh": "AI\u63a8\u7406\u6210\u672c\u964d\u81f32024\u5e74\u76841/100",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By end of 2027, mainstream large language model inference cost per million tokens will fall below 1/100 of early 2024 levels (benchmarked against GPT-4 class model capabilities)",
-      "verificationCriteria": "OpenAI/Anthropic/Google etc. GPT-4 class model API price ≤$0.30/million input tokens",
+      "verificationCriteria": "OpenAI/Anthropic/Google etc. GPT-4 class model API price \u2264$0.30/million input tokens",
       "verificationDate": "2027-12-31",
       "originalConfidence": 78,
       "engineScore": 95.1,
@@ -4285,25 +4285,25 @@
       "causalChainNodes": [
         {
           "step": "2024 GPT-4 inference $30/M tokens",
-          "stepZh": "2024年GPT-4推理$30/M token",
+          "stepZh": "2024\u5e74GPT-4\u63a8\u7406$30/M token",
           "stepEn": "2024 GPT-4 inference $30/M tokens",
           "evidence_strength": "HIGH"
         },
         {
           "step": "2025 GPT-4o-mini drops to $0.15/M",
-          "stepZh": "2025年GPT-4o-mini降至$0.15/M",
+          "stepZh": "2025\u5e74GPT-4o-mini\u964d\u81f3$0.15/M",
           "stepEn": "2025 GPT-4o-mini drops to $0.15/M",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Blackwell GPU + model distillation continues reducing costs",
-          "stepZh": "Blackwell GPU+模型蒸馏持续降本",
+          "stepZh": "Blackwell GPU+\u6a21\u578b\u84b8\u998f\u6301\u7eed\u964d\u672c",
           "stepEn": "Blackwell GPU + model distillation continues reducing costs",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "AI-C4"
+        "CC-AI-004"
       ],
       "leadingSignal": {
         "indicator": "GPT-4 class model API price",
@@ -4314,18 +4314,18 @@
         "reachedThreshold": true,
         "thresholdValue": 0.3,
         "currentValue": 0.15,
-        "notes": "GPT-4o-mini reached $0.15/M tokens, far below $0.30 threshold—target achieved ahead of schedule"
+        "notes": "GPT-4o-mini reached $0.15/M tokens, far below $0.30 threshold\u2014target achieved ahead of schedule"
       },
       "timeWindowYears": 1.2
     },
     {
       "id": "FP-52",
       "title": "India's population officially surpasses China's",
-      "titleZh": "印度人口正式超过中国",
+      "titleZh": "\u5370\u5ea6\u4eba\u53e3\u6b63\u5f0f\u8d85\u8fc7\u4e2d\u56fd",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "The UN will formally confirm India's population exceeding China's by mid-2027, with the gap surpassing 5 million",
       "verificationCriteria": "UN World Population Prospects 2027 revision or World Bank data confirms India > China",
       "verificationDate": "2027-06-30",
@@ -4365,25 +4365,25 @@
       "causalChainNodes": [
         {
           "step": "India annual growth ~8M vs China annual decline ~2M",
-          "stepZh": "印度年增长~800万vs中国年减少~200万",
+          "stepZh": "\u5370\u5ea6\u5e74\u589e\u957f~800\u4e07vs\u4e2d\u56fd\u5e74\u51cf\u5c11~200\u4e07",
           "stepEn": "India annual growth ~8M vs China annual decline ~2M",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Gap widens at ~10M per year",
-          "stepZh": "差距以每年~1000万速度拉开",
+          "stepZh": "\u5dee\u8ddd\u4ee5\u6bcf\u5e74~1000\u4e07\u901f\u5ea6\u62c9\u5f00",
           "stepEn": "Gap widens at ~10M per year",
           "evidence_strength": "HIGH"
         },
         {
           "step": "2027 gap will far exceed statistical margin of error",
-          "stepZh": "2027年差距将远超统计误差",
+          "stepZh": "2027\u5e74\u5dee\u8ddd\u5c06\u8fdc\u8d85\u7edf\u8ba1\u8bef\u5dee",
           "stepEn": "2027 gap will far exceed statistical margin of error",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "DE-C3"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "India-China population difference",
@@ -4401,13 +4401,13 @@
     {
       "id": "FP-53",
       "title": "Global battery storage deployment exceeds 500 GW",
-      "titleZh": "全球电池储能装机超500GW",
+      "titleZh": "\u5168\u7403\u7535\u6c60\u50a8\u80fd\u88c5\u673a\u8d85500GW",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By end of 2028, global annual new electrochemical energy storage installations will exceed 500GW",
-      "verificationCriteria": "BloombergNEF/IEA/Wood Mackenzie annual energy storage report confirms annual additions ≥500GW",
+      "verificationCriteria": "BloombergNEF/IEA/Wood Mackenzie annual energy storage report confirms annual additions \u2265500GW",
       "verificationDate": "2028-12-31",
       "originalConfidence": 72,
       "engineScore": 66.4,
@@ -4444,26 +4444,26 @@
       ],
       "causalChainNodes": [
         {
-          "step": "2024 ~75GW → 2025 ~120GW (+60% YoY)",
-          "stepZh": "2024年~75GW→2025年~120GW(+60% YoY)",
-          "stepEn": "2024 ~75GW → 2025 ~120GW (+60% YoY)",
+          "step": "2024 ~75GW \u2192 2025 ~120GW (+60% YoY)",
+          "stepZh": "2024\u5e74~75GW\u21922025\u5e74~120GW(+60% YoY)",
+          "stepEn": "2024 ~75GW \u2192 2025 ~120GW (+60% YoY)",
           "evidence_strength": "HIGH"
         },
         {
           "step": "China energy storage tender volume surges",
-          "stepZh": "中国储能招标量爆发",
+          "stepZh": "\u4e2d\u56fd\u50a8\u80fd\u62db\u6807\u91cf\u7206\u53d1",
           "stepEn": "China energy storage tender volume surges",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Lithium battery costs decline to $80/kWh",
-          "stepZh": "锂电池成本降至$80/kWh",
+          "stepZh": "\u9502\u7535\u6c60\u6210\u672c\u964d\u81f3$80/kWh",
           "stepEn": "Lithium battery costs decline to $80/kWh",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "EN-C4"
+        "CC-EN-004"
       ],
       "leadingSignal": {
         "indicator": "Global energy storage annual new installations",
@@ -4474,18 +4474,18 @@
         "reachedThreshold": false,
         "thresholdValue": 500.0,
         "currentValue": 120.0,
-        "notes": "~75GW in 2024 → projected ~120GW in 2025 (+60% YoY). China energy storage tenders exceeded 60GW in H1 2025"
+        "notes": "~75GW in 2024 \u2192 projected ~120GW in 2025 (+60% YoY). China energy storage tenders exceeded 60GW in H1 2025"
       },
       "timeWindowYears": 2.2
     },
     {
       "id": "FP-54",
       "title": "AI coding agents produce 50%+ of new code",
-      "titleZh": "AI编程代理产出占新代码50%+",
+      "titleZh": "AI\u7f16\u7a0b\u4ee3\u7406\u4ea7\u51fa\u5360\u65b0\u4ee3\u780150%+",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By mid-2028, at least 2 major technology companies will have AI programming agents generating over 50% of all newly committed code",
       "verificationCriteria": "Company official public disclosure or CEO confirmation in earnings call",
       "verificationDate": "2028-06-30",
@@ -4525,25 +4525,25 @@
       "causalChainNodes": [
         {
           "step": "Google 2025 confirms 25%+ code AI-generated",
-          "stepZh": "Google 2025确认25%+代码AI生成",
+          "stepZh": "Google 2025\u786e\u8ba425%+\u4ee3\u7801AI\u751f\u6210",
           "stepEn": "Google 2025 confirms 25%+ code AI-generated",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Copilot/Cursor developer adoption exceeds 70%",
-          "stepZh": "Copilot/Cursor开发者采用率超70%",
+          "stepZh": "Copilot/Cursor\u5f00\u53d1\u8005\u91c7\u7528\u7387\u8d8570%",
           "stepEn": "Copilot/Cursor developer adoption exceeds 70%",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Autonomous programming agents rapidly iterating",
-          "stepZh": "自主编程Agent快速迭代",
+          "stepZh": "\u81ea\u4e3b\u7f16\u7a0bAgent\u5feb\u901f\u8fed\u4ee3",
           "stepEn": "Autonomous programming agents rapidly iterating",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "AI-C4"
+        "CC-AI-004"
       ],
       "leadingSignal": {
         "indicator": "AI-generated code share",
@@ -4561,11 +4561,11 @@
     {
       "id": "FP-55",
       "title": "AI triggers a G7 nation to issue its first national-security emergency declaration",
-      "titleZh": "G7国家发布AI引发国家安全紧急声明",
+      "titleZh": "G7\u56fd\u5bb6\u53d1\u5e03AI\u5f15\u53d1\u56fd\u5bb6\u5b89\u5168\u7d27\u6025\u58f0\u660e",
       "domain": "cross-domain",
       "domainLabel": "Cross-Domain",
       "domainColor": "#F59E0B",
-      "domainIcon": "🔗",
+      "domainIcon": "\ud83d\udd17",
       "predictionContent": "By end of 2028, at least one G7 nation will formally declare a national security emergency or activate equivalent emergency powers in response to AI capability developments",
       "verificationCriteria": "Head of state signs emergency executive order or parliament passes emergency resolution, explicitly citing AI-related threat as trigger",
       "verificationDate": "2028-12-31",
@@ -4605,25 +4605,25 @@
       "causalChainNodes": [
         {
           "step": "AI deepfakes interfere with elections across multiple countries",
-          "stepZh": "AI deepfake干预多国选举",
+          "stepZh": "AI deepfake\u5e72\u9884\u591a\u56fd\u9009\u4e3e",
           "stepEn": "AI deepfakes interfere with elections across multiple countries",
           "evidence_strength": "HIGH"
         },
         {
           "step": "AI-assisted cyberattack tools circulating on dark web",
-          "stepZh": "AI辅助网络攻击工具暗网流通",
+          "stepZh": "AI\u8f85\u52a9\u7f51\u7edc\u653b\u51fb\u5de5\u5177\u6697\u7f51\u6d41\u901a",
           "stepEn": "AI-assisted cyberattack tools circulating on dark web",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Frontier model CBRN threat assessment",
-          "stepZh": "frontier model CBRN威胁评估",
+          "stepZh": "frontier model CBRN\u5a01\u80c1\u8bc4\u4f30",
           "stepEn": "Frontier model CBRN threat assessment",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "CC-4"
+        "CC-CROSS-004"
       ],
       "leadingSignal": {
         "indicator": "AI-related security incident severity",
@@ -4641,11 +4641,11 @@
     {
       "id": "FP-56",
       "title": "Sovereign AI national program launches (investment > $10B)",
-      "titleZh": "主权AI国家级计划启动(投资超$10B)",
+      "titleZh": "\u4e3b\u6743AI\u56fd\u5bb6\u7ea7\u8ba1\u5212\u542f\u52a8(\u6295\u8d44\u8d85$10B)",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By mid-2028, at least one country (non-US) will launch a sovereign AI national initiative with total investment exceeding $10B",
       "verificationCriteria": "Government official announcement + fiscal appropriation or sovereign fund investment confirmation",
       "verificationDate": "2028-06-30",
@@ -4684,26 +4684,26 @@
       ],
       "causalChainNodes": [
         {
-          "step": "France Stargate Europe €22B announced",
-          "stepZh": "法国Stargate Europe €22B宣布",
-          "stepEn": "France Stargate Europe €22B announced",
+          "step": "France Stargate Europe \u20ac22B announced",
+          "stepZh": "\u6cd5\u56fdStargate Europe \u20ac22B\u5ba3\u5e03",
+          "stepEn": "France Stargate Europe \u20ac22B announced",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Saudi HUMAIN $10B partnership with NVIDIA",
-          "stepZh": "沙特HUMAIN $10B与NVIDIA合作",
+          "stepZh": "\u6c99\u7279HUMAIN $10B\u4e0eNVIDIA\u5408\u4f5c",
           "stepEn": "Saudi HUMAIN $10B partnership with NVIDIA",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Japan, Korea, India all planning",
-          "stepZh": "日韩印度均在规划",
+          "stepZh": "\u65e5\u97e9\u5370\u5ea6\u5747\u5728\u89c4\u5212",
           "stepEn": "Japan, Korea, India all planning",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "AI-C4"
+        "CC-AI-004"
       ],
       "leadingSignal": {
         "indicator": "Sovereign AI initiative investment amount",
@@ -4714,19 +4714,19 @@
         "reachedThreshold": true,
         "thresholdValue": 10.0,
         "currentValue": 10.0,
-        "notes": "France Stargate Europe €22B (2025), Saudi HUMAIN $10B (NVIDIA GTC 2025). Threshold already reached"
+        "notes": "France Stargate Europe \u20ac22B (2025), Saudi HUMAIN $10B (NVIDIA GTC 2025). Threshold already reached"
       },
       "timeWindowYears": 1.7
     },
     {
       "id": "FP-57",
       "title": "First major EU AI Act enforcement fine exceeds $50M",
-      "titleZh": "EU AI Act首次重大执法罚款>$50M",
+      "titleZh": "EU AI Act\u9996\u6b21\u91cd\u5927\u6267\u6cd5\u7f5a\u6b3e>$50M",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
-      "predictionContent": "By mid-2028, the EU will impose a fine exceeding €50M (~$55M) on at least one company violating the EU AI Act",
+      "domainIcon": "\ud83e\udd16",
+      "predictionContent": "By mid-2028, the EU will impose a fine exceeding \u20ac50M (~$55M) on at least one company violating the EU AI Act",
       "verificationCriteria": "European Commission or member state regulatory authority official penalty announcement",
       "verificationDate": "2028-06-30",
       "originalConfidence": 68,
@@ -4765,25 +4765,25 @@
       "causalChainNodes": [
         {
           "step": "AI Act prohibitive provisions effective February 2025",
-          "stepZh": "AI Act禁止性条款2025年2月生效",
+          "stepZh": "AI Act\u7981\u6b62\u6027\u6761\u6b3e2025\u5e742\u6708\u751f\u6548",
           "stepEn": "AI Act prohibitive provisions effective February 2025",
           "evidence_strength": "HIGH"
         },
         {
           "step": "General-purpose AI rules effective August 2025",
-          "stepZh": "通用AI规则2025年8月生效",
+          "stepZh": "\u901a\u7528AI\u89c4\u52192025\u5e748\u6708\u751f\u6548",
           "stepEn": "General-purpose AI rules effective August 2025",
           "evidence_strength": "HIGH"
         },
         {
           "step": "High-risk system rules effective December 2027",
-          "stepZh": "高风险系统规则2027年12月生效",
+          "stepZh": "\u9ad8\u98ce\u9669\u7cfb\u7edf\u89c4\u52192027\u5e7412\u6708\u751f\u6548",
           "stepEn": "High-risk system rules effective December 2027",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "AI-C4"
+        "CC-AI-004"
       ],
       "leadingSignal": {
         "indicator": "EU AI Act enforcement progress",
@@ -4801,13 +4801,13 @@
     {
       "id": "FP-58",
       "title": "Cumulative global battery storage deployment exceeds 1 TWh",
-      "titleZh": "全球电池储能累计部署超1TWh",
+      "titleZh": "\u5168\u7403\u7535\u6c60\u50a8\u80fd\u7d2f\u8ba1\u90e8\u7f72\u8d851TWh",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By end of 2029, global cumulative electrochemical energy storage operating capacity will exceed 1TWh",
-      "verificationCriteria": "BNEF/Wood Mackenzie/IEA annual cumulative data confirms ≥1TWh",
+      "verificationCriteria": "BNEF/Wood Mackenzie/IEA annual cumulative data confirms \u22651TWh",
       "verificationDate": "2029-12-31",
       "originalConfidence": 65,
       "engineScore": 64.2,
@@ -4845,25 +4845,25 @@
       "causalChainNodes": [
         {
           "step": "Cumulative ~180GWh by end of 2024",
-          "stepZh": "2024年底累计~180GWh",
+          "stepZh": "2024\u5e74\u5e95\u7d2f\u8ba1~180GWh",
           "stepEn": "Cumulative ~180GWh by end of 2024",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Annual additions 120+GW with growth rate 50%+",
-          "stepZh": "年新增120+GW且增速50%+",
+          "stepZh": "\u5e74\u65b0\u589e120+GW\u4e14\u589e\u901f50%+",
           "stepEn": "Annual additions 120+GW with growth rate 50%+",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Linear extrapolation with retirement discount ~1.2TWh",
-          "stepZh": "线性外推含退役折扣约1.2TWh",
+          "stepZh": "\u7ebf\u6027\u5916\u63a8\u542b\u9000\u5f79\u6298\u6263\u7ea61.2TWh",
           "stepEn": "Linear extrapolation with retirement discount ~1.2TWh",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "EN-C4"
+        "CC-EN-004"
       ],
       "leadingSignal": {
         "indicator": "Global energy storage cumulative operating capacity",
@@ -4881,11 +4881,11 @@
     {
       "id": "FP-59",
       "title": "Japan's total population drops below 120 million",
-      "titleZh": "日本总人口跌破1.2亿",
+      "titleZh": "\u65e5\u672c\u603b\u4eba\u53e3\u8dcc\u78341.2\u4ebf",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "By mid-2029, Japan's total population (including foreign residents) will fall below 120 million",
       "verificationCriteria": "Japan Ministry of Internal Affairs population estimates confirm <120,000,000",
       "verificationDate": "2029-06-30",
@@ -4918,25 +4918,25 @@
       "causalChainNodes": [
         {
           "step": "Japan population ~123.2M in 2025",
-          "stepZh": "2025年日本人口约1.232亿",
+          "stepZh": "2025\u5e74\u65e5\u672c\u4eba\u53e3\u7ea61.232\u4ebf",
           "stepEn": "Japan population ~123.2M in 2025",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Annual decline of ~600-800K",
-          "stepZh": "年减少约60-80万",
+          "stepZh": "\u5e74\u51cf\u5c11\u7ea660-80\u4e07",
           "stepEn": "Annual decline of ~600-800K",
           "evidence_strength": "HIGH"
         },
         {
           "step": "~119.7-120.5M in 2029",
-          "stepZh": "2029年约1.197-1.205亿",
+          "stepZh": "2029\u5e74\u7ea61.197-1.205\u4ebf",
           "stepEn": "~119.7-120.5M in 2029",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "DE-C3"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "Japan total population",
@@ -4954,11 +4954,11 @@
     {
       "id": "FP-60",
       "title": "AI climate models trigger an international adaptation-migration pact",
-      "titleZh": "AI气候模型触发国际适应迁移协议",
+      "titleZh": "AI\u6c14\u5019\u6a21\u578b\u89e6\u53d1\u56fd\u9645\u9002\u5e94\u8fc1\u79fb\u534f\u8bae",
       "domain": "cross-domain",
       "domainLabel": "Cross-Domain",
       "domainColor": "#F59E0B",
-      "domainIcon": "🔗",
+      "domainIcon": "\ud83d\udd17",
       "predictionContent": "By end of 2029, the UN will formally adopt a climate migration adaptation framework based on AI climate model projections, designating at least 3 climate migration corridors",
       "verificationCriteria": "UNFCCC COP resolution or UN General Assembly resolution formally adopted",
       "verificationDate": "2029-12-31",
@@ -4998,25 +4998,25 @@
       "causalChainNodes": [
         {
           "step": "AI climate models 10,000x faster forecasting",
-          "stepZh": "AI气候模型快10000x预报",
+          "stepZh": "AI\u6c14\u5019\u6a21\u578b\u5feb10000x\u9884\u62a5",
           "stepEn": "AI climate models 10,000x faster forecasting",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Regional climate refugee projections to emerge 2026-2028",
-          "stepZh": "2026-2028年将产出区域级气候难民预测",
+          "stepZh": "2026-2028\u5e74\u5c06\u4ea7\u51fa\u533a\u57df\u7ea7\u6c14\u5019\u96be\u6c11\u9884\u6d4b",
           "stepEn": "Regional climate refugee projections to emerge 2026-2028",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "International pressure drives agreement but requires great power consensus",
-          "stepZh": "国际压力推动协议但需大国共识",
+          "stepZh": "\u56fd\u9645\u538b\u529b\u63a8\u52a8\u534f\u8bae\u4f46\u9700\u5927\u56fd\u5171\u8bc6",
           "stepEn": "International pressure drives agreement but requires great power consensus",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "CC-4"
+        "CC-CROSS-004"
       ],
       "leadingSignal": {
         "indicator": "AI climate model accuracy improvement",
@@ -5034,11 +5034,11 @@
     {
       "id": "FP-61",
       "title": "First autonomous spacecraft successfully deflects an asteroid's trajectory",
-      "titleZh": "首次自主航天器成功偏转小行星轨道",
+      "titleZh": "\u9996\u6b21\u81ea\u4e3b\u822a\u5929\u5668\u6210\u529f\u504f\u8f6c\u5c0f\u884c\u661f\u8f68\u9053",
       "domain": "space",
       "domainLabel": "Space",
       "domainColor": "#6366F1",
-      "domainIcon": "🚀",
+      "domainIcon": "\ud83d\ude80",
       "predictionContent": "By end of 2028, NASA/ESA will complete the first autonomous spacecraft kinetic asteroid deflection demonstration, with orbital velocity change >0.01%",
       "verificationCriteria": "Orbital change independently confirmed by ground-based telescopes",
       "verificationDate": "2028-12-31",
@@ -5071,25 +5071,25 @@
       "causalChainNodes": [
         {
           "step": "DART 2022 successfully altered Dimorphos orbit by 33 minutes",
-          "stepZh": "DART 2022成功改变Dimorphos轨道33分钟",
+          "stepZh": "DART 2022\u6210\u529f\u6539\u53d8Dimorphos\u8f68\u905333\u5206\u949f",
           "stepEn": "DART 2022 successfully altered Dimorphos orbit by 33 minutes",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Hera mission launches 2024, arrives 2027",
-          "stepZh": "Hera任务2024发射2027到达",
+          "stepZh": "Hera\u4efb\u52a12024\u53d1\u5c042027\u5230\u8fbe",
           "stepEn": "Hera mission launches 2024, arrives 2027",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Follow-up deflection mission possible in 2028",
-          "stepZh": "后续偏转任务2028可能执行",
+          "stepZh": "\u540e\u7eed\u504f\u8f6c\u4efb\u52a12028\u53ef\u80fd\u6267\u884c",
           "stepEn": "Follow-up deflection mission possible in 2028",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "ET-C5"
+        "CC-ET-005"
       ],
       "leadingSignal": {
         "indicator": "Planetary defense mission progress",
@@ -5107,11 +5107,11 @@
     {
       "id": "FP-62",
       "title": "Personalized mRNA cancer vaccine enters Phase III trials",
-      "titleZh": "mRNA个性化癌症疫苗进入III期临床",
+      "titleZh": "mRNA\u4e2a\u6027\u5316\u764c\u75c7\u75ab\u82d7\u8fdb\u5165III\u671f\u4e34\u5e8a",
       "domain": "biotech",
       "domainLabel": "Biotech",
       "domainColor": "#EF4444",
-      "domainIcon": "🧬",
+      "domainIcon": "\ud83e\uddec",
       "predictionContent": "By end of 2028, at least one mRNA personalized neoantigen cancer vaccine will enter Phase III clinical trials",
       "verificationCriteria": "ClinicalTrials.gov registered Phase III trial using mRNA platform + personalized neoantigen design",
       "verificationDate": "2028-12-31",
@@ -5151,25 +5151,25 @@
       "causalChainNodes": [
         {
           "step": "mRNA-4157 Phase IIb reduces recurrence risk by 44%",
-          "stepZh": "mRNA-4157 IIb期复发风险降低44%",
+          "stepZh": "mRNA-4157 IIb\u671f\u590d\u53d1\u98ce\u9669\u964d\u4f4e44%",
           "stepEn": "mRNA-4157 Phase IIb reduces recurrence risk by 44%",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Enters Phase III pivotal trial in 2025",
-          "stepZh": "2025年进入III期关键试验",
+          "stepZh": "2025\u5e74\u8fdb\u5165III\u671f\u5173\u952e\u8bd5\u9a8c",
           "stepEn": "Enters Phase III pivotal trial in 2025",
           "evidence_strength": "HIGH"
         },
         {
           "step": "BioNTech BNT122 pancreatic cancer Phase I immune response",
-          "stepZh": "BioNTech BNT122胰腺癌I期免疫应答",
+          "stepZh": "BioNTech BNT122\u80f0\u817a\u764cI\u671f\u514d\u75ab\u5e94\u7b54",
           "stepEn": "BioNTech BNT122 pancreatic cancer Phase I immune response",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "BIO-C3"
+        "CC-BIO-003"
       ],
       "leadingSignal": {
         "indicator": "mRNA cancer vaccine clinical stage",
@@ -5187,11 +5187,11 @@
     {
       "id": "FP-63",
       "title": "Space-based solar power demonstrates in-orbit validation",
-      "titleZh": "天基太阳能发电在轨演示验证",
+      "titleZh": "\u5929\u57fa\u592a\u9633\u80fd\u53d1\u7535\u5728\u8f68\u6f14\u793a\u9a8c\u8bc1",
       "domain": "space-economy",
       "domainLabel": "Space Economy",
       "domainColor": "#14B8A6",
-      "domainIcon": "🛰️",
+      "domainIcon": "\ud83d\udef0\ufe0f",
       "predictionContent": "By mid-2029, at least one party will complete a full space-based solar power chain on-orbit demonstration, with transmitted power >1kW",
       "verificationCriteria": "Experimental data independently verified by third party and publicly published",
       "verificationDate": "2029-06-30",
@@ -5231,25 +5231,25 @@
       "causalChainNodes": [
         {
           "step": "Caltech SSPP 2023 on-orbit microwave transmission verification",
-          "stepZh": "Caltech SSPP 2023在轨验证微波传输",
+          "stepZh": "Caltech SSPP 2023\u5728\u8f68\u9a8c\u8bc1\u5fae\u6ce2\u4f20\u8f93",
           "stepEn": "Caltech SSPP 2023 on-orbit microwave transmission verification",
           "evidence_strength": "HIGH"
         },
         {
           "step": "China completes ground verification station in 2025",
-          "stepZh": "中国2025建成地面验证站",
+          "stepZh": "\u4e2d\u56fd2025\u5efa\u6210\u5730\u9762\u9a8c\u8bc1\u7ad9",
           "stepEn": "China completes ground verification station in 2025",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Engineering gap remains from lab to complete 1kW on-orbit chain",
-          "stepZh": "从实验室到完整链路1kW在轨仍有工程差距",
+          "stepZh": "\u4ece\u5b9e\u9a8c\u5ba4\u5230\u5b8c\u6574\u94fe\u8def1kW\u5728\u8f68\u4ecd\u6709\u5de5\u7a0b\u5dee\u8ddd",
           "stepEn": "Engineering gap remains from lab to complete 1kW on-orbit chain",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "SE-C3"
+        "CC-SE-003"
       ],
       "leadingSignal": {
         "indicator": "Space-based solar power technology maturity",
@@ -5267,11 +5267,11 @@
     {
       "id": "FP-64",
       "title": "Quantum sensors commercialized for GPS-denied navigation",
-      "titleZh": "量子传感器商用化用于无GPS导航",
+      "titleZh": "\u91cf\u5b50\u4f20\u611f\u5668\u5546\u7528\u5316\u7528\u4e8e\u65e0GPS\u5bfc\u822a",
       "domain": "quantum",
       "domainLabel": "Quantum",
       "domainColor": "#A78BFA",
-      "domainIcon": "⚛️",
+      "domainIcon": "\u269b\ufe0f",
       "predictionContent": "By end of 2029, at least one company will launch a commercial inertial navigation system based on quantum sensors, achieving <1 nautical mile accuracy after >24 hours without GPS",
       "verificationCriteria": "Product launch + independent third-party navigation accuracy test",
       "verificationDate": "2029-12-31",
@@ -5311,25 +5311,25 @@
       "causalChainNodes": [
         {
           "step": "Quantum accelerometer lab demonstrates 10-100x precision improvement",
-          "stepZh": "量子加速度计实验室展示10-100x精度提升",
+          "stepZh": "\u91cf\u5b50\u52a0\u901f\u5ea6\u8ba1\u5b9e\u9a8c\u5ba4\u5c55\u793a10-100x\u7cbe\u5ea6\u63d0\u5347",
           "stepEn": "Quantum accelerometer lab demonstrates 10-100x precision improvement",
           "evidence_strength": "HIGH"
         },
         {
           "step": "DARPA/UK MoD funding quantum navigation",
-          "stepZh": "DARPA/UK国防部资助量子导航",
+          "stepZh": "DARPA/UK\u56fd\u9632\u90e8\u8d44\u52a9\u91cf\u5b50\u5bfc\u822a",
           "stepEn": "DARPA/UK MoD funding quantum navigation",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Miniaturization + environmental stability are key challenges",
-          "stepZh": "小型化+环境稳定性是关键挑战",
+          "stepZh": "\u5c0f\u578b\u5316+\u73af\u5883\u7a33\u5b9a\u6027\u662f\u5173\u952e\u6311\u6218",
           "stepEn": "Miniaturization + environmental stability are key challenges",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "QC-C2"
+        "CC-QC-002"
       ],
       "leadingSignal": {
         "indicator": "Quantum sensor navigation precision",
@@ -5347,11 +5347,11 @@
     {
       "id": "FP-65",
       "title": "Continued slowdown of the Atlantic Meridional Overturning Circulation confirmed",
-      "titleZh": "大西洋经向翻转环流持续减速确认",
+      "titleZh": "\u5927\u897f\u6d0b\u7ecf\u5411\u7ffb\u8f6c\u73af\u6d41\u6301\u7eed\u51cf\u901f\u786e\u8ba4",
       "domain": "climate",
       "domainLabel": "Climate",
       "domainColor": "#06B6D4",
-      "domainIcon": "🌡️",
+      "domainIcon": "\ud83c\udf21\ufe0f",
       "predictionContent": "By mid-2029, multiple independent AMOC observation indices will confirm it is in its weakest state in 1,000 years, with annual deceleration >0.5Sv",
       "verificationCriteria": "RAPID/MOCHA array data + cross-validation with alternative indicators confirmation",
       "verificationDate": "2029-06-30",
@@ -5391,25 +5391,25 @@
       "causalChainNodes": [
         {
           "step": "RAPID observations show AMOC slowed 15% over past 20 years",
-          "stepZh": "RAPID观测AMOC过去20年减速15%",
+          "stepZh": "RAPID\u89c2\u6d4bAMOC\u8fc7\u53bb20\u5e74\u51cf\u901f15%",
           "stepEn": "RAPID observations show AMOC slowed 15% over past 20 years",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Multiple studies indicate approaching tipping point",
-          "stepZh": "多项研究指出接近临界点",
+          "stepZh": "\u591a\u9879\u7814\u7a76\u6307\u51fa\u63a5\u8fd1\u4e34\u754c\u70b9",
           "stepEn": "Multiple studies indicate approaching tipping point",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Greenland ice sheet melting increases freshwater input",
-          "stepZh": "格陵兰冰盖融化增加淡水输入",
+          "stepZh": "\u683c\u9675\u5170\u51b0\u76d6\u878d\u5316\u589e\u52a0\u6de1\u6c34\u8f93\u5165",
           "stepEn": "Greenland ice sheet melting increases freshwater input",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "CL-C3"
+        "CC-CL-003"
       ],
       "leadingSignal": {
         "indicator": "AMOC strength (Sv)",
@@ -5427,11 +5427,11 @@
     {
       "id": "FP-66",
       "title": "AI-generated content accounts for 30%+ of social-media feeds",
-      "titleZh": "AI生成内容占社交媒体信息流30%+",
+      "titleZh": "AI\u751f\u6210\u5185\u5bb9\u5360\u793e\u4ea4\u5a92\u4f53\u4fe1\u606f\u6d4130%+",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By mid-2029, AI-generated content will account for over 30% of total information flow on major social media platforms",
       "verificationCriteria": "Platform transparency report or independent research institution audit report confirmation",
       "verificationDate": "2029-06-30",
@@ -5471,25 +5471,25 @@
       "causalChainNodes": [
         {
           "step": "AI content on X approximately 15-20% in 2025",
-          "stepZh": "2025年AI内容在X上约15-20%",
+          "stepZh": "2025\u5e74AI\u5185\u5bb9\u5728X\u4e0a\u7ea615-20%",
           "stepEn": "AI content on X approximately 15-20% in 2025",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Text/image/video generation tools continued widespread adoption",
-          "stepZh": "文本/图像/视频生成工具持续普及",
+          "stepZh": "\u6587\u672c/\u56fe\u50cf/\u89c6\u9891\u751f\u6210\u5de5\u5177\u6301\u7eed\u666e\u53ca",
           "stepEn": "Text/image/video generation tools continued widespread adoption",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Platform anti-AI detection also strengthening",
-          "stepZh": "平台反AI检测也在加强",
+          "stepZh": "\u5e73\u53f0\u53cdAI\u68c0\u6d4b\u4e5f\u5728\u52a0\u5f3a",
           "stepEn": "Platform anti-AI detection also strengthening",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "AI-C4"
+        "CC-AI-004"
       ],
       "leadingSignal": {
         "indicator": "AI-generated content share",
@@ -5507,11 +5507,11 @@
     {
       "id": "FP-67",
       "title": "CRISPR gene-drive mosquito eradication project released into the wild",
-      "titleZh": "CRISPR基因驱动灭蚊项目野外释放",
+      "titleZh": "CRISPR\u57fa\u56e0\u9a71\u52a8\u706d\u868a\u9879\u76ee\u91ce\u5916\u91ca\u653e",
       "domain": "biotech",
       "domainLabel": "Biotech",
       "domainColor": "#EF4444",
-      "domainIcon": "🧬",
+      "domainIcon": "\ud83e\uddec",
       "predictionContent": "By mid-2028, at least one country will approve open-environment release of CRISPR gene drive mosquitoes",
       "verificationCriteria": "National biosafety regulatory authority formal approval + actual release execution",
       "verificationDate": "2028-06-30",
@@ -5551,25 +5551,25 @@
       "causalChainNodes": [
         {
           "step": "Target Malaria limited field trials in Burkina Faso",
-          "stepZh": "Target Malaria布基纳法索有限田间试验",
+          "stepZh": "Target Malaria\u5e03\u57fa\u7eb3\u6cd5\u7d22\u6709\u9650\u7530\u95f4\u8bd5\u9a8c",
           "stepEn": "Target Malaria limited field trials in Burkina Faso",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Open release requires higher safety approval",
-          "stepZh": "开放释放需更高安全审批",
+          "stepZh": "\u5f00\u653e\u91ca\u653e\u9700\u66f4\u9ad8\u5b89\u5168\u5ba1\u6279",
           "stepEn": "Open release requires higher safety approval",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Political and ecological controversy is primary barrier",
-          "stepZh": "政治和生态争议是主要阻力",
+          "stepZh": "\u653f\u6cbb\u548c\u751f\u6001\u4e89\u8bae\u662f\u4e3b\u8981\u963b\u529b",
           "stepEn": "Political and ecological controversy is primary barrier",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "BIO-C3"
+        "CC-BIO-003"
       ],
       "leadingSignal": {
         "indicator": "Gene drive mosquito field trial progress",
@@ -5587,11 +5587,11 @@
     {
       "id": "FP-68",
       "title": "First experimental demonstration of a topological qubit",
-      "titleZh": "拓扑量子比特首次实验演示",
+      "titleZh": "\u62d3\u6251\u91cf\u5b50\u6bd4\u7279\u9996\u6b21\u5b9e\u9a8c\u6f14\u793a",
       "domain": "quantum",
       "domainLabel": "Quantum",
       "domainColor": "#A78BFA",
-      "domainIcon": "⚛️",
+      "domainIcon": "\u269b\ufe0f",
       "predictionContent": "By mid-2029, controlled manipulation and basic gate operations of topological qubits will be demonstrated experimentally for the first time, with fidelity >90%",
       "verificationCriteria": "Peer-reviewed paper published + independent team replication verified",
       "verificationDate": "2029-06-30",
@@ -5624,25 +5624,25 @@
       "causalChainNodes": [
         {
           "step": "Microsoft demonstrates stronger Majorana evidence",
-          "stepZh": "Microsoft展示更强Majorana证据",
+          "stepZh": "Microsoft\u5c55\u793a\u66f4\u5f3aMajorana\u8bc1\u636e",
           "stepEn": "Microsoft demonstrates stronger Majorana evidence",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Topological qubits theoretically have built-in fault tolerance",
-          "stepZh": "拓扑量子比特理论上有内建容错性",
+          "stepZh": "\u62d3\u6251\u91cf\u5b50\u6bd4\u7279\u7406\u8bba\u4e0a\u6709\u5185\u5efa\u5bb9\u9519\u6027",
           "stepEn": "Topological qubits theoretically have built-in fault tolerance",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Experimental manipulation extremely difficult",
-          "stepZh": "实验操控极为困难",
+          "stepZh": "\u5b9e\u9a8c\u64cd\u63a7\u6781\u4e3a\u56f0\u96be",
           "stepEn": "Experimental manipulation extremely difficult",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "QC-C2"
+        "CC-QC-002"
       ],
       "leadingSignal": {
         "indicator": "Topological qubit research progress",
@@ -5660,11 +5660,11 @@
     {
       "id": "FP-69",
       "title": "First commercial space-station module operates independently in orbit",
-      "titleZh": "商业空间站模块首次独立在轨运行",
+      "titleZh": "\u5546\u4e1a\u7a7a\u95f4\u7ad9\u6a21\u5757\u9996\u6b21\u72ec\u7acb\u5728\u8f68\u8fd0\u884c",
       "domain": "space-economy",
       "domainLabel": "Space Economy",
       "domainColor": "#14B8A6",
-      "domainIcon": "🛰️",
+      "domainIcon": "\ud83d\udef0\ufe0f",
       "predictionContent": "By end of 2029, at least one commercial space station module will achieve independent on-orbit operation with life support and crew rotation capability",
       "verificationCriteria": "Module successfully launched to orbit + confirmed independent life support + at least one crew visit",
       "verificationDate": "2029-12-31",
@@ -5704,25 +5704,25 @@
       "causalChainNodes": [
         {
           "step": "Axiom/Vast plan launches in 2026-2027",
-          "stepZh": "Axiom/Vast计划2026-2027发射",
+          "stepZh": "Axiom/Vast\u8ba1\u52122026-2027\u53d1\u5c04",
           "stepEn": "Axiom/Vast plan launches in 2026-2027",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Initial ISS docking followed by separation for independent operation",
-          "stepZh": "初期对接ISS后分离独立运行",
+          "stepZh": "\u521d\u671f\u5bf9\u63a5ISS\u540e\u5206\u79bb\u72ec\u7acb\u8fd0\u884c",
           "stepEn": "Initial ISS docking followed by separation for independent operation",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "ISS decommissioning period is critical time window",
-          "stepZh": "ISS退役前后为关键时间窗口",
+          "stepZh": "ISS\u9000\u5f79\u524d\u540e\u4e3a\u5173\u952e\u65f6\u95f4\u7a97\u53e3",
           "stepEn": "ISS decommissioning period is critical time window",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "SE-C3"
+        "CC-SE-003"
       ],
       "leadingSignal": {
         "indicator": "Commercial space station construction progress",
@@ -5740,11 +5740,11 @@
     {
       "id": "FP-70",
       "title": "South Korea's TFR rebound reverses",
-      "titleZh": "韩国总和生育率回升中断再次下跌",
+      "titleZh": "\u97e9\u56fd\u603b\u548c\u751f\u80b2\u7387\u56de\u5347\u4e2d\u65ad\u518d\u6b21\u4e0b\u8dcc",
       "domain": "demographics",
       "domainLabel": "Demographics",
       "domainColor": "#8B5CF6",
-      "domainIcon": "👥",
+      "domainIcon": "\ud83d\udc65",
       "predictionContent": "By end of 2029, South Korea's TFR will decline again after a brief recovery, falling below 0.70",
       "verificationCriteria": "Statistics Korea annual birth statistics confirm TFR <0.70",
       "verificationDate": "2029-12-31",
@@ -5777,25 +5777,25 @@
       "causalChainNodes": [
         {
           "step": "Korea TFR slight recovery to 0.72 in 2024",
-          "stepZh": "韩国TFR 2024年0.72略有回升",
+          "stepZh": "\u97e9\u56fdTFR 2024\u5e740.72\u7565\u6709\u56de\u5347",
           "stepEn": "Korea TFR slight recovery to 0.72 in 2024",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Recovery driven by subsidies",
-          "stepZh": "回升受补贴推动",
+          "stepZh": "\u56de\u5347\u53d7\u8865\u8d34\u63a8\u52a8",
           "stepEn": "Recovery driven by subsidies",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Structural factors unchanged; may decline again after subsidy withdrawal",
-          "stepZh": "结构性因素未改变，补贴消退后可能再跌",
+          "stepZh": "\u7ed3\u6784\u6027\u56e0\u7d20\u672a\u6539\u53d8\uff0c\u8865\u8d34\u6d88\u9000\u540e\u53ef\u80fd\u518d\u8dcc",
           "stepEn": "Structural factors unchanged; may decline again after subsidy withdrawal",
           "evidence_strength": "MEDIUM"
         }
       ],
       "causalChainIds": [
-        "DE-C3"
+        "CC-DEMO-003"
       ],
       "leadingSignal": {
         "indicator": "Korea TFR",
@@ -5813,11 +5813,11 @@
     {
       "id": "FP-71",
       "title": "First commercial floating offshore wind projects come online",
-      "titleZh": "海上浮式风电实现首批商业化项目",
+      "titleZh": "\u6d77\u4e0a\u6d6e\u5f0f\u98ce\u7535\u5b9e\u73b0\u9996\u6279\u5546\u4e1a\u5316\u9879\u76ee",
       "domain": "energy",
       "domainLabel": "Energy",
       "domainColor": "#10B981",
-      "domainIcon": "⚡",
+      "domainIcon": "\u26a1",
       "predictionContent": "By end of 2029, at least 3 offshore floating wind farms globally will achieve commercial operation, with total capacity >500MW",
       "verificationCriteria": "Project actually grid-connected and operational + LCOE verified by third-party audit",
       "verificationDate": "2029-12-31",
@@ -5857,25 +5857,25 @@
       "causalChainNodes": [
         {
           "step": "Global floating wind <200MW in 2025",
-          "stepZh": "2025年全球浮式风电<200MW",
+          "stepZh": "2025\u5e74\u5168\u7403\u6d6e\u5f0f\u98ce\u7535<200MW",
           "stepEn": "Global floating wind <200MW in 2025",
           "evidence_strength": "HIGH"
         },
         {
           "step": "GW-scale plans across Europe/Japan-Korea/China",
-          "stepZh": "GW级规划遍布欧洲/日韩/中国",
+          "stepZh": "GW\u7ea7\u89c4\u5212\u904d\u5e03\u6b27\u6d32/\u65e5\u97e9/\u4e2d\u56fd",
           "stepEn": "GW-scale plans across Europe/Japan-Korea/China",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Commercialization requires solving mooring reliability + deepwater costs",
-          "stepZh": "商业化需解决系泊可靠性+深水成本",
+          "stepZh": "\u5546\u4e1a\u5316\u9700\u89e3\u51b3\u7cfb\u6cca\u53ef\u9760\u6027+\u6df1\u6c34\u6210\u672c",
           "stepEn": "Commercialization requires solving mooring reliability + deepwater costs",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "EN-C4"
+        "CC-EN-004"
       ],
       "leadingSignal": {
         "indicator": "Floating wind power commercialization progress",
@@ -5893,11 +5893,11 @@
     {
       "id": "FP-72",
       "title": "Direct observational evidence of hydrothermal activity on Europa confirmed",
-      "titleZh": "木卫二水热活动直接观测证据确认",
+      "titleZh": "\u6728\u536b\u4e8c\u6c34\u70ed\u6d3b\u52a8\u76f4\u63a5\u89c2\u6d4b\u8bc1\u636e\u786e\u8ba4",
       "domain": "space",
       "domainLabel": "Space",
       "domainColor": "#6366F1",
-      "domainIcon": "🚀",
+      "domainIcon": "\ud83d\ude80",
       "predictionContent": "By mid-2030, Europa Clipper or JUICE missions will provide direct observational evidence of Europa's subsurface hydrothermal activity",
       "verificationCriteria": "Mission science team official release or Nature/Science peer-reviewed paper",
       "verificationDate": "2030-06-30",
@@ -5930,25 +5930,25 @@
       "causalChainNodes": [
         {
           "step": "Europa Clipper launches 2024, arrives 2030",
-          "stepZh": "Europa Clipper 2024发射2030到达",
+          "stepZh": "Europa Clipper 2024\u53d1\u5c042030\u5230\u8fbe",
           "stepEn": "Europa Clipper launches 2024, arrives 2030",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Equipped with MASE to detect plume composition",
-          "stepZh": "搭载MASE可检测羽流成分",
+          "stepZh": "\u642d\u8f7dMASE\u53ef\u68c0\u6d4b\u7fbd\u6d41\u6210\u5206",
           "stepEn": "Equipped with MASE to detect plume composition",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Multiple flyby sampling passes needed to confirm chemical signatures",
-          "stepZh": "需多次飞越采样确认化学标志物",
+          "stepZh": "\u9700\u591a\u6b21\u98de\u8d8a\u91c7\u6837\u786e\u8ba4\u5316\u5b66\u6807\u5fd7\u7269",
           "stepEn": "Multiple flyby sampling passes needed to confirm chemical signatures",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "ET-C5"
+        "CC-ET-005"
       ],
       "leadingSignal": {
         "indicator": "Europa exploration mission progress",
@@ -5966,11 +5966,11 @@
     {
       "id": "FP-73",
       "title": "International geoengineering governance treaty signed",
-      "titleZh": "国际地球工程治理条约签署",
+      "titleZh": "\u56fd\u9645\u5730\u7403\u5de5\u7a0b\u6cbb\u7406\u6761\u7ea6\u7b7e\u7f72",
       "domain": "cross-domain",
       "domainLabel": "Cross-Domain",
       "domainColor": "#F59E0B",
-      "domainIcon": "🔗",
+      "domainIcon": "\ud83d\udd17",
       "predictionContent": "By mid-2030, an international SRM geoengineering governance treaty will be signed under the UN framework",
       "verificationCriteria": "Treaty formally adopted at UN General Assembly or Environment Assembly and opened for signature",
       "verificationDate": "2030-06-30",
@@ -6010,25 +6010,25 @@
       "causalChainNodes": [
         {
           "step": "UNEA discussions began in 2024",
-          "stepZh": "UNEA 2024已开始讨论",
+          "stepZh": "UNEA 2024\u5df2\u5f00\u59cb\u8ba8\u8bba",
           "stepEn": "UNEA discussions began in 2024",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Requires US-China-India-EU consensus",
-          "stepZh": "需美中印欧盟共识",
+          "stepZh": "\u9700\u7f8e\u4e2d\u5370\u6b27\u76df\u5171\u8bc6",
           "stepEn": "Requires US-China-India-EU consensus",
           "evidence_strength": "LOW"
         },
         {
           "step": "Extreme climate events or SRM experiments drive urgency",
-          "stepZh": "极端气候或SRM实验推动紧迫感",
+          "stepZh": "\u6781\u7aef\u6c14\u5019\u6216SRM\u5b9e\u9a8c\u63a8\u52a8\u7d27\u8feb\u611f",
           "stepEn": "Extreme climate events or SRM experiments drive urgency",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "CC-5"
+        "CC-CROSS-005"
       ],
       "leadingSignal": {
         "indicator": "Geoengineering governance discussion progress",
@@ -6046,11 +6046,11 @@
     {
       "id": "FP-74",
       "title": "Synthetic biology creates engineered organisms for ecosystem restoration",
-      "titleZh": "合成生物学设计生物体用于生态恢复",
+      "titleZh": "\u5408\u6210\u751f\u7269\u5b66\u8bbe\u8ba1\u751f\u7269\u4f53\u7528\u4e8e\u751f\u6001\u6062\u590d",
       "domain": "biotech",
       "domainLabel": "Biotech",
       "domainColor": "#EF4444",
-      "domainIcon": "🧬",
+      "domainIcon": "\ud83e\uddec",
       "predictionContent": "By mid-2029, at least one synthetic biology-designed organism will demonstrate significant ecological restoration effects in controlled field conditions (soil organic matter recovery >20%)",
       "verificationCriteria": "Regulator-approved controlled field trial + peer-reviewed paper",
       "verificationDate": "2029-06-30",
@@ -6083,25 +6083,25 @@
       "causalChainNodes": [
         {
           "step": "Pivot Bio engineered nitrogen-fixing microbes tested",
-          "stepZh": "Pivot Bio工程固氮微生物已试验",
+          "stepZh": "Pivot Bio\u5de5\u7a0b\u56fa\u6c2e\u5fae\u751f\u7269\u5df2\u8bd5\u9a8c",
           "stepEn": "Pivot Bio engineered nitrogen-fixing microbes tested",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Progress in synthetic coral symbiotic algae",
-          "stepZh": "合成珊瑚共生藻有进展",
+          "stepZh": "\u5408\u6210\u73ca\u745a\u5171\u751f\u85fb\u6709\u8fdb\u5c55",
           "stepEn": "Progress in synthetic coral symbiotic algae",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Massive regulatory barriers (GMO controversy)",
-          "stepZh": "监管障碍巨大(GMO争议)",
+          "stepZh": "\u76d1\u7ba1\u969c\u788d\u5de8\u5927(GMO\u4e89\u8bae)",
           "stepEn": "Massive regulatory barriers (GMO controversy)",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "BIO-C3"
+        "CC-BIO-003"
       ],
       "leadingSignal": {
         "indicator": "Synthetic organism ecological restoration effectiveness",
@@ -6119,11 +6119,11 @@
     {
       "id": "FP-75",
       "title": "Quantum-internet protocol demonstrated on a city-scale network",
-      "titleZh": "量子互联网协议城市级网络演示",
+      "titleZh": "\u91cf\u5b50\u4e92\u8054\u7f51\u534f\u8bae\u57ce\u5e02\u7ea7\u7f51\u7edc\u6f14\u793a",
       "domain": "quantum",
       "domainLabel": "Quantum",
       "domainColor": "#A78BFA",
-      "domainIcon": "⚛️",
+      "domainIcon": "\u269b\ufe0f",
       "predictionContent": "By end of 2029, at least one city will complete an entanglement distribution network with >10 quantum nodes, with quantum repeaters achieving >50km entanglement transmission",
       "verificationCriteria": "Project official release + peer-reviewed paper confirming reproducible results",
       "verificationDate": "2029-12-31",
@@ -6163,25 +6163,25 @@
       "causalChainNodes": [
         {
           "step": "China Beijing-Shanghai 2000km quantum key distribution",
-          "stepZh": "中国京沪2000km量子密钥分发",
+          "stepZh": "\u4e2d\u56fd\u4eac\u6caa2000km\u91cf\u5b50\u5bc6\u94a5\u5206\u53d1",
           "stepEn": "China Beijing-Shanghai 2000km quantum key distribution",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Quantum memory coherence time improving",
-          "stepZh": "量子存储器相干时间在改善",
+          "stepZh": "\u91cf\u5b50\u5b58\u50a8\u5668\u76f8\u5e72\u65f6\u95f4\u5728\u6539\u5584",
           "stepEn": "Quantum memory coherence time improving",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "City-scale + quantum repeaters require multiple breakthroughs",
-          "stepZh": "城市级+量子中继需多项突破",
+          "stepZh": "\u57ce\u5e02\u7ea7+\u91cf\u5b50\u4e2d\u7ee7\u9700\u591a\u9879\u7a81\u7834",
           "stepEn": "City-scale + quantum repeaters require multiple breakthroughs",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "QC-C2"
+        "CC-QC-002"
       ],
       "leadingSignal": {
         "indicator": "Quantum internet technology maturity",
@@ -6199,11 +6199,11 @@
     {
       "id": "FP-76",
       "title": "Asteroid-mining sample return confirms platinum-group metals",
-      "titleZh": "小行星采矿任务样本返回确认含铂族金属",
+      "titleZh": "\u5c0f\u884c\u661f\u91c7\u77ff\u4efb\u52a1\u6837\u672c\u8fd4\u56de\u786e\u8ba4\u542b\u94c2\u65cf\u91d1\u5c5e",
       "domain": "space-economy",
       "domainLabel": "Space Economy",
       "domainColor": "#14B8A6",
-      "domainIcon": "🛰️",
+      "domainIcon": "\ud83d\udef0\ufe0f",
       "predictionContent": "By mid-2030, at least one private company will complete an asteroid mining pilot mission, returning samples with platinum-group metal concentrations significantly exceeding Earth deposits",
       "verificationCriteria": "Sample confirmed by independent laboratory analysis + mission company official release",
       "verificationDate": "2030-06-30",
@@ -6243,25 +6243,25 @@
       "causalChainNodes": [
         {
           "step": "AstroForge 2024 inaugural mission failed",
-          "stepZh": "AstroForge 2024首次任务失败",
+          "stepZh": "AstroForge 2024\u9996\u6b21\u4efb\u52a1\u5931\u8d25",
           "stepEn": "AstroForge 2024 inaugural mission failed",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Hayabusa series has proven sample return feasibility",
-          "stepZh": "Hayabusa系列已证明采样返回可行",
+          "stepZh": "Hayabusa\u7cfb\u5217\u5df2\u8bc1\u660e\u91c7\u6837\u8fd4\u56de\u53ef\u884c",
           "stepEn": "Hayabusa series has proven sample return feasibility",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Key is targeting M-type asteroids and securing funding",
-          "stepZh": "关键在瞄准M型小行星并获融资",
+          "stepZh": "\u5173\u952e\u5728\u7784\u51c6M\u578b\u5c0f\u884c\u661f\u5e76\u83b7\u878d\u8d44",
           "stepEn": "Key is targeting M-type asteroids and securing funding",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "SE-C3"
+        "CC-SE-003"
       ],
       "leadingSignal": {
         "indicator": "Asteroid mining mission progress",
@@ -6279,13 +6279,13 @@
     {
       "id": "FP-77",
       "title": "An AI system passes the Turing test (>70% judging rate)",
-      "titleZh": "AI系统通过图灵测试(>70%判定率)",
+      "titleZh": "AI\u7cfb\u7edf\u901a\u8fc7\u56fe\u7075\u6d4b\u8bd5(>70%\u5224\u5b9a\u7387)",
       "domain": "AI",
       "domainLabel": "Artificial Intelligence",
       "domainColor": "#3B82F6",
-      "domainIcon": "🤖",
+      "domainIcon": "\ud83e\udd16",
       "predictionContent": "By end of 2028, at least one AI system will achieve >70% human judgment rate on a standard Turing test",
-      "verificationCriteria": "Standard Turing test achieved, judging panel ≥30 people",
+      "verificationCriteria": "Standard Turing test achieved, judging panel \u226530 people",
       "verificationDate": "2028-12-31",
       "originalConfidence": 25,
       "engineScore": 38.2,
@@ -6316,25 +6316,25 @@
       "causalChainNodes": [
         {
           "step": "GPT-4/Claude informal testing approaches 70%",
-          "stepZh": "GPT-4/Claude非正式测试接近70%",
+          "stepZh": "GPT-4/Claude\u975e\u6b63\u5f0f\u6d4b\u8bd5\u63a5\u8fd170%",
           "stepEn": "GPT-4/Claude informal testing approaches 70%",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Standard tests are more rigorous (multi-round deep conversation)",
-          "stepZh": "标准测试更严格(多轮深度对话)",
+          "stepZh": "\u6807\u51c6\u6d4b\u8bd5\u66f4\u4e25\u683c(\u591a\u8f6e\u6df1\u5ea6\u5bf9\u8bdd)",
           "stepEn": "Standard tests are more rigorous (multi-round deep conversation)",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "Scientific value has been questioned",
-          "stepZh": "科学价值已被质疑",
+          "stepZh": "\u79d1\u5b66\u4ef7\u503c\u5df2\u88ab\u8d28\u7591",
           "stepEn": "Scientific value has been questioned",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "AI-C4"
+        "CC-AI-004"
       ],
       "leadingSignal": {
         "indicator": "AI Turing test passage progress",
@@ -6352,11 +6352,11 @@
     {
       "id": "FP-78",
       "title": "Cumulative xenotransplant survivorship exceeds 100 cases",
-      "titleZh": "异种器官移植累计存活超100例",
+      "titleZh": "\u5f02\u79cd\u5668\u5b98\u79fb\u690d\u7d2f\u8ba1\u5b58\u6d3b\u8d85100\u4f8b",
       "domain": "biotech",
       "domainLabel": "Biotech",
       "domainColor": "#EF4444",
-      "domainIcon": "🧬",
+      "domainIcon": "\ud83e\uddec",
       "predictionContent": "By end of 2029, global cumulative gene-edited porcine organ xenotransplantation survival will exceed 100 cases, with at least 10 cases surviving over 1 year",
       "verificationCriteria": "Peer-reviewed paper or national health authority statistical data confirmation",
       "verificationDate": "2029-12-31",
@@ -6396,25 +6396,25 @@
       "causalChainNodes": [
         {
           "step": "First porcine kidney transplant in 2024",
-          "stepZh": "2024首例猪肾移植",
+          "stepZh": "2024\u9996\u4f8b\u732a\u80be\u79fb\u690d",
           "stepEn": "First porcine kidney transplant in 2024",
           "evidence_strength": "HIGH"
         },
         {
           "step": "~10-15 cumulative cases by 2025",
-          "stepZh": "2025累计~10-15例",
+          "stepZh": "2025\u7d2f\u8ba1~10-15\u4f8b",
           "stepEn": "~10-15 cumulative cases by 2025",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "From 15 to 100 requires 5-7x growth",
-          "stepZh": "从15到100需5-7x增长",
+          "stepZh": "\u4ece15\u5230100\u97005-7x\u589e\u957f",
           "stepEn": "From 15 to 100 requires 5-7x growth",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "BIO-C3"
+        "CC-BIO-003"
       ],
       "leadingSignal": {
         "indicator": "Xenotransplantation cumulative survival count",
@@ -6432,11 +6432,11 @@
     {
       "id": "FP-79",
       "title": "Quantum computer breaks a practical-grade encryption key",
-      "titleZh": "量子计算机破解实用级加密密钥",
+      "titleZh": "\u91cf\u5b50\u8ba1\u7b97\u673a\u7834\u89e3\u5b9e\u7528\u7ea7\u52a0\u5bc6\u5bc6\u94a5",
       "domain": "quantum",
       "domainLabel": "Quantum",
       "domainColor": "#A78BFA",
-      "domainIcon": "⚛️",
+      "domainIcon": "\u269b\ufe0f",
       "predictionContent": "By mid-2030, a quantum computer will successfully break RSA-2048 or ECC-256 encryption keys",
       "verificationCriteria": "Confirmed by NIST or equivalent institution + peer-reviewed paper",
       "verificationDate": "2030-06-30",
@@ -6469,25 +6469,25 @@
       "causalChainNodes": [
         {
           "step": "Breaking RSA-2048 requires ~4,000 logical qubits",
-          "stepZh": "破解RSA-2048需~4000逻辑量子比特",
+          "stepZh": "\u7834\u89e3RSA-2048\u9700~4000\u903b\u8f91\u91cf\u5b50\u6bd4\u7279",
           "stepEn": "Breaking RSA-2048 requires ~4,000 logical qubits",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Requires ~4M physical qubits",
-          "stepZh": "需~400万物理量子比特",
+          "stepZh": "\u9700~400\u4e07\u7269\u7406\u91cf\u5b50\u6bd4\u7279",
           "stepEn": "Requires ~4M physical qubits",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Current gap >4,000x",
-          "stepZh": "当前差距>4000x",
+          "stepZh": "\u5f53\u524d\u5dee\u8ddd>4000x",
           "stepEn": "Current gap >4,000x",
           "evidence_strength": "HIGH"
         }
       ],
       "causalChainIds": [
-        "QC-C2"
+        "CC-QC-002"
       ],
       "leadingSignal": {
         "indicator": "",
@@ -6505,11 +6505,11 @@
     {
       "id": "FP-80",
       "title": "Antarctic ice-shelf collapse triggers accelerated sea-level rise",
-      "titleZh": "南极冰架崩塌触发海平面加速上升",
+      "titleZh": "\u5357\u6781\u51b0\u67b6\u5d29\u584c\u89e6\u53d1\u6d77\u5e73\u9762\u52a0\u901f\u4e0a\u5347",
       "domain": "climate",
       "domainLabel": "Climate",
       "domainColor": "#06B6D4",
-      "domainIcon": "🌡️",
+      "domainIcon": "\ud83c\udf21\ufe0f",
       "predictionContent": "By end of 2030, at least one major Antarctic ice shelf will experience structural collapse (>20% area loss), with glacier flow velocity to the ocean accelerating >30%",
       "verificationCriteria": "NASA/ESA satellite data confirmation + ice shelf area change >20% independently verified",
       "verificationDate": "2030-12-31",
@@ -6542,25 +6542,25 @@
       "causalChainNodes": [
         {
           "step": "Thwaites bottom accelerating melt",
-          "stepZh": "Thwaites底部加速融化",
+          "stepZh": "Thwaites\u5e95\u90e8\u52a0\u901f\u878d\u5316",
           "stepEn": "Thwaites bottom accelerating melt",
           "evidence_strength": "HIGH"
         },
         {
           "step": "Structural collapse requires warm water triggering hydrofracturing + ice cliff instability",
-          "stepZh": "结构性崩塌需暖水触发水力压裂+冰崖失稳",
+          "stepZh": "\u7ed3\u6784\u6027\u5d29\u584c\u9700\u6696\u6c34\u89e6\u53d1\u6c34\u529b\u538b\u88c2+\u51b0\u5d16\u5931\u7a33",
           "stepEn": "Structural collapse requires warm water triggering hydrofracturing + ice cliff instability",
           "evidence_strength": "MEDIUM"
         },
         {
           "step": "2030 window is tight",
-          "stepZh": "2030年窗口偏紧",
+          "stepZh": "2030\u5e74\u7a97\u53e3\u504f\u7d27",
           "stepEn": "2030 window is tight",
           "evidence_strength": "LOW"
         }
       ],
       "causalChainIds": [
-        "CL-C3"
+        "CC-CL-003"
       ],
       "leadingSignal": {
         "indicator": "Antarctic ice shelf stability index",
@@ -6578,9 +6578,9 @@
   ],
   "causalChains": [
     {
-      "id": "CC-1",
-      "title": "AI算力需求→电力危机→能源转型",
-      "titleEn": "AI Compute Demand → Power Crisis → Energy Transition",
+      "id": "CC-CROSS-001",
+      "title": "AI\u7b97\u529b\u9700\u6c42\u2192\u7535\u529b\u5371\u673a\u2192\u80fd\u6e90\u8f6c\u578b",
+      "titleEn": "AI Compute Demand \u2192 Power Crisis \u2192 Energy Transition",
       "type": "cross-domain",
       "domains": [
         "AI",
@@ -6598,27 +6598,27 @@
       ],
       "nodes": [
         {
-          "step": "AI Agent 大规模商业化",
+          "step": "AI Agent \u5927\u89c4\u6a21\u5546\u4e1a\u5316",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "数据中心用电量爆发式增长",
+          "step": "\u6570\u636e\u4e2d\u5fc3\u7528\u7535\u91cf\u7206\u53d1\u5f0f\u589e\u957f",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "传统能源无法满足需求",
+          "step": "\u4f20\u7edf\u80fd\u6e90\u65e0\u6cd5\u6ee1\u8db3\u9700\u6c42",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "可再生能源被迫加速",
+          "step": "\u53ef\u518d\u751f\u80fd\u6e90\u88ab\u8feb\u52a0\u901f",
           "evidence_strength": "HIGH"
         }
       ]
     },
     {
-      "id": "CC-2",
-      "title": "AI就业替代→政策监管响应",
-      "titleEn": "AI Job Displacement → Policy & Regulation Response",
+      "id": "CC-CROSS-002",
+      "title": "AI\u5c31\u4e1a\u66ff\u4ee3\u2192\u653f\u7b56\u76d1\u7ba1\u54cd\u5e94",
+      "titleEn": "AI Job Displacement \u2192 Policy & Regulation Response",
       "type": "cross-domain",
       "domains": [
         "AI",
@@ -6633,27 +6633,27 @@
       ],
       "nodes": [
         {
-          "step": "AI Agent 大规模商业化",
+          "step": "AI Agent \u5927\u89c4\u6a21\u5546\u4e1a\u5316",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "入门级/行政岗位大规模替代",
+          "step": "\u5165\u95e8\u7ea7/\u884c\u653f\u5c97\u4f4d\u5927\u89c4\u6a21\u66ff\u4ee3",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "就业结构剧变与社会压力",
+          "step": "\u5c31\u4e1a\u7ed3\u6784\u5267\u53d8\u4e0e\u793e\u4f1a\u538b\u529b",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "政策监管加速响应",
+          "step": "\u653f\u7b56\u76d1\u7ba1\u52a0\u901f\u54cd\u5e94",
           "evidence_strength": "MEDIUM"
         }
       ]
     },
     {
-      "id": "CC-3",
-      "title": "人口老龄化→自动化加速→能源需求",
-      "titleEn": "Aging Population → Automation Acceleration → Energy Demand",
+      "id": "CC-CROSS-003",
+      "title": "\u4eba\u53e3\u8001\u9f84\u5316\u2192\u81ea\u52a8\u5316\u52a0\u901f\u2192\u80fd\u6e90\u9700\u6c42",
+      "titleEn": "Aging Population \u2192 Automation Acceleration \u2192 Energy Demand",
       "type": "cross-domain",
       "domains": [
         "demographics",
@@ -6669,31 +6669,31 @@
       ],
       "nodes": [
         {
-          "step": "全球老龄化加速",
+          "step": "\u5168\u7403\u8001\u9f84\u5316\u52a0\u901f",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "劳动力短缺加剧",
+          "step": "\u52b3\u52a8\u529b\u77ed\u7f3a\u52a0\u5267",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "自动化/AI 加速采用",
+          "step": "\u81ea\u52a8\u5316/AI \u52a0\u901f\u91c7\u7528",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "能源需求结构性上升",
+          "step": "\u80fd\u6e90\u9700\u6c42\u7ed3\u6784\u6027\u4e0a\u5347",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "正反馈循环形成",
+          "step": "\u6b63\u53cd\u9988\u5faa\u73af\u5f62\u6210",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "CC-4",
-      "title": "AI安全威胁→国家安全紧急响应",
-      "titleEn": "AI Safety Threats → National Security Emergency Response",
+      "id": "CC-CROSS-004",
+      "title": "AI\u5b89\u5168\u5a01\u80c1\u2192\u56fd\u5bb6\u5b89\u5168\u7d27\u6025\u54cd\u5e94",
+      "titleEn": "AI Safety Threats \u2192 National Security Emergency Response",
       "type": "cross-domain",
       "domains": [
         "AI",
@@ -6705,23 +6705,23 @@
       ],
       "nodes": [
         {
-          "step": "AI 能力快速扩展至安全敏感领域",
+          "step": "AI \u80fd\u529b\u5feb\u901f\u6269\u5c55\u81f3\u5b89\u5168\u654f\u611f\u9886\u57df",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "重大 AI 安全事件发生",
+          "step": "\u91cd\u5927 AI \u5b89\u5168\u4e8b\u4ef6\u53d1\u751f",
           "evidence_strength": "LOW"
         },
         {
-          "step": "国家级紧急响应启动",
+          "step": "\u56fd\u5bb6\u7ea7\u7d27\u6025\u54cd\u5e94\u542f\u52a8",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "CC-5",
-      "title": "气候危机→地球工程→全球治理",
-      "titleEn": "Climate Crisis → Geoengineering → Global Governance",
+      "id": "CC-CROSS-005",
+      "title": "\u6c14\u5019\u5371\u673a\u2192\u5730\u7403\u5de5\u7a0b\u2192\u5168\u7403\u6cbb\u7406",
+      "titleEn": "Climate Crisis \u2192 Geoengineering \u2192 Global Governance",
       "type": "cross-domain",
       "domains": [
         "climate",
@@ -6732,23 +6732,23 @@
       ],
       "nodes": [
         {
-          "step": "全球温控目标持续偏离",
+          "step": "\u5168\u7403\u6e29\u63a7\u76ee\u6807\u6301\u7eed\u504f\u79bb",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "地球工程从禁忌变为选项",
+          "step": "\u5730\u7403\u5de5\u7a0b\u4ece\u7981\u5fcc\u53d8\u4e3a\u9009\u9879",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "国际治理条约被迫签署",
+          "step": "\u56fd\u9645\u6cbb\u7406\u6761\u7ea6\u88ab\u8feb\u7b7e\u7f72",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "AI-C1",
-      "title": "AI基准饱和→能力跃迁",
-      "titleEn": "AI Benchmark Saturation → Capability Leap",
+      "id": "CC-AI-001",
+      "title": "AI\u57fa\u51c6\u9971\u548c\u2192\u80fd\u529b\u8dc3\u8fc1",
+      "titleEn": "AI Benchmark Saturation \u2192 Capability Leap",
       "type": "intra-domain",
       "domains": [
         "AI"
@@ -6759,23 +6759,23 @@
       ],
       "nodes": [
         {
-          "step": "主流基准接近饱和",
+          "step": "\u4e3b\u6d41\u57fa\u51c6\u63a5\u8fd1\u9971\u548c",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "新评估体系需要重建",
+          "step": "\u65b0\u8bc4\u4f30\u4f53\u7cfb\u9700\u8981\u91cd\u5efa",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "能力跃迁在新维度发生",
+          "step": "\u80fd\u529b\u8dc3\u8fc1\u5728\u65b0\u7ef4\u5ea6\u53d1\u751f",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "AI-C2",
-      "title": "AI Agent商业化→就业结构重塑",
-      "titleEn": "AI Agent Commercialization → Employment Restructuring",
+      "id": "CC-AI-002",
+      "title": "AI Agent\u5546\u4e1a\u5316\u2192\u5c31\u4e1a\u7ed3\u6784\u91cd\u5851",
+      "titleEn": "AI Agent Commercialization \u2192 Employment Restructuring",
       "type": "intra-domain",
       "domains": [
         "AI"
@@ -6788,23 +6788,23 @@
       ],
       "nodes": [
         {
-          "step": "AI Agent 支出爆发",
+          "step": "AI Agent \u652f\u51fa\u7206\u53d1",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "企业采用率快速攀升",
+          "step": "\u4f01\u4e1a\u91c7\u7528\u7387\u5feb\u901f\u6500\u5347",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "就业市场结构性变化",
+          "step": "\u5c31\u4e1a\u5e02\u573a\u7ed3\u6784\u6027\u53d8\u5316",
           "evidence_strength": "MEDIUM"
         }
       ]
     },
     {
-      "id": "AI-C3",
-      "title": "AI法律决策→司法体系变革",
-      "titleEn": "AI Legal Decision-Making → Judicial System Transformation",
+      "id": "CC-AI-003",
+      "title": "AI\u6cd5\u5f8b\u51b3\u7b56\u2192\u53f8\u6cd5\u4f53\u7cfb\u53d8\u9769",
+      "titleEn": "AI Legal Decision-Making \u2192 Judicial System Transformation",
       "type": "intra-domain",
       "domains": [
         "AI"
@@ -6815,19 +6815,19 @@
       ],
       "nodes": [
         {
-          "step": "AI 法律推理能力达到专家级",
+          "step": "AI \u6cd5\u5f8b\u63a8\u7406\u80fd\u529b\u8fbe\u5230\u4e13\u5bb6\u7ea7",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "独立生成高级法律判决",
+          "step": "\u72ec\u7acb\u751f\u6210\u9ad8\u7ea7\u6cd5\u5f8b\u5224\u51b3",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "AI-C4",
-      "title": "AI成本曲线→普及加速→社会冲击",
-      "titleEn": "AI Cost Curve → Accelerated Adoption → Social Impact",
+      "id": "CC-AI-004",
+      "title": "AI\u6210\u672c\u66f2\u7ebf\u2192\u666e\u53ca\u52a0\u901f\u2192\u793e\u4f1a\u51b2\u51fb",
+      "titleEn": "AI Cost Curve \u2192 Accelerated Adoption \u2192 Social Impact",
       "type": "intra-domain",
       "domains": [
         "AI"
@@ -6842,23 +6842,23 @@
       ],
       "nodes": [
         {
-          "step": "AI 推理成本指数下降",
+          "step": "AI \u63a8\u7406\u6210\u672c\u6307\u6570\u4e0b\u964d",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "开发者/企业大规模采用",
+          "step": "\u5f00\u53d1\u8005/\u4f01\u4e1a\u5927\u89c4\u6a21\u91c7\u7528",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "社会结构受冲击",
+          "step": "\u793e\u4f1a\u7ed3\u6784\u53d7\u51b2\u51fb",
           "evidence_strength": "MEDIUM"
         }
       ]
     },
     {
-      "id": "DE-C1",
-      "title": "人口萎缩→经济增长模式重构",
-      "titleEn": "Population Decline → Economic Growth Model Restructuring",
+      "id": "CC-DEMO-001",
+      "title": "\u4eba\u53e3\u840e\u7f29\u2192\u7ecf\u6d4e\u589e\u957f\u6a21\u5f0f\u91cd\u6784",
+      "titleEn": "Population Decline \u2192 Economic Growth Model Restructuring",
       "type": "intra-domain",
       "domains": [
         "demographics"
@@ -6872,23 +6872,23 @@
       ],
       "nodes": [
         {
-          "step": "TFR 持续低于替代水平",
+          "step": "TFR \u6301\u7eed\u4f4e\u4e8e\u66ff\u4ee3\u6c34\u5e73",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "劳动年龄人口加速萎缩",
+          "step": "\u52b3\u52a8\u5e74\u9f84\u4eba\u53e3\u52a0\u901f\u840e\u7f29",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "经济增长模式被迫调整",
+          "step": "\u7ecf\u6d4e\u589e\u957f\u6a21\u5f0f\u88ab\u8feb\u8c03\u6574",
           "evidence_strength": "MEDIUM"
         }
       ]
     },
     {
-      "id": "DE-C2",
-      "title": "生育政策刺激→短暂反弹→再次回落",
-      "titleEn": "Fertility Policy Stimulus → Brief Rebound → Decline Resumes",
+      "id": "CC-DEMO-002",
+      "title": "\u751f\u80b2\u653f\u7b56\u523a\u6fc0\u2192\u77ed\u6682\u53cd\u5f39\u2192\u518d\u6b21\u56de\u843d",
+      "titleEn": "Fertility Policy Stimulus \u2192 Brief Rebound \u2192 Decline Resumes",
       "type": "intra-domain",
       "domains": [
         "demographics"
@@ -6899,23 +6899,23 @@
       ],
       "nodes": [
         {
-          "step": "政府推出强力生育激励",
+          "step": "\u653f\u5e9c\u63a8\u51fa\u5f3a\u529b\u751f\u80b2\u6fc0\u52b1",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "TFR 短暂反弹",
+          "step": "TFR \u77ed\u6682\u53cd\u5f39",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "结构性因素使反弹不可持续",
+          "step": "\u7ed3\u6784\u6027\u56e0\u7d20\u4f7f\u53cd\u5f39\u4e0d\u53ef\u6301\u7eed",
           "evidence_strength": "MEDIUM"
         }
       ]
     },
     {
-      "id": "DE-C3",
-      "title": "人口结构重分布→地缘政治转移",
-      "titleEn": "Population Redistribution → Geopolitical Shift",
+      "id": "CC-DEMO-003",
+      "title": "\u4eba\u53e3\u7ed3\u6784\u91cd\u5206\u5e03\u2192\u5730\u7f18\u653f\u6cbb\u8f6c\u79fb",
+      "titleEn": "Population Redistribution \u2192 Geopolitical Shift",
       "type": "intra-domain",
       "domains": [
         "demographics"
@@ -6927,23 +6927,23 @@
       ],
       "nodes": [
         {
-          "step": "印度人口超越中国",
+          "step": "\u5370\u5ea6\u4eba\u53e3\u8d85\u8d8a\u4e2d\u56fd",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "日本人口持续萎缩",
+          "step": "\u65e5\u672c\u4eba\u53e3\u6301\u7eed\u840e\u7f29",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "地缘政治影响力转移",
+          "step": "\u5730\u7f18\u653f\u6cbb\u5f71\u54cd\u529b\u8f6c\u79fb",
           "evidence_strength": "MEDIUM"
         }
       ]
     },
     {
-      "id": "EN-C1",
-      "title": "可再生能源超越煤电→能源版图重写",
-      "titleEn": "Renewables Surpass Coal → Energy Map Redrawn",
+      "id": "CC-EN-001",
+      "title": "\u53ef\u518d\u751f\u80fd\u6e90\u8d85\u8d8a\u7164\u7535\u2192\u80fd\u6e90\u7248\u56fe\u91cd\u5199",
+      "titleEn": "Renewables Surpass Coal \u2192 Energy Map Redrawn",
       "type": "intra-domain",
       "domains": [
         "energy"
@@ -6956,23 +6956,23 @@
       ],
       "nodes": [
         {
-          "step": "可再生能源份额超过煤电",
+          "step": "\u53ef\u518d\u751f\u80fd\u6e90\u4efd\u989d\u8d85\u8fc7\u7164\u7535",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "太阳能持续高增长",
+          "step": "\u592a\u9633\u80fd\u6301\u7eed\u9ad8\u589e\u957f",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "煤电份额持续下降",
+          "step": "\u7164\u7535\u4efd\u989d\u6301\u7eed\u4e0b\u964d",
           "evidence_strength": "HIGH"
         }
       ]
     },
     {
-      "id": "EN-C2",
-      "title": "电动车+氢能→化石燃料需求达峰",
-      "titleEn": "EVs + Hydrogen → Fossil Fuel Demand Peak",
+      "id": "CC-EN-002",
+      "title": "\u7535\u52a8\u8f66+\u6c22\u80fd\u2192\u5316\u77f3\u71c3\u6599\u9700\u6c42\u8fbe\u5cf0",
+      "titleEn": "EVs + Hydrogen \u2192 Fossil Fuel Demand Peak",
       "type": "intra-domain",
       "domains": [
         "energy"
@@ -6983,23 +6983,23 @@
       ],
       "nodes": [
         {
-          "step": "EV 渗透率加速",
+          "step": "EV \u6e17\u900f\u7387\u52a0\u901f",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "氢能开始规模化",
+          "step": "\u6c22\u80fd\u5f00\u59cb\u89c4\u6a21\u5316",
           "evidence_strength": "LOW"
         },
         {
-          "step": "化石燃料需求见顶",
+          "step": "\u5316\u77f3\u71c3\u6599\u9700\u6c42\u89c1\u9876",
           "evidence_strength": "MEDIUM"
         }
       ]
     },
     {
-      "id": "EN-C3",
-      "title": "固态电池+锂短缺→电池技术范式转换",
-      "titleEn": "Solid-State Batteries + Lithium Shortage → Battery Tech Paradigm Shift",
+      "id": "CC-EN-003",
+      "title": "\u56fa\u6001\u7535\u6c60+\u9502\u77ed\u7f3a\u2192\u7535\u6c60\u6280\u672f\u8303\u5f0f\u8f6c\u6362",
+      "titleEn": "Solid-State Batteries + Lithium Shortage \u2192 Battery Tech Paradigm Shift",
       "type": "intra-domain",
       "domains": [
         "energy"
@@ -7010,23 +7010,23 @@
       ],
       "nodes": [
         {
-          "step": "锂矿供应缺口扩大",
+          "step": "\u9502\u77ff\u4f9b\u5e94\u7f3a\u53e3\u6269\u5927",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "固态电池能量密度突破",
+          "step": "\u56fa\u6001\u7535\u6c60\u80fd\u91cf\u5bc6\u5ea6\u7a81\u7834",
           "evidence_strength": "LOW"
         },
         {
-          "step": "电池技术范式转换",
+          "step": "\u7535\u6c60\u6280\u672f\u8303\u5f0f\u8f6c\u6362",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "EN-C4",
-      "title": "储能规模化→可再生能源稳定性",
-      "titleEn": "Energy Storage Scale-Up → Renewable Energy Reliability",
+      "id": "CC-EN-004",
+      "title": "\u50a8\u80fd\u89c4\u6a21\u5316\u2192\u53ef\u518d\u751f\u80fd\u6e90\u7a33\u5b9a\u6027",
+      "titleEn": "Energy Storage Scale-Up \u2192 Renewable Energy Reliability",
       "type": "intra-domain",
       "domains": [
         "energy"
@@ -7038,23 +7038,23 @@
       ],
       "nodes": [
         {
-          "step": "储能装机爆发增长",
+          "step": "\u50a8\u80fd\u88c5\u673a\u7206\u53d1\u589e\u957f",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "累计部署超 TWh 级",
+          "step": "\u7d2f\u8ba1\u90e8\u7f72\u8d85 TWh \u7ea7",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "可再生能源间歇性问题解决",
+          "step": "\u53ef\u518d\u751f\u80fd\u6e90\u95f4\u6b47\u6027\u95ee\u9898\u89e3\u51b3",
           "evidence_strength": "MEDIUM"
         }
       ]
     },
     {
-      "id": "ET-C5",
-      "title": "行星防御/太阳系探索→文明能力标志",
-      "titleEn": "Planetary Defense / Solar System Exploration → Civilization Capability Milestone",
+      "id": "CC-ET-005",
+      "title": "\u884c\u661f\u9632\u5fa1/\u592a\u9633\u7cfb\u63a2\u7d22\u2192\u6587\u660e\u80fd\u529b\u6807\u5fd7",
+      "titleEn": "Planetary Defense / Solar System Exploration \u2192 Civilization Capability Milestone",
       "type": "intra-domain",
       "domains": [
         "space"
@@ -7065,19 +7065,19 @@
       ],
       "nodes": [
         {
-          "step": "小行星偏转技术验证",
+          "step": "\u5c0f\u884c\u661f\u504f\u8f6c\u6280\u672f\u9a8c\u8bc1",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "太阳系天体直接观测",
+          "step": "\u592a\u9633\u7cfb\u5929\u4f53\u76f4\u63a5\u89c2\u6d4b",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "SE-C3",
-      "title": "太空基础设施多元化→太空经济新业态",
-      "titleEn": "Space Infrastructure Diversification → New Space Economy",
+      "id": "CC-SE-003",
+      "title": "\u592a\u7a7a\u57fa\u7840\u8bbe\u65bd\u591a\u5143\u5316\u2192\u592a\u7a7a\u7ecf\u6d4e\u65b0\u4e1a\u6001",
+      "titleEn": "Space Infrastructure Diversification \u2192 New Space Economy",
       "type": "intra-domain",
       "domains": [
         "space-economy"
@@ -7089,23 +7089,23 @@
       ],
       "nodes": [
         {
-          "step": "商业空间站独立运行",
+          "step": "\u5546\u4e1a\u7a7a\u95f4\u7ad9\u72ec\u7acb\u8fd0\u884c",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "天基太阳能验证",
+          "step": "\u5929\u57fa\u592a\u9633\u80fd\u9a8c\u8bc1",
           "evidence_strength": "LOW"
         },
         {
-          "step": "小行星采矿起步",
+          "step": "\u5c0f\u884c\u661f\u91c7\u77ff\u8d77\u6b65",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "BIO-C3",
-      "title": "AI+合成生物→精准医疗与生态干预",
-      "titleEn": "AI + Synthetic Biology → Precision Medicine & Ecological Intervention",
+      "id": "CC-BIO-003",
+      "title": "AI+\u5408\u6210\u751f\u7269\u2192\u7cbe\u51c6\u533b\u7597\u4e0e\u751f\u6001\u5e72\u9884",
+      "titleEn": "AI + Synthetic Biology \u2192 Precision Medicine & Ecological Intervention",
       "type": "intra-domain",
       "domains": [
         "biotech"
@@ -7118,23 +7118,23 @@
       ],
       "nodes": [
         {
-          "step": "AI 加速蛋白质/药物设计",
+          "step": "AI \u52a0\u901f\u86cb\u767d\u8d28/\u836f\u7269\u8bbe\u8ba1",
           "evidence_strength": "HIGH"
         },
         {
-          "step": "mRNA/CRISPR 技术成熟",
+          "step": "mRNA/CRISPR \u6280\u672f\u6210\u719f",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "临床应用与生态释放",
+          "step": "\u4e34\u5e8a\u5e94\u7528\u4e0e\u751f\u6001\u91ca\u653e",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "QC-C2",
-      "title": "量子硬件路线多元化→商用化渐进",
-      "titleEn": "Quantum Hardware Diversification → Gradual Commercialization",
+      "id": "CC-QC-002",
+      "title": "\u91cf\u5b50\u786c\u4ef6\u8def\u7ebf\u591a\u5143\u5316\u2192\u5546\u7528\u5316\u6e10\u8fdb",
+      "titleEn": "Quantum Hardware Diversification \u2192 Gradual Commercialization",
       "type": "intra-domain",
       "domains": [
         "quantum"
@@ -7147,27 +7147,27 @@
       ],
       "nodes": [
         {
-          "step": "量子传感器率先商用",
+          "step": "\u91cf\u5b50\u4f20\u611f\u5668\u7387\u5148\u5546\u7528",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "拓扑量子比特突破",
+          "step": "\u62d3\u6251\u91cf\u5b50\u6bd4\u7279\u7a81\u7834",
           "evidence_strength": "LOW"
         },
         {
-          "step": "城市级量子网络",
+          "step": "\u57ce\u5e02\u7ea7\u91cf\u5b50\u7f51\u7edc",
           "evidence_strength": "LOW"
         },
         {
-          "step": "破解加密（远期）",
+          "step": "\u7834\u89e3\u52a0\u5bc6\uff08\u8fdc\u671f\uff09",
           "evidence_strength": "LOW"
         }
       ]
     },
     {
-      "id": "CL-C3",
-      "title": "气候临界点连续触发→不可逆加速",
-      "titleEn": "Climate Tipping Points Cascading → Irreversible Acceleration",
+      "id": "CC-CL-003",
+      "title": "\u6c14\u5019\u4e34\u754c\u70b9\u8fde\u7eed\u89e6\u53d1\u2192\u4e0d\u53ef\u9006\u52a0\u901f",
+      "titleEn": "Climate Tipping Points Cascading \u2192 Irreversible Acceleration",
       "type": "intra-domain",
       "domains": [
         "climate"
@@ -7178,15 +7178,15 @@
       ],
       "nodes": [
         {
-          "step": "AMOC 持续减速确认",
+          "step": "AMOC \u6301\u7eed\u51cf\u901f\u786e\u8ba4",
           "evidence_strength": "MEDIUM"
         },
         {
-          "step": "冰架崩塌加速",
+          "step": "\u51b0\u67b6\u5d29\u584c\u52a0\u901f",
           "evidence_strength": "LOW"
         },
         {
-          "step": "海平面加速上升",
+          "step": "\u6d77\u5e73\u9762\u52a0\u901f\u4e0a\u5347",
           "evidence_strength": "LOW"
         }
       ]
