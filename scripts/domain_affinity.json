@@ -1,0 +1,27 @@
+{
+  "description": "Domain affinity matrix for causal chain generation. Values 0-1 based on domain knowledge.",
+  "domains": {
+    "AI": {"label": "Artificial Intelligence", "color": "#3B82F6"},
+    "demographics": {"label": "Demographics", "color": "#8B5CF6"},
+    "energy": {"label": "Energy", "color": "#10B981"},
+    "climate": {"label": "Climate", "color": "#F59E0B"},
+    "space": {"label": "Space", "color": "#6366F1"},
+    "biotech": {"label": "Biotech", "color": "#EC4899"},
+    "quantum": {"label": "Quantum", "color": "#A78BFA"},
+    "space-economy": {"label": "Space Economy", "color": "#14B8A6"},
+    "space-alien": {"label": "Space Alien", "color": "#F97316"},
+    "cross-domain": {"label": "Cross-Domain", "color": "#64748B"}
+  },
+  "affinity": {
+    "AI": {"AI": 1.0, "demographics": 0.7, "energy": 0.7, "climate": 0.3, "space": 0.2, "biotech": 0.5, "quantum": 0.3, "space-economy": 0.2, "space-alien": 0.1, "cross-domain": 0.4},
+    "demographics": {"AI": 0.6, "demographics": 1.0, "energy": 0.4, "climate": 0.3, "space": 0.1, "biotech": 0.3, "quantum": 0.1, "space-economy": 0.2, "space-alien": 0.1, "cross-domain": 0.3},
+    "energy": {"AI": 0.6, "demographics": 0.4, "energy": 1.0, "climate": 0.8, "space": 0.1, "biotech": 0.2, "quantum": 0.1, "space-economy": 0.3, "space-alien": 0.1, "cross-domain": 0.3},
+    "climate": {"AI": 0.3, "demographics": 0.3, "energy": 0.8, "climate": 1.0, "space": 0.1, "biotech": 0.3, "quantum": 0.1, "space-economy": 0.2, "space-alien": 0.1, "cross-domain": 0.3},
+    "space": {"AI": 0.2, "demographics": 0.1, "energy": 0.1, "climate": 0.1, "space": 1.0, "biotech": 0.2, "quantum": 0.2, "space-economy": 0.7, "space-alien": 0.6, "cross-domain": 0.3},
+    "biotech": {"AI": 0.5, "demographics": 0.3, "energy": 0.2, "climate": 0.3, "space": 0.2, "biotech": 1.0, "quantum": 0.2, "space-economy": 0.1, "space-alien": 0.1, "cross-domain": 0.3},
+    "quantum": {"AI": 0.3, "demographics": 0.1, "energy": 0.1, "climate": 0.1, "space": 0.2, "biotech": 0.2, "quantum": 1.0, "space-economy": 0.2, "space-alien": 0.1, "cross-domain": 0.3},
+    "space-economy": {"AI": 0.2, "demographics": 0.2, "energy": 0.3, "climate": 0.2, "space": 0.7, "biotech": 0.1, "quantum": 0.2, "space-economy": 1.0, "space-alien": 0.3, "cross-domain": 0.3},
+    "space-alien": {"AI": 0.1, "demographics": 0.1, "energy": 0.1, "climate": 0.1, "space": 0.6, "biotech": 0.1, "quantum": 0.1, "space-economy": 0.3, "space-alien": 1.0, "cross-domain": 0.3},
+    "cross-domain": {"AI": 0.4, "demographics": 0.3, "energy": 0.3, "climate": 0.3, "space": 0.3, "biotech": 0.3, "quantum": 0.3, "space-economy": 0.3, "space-alien": 0.3, "cross-domain": 1.0}
+  }
+}

@@ -1,10 +1,11 @@
 # Sprint 4 方案 — 因果链引擎 + 数据质量管线
 
-**版本**: v1.0  
+**版本**: v1.1  
 **日期**: 2026-10-15  
-**作者**: Anna (Code Review Agent)  
-**技术审阅**: 已完成  
-**状态**: 待 Vincent 确认
+**作者**: Anna (方案框架) + 产品扣子 (技术审阅 + 实现补充)  
+**技术审阅**: 产品扣子已完成  
+**状态**: Vincent 确认后开干  
+**目标交付**: 2026-10-22（一周内全部完成）
 
 ---
 
@@ -13,8 +14,12 @@
 | 编号 | 问题 | 严重程度 | 当前状态 |
 |---|---|---|---|
 | S3-BUG-1 | FP-79 leadingSignal 为空（status='none', indicator='', source=''） | 🔴 P0 | 数据验证已发现，待修复 |
-| S3-BUG-2 | 因果链 ID 格式不统一（产品扣子改为 CC-{domain}-{seq}，但 timeline 链接仍指向旧格式） | 🔴 P0 |  Vincent 反馈 timeline 链接错误 |
-| S3-BUG-3 | 首页 chain 卡片 data-chain-id 与 timeline.js 中 DETAIL_DATA.causalChainIds 不一致 | 🟡 P1 | 需全链路验证 |
+| S3-BUG-2 | 因果链 ID 格式不统一（产品扣子改为 CC-{domain}-{seq}，但 timeline 链接仍指向旧格式） | 🔴 P0 | ✅ 已修复 commit `fc31c2d` — predictions.json 全量更新 |
+| S3-BUG-3 | 首页 chain 卡片 data-chain-id 与 timeline.js 中 DETAIL_DATA.causalChainIds 不一致 | 🟡 P1 | ✅ 已修复 commit `e27d86d` |
+
+**已完成修复**：
+- `index.html`：var 作用域修复（`5b352a4`）、window 暴露函数（`150abc8`）、ID 格式统一（`0e11457`）、占位符补 relatedPreds（`b4e398c`）
+- `predictions.json`：21 条因果链 ID 全量更新为新格式（`fc31c2d`）
 
 **验收标准**：数据验证脚本 `python3 scripts/validate_data.py` 通过（0 errors）。
 
@@ -22,12 +27,12 @@
 
 ## 1. Sprint 4 目标
 
-| 优先级 | 目标 | 交付物 |
-|---|---|---|
-| **P0** | 因果链引擎 | `generate_causal_chains.py` + 自动生成的因果链数据 |
-| **P0** | 数据验证管线 | CI 集成 + 生成脚本内建验证 |
-| **P1** | Timeline 脉络线重做 | 贝塞尔曲线 + 多段渲染 + 数量控制 |
-| **P2** | 因果链侧边栏 | 域过滤 + 强度筛选 + 链详情面板 |
+| 优先级 | 目标 | 交付物 | 预估 |
+|---|---|---|---|
+| **P0** | 因果链引擎 | `generate_causal_chains.py` + 自动生成的因果链数据 | Day 1-2 |
+| **P0** | 数据验证管线 | CI 集成 + 生成脚本内建验证 | Day 1 |
+| **P1** | Timeline 脉络线重做 | 贝塞尔曲线 + 多段渲染 + 数量控制 | Day 3 |
+| **P1** | 因果链侧边栏 | 域过滤 + 强度筛选 + 链详情面板 | Day 4 |
 
 ---
 
@@ -104,11 +109,11 @@ references/
 | space-alien | 0.1 | 0.1 | 0.1 | 0.1 | 0.6 | 0.1 | 0.1 | 0.3 | 1.0 | 0.3 |
 | cross-domain | 0.5 | 0.4 | 0.5 | 0.4 | 0.3 | 0.3 | 0.3 | 0.4 | 0.3 | 1.0 |
 
-**说明**：
-- 同域 = 1.0（最高亲和度）
-- AI ↔ energy = 0.6（算力需求驱动能源需求）
-- energy ↔ climate = 0.8（能源转型影响气候）
-- space ↔ space-economy = 0.7（太空基础设施带动太空经济）
+**产品扣子审阅意见**：
+- AI ↔ biotech 建议从 0.4 调到 0.5（AI 制药是当前热点，AlphaFold 等）
+- AI ↔ energy 从 0.6 调到 0.7（数据中心能耗暴增，更贴切）
+- space ↔ space-alien = 0.6 合理（太空探索自然关联）
+- cross-domain 行偏高（全 0.3-0.5），建议降到 0.3-0.4，避免跨域链过多
 
 ### 2.6 验收标准
 
@@ -123,14 +128,164 @@ references/
 
 ---
 
-## 3. 数据验证管线
+## 3. 因果链引擎实现方案（产品扣子补充）
 
-### 3.1 当前状态
+### 3.1 数据结构分析
+
+**现有数据**（`predictions.json`）：
+- 80 个预测（FP），每个包含：
+  - `id`: "FP-01" ~ "FP-80"
+  - `domain`: 10 个域之一
+  - `verificationDate`: "2027-06-30" ~ "2031-06-30"
+  - `causalChainNodes`: [{step, stepEn, evidence_strength}] — 因果步骤描述
+- 21 条手工因果链，每条包含：
+  - `linkedPredictions`: ["FP-01", "FP-22", ...] — 链上的 FP ID 列表
+  - `nodes`: [{step, evidence_strength}] — 链节点描述
+  - `domains`: ["AI", "energy", ...] — 涉及域
+
+**关键发现**：
+- `verificationDate` 只有 3 个值：2027-06-30、2028-06-30、2029-06-30、2030-06-30、2031-06-30
+- 同日期 FP 数量很多 → 时间约束"≥ 1 年"会过滤大量边
+- 同域内同日 FP 可放宽约束（Anna 方案已提到）
+
+### 3.2 权重计算公式
+
+```python
+def edge_weight(fp_a, fp_b, affinity_matrix):
+    """计算 FP-A → FP-B 的因果边权重"""
+    
+    # 1. 时间约束（硬约束）
+    date_a = parse_date(fp_a['verificationDate'])
+    date_b = parse_date(fp_b['verificationDate'])
+    year_gap = (date_b - date_a).days / 365.0
+    
+    if year_gap < 0:
+        return 0  # 时间倒流，不可接受
+    if year_gap < 1 and fp_a['domain'] != fp_b['domain']:
+        return 0  # 非同域且间隔不足 1 年
+    # 同域同日允许（year_gap >= 0）
+    
+    # 2. 域亲和度（0-1）
+    affinity = affinity_matrix[fp_a['domain']][fp_b['domain']]
+    
+    # 3. 语义相似度（TF-IDF 余弦，0-1）
+    # 取 A 的最后一个 causalChainNode 与 B 的第一个
+    text_a = fp_a['causalChainNodes'][-1]['stepEn']
+    text_b = fp_b['causalChainNodes'][0]['stepEn']
+    similarity = tfidf_cosine(text_a, text_b)
+    
+    # 4. 时间衰减（越早的因越"自然"）
+    time_factor = 1.0 / (1.0 + year_gap * 0.1)
+    
+    # 综合权重
+    weight = affinity * 0.4 + similarity * 0.4 + time_factor * 0.2
+    return weight
+```
+
+### 3.3 贪心构建伪代码
+
+```python
+def build_chains(weight_matrix, fps, max_chains=25, max_len=7):
+    """贪心构建因果链"""
+    used_nodes = set()
+    chains = []
+    
+    # 按权重降序遍历所有边
+    edges = sorted(
+        [(i, j, w) for i in range(80) for j in range(80) 
+         if i != j and weight_matrix[i][j] > 0],
+        key=lambda x: -x[2]
+    )
+    
+    for (i, j, w) in edges:
+        if i in used_nodes or j in used_nodes:
+            continue
+        if len(chains) >= max_chains:
+            break
+        
+        # 以 (i→j) 为种子链
+        chain = [i, j]
+        used_nodes.add(i)
+        used_nodes.add(j)
+        
+        # 向前扩展（找 X → chain[0]）
+        while len(chain) < max_len:
+            best = find_best_predecessor(chain[0], weight_matrix, used_nodes)
+            if best is None or weight_matrix[best][chain[0]] < 0.2:
+                break
+            chain.insert(0, best)
+            used_nodes.add(best)
+        
+        # 向后扩展（找 chain[-1] → Y）
+        while len(chain) < max_len:
+            best = find_best_successor(chain[-1], weight_matrix, used_nodes)
+            if best is None or weight_matrix[chain[-1]][best] < 0.2:
+                break
+            chain.append(best)
+            used_nodes.add(best)
+        
+        chains.append(chain)
+    
+    return chains
+```
+
+### 3.4 验证规则实现
+
+```python
+def validate_chain(chain, fps):
+    """验证因果链是否合格"""
+    
+    # V1: 时间单调性
+    dates = [fps[i]['verificationDate'] for i in chain]
+    for k in range(len(dates) - 1):
+        if parse_date(dates[k]) > parse_date(dates[k+1]):
+            return False, "V1: 时间非单调"
+    
+    # V2: 域连贯性（域转换 ≤ 3 次）
+    domains = [fps[i]['domain'] for i in chain]
+    transitions = sum(1 for k in range(len(domains)-1) if domains[k] != domains[k+1])
+    if transitions > 3:
+        return False, f"V2: 域转换 {transitions} 次 > 3"
+    
+    # V3: 证据强度 ≥ 60
+    strengths = []
+    for i in chain:
+        for node in fps[i]['causalChainNodes']:
+            s = node.get('evidence_strength', 'LOW')
+            strengths.append({'HIGH': 100, 'MEDIUM': 60, 'LOW': 30}.get(s, 30))
+    avg_strength = sum(strengths) / len(strengths) if strengths else 0
+    if avg_strength < 60:
+        return False, f"V3: 平均证据 {avg_strength:.0f} < 60"
+    
+    # V4: 语义连贯性（相邻节点相似度 > 0.15）
+    for k in range(len(chain) - 1):
+        text_a = fps[chain[k]]['causalChainNodes'][-1]['stepEn']
+        text_b = fps[chain[k+1]]['causalChainNodes'][0]['stepEn']
+        sim = tfidf_cosine(text_a, text_b)
+        if sim < 0.15:
+            return False, f"V4: 语义断裂 {sim:.2f}"
+    
+    return True, "PASS"
+```
+
+### 3.5 实现风险与缓解
+
+| 风险 | 缓解 |
+|---|---|
+| verificationDate 只有 5 个离散值，时间约束太严 | 同域同日允许；跨域间隔 < 1 年用时间衰减降权而非硬过滤 |
+| TF-IDF 在短文本上效果差 | 用 sentence-transformers 替代（如果依赖允许），或退回关键词重叠 |
+| 生成链与手工链重叠度低 | 先跑一版看重叠度，低于 30% 则调权重参数 |
+
+---
+
+## 4. 数据验证管线
+
+### 4.1 当前状态
 
 - `scripts/validate_data.py` ✅ 已写好，能跑
 - 发现 1 个真实 bug：FP-79 leadingSignal 为空
 
-### 3.2 Sprint 4 目标
+### 4.2 Sprint 4 目标
 
 ```
 生成数据 (LLM/脚本)
@@ -143,7 +298,7 @@ python3 validate_data.py  ← 自动生成后立刻跑
 git push → GitHub Actions 再跑一次（双重保险）
 ```
 
-### 3.3 CI 集成
+### 4.3 CI 集成
 
 ```yaml
 # .github/workflows/data-validation.yml
@@ -167,7 +322,7 @@ jobs:
         run: python3 scripts/validate_data.py
 ```
 
-### 3.4 验证规则清单
+### 4.4 验证规则清单
 
 | 规则 | 检查内容 | 阻断级别 |
 |---|---|---|
@@ -186,22 +341,22 @@ jobs:
 
 ---
 
-## 4. Timeline 脉络线重做（P1）
+## 5. Timeline 脉络线重做（P1）
 
-### 4.1 当前问题
+### 5.1 当前问题
 
 - 阶梯式路径（L + Q 圆角），视觉粗糙
 - 只连首尾 FP，中间节点被忽略
 - 21 条链全部显示，视觉混乱
 
-### 4.2 目标效果
+### 5.2 目标效果
 
 回到设计稿风格：
 - 贝塞尔曲线（平滑 S 形）
 - 多段短曲线（相邻 FP 之间各画一段）
 - 默认显示 top 5 核心链，侧边栏可筛选
 
-### 4.3 实现方案
+### 5.3 实现方案
 
 ```javascript
 // timeline.js 改造
@@ -233,7 +388,7 @@ function renderCausalChains(chains) {
 }
 ```
 
-### 4.4 验收标准
+### 5.4 验收标准
 
 - 曲线平滑，无尖角
 - 每段曲线连接相邻 FP
@@ -242,25 +397,27 @@ function renderCausalChains(chains) {
 
 ---
 
-## 5. 排期
+## 6. 排期（压缩版 — 一周交付）
 
-| 阶段 | 任务 | 负责人 | 预估工时 | 依赖 |
+| 日期 | 任务 | 负责人 | 工时 | 依赖 |
 |---|---|---|---|---|
-| **Week 1** | 修复 S3 遗留问题（FP-79、ID 格式） | 产品扣子 | 2h | 无 |
-| **Week 1** | 数据验证 CI 集成 | 产品扣子 | 2h | validate_data.py 已完成 |
-| **Week 2** | 域亲和度矩阵定义 | Anna 审阅 + Vincent 确认 | 2h | 无 |
-| **Week 2** | 因果链引擎核心算法 | 产品扣子 | 8h | 域亲和度矩阵 |
-| **Week 2** | 因果链引擎验证规则 | 产品扣子 | 4h | 核心算法 |
-| **Week 3** | 生成新因果链数据 | 产品扣子 | 2h | 引擎完成 |
-| **Week 3** | Anna 审阅生成结果 | Anna | 2h | 新数据 |
-| **Week 3** | Timeline 脉络线重做 | 产品扣子 | 6h | 新因果链数据 |
-| **Week 4** | 集成测试 + 回归测试 | 产品扣子 + Anna | 4h | 全部完成 |
-| **Week 4** | 部署上线 | 产品扣子 | 2h | 测试通过 |
-| | **总计** | | **~34h** | |
+| **Day 1（10/16 周三）** | 修复 FP-79 leadingSignal | 产品扣子 | 1h | 无 |
+| | 数据验证 CI 集成（.github/workflows） | 产品扣子 | 1h | validate_data.py 已完成 |
+| | domain_affinity.json 定义 | 产品扣子 | 1h | 无 |
+| **Day 2（10/17 周四）** | 因果链引擎核心算法 `generate_causal_chains.py` | 产品扣子 | 6h | affinity matrix |
+| | 验证规则实现（V1-V4） | 产品扣子 | 2h | 核心算法 |
+| **Day 3（10/18 周五）** | 生成新因果链数据 + 与手工链对比 | 产品扣子 | 2h | 引擎完成 |
+| | Anna 审阅生成结果 | Anna | 2h | 新数据 |
+| | Timeline 脉络线重做（贝塞尔曲线） | 产品扣子 | 4h | 新因果链数据 |
+| **Day 4（10/19 周六）** | 因果链侧边栏（域过滤 + 强度筛选） | 产品扣子 | 4h | 新数据 |
+| | 集成测试 + 回归测试 | 产品扣子 + Anna | 2h | 全部完成 |
+| **Day 5（10/20 周日）** | 修复审阅反馈 | 产品扣子 | 2h | Anna 审阅 |
+| | 部署上线 | 产品扣子 | 1h | 测试通过 |
+| | **总计** | | **~28h** | |
 
 ---
 
-## 6. 风险与缓解
+## 7. 风险与缓解
 
 | 风险 | 概率 | 影响 | 缓解措施 |
 |---|---|---|---|
@@ -268,10 +425,11 @@ function renderCausalChains(chains) {
 | 域亲和度矩阵不准确 | 中 | 中 | Vincent 审阅 + 迭代调整 |
 | Timeline 性能问题（曲线太多） | 低 | 中 | 默认只显示 top 5，懒加载其余 |
 | 验证规则太严导致生成失败 | 低 | 低 | 分级阻断（ERROR/INFO） |
+| 一周时间太紧 | 中 | 中 | P2 侧边栏可推迟到 Sprint 5 |
 
 ---
 
-## 7. 验收标准（整体）
+## 8. 验收标准（整体）
 
 Sprint 4 完成时，以下条件必须全部满足：
 
@@ -285,7 +443,5 @@ Sprint 4 完成时，以下条件必须全部满足：
 ---
 
 **下一步**：
-1. Vincent 确认方案方向和排期
-2. 产品扣子先修 S3 遗留问题（FP-79、ID 格式）
-3. 确认域亲和度矩阵初始值
-4. 开始 Week 2 因果链引擎开发
+1. Vincent 确认排期（一周 vs 四周）
+2. 产品扣子立即开始 Day 1 任务
