@@ -74,6 +74,48 @@
   </div>
 </main>
 
+<!-- Causal Chain Sidebar -->
+<aside class="chain-sidebar" id="chain-sidebar" role="complementary" aria-label="Causal chain filter">
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle chain panel" aria-expanded="false">
+    <span class="toggle-icon">🔗</span>
+    <span class="toggle-label">Chains</span>
+  </button>
+  <div class="sidebar-content" id="sidebar-content">
+    <div class="sidebar-header">
+      <h3>Causal Chains</h3>
+      <button class="sidebar-close" id="sidebar-close" aria-label="Close panel">✕</button>
+    </div>
+    
+    <!-- Strength filter -->
+    <div class="filter-section">
+      <label class="filter-label">Min Strength: <span id="strength-value">0</span></label>
+      <input type="range" id="strength-slider" class="strength-slider" min="0" max="100" value="0" step="10">
+    </div>
+    
+    <!-- Domain filter -->
+    <div class="filter-section">
+      <label class="filter-label">Domains</label>
+      <div class="domain-filters" id="domain-filters">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+    
+    <!-- Chain list -->
+    <div class="chain-list-section">
+      <label class="filter-label">Chains (<span id="chain-count">0</span> visible)</label>
+      <div class="chain-list" id="chain-list">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+    
+    <!-- Chain detail panel -->
+    <div class="chain-detail" id="chain-detail" style="display:none;">
+      <button class="detail-back" id="detail-back">← Back to list</button>
+      <div class="detail-content" id="detail-content"></div>
+    </div>
+  </div>
+</aside>
+
 <!-- Tooltip -->
 <div class="timeline-tooltip" id="timeline-tooltip" role="tooltip" aria-hidden="true"></div>
 

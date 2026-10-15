@@ -1302,6 +1302,7 @@ async function init() {
   setupKeyboard();
   setupMobile();
   setupLongPress();
+  setupChainSidebar();
 
   // Handle initial hash
   handleHash();
@@ -1318,6 +1319,212 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {
   init();
+}
+
+// ============================================================
+// CAUSAL CHAIN SIDEBAR
+// ============================================================
+function setupChainSidebar() {
+  const sidebar = document.getElementById('chain-sidebar');
+  const toggle = document.getElementById('sidebar-toggle');
+  const closeBtn = document.getElementById('sidebar-close');
+  const strengthSlider = document.getElementById('strength-slider');
+  const strengthValue = document.getElementById('strength-value');
+  const domainFilters = document.getElementById('domain-filters');
+  const chainList = document.getElementById('chain-list');
+  const chainCount = document.getElementById('chain-count');
+  const chainDetail = document.getElementById('chain-detail');
+  const detailBack = document.getElementById('detail-back');
+  const detailContent = document.getElementById('detail-content');
+  
+  if (!sidebar || !causalChains || causalChains.length === 0) return;
+  
+  // State
+  let activeDomains = new Set();
+  let minStrength = 0;
+  let selectedChainId = null;
+  
+  // Toggle sidebar
+  toggle.addEventListener('click', () => {
+    sidebar.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+  });
+  closeBtn.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+  
+  // Build domain chips
+  const allDomains = [...new Set(causalChains.flatMap(c => c.domains || []))].sort();
+  domainFilters.innerHTML = allDomains.map(d => {
+    const info = DOMAIN_INFO[d] || {};
+    return `<div class="domain-chip active" data-domain="${d}">
+      <span class="chip-dot" style="background:${info.color || '#94A3B8'}"></span>
+      ${info.label || d}
+    </div>`;
+  }).join('');
+  activeDomains = new Set(allDomains);
+  
+  // Domain chip toggle
+  domainFilters.querySelectorAll('.domain-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const d = chip.dataset.domain;
+      if (activeDomains.has(d)) {
+        activeDomains.delete(d);
+        chip.classList.remove('active');
+      } else {
+        activeDomains.add(d);
+        chip.classList.add('active');
+      }
+      updateChainList();
+      renderFilteredChains();
+    });
+  });
+  
+  // Strength slider
+  strengthSlider.addEventListener('input', () => {
+    minStrength = parseInt(strengthSlider.value);
+    strengthValue.textContent = minStrength;
+    updateChainList();
+    renderFilteredChains();
+  });
+  
+  // Filter chains
+  function getFilteredChains() {
+    return causalChains.filter(c => {
+      const domains = c.domains || [];
+      const hasDomain = domains.some(d => activeDomains.has(d));
+      const strength = calcChainStrengthForSidebar(c);
+      return hasDomain && strength >= minStrength;
+    });
+  }
+  
+  function calcChainStrengthForSidebar(chain) {
+    if (!chain.strength && chain.strength !== 0) {
+      // Calculate from nodes
+      if (!chain.nodes || chain.nodes.length === 0) return 50;
+      const score = chain.nodes.reduce((sum, n) => {
+        const es = n.evidence_strength;
+        if (es === 'HIGH') return sum + 3;
+        if (es === 'MEDIUM') return sum + 2;
+        return sum + 1;
+      }, 0);
+      return Math.round((score / chain.nodes.length) * 33.3);
+    }
+    return chain.strength || 50;
+  }
+  
+  // Update chain list
+  function updateChainList() {
+    const filtered = getFilteredChains();
+    filtered.sort((a, b) => calcChainStrengthForSidebar(b) - calcChainStrengthForSidebar(a));
+    
+    chainCount.textContent = filtered.length;
+    chainList.innerHTML = filtered.map(c => {
+      const strength = calcChainStrengthForSidebar(c);
+      const fpCount = (c.linkedPredictions || []).length;
+      return `<div class="chain-item" data-chain-id="${c.id}">
+        <div class="chain-item-title">${c.title || c.id}</div>
+        <div class="chain-item-meta">
+          <span>💪 ${strength}</span>
+          <span>📊 ${fpCount} FPs</span>
+          <span>${(c.domains || []).join(', ')}</span>
+        </div>
+      </div>`;
+    }).join('');
+    
+    // Click handler
+    chainList.querySelectorAll('.chain-item').forEach(item => {
+      item.addEventListener('click', () => {
+        showChainDetail(item.dataset.chainId);
+        chainList.querySelectorAll('.chain-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+    
+    renderFilteredChains();
+  }
+  
+  // Show chain detail
+  function showChainDetail(chainId) {
+    selectedChainId = chainId;
+    const chain = causalChains.find(c => c.id === chainId);
+    if (!chain) return;
+    
+    const strength = calcChainStrengthForSidebar(chain);
+    const linkedFPs = chain.linkedPredictions || [];
+    const predMap = {};
+    predictions.forEach(p => predMap[p.id] = p);
+    
+    let html = `<h4>${chain.title || chain.id}</h4>`;
+    html += `<div class="detail-row"><span class="detail-label">ID</span><span>${chain.id}</span></div>`;
+    html += `<div class="detail-row"><span class="detail-label">Strength</span><span>${strength}</span></div>`;
+    html += `<div class="detail-row"><span class="detail-label">Type</span><span>${chain.type || '-'}</span></div>`;
+    html += `<div class="detail-row"><span class="detail-label">Domains</span><span>${(chain.domains || []).join(', ')}</span></div>`;
+    html += `<div class="detail-row"><span class="detail-label">FPs</span><span>${linkedFPs.length}</span></div>`;
+    
+    if (linkedFPs.length > 0) {
+      html += `<div class="detail-fps">`;
+      linkedFPs.forEach(fpId => {
+        const p = predMap[fpId];
+        if (p) {
+          html += `<div class="detail-fp"><strong>${fpId}</strong>: ${p.title.substring(0, 60)}${p.title.length > 60 ? '...' : ''}</div>`;
+        }
+      });
+      html += `</div>`;
+    }
+    
+    detailContent.innerHTML = html;
+    chainList.style.display = 'none';
+    document.querySelector('.filter-section').style.display = 'none';
+    document.querySelector('.chain-list-section').style.display = 'none';
+    chainDetail.style.display = 'block';
+    
+    // Highlight on timeline
+    highlightChain(chainId);
+  }
+  
+  // Back to list
+  detailBack.addEventListener('click', () => {
+    selectedChainId = null;
+    chainList.style.display = '';
+    document.querySelector('.filter-section').style.display = '';
+    document.querySelector('.chain-list-section').style.display = '';
+    chainDetail.style.display = 'none';
+    unhighlightChains();
+  });
+  
+  // Highlight chain on timeline
+  function highlightChain(chainId) {
+    const chainG = d3.select('.causal-chains');
+    if (chainG.empty()) return;
+    chainG.selectAll('path[data-chain-id]').attr('opacity', function() {
+      return this.getAttribute('data-chain-id') === chainId ? 1 : 0.1;
+    });
+  }
+  
+  function unhighlightChains() {
+    const chainG = d3.select('.causal-chains');
+    if (chainG.empty()) return;
+    chainG.selectAll('path[data-chain-id]').attr('opacity', 0.7);
+  }
+  
+  // Re-render timeline with filtered chains
+  function renderFilteredChains() {
+    const filtered = getFilteredChains();
+    const chainG = d3.select('.causal-chains');
+    if (chainG.empty()) return;
+    
+    const visibleIds = new Set(filtered.map(c => c.id));
+    chainG.selectAll('path[data-chain-id]').each(function() {
+      const id = this.getAttribute('data-chain-id');
+      d3.select(this).style('display', visibleIds.has(id) ? '' : 'none');
+    });
+    // Also show/hide endpoint circles (they don't have data-chain-id, so skip)
+  }
+  
+  // Initial render
+  updateChainList();
 }
 
 })();
