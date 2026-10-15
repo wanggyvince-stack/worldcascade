@@ -9,7 +9,7 @@ export default defineConfig({
   reporter: 'html',
   
   use: {
-    baseURL: process.env.CI ? 'https://www.worldcascade.com' : 'http://localhost:3000',
+    baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
@@ -21,10 +21,10 @@ export default defineConfig({
     },
   ],
 
-  // For local development
-  webServer: process.env.CI ? undefined : {
-    command: 'npm run dev',
+  webServer: {
+    command: 'npx http-server -p 3000 -s',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
+    timeout: 120 * 1000,
   },
 });
