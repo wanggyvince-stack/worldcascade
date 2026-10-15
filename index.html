@@ -3124,6 +3124,99 @@ document.addEventListener('DOMContentLoaded', () => {
     // silent
   }
 
+
+    function renderChainDetail(chainId) {
+      const chain = CHAINS_DATA.find(c => c.id === chainId);
+      const detailEl = document.getElementById('chain-detail-view');
+      if (!chain || !detailEl) return false;
+
+      // Header
+      document.getElementById('cd-head').innerHTML = `
+        <div class="cd-tag">${chain.id} · ${chain.type}</div>
+        <h1 class="cd-title">${chain.title}</h1>
+      `;
+
+      // Top view (mini node chain)
+      const topNodes = chain.nodes.map((n, i) => {
+        const arrow = i < chain.nodes.length - 1 ? '<span class="cd-top-arrow">→</span>' : '';
+        return `<button type="button" class="cd-top-node ${n.evidence.toLowerCase()}" data-node-idx="${i}" onclick="document.querySelectorAll('.cd-node')[${i}].classList.add('open');document.querySelectorAll('.cd-node')[${i}].scrollIntoView({behavior:'smooth',block:'center'});">${n.title}</button>${arrow}`;
+      }).join('');
+      const avgScore = Math.round(chain.relatedPreds.reduce((s, pid) => {
+        const p = PREDICTIONS.find(p => p.id === pid);
+        return s + (p ? p.e : 0);
+      }, 0) / chain.relatedPreds.length * 10) / 10;
+      document.getElementById('cd-top').innerHTML = `
+        <div class="cd-top-nodes">${topNodes}</div>
+        <div class="cd-top-meta">
+          <span class="cd-strength-bar">Chain strength: <span class="cd-strength-fill" style="--pct:${chain.strength}%"></span> <strong>${chain.strength}%</strong></span>
+          <span>Linked predictions: <strong>${chain.relatedPreds.length}</strong></span>
+          <span>Avg engine score: <strong>${avgScore}</strong></span>
+        </div>
+      `;
+
+      // Nodes
+      document.getElementById('cd-nodes').innerHTML = chain.nodes.map((n, i) => {
+        const anchorChips = n.anchors.map(pid => {
+          const p = PREDICTIONS.find(p => p.id === pid);
+          if (!p) return '';
+          return `<a class="cd-mini-pred" href="#detail/${pid}" onclick="setLastRoute(location.hash);event.stopPropagation();event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">${pid} <span class="mp-score">${p.e}</span></a>`;
+        }).join('');
+        const paragraphs = n.paragraphs.map(p => `<p class="cd-node-p">${p}</p>`).join('');
+        return `
+          <article class="cd-node${i === 0 ? ' open' : ''}" data-node="${n.id}">
+            <div class="cd-node-head" onclick="this.parentElement.classList.toggle('open')">
+              <div class="cd-node-title-wrap">
+                <div class="cd-node-num">NODE ${i+1}</div>
+                <div class="cd-node-title">${n.title}</div>
+              </div>
+              <span class="cd-node-badge ${n.evidence.toLowerCase()}">${n.evidence} · ${n.freshness}</span>
+              <svg class="cd-node-arrow" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5 L7 9 L11 5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            </div>
+            <div class="cd-node-body">
+              ${paragraphs}
+              <div class="cd-node-meaning">${n.meaning}</div>
+              <div class="cd-node-anchors">
+                <div class="cd-node-anchors-label">Anchor Predictions</div>
+                ${anchorChips}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Vulnerability
+      const v = chain.vulnerability;
+      document.getElementById('cd-vuln').innerHTML = `
+        <strong>Weakest link: ${v.title}</strong>
+        <p class="cd-node-p" style="margin-top:0.75rem;margin-bottom:0;">${v.text}</p>
+      `;
+
+      // All predictions
+      const predsHtml = chain.relatedPreds.map(pid => {
+        const p = PREDICTIONS.find(p => p.id === pid);
+        if (!p) return '';
+        return `<a class="cd-pred-row" href="#detail/${pid}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">
+          <span class="cd-pred-id">${pid}</span>
+          <span class="cd-pred-title">${p.t.replace(/\'/g,"'")}</span>
+          <span class="cd-pred-score">${p.e}</span>
+        </a>`;
+      }).join('');
+      document.getElementById('cd-preds').innerHTML = `
+        ${predsHtml}
+        <div class="cd-preds-summary">Average engine score across <strong>${chain.relatedPreds.length}</strong> linked predictions: <strong>${avgScore}</strong></div>
+      `;
+
+      // Toggle visibility
+      document.getElementById('hero').hidden = true;
+      document.getElementById('chains').hidden = true;
+      document.getElementById('predictions').hidden = true;
+      document.getElementById('trust').hidden = true;
+      detailEl.hidden = false;
+      
+      window.scrollTo(0, 0);
+      return true;
+    }
+
     // ===== 预测大厅卡片点击委托（WO-11 路由） =====
     var phGrid = document.getElementById('ph-grid');
     if (phGrid) {
@@ -3365,97 +3458,97 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function renderChainDetail(chainId) {
-      const chain = CHAINS_DATA.find(c => c.id === chainId);
-      const detailEl = document.getElementById('chain-detail-view');
-      if (!chain || !detailEl) return false;
 
-      // Header
-      document.getElementById('cd-head').innerHTML = `
-        <div class="cd-tag">${chain.id} · ${chain.type}</div>
-        <h1 class="cd-title">${chain.title}</h1>
-      `;
 
-      // Top view (mini node chain)
-      const topNodes = chain.nodes.map((n, i) => {
-        const arrow = i < chain.nodes.length - 1 ? '<span class="cd-top-arrow">→</span>' : '';
-        return `<button type="button" class="cd-top-node ${n.evidence.toLowerCase()}" data-node-idx="${i}" onclick="document.querySelectorAll('.cd-node')[${i}].classList.add('open');document.querySelectorAll('.cd-node')[${i}].scrollIntoView({behavior:'smooth',block:'center'});">${n.title}</button>${arrow}`;
-      }).join('');
-      const avgScore = Math.round(chain.relatedPreds.reduce((s, pid) => {
-        const p = PREDICTIONS.find(p => p.id === pid);
-        return s + (p ? p.e : 0);
-      }, 0) / chain.relatedPreds.length * 10) / 10;
-      document.getElementById('cd-top').innerHTML = `
-        <div class="cd-top-nodes">${topNodes}</div>
-        <div class="cd-top-meta">
-          <span class="cd-strength-bar">Chain strength: <span class="cd-strength-fill" style="--pct:${chain.strength}%"></span> <strong>${chain.strength}%</strong></span>
-          <span>Linked predictions: <strong>${chain.relatedPreds.length}</strong></span>
-          <span>Avg engine score: <strong>${avgScore}</strong></span>
-        </div>
-      `;
 
-      // Nodes
-      document.getElementById('cd-nodes').innerHTML = chain.nodes.map((n, i) => {
-        const anchorChips = n.anchors.map(pid => {
-          const p = PREDICTIONS.find(p => p.id === pid);
-          if (!p) return '';
-          return `<a class="cd-mini-pred" href="#detail/${pid}" onclick="setLastRoute(location.hash);event.stopPropagation();event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">${pid} <span class="mp-score">${p.e}</span></a>`;
-        }).join('');
-        const paragraphs = n.paragraphs.map(p => `<p class="cd-node-p">${p}</p>`).join('');
-        return `
-          <article class="cd-node${i === 0 ? ' open' : ''}" data-node="${n.id}">
-            <div class="cd-node-head" onclick="this.parentElement.classList.toggle('open')">
-              <div class="cd-node-title-wrap">
-                <div class="cd-node-num">NODE ${i+1}</div>
-                <div class="cd-node-title">${n.title}</div>
-              </div>
-              <span class="cd-node-badge ${n.evidence.toLowerCase()}">${n.evidence} · ${n.freshness}</span>
-              <svg class="cd-node-arrow" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5 L7 9 L11 5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-            </div>
-            <div class="cd-node-body">
-              ${paragraphs}
-              <div class="cd-node-meaning">${n.meaning}</div>
-              <div class="cd-node-anchors">
-                <div class="cd-node-anchors-label">Anchor Predictions</div>
-                ${anchorChips}
-              </div>
-            </div>
-          </article>
-        `;
-      }).join('');
 
-      // Vulnerability
-      const v = chain.vulnerability;
-      document.getElementById('cd-vuln').innerHTML = `
-        <strong>Weakest link: ${v.title}</strong>
-        <p class="cd-node-p" style="margin-top:0.75rem;margin-bottom:0;">${v.text}</p>
-      `;
 
-      // All predictions
-      const predsHtml = chain.relatedPreds.map(pid => {
-        const p = PREDICTIONS.find(p => p.id === pid);
-        if (!p) return '';
-        return `<a class="cd-pred-row" href="#detail/${pid}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">
-          <span class="cd-pred-id">${pid}</span>
-          <span class="cd-pred-title">${p.t.replace(/\'/g,"'")}</span>
-          <span class="cd-pred-score">${p.e}</span>
-        </a>`;
-      }).join('');
-      document.getElementById('cd-preds').innerHTML = `
-        ${predsHtml}
-        <div class="cd-preds-summary">Average engine score across <strong>${chain.relatedPreds.length}</strong> linked predictions: <strong>${avgScore}</strong></div>
-      `;
 
-      // Toggle visibility
-      document.getElementById('hero').hidden = true;
-      document.getElementById('chains').hidden = true;
-      document.getElementById('predictions').hidden = true;
-      document.getElementById('trust').hidden = true;
-      detailEl.hidden = false;
-      
-      window.scrollTo(0, 0);
-      return true;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // 给首页 chain 卡片加点击跳转
