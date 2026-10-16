@@ -18,6 +18,25 @@ const DOMAIN_COLORS = {
   Transport: "#0EA5E9", Food: "#A3E635"
 };
 
+const DOMAIN_INFO = {
+  AI: { label: 'AI', color: '#3B82F6' },
+  Energy: { label: 'Energy', color: '#10B981' },
+  Demographics: { label: 'Demographics', color: '#8B5CF6' },
+  Climate: { label: 'Climate', color: '#06B6D4' },
+  Biotech: { label: 'Biotech', color: '#EF4444' },
+  Quantum: { label: 'Quantum', color: '#A78BFA' },
+  Space: { label: 'Space', color: '#6366F1' },
+  Health: { label: 'Health', color: '#14B8A6' },
+  Geopolitics: { label: 'Geopolitics', color: '#F59E0B' },
+  Economics: { label: 'Economics', color: '#84CC16' },
+  Finance: { label: 'Finance', color: '#E879F9' },
+  Transport: { label: 'Transport', color: '#0EA5E9' },
+  Food: { label: 'Food', color: '#A3E635' },
+  'space-economy': { label: 'Space Economy', color: '#6366F1' },
+  'space-alien': { label: 'Space Alien', color: '#6366F1' },
+  'cross-domain': { label: 'Cross-Domain', color: '#94A3B8' }
+};
+
 // Canonical lane key (PascalCase)
 const LANE_ORDER = ['AI','Energy','Demographics','Climate','Biotech','Quantum','Space','Geopolitics','Economics','Finance','Transport','Food'];
 
