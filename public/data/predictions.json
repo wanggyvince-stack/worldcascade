@@ -6627,7 +6627,7 @@
   "causalChains": [
     {
       "id": "CC-CROSS-001",
-      "title": "AI算力需求→电力危机→能源转型",
+      "title": "AI Power Demand → Energy Crisis → Energy Transition",
       "titleEn": "AI Compute Demand → Power Crisis → Energy Transition",
       "type": "cross-domain",
       "domains": [
@@ -6646,27 +6646,31 @@
       ],
       "nodes": [
         {
-          "step": "AI Agent 大规模商业化",
-          "evidence_strength": "HIGH"
+          "step": "AI Agent大规模商业化",
+          "evidence_strength": "HIGH",
+          "stepEn": "AI Agent大规模商业化"
         },
         {
-          "step": "数据中心用电量爆发式增长",
-          "evidence_strength": "HIGH"
+          "step": "Data center electricity demand surges",
+          "evidence_strength": "HIGH",
+          "stepEn": "Data center electricity demand surges"
         },
         {
-          "step": "传统能源无法满足需求",
-          "evidence_strength": "MEDIUM"
+          "step": "Traditional energy cannot meet demand",
+          "evidence_strength": "MEDIUM",
+          "stepEn": "Traditional energy cannot meet demand"
         },
         {
-          "step": "可再生能源被迫加速",
-          "evidence_strength": "HIGH"
+          "step": "Renewable energy adoption accelerated",
+          "evidence_strength": "HIGH",
+          "stepEn": "Renewable energy adoption accelerated"
         }
       ],
       "strength": 90
     },
     {
       "id": "CC-CROSS-002",
-      "title": "AI就业替代→政策监管响应",
+      "title": "AI Job Displacement → Policy & Regulatory Response",
       "titleEn": "AI Job Displacement → Policy & Regulation Response",
       "type": "cross-domain",
       "domains": [
@@ -6682,27 +6686,31 @@
       ],
       "nodes": [
         {
-          "step": "AI Agent 大规模商业化",
-          "evidence_strength": "HIGH"
+          "step": "AI Agent大规模商业化",
+          "evidence_strength": "HIGH",
+          "stepEn": "AI Agent大规模商业化"
         },
         {
-          "step": "入门级/行政岗位大规模替代",
-          "evidence_strength": "HIGH"
+          "step": "Mass displacement of entry-level/admin jobs",
+          "evidence_strength": "HIGH",
+          "stepEn": "Mass displacement of entry-level/admin jobs"
         },
         {
-          "step": "就业结构剧变与社会压力",
-          "evidence_strength": "MEDIUM"
+          "step": "Employment structure upheaval and social pressure",
+          "evidence_strength": "MEDIUM",
+          "stepEn": "Employment structure upheaval and social pressure"
         },
         {
-          "step": "政策监管加速响应",
-          "evidence_strength": "MEDIUM"
+          "step": "Policy and regulatory response accelerates",
+          "evidence_strength": "MEDIUM",
+          "stepEn": "Policy and regulatory response accelerates"
         }
       ],
       "strength": 80
     },
     {
       "id": "CC-CROSS-003",
-      "title": "人口老龄化→自动化加速→能源需求",
+      "title": "Population Aging → Automation Acceleration → Energy Demand",
       "titleEn": "Aging Population → Automation Acceleration → Energy Demand",
       "type": "cross-domain",
       "domains": [
@@ -6719,24 +6727,29 @@
       ],
       "nodes": [
         {
-          "step": "全球老龄化加速",
-          "evidence_strength": "HIGH"
+          "step": "Global aging accelerates",
+          "evidence_strength": "HIGH",
+          "stepEn": "Global aging accelerates"
         },
         {
-          "step": "劳动力短缺加剧",
-          "evidence_strength": "HIGH"
+          "step": "Labor shortages intensify",
+          "evidence_strength": "HIGH",
+          "stepEn": "Labor shortages intensify"
         },
         {
-          "step": "自动化/AI 加速采用",
-          "evidence_strength": "MEDIUM"
+          "step": "Automation/AI adoption accelerates",
+          "evidence_strength": "MEDIUM",
+          "stepEn": "Automation/AI adoption accelerates"
         },
         {
-          "step": "能源需求结构性上升",
-          "evidence_strength": "MEDIUM"
+          "step": "Structural rise in energy demand",
+          "evidence_strength": "MEDIUM",
+          "stepEn": "Structural rise in energy demand"
         },
         {
-          "step": "正反馈循环形成",
-          "evidence_strength": "LOW"
+          "step": "Positive feedback loop forms",
+          "evidence_strength": "LOW",
+          "stepEn": "Positive feedback loop forms"
         }
       ],
       "strength": 70
