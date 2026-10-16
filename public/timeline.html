@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorldCascade — Narrative Timeline</title>
+<meta name="description" content="Interactive timeline of 80 predictions and 35 verified backtests across 12 domains. Explore the cascade of global events.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="stylesheet" href="public/css/timeline.css">
+</head>
+<body>
+
+<!-- Site Navigation -->
+<nav class="nav site-nav">
+  <a href="/" class="brand">
+    <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <circle cx="16" cy="16" r="14" stroke="#6366F1" stroke-width="1" opacity="0.4"/>
+      <circle cx="16" cy="16" r="2" fill="#6366F1"/>
+      <circle cx="7" cy="12" r="1.5" fill="#E8E8ED" opacity="0.7"/>
+      <circle cx="24" cy="10" r="1.5" fill="#E8E8ED" opacity="0.7"/>
+      <circle cx="22" cy="23" r="1.5" fill="#E8E8ED" opacity="0.7"/>
+      <circle cx="10" cy="24" r="1.5" fill="#E8E8ED" opacity="0.7"/>
+      <line x1="16" y1="16" x2="7" y2="12" stroke="#6366F1" stroke-width="0.5" opacity="0.5"/>
+      <line x1="16" y1="16" x2="24" y2="10" stroke="#6366F1" stroke-width="0.5" opacity="0.5"/>
+      <line x1="16" y1="16" x2="22" y2="23" stroke="#6366F1" stroke-width="0.5" opacity="0.5"/>
+      <line x1="16" y1="16" x2="10" y2="24" stroke="#6366F1" stroke-width="0.5" opacity="0.5"/>
+    </svg>
+    <span>WorldCascade</span>
+  </a>
+  <div class="nav-links">
+    <a href="/" data-hub="home" class="nav-link nav-link--home">Home</a>
+    <a href="/timeline.html" data-hub="timeline" class="nav-link nav-link--timeline is-active">Timeline</a>
+    <a href="/changelog.html" data-hub="changelog" class="nav-link nav-link--changelog">Changelog</a>
+    <a href="/backtest.html" data-hub="backtest" class="nav-link nav-link--backtest">Backtest</a>
+    <a href="/#methodology" data-hub="methodology" class="nav-link nav-link--methodology">Methodology</a>
+  </div>
+  <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+</div>
+
+<!-- Header with legend bar -->
+<header class="timeline-header" role="banner">
+  <div class="header-title">
+    <h1>WorldCascade — Narrative Timeline</h1>
+    <span class="badge">Z0 Global View</span>
+  </div>
+  <nav class="legend-bar" id="legend-bar" role="navigation" aria-label="Domain filter">
+    <!-- Populated by JS -->
+  </nav>
+</header>
+
+<!-- Back to Global View button (Z1 mode) -->
+<button class="back-global-btn" id="back-global-btn" aria-label="Back to global view">
+  ← Global View
+</button>
+
+<!-- Stats card (backtest track record) -->
+<div class="stats-card" id="stats-card" role="complementary" aria-label="Verified track record" tabindex="0">
+  <!-- Populated by JS -->
+</div>
+
+<!-- Main timeline container -->
+<main class="main-container" role="main">
+  <div class="svg-container" id="svg-container" aria-label="Timeline visualization">
+    <!-- SVG rendered by D3.js -->
+  </div>
+</main>
+
+<!-- Causal Chain Sidebar -->
+<aside class="chain-sidebar" id="chain-sidebar" role="complementary" aria-label="Causal chain filter">
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle chain panel" aria-expanded="false">
+    <span class="toggle-icon">🔗</span>
+    <span class="toggle-label">Chains</span>
+  </button>
+  <div class="sidebar-content" id="sidebar-content">
+    <div class="sidebar-header">
+      <h3>Causal Chains</h3>
+      <button class="sidebar-close" id="sidebar-close" aria-label="Close panel">✕</button>
+    </div>
+    
+    <!-- Strength filter -->
+    <div class="filter-section">
+      <label class="filter-label">Min Strength: <span id="strength-value">0</span></label>
+      <input type="range" id="strength-slider" class="strength-slider" min="0" max="100" value="0" step="10">
+    </div>
+    
+    <!-- Domain filter -->
+    <div class="filter-section">
+      <label class="filter-label">Domains</label>
+      <div class="domain-filters" id="domain-filters">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+    
+    <!-- Chain list -->
+    <div class="chain-list-section">
+      <label class="filter-label">Chains (<span id="chain-count">0</span> visible)</label>
+      <div class="chain-list" id="chain-list">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+    
+    <!-- Chain detail panel -->
+    <div class="chain-detail" id="chain-detail" style="display:none;">
+      <button class="detail-back" id="detail-back">← Back to list</button>
+      <div class="detail-content" id="detail-content"></div>
+    </div>
+  </div>
+</aside>
+
+<!-- Tooltip -->
+<div class="timeline-tooltip" id="timeline-tooltip" role="tooltip" aria-hidden="true"></div>
+
+<!-- Mobile backtest toggle -->
+<button class="mobile-bt-toggle" id="mobile-bt-toggle" aria-label="View verified track record">
+  📊 View Verified Track Record
+</button>
+
+<script src="public/js/timeline.js"></script>
+</body>
+</html>
