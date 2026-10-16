@@ -1278,12 +1278,22 @@ function setupKeyboard() {
 // HASH ROUTING
 // ============================================================
 function handleHash() {
-  const hash = window.location.hash.replace('#', '').toLowerCase();
-  if (!hash || hash === 'all') {
+  const hash = window.location.hash.replace('#', '');
+  
+  // Check for chain detail route: #chain/CC-XXX-NNN
+  if (hash.toLowerCase().startsWith('chain/')) {
+    const chainId = hash.split('/')[1];
+    // Trigger chain detail via custom event (sidebar listens for this)
+    window.dispatchEvent(new CustomEvent('show-chain-detail', { detail: chainId }));
+    return;
+  }
+  
+  const hashLower = hash.toLowerCase();
+  if (!hashLower || hashLower === 'all') {
     activeDomain = null;
   } else {
     // Find matching domain
-    const match = LANE_ORDER.find(d => d.toLowerCase() === hash);
+    const match = LANE_ORDER.find(d => d.toLowerCase() === hashLower);
     if (match) {
       activeDomain = match;
     }
@@ -1425,6 +1435,16 @@ function setupChainSidebar() {
   let activeDomains = new Set();
   let minStrength = 0;
   let selectedChainId = null;
+  
+  // Listen for chain detail navigation from timeline click
+  window.addEventListener('show-chain-detail', (e) => {
+    const chainId = e.detail;
+    if (chainId && causalChains.find(c => c.id === chainId)) {
+      sidebar.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      showChainDetail(chainId);
+    }
+  });
   
   // Toggle sidebar
   toggle.addEventListener('click', () => {
