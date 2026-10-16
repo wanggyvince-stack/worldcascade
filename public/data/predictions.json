@@ -11,7 +11,14 @@
     "domainCount": 10,
     "chainCount": 17,
     "earliestVerdict": "2027-06-30",
-    "latestVerdict": "2031-06-30"
+    "latestVerdict": "2031-06-30",
+    "updatedAt": "2026-10-16T05:09:53.477838Z",
+    "verdictBreakdown": {
+      "pending": 80,
+      "confirmed": 0,
+      "refuted": 0,
+      "partial": 0
+    }
   },
   "domainMap": {
     "AI": {
@@ -93,35 +100,40 @@
           "institution": "Ember",
           "tier": 1,
           "url": "https://ember-energy.org/latest-insights/global-electricity-review-2026/",
-          "publishDate": "2026-05-15"
+          "publishDate": "2026-05-15",
+          "fetchedAt": null
         },
         {
           "name": "IEA World Energy Outlook 2025",
           "institution": "IEA",
           "tier": 1,
           "url": "https://iea.org/reports/world-energy-outlook-2025",
-          "publishDate": "2025-10-15"
+          "publishDate": "2025-10-15",
+          "fetchedAt": null
         },
         {
           "name": "BNEF Global Energy Transition Outlook",
           "institution": "BNEF",
           "tier": 1,
           "url": "https://about.bnef.com/",
-          "publishDate": "2025-11-01"
+          "publishDate": "2025-11-01",
+          "fetchedAt": null
         },
         {
           "name": "SolarPower Europe Market Outlook",
           "institution": "SolarPower Europe",
           "tier": 2,
           "url": "https://www.solarpowereurope.org/",
-          "publishDate": "2026-03-10"
+          "publishDate": "2026-03-10",
+          "fetchedAt": null
         },
         {
           "name": "Ember H1 2026 Solar Update",
           "institution": "Ember",
           "tier": 2,
           "url": "https://ember-energy.org/latest-insights/batteries-have-unlocked-the-era-of-anytime-solar/",
-          "publishDate": "2026-08-01"
+          "publishDate": "2026-08-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -159,7 +171,26 @@
         "currentValue": 33.8,
         "notes": "Renewable energy reached 33.8% global power share in 2025, surpassing coal at 33.0%. Solar achieved 10% of global generation in H1 2026, confirming an irreversible trajectory"
       },
-      "timeWindowYears": 0.8
+      "timeWindowYears": 0.8,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 96.9,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-02",
@@ -188,21 +219,24 @@
           "institution": "UN-DESA",
           "tier": 1,
           "url": "https://population.un.org/wup/",
-          "publishDate": "2024-07-01"
+          "publishDate": "2024-07-01",
+          "fetchedAt": null
         },
         {
           "name": "World Bank Urban Development Overview",
           "institution": "World-Bank",
           "tier": 1,
           "url": "https://www.worldbank.org/en/topic/urbandevelopment",
-          "publishDate": "2025-03-15"
+          "publishDate": "2025-03-15",
+          "fetchedAt": null
         },
         {
           "name": "OECD Urban Policy Reviews 2025",
           "institution": "OECD",
           "tier": 2,
           "url": "https://www.oecd.org/en/topics/sub-issues/urban-policy.html",
-          "publishDate": "2025-06-10"
+          "publishDate": "2025-06-10",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -240,7 +274,26 @@
         "currentValue": 57.0,
         "notes": "Global urban population stood at ~56% in 2024, growing ~0.5 percentage points annually. UN projections indicate continued acceleration toward 59-60% by 2030"
       },
-      "timeWindowYears": 4.0
+      "timeWindowYears": 4.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 64.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-03",
@@ -269,7 +322,8 @@
           "institution": "NBS",
           "tier": 1,
           "url": "https://www.stats.gov.cn/",
-          "publishDate": "2025-01-17"
+          "publishDate": "2025-01-17",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -301,7 +355,26 @@
         "currentValue": 2.24,
         "notes": "Net annual increase of 3.42M (consistent with current_value unit), threshold requires 13.33M annual increase"
       },
-      "timeWindowYears": 1.2
+      "timeWindowYears": 1.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 55.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-04",
@@ -330,28 +403,32 @@
           "institution": "Stanford-HAI",
           "tier": 1,
           "url": "https://aiindex.stanford.edu/",
-          "publishDate": "2026-03-12"
+          "publishDate": "2026-03-12",
+          "fetchedAt": null
         },
         {
           "name": "OpenAI Superalignment Progress Report",
           "institution": "OpenAI",
           "tier": 1,
           "url": "https://openai.com/research",
-          "publishDate": "2026-06-01"
+          "publishDate": "2026-06-01",
+          "fetchedAt": null
         },
         {
           "name": "METR AI Task Benchmark",
           "institution": "METR",
           "tier": 2,
           "url": "https://metr.org/",
-          "publishDate": "2026-04-15"
+          "publishDate": "2026-04-15",
+          "fetchedAt": null
         },
         {
           "name": "Epoch AI Trends Report",
           "institution": "Epoch-AI",
           "tier": 3,
           "url": "https://epochai.org/",
-          "publishDate": "2026-02-01"
+          "publishDate": "2026-02-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -395,7 +472,26 @@
         "currentValue": 2,
         "notes": "AI approached or reached expert level in medical imaging and code generation (2 domains) by 2025-2026, but significant gaps remain in general reasoning and creative thinking. Quarterly growth of 15% sustained over 2 quarters"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 54.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-05",
@@ -424,35 +520,40 @@
           "institution": "BLS",
           "tier": 1,
           "url": "https://www.bls.gov/ooh/",
-          "publishDate": "2025-09-15"
+          "publishDate": "2025-09-15",
+          "fetchedAt": null
         },
         {
           "name": "McKinsey Global Institute AI Automation Report",
           "institution": "McKinsey-GMI",
           "tier": 1,
           "url": "https://www.mckinsey.com/mgi/overview",
-          "publishDate": "2025-06-20"
+          "publishDate": "2025-06-20",
+          "fetchedAt": null
         },
         {
           "name": "WEF Future of Jobs Report 2025",
           "institution": "WEF",
           "tier": 2,
           "url": "https://www.weforum.org/reports/future-of-jobs-report-2025",
-          "publishDate": "2025-04-10"
+          "publishDate": "2025-04-10",
+          "fetchedAt": null
         },
         {
           "name": "Goldman Sachs AI Labor Impact Study",
           "institution": "Goldman-Sachs",
           "tier": 2,
           "url": "https://www.goldmansachs.com/insights",
-          "publishDate": "2025-03-15"
+          "publishDate": "2025-03-15",
+          "fetchedAt": null
         },
         {
           "name": "Academic Labor Economics Review",
           "institution": "NBER",
           "tier": 3,
           "url": "https://www.nber.org/",
-          "publishDate": "2025-01-20"
+          "publishDate": "2025-01-20",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -502,7 +603,26 @@
         "currentValue": 0.35,
         "notes": "By 2024, AI displaced approximately 350K US jobs (customer service, data entry, entry-level programming) at ~40% annual growth. However, 'displacement' definitions remain ambiguous (full unemployment vs role transformation vs task automation), and policy/union resistance may slow the pace"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 52.6,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-06",
@@ -531,21 +651,24 @@
           "institution": "UN-DESA",
           "tier": 1,
           "url": "https://population.un.org/wpp/",
-          "publishDate": "2024-07-11"
+          "publishDate": "2024-07-11",
+          "fetchedAt": null
         },
         {
           "name": "World Bank Aging Population Data 2024",
           "institution": "World-Bank",
           "tier": 1,
           "url": "https://data.worldbank.org/topic/ageing",
-          "publishDate": "2025-03-15"
+          "publishDate": "2025-03-15",
+          "fetchedAt": null
         },
         {
           "name": "OECD Pensions at a Glance 2025",
           "institution": "OECD",
           "tier": 2,
           "url": "https://www.oecd.org/pensions-at-a-glance/",
-          "publishDate": "2025-11-20"
+          "publishDate": "2025-11-20",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -583,7 +706,26 @@
         "currentValue": 12.0,
         "notes": "UN WPP 2024 confirms global 65+ share at ~12% in 2024, growing ~0.3pp/year. Reaching 15% by 2030 requires 3pp over 6 years (required 0.5pp/yr vs actual 0.3pp/yr, ratio 60%)"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 65.4,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-07",
@@ -612,28 +754,32 @@
           "institution": "IEA",
           "tier": 1,
           "url": "https://www.iea.org/reports/global-ev-outlook-2025",
-          "publishDate": "2025-04-15"
+          "publishDate": "2025-04-15",
+          "fetchedAt": null
         },
         {
           "name": "BNEF Electric Vehicle Outlook 2025",
           "institution": "BNEF",
           "tier": 1,
           "url": "https://about.bnef.com/electric-vehicle-outlook/",
-          "publishDate": "2025-03-20"
+          "publishDate": "2025-03-20",
+          "fetchedAt": null
         },
         {
           "name": "IEA Global EV Outlook 2024",
           "institution": "IEA",
           "tier": 2,
           "url": "https://www.iea.org/reports/global-ev-outlook-2024",
-          "publishDate": "2024-04-10"
+          "publishDate": "2024-04-10",
+          "fetchedAt": null
         },
         {
           "name": "S&P Global Mobility EV Forecast 2025",
           "institution": "SP-Global",
           "tier": 2,
           "url": "https://www.spglobal.com/mobility/",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -676,7 +822,26 @@
         "currentValue": 45.0,
         "notes": "Global EV fleet reached ~45M units in 2024 with 25% growth (down from 35% in 2023), below historical average of ~50%. Sustained ~40% annual growth required to reach 500M"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 53.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-08",
@@ -705,21 +870,24 @@
           "institution": "WEF",
           "tier": 1,
           "url": "https://www.weforum.org/reports/future-of-jobs-report-2025",
-          "publishDate": "2025-01-15"
+          "publishDate": "2025-01-15",
+          "fetchedAt": null
         },
         {
           "name": "ILO World Employment Social Outlook 2025",
           "institution": "ILO",
           "tier": 2,
           "url": "https://www.ilo.org/research/global-employment-trends",
-          "publishDate": "2025-05-20"
+          "publishDate": "2025-05-20",
+          "fetchedAt": null
         },
         {
           "name": "Brookings AI Manufacturing Jobs Analysis",
           "institution": "Brookings",
           "tier": 3,
           "url": "https://www.brookings.edu/topic/artificial-intelligence/",
-          "publishDate": "2024-06-01"
+          "publishDate": "2024-06-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -757,7 +925,26 @@
         "currentValue": null,
         "notes": "AI primarily displaces repetitive assembly tasks in manufacturing. New roles (AI maintenance, data analysis, human-machine collaboration) emerge slowly. WEF 2025 projects manufacturing automation will net reduce 2M jobs"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 45.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-09",
@@ -786,21 +973,24 @@
           "institution": "IEA",
           "tier": 1,
           "url": "https://www.iea.org/reports/world-energy-outlook-2025",
-          "publishDate": "2025-10-15"
+          "publishDate": "2025-10-15",
+          "fetchedAt": null
         },
         {
           "name": "IRENA Renewable Capacity Statistics 2026",
           "institution": "IRENA",
           "tier": 1,
           "url": "https://www.irena.org/statistics",
-          "publishDate": "2026-03-01"
+          "publishDate": "2026-03-01",
+          "fetchedAt": null
         },
         {
           "name": "BloombergNEF Energy Transition Outlook",
           "institution": "BloombergNEF",
           "tier": 2,
           "url": "https://about.bnef.com/blog/",
-          "publishDate": "2026-01-20"
+          "publishDate": "2026-01-20",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -837,7 +1027,26 @@
         "currentValue": 2.3,
         "notes": "Solar annual growth of 25% far exceeds historical average of 10% (2.5x), consistently pointing toward surpassing nuclear. At this rate, the 3.7TW threshold would be exceeded by 2028"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 57.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-10",
@@ -866,28 +1075,32 @@
           "institution": "CAAM",
           "tier": 1,
           "url": "http://www.caam.org.cn/",
-          "publishDate": "2026-01-15"
+          "publishDate": "2026-01-15",
+          "fetchedAt": null
         },
         {
           "name": "乘联会2025年12月NEV渗透率报告",
           "institution": "CPCA",
           "tier": 1,
           "url": "http://www.cpcaauto.com/",
-          "publishDate": "2026-01-10"
+          "publishDate": "2026-01-10",
+          "fetchedAt": null
         },
         {
           "name": "IEA China Energy Transition Report 2025",
           "institution": "IEA",
           "tier": 2,
           "url": "https://www.iea.org/reports/china-energy-transition",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         },
         {
           "name": "BNEF China NEV Monthly Tracker",
           "institution": "BNEF",
           "tier": 2,
           "url": "https://about.bnef.com/",
-          "publishDate": "2025-12-20"
+          "publishDate": "2025-12-20",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -924,7 +1137,26 @@
         "currentValue": 52.0,
         "notes": "China NEV monthly penetration exceeded 50% in 2025, with annual growth of 35% far above the historical average of 15%. Trend is clear and accelerating"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 71.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-11",
@@ -953,21 +1185,24 @@
           "institution": "厚生劳动省",
           "tier": 1,
           "url": "https://www.mhlw.go.jp/",
-          "publishDate": "2026-06-01"
+          "publishDate": "2026-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Japan Vital Statistics 2025",
           "institution": "WHO",
           "tier": 2,
           "url": "https://www.who.int/data",
-          "publishDate": "2026-03-01"
+          "publishDate": "2026-03-01",
+          "fetchedAt": null
         },
         {
           "name": "OECD Family Database 2025",
           "institution": "OECD",
           "tier": 1,
           "url": "https://www.oecd.org/en/data/datasets/oecd-family-database.html",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1004,7 +1239,26 @@
         "currentValue": 1.14,
         "notes": "Japan TFR hit record low of 1.14 in 2025, declining ~0.02-0.03 annually. At this rate, 2027 estimate is ~1.08-1.10, at the 1.1 boundary"
       },
-      "timeWindowYears": 2.0
+      "timeWindowYears": 2.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 66.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-12",
@@ -1033,21 +1287,24 @@
           "institution": "BLS",
           "tier": 1,
           "url": "https://www.bls.gov/emp/",
-          "publishDate": "2025-12-01"
+          "publishDate": "2025-12-01",
+          "fetchedAt": null
         },
         {
           "name": "LinkedIn Economic Graph Report 2025",
           "institution": "LinkedIn",
           "tier": 1,
           "url": "https://economicgraph.linkedin.com/",
-          "publishDate": "2025-11-15"
+          "publishDate": "2025-11-15",
+          "fetchedAt": null
         },
         {
           "name": "Indeed Hiring Lab Tech Jobs Report",
           "institution": "Indeed",
           "tier": 2,
           "url": "https://www.hiringlab.org/",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1085,7 +1342,26 @@
         "currentValue": 73.4,
         "notes": "Entry-level hiring in 2025 already declined 73.4% vs 2024, far exceeding the 50% threshold"
       },
-      "timeWindowYears": 2.0
+      "timeWindowYears": 2.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 75.6,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-13",
@@ -1114,21 +1390,24 @@
           "institution": "IEA",
           "tier": 1,
           "url": "https://www.iea.org/reports/global-hydrogen-review-2025",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         },
         {
           "name": "Hydrogen Council Annual Market Report 2025",
           "institution": "Hydrogen-Council",
           "tier": 2,
           "url": "https://hydrogencouncil.com/",
-          "publishDate": "2025-12-01"
+          "publishDate": "2025-12-01",
+          "fetchedAt": null
         },
         {
           "name": "BloombergNEF Hydrogen Investment Tracker",
           "institution": "BNEF",
           "tier": 3,
           "url": "https://about.bnef.com/",
-          "publishDate": "2025-08-15"
+          "publishDate": "2025-08-15",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1171,7 +1450,26 @@
         "currentValue": 0.1,
         "notes": "Hydrogen accounted for <0.1% of primary energy in 2024, requiring 50x+ growth to reach 5%. Current growth rate slightly above historical average but absolute gap remains vast"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 33.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-14",
@@ -1200,21 +1498,24 @@
           "institution": "ABA",
           "tier": 1,
           "url": "https://www.americanbar.org/",
-          "publishDate": "2025-05-10"
+          "publishDate": "2025-05-10",
+          "fetchedAt": null
         },
         {
           "name": "AI in Legal Systems Review",
           "institution": "Stanford-Law",
           "tier": 2,
           "url": "https://law.stanford.edu/",
-          "publishDate": "2025-03-20"
+          "publishDate": "2025-03-20",
+          "fetchedAt": null
         },
         {
           "name": "Legal Tech Market Analysis",
           "institution": "Thomson-Reuters",
           "tier": 3,
           "url": "https://legal.thomsonreuters.com/",
-          "publishDate": "2025-07-01"
+          "publishDate": "2025-07-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1264,7 +1565,26 @@
         "currentValue": null,
         "notes": "By 2025, AI assists legal research and document drafting (e.g., Harvey AI) but cannot render independent judgments. Supreme court-level rulings remain distant—requiring explainability breakthroughs, accountability frameworks, and public trust accumulation"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 49.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-15",
@@ -1293,28 +1613,32 @@
           "institution": "GWEC",
           "tier": 1,
           "url": "https://gwec.net/offshore-reports/",
-          "publishDate": "2026-04-15"
+          "publishDate": "2026-04-15",
+          "fetchedAt": null
         },
         {
           "name": "IEA Renewables 2025 Analysis and Forecasts",
           "institution": "IEA",
           "tier": 1,
           "url": "https://iea.org/reports/renewables-2025",
-          "publishDate": "2025-12-01"
+          "publishDate": "2025-12-01",
+          "fetchedAt": null
         },
         {
           "name": "IRENA Renewable Capacity Statistics 2026",
           "institution": "IRENA",
           "tier": 1,
           "url": "https://irena.org/irenaoutcomes/publications/2026/renewable-capacity-statistics-2026",
-          "publishDate": "2026-03-01"
+          "publishDate": "2026-03-01",
+          "fetchedAt": null
         },
         {
           "name": "BloombergNEF Offshore Wind Outlook",
           "institution": "BNEF",
           "tier": 2,
           "url": "https://about.bnef.com/",
-          "publishDate": "2026-01-20"
+          "publishDate": "2026-01-20",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1351,7 +1675,26 @@
         "currentValue": 125,
         "notes": "Global offshore wind reached ~75GW in 2024, accelerating to 125GW in 2025-2026. Annual growth ~20%, above historical average of 14%"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 50.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-16",
@@ -1380,21 +1723,24 @@
           "institution": "国家统计局",
           "tier": 1,
           "url": "https://www.stats.gov.cn/",
-          "publishDate": "2026-02-28"
+          "publishDate": "2026-02-28",
+          "fetchedAt": null
         },
         {
           "name": "中国人口与发展研究报告2025",
           "institution": "卫健委",
           "tier": 1,
           "url": "http://www.nhc.gov.cn/",
-          "publishDate": "2025-12-01"
+          "publishDate": "2025-12-01",
+          "fetchedAt": null
         },
         {
           "name": "China Population Outlook 2025",
           "institution": "World-Bank",
           "tier": 2,
           "url": "https://www.worldbank.org/en/country/china",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1431,7 +1777,26 @@
         "currentValue": 339,
         "notes": "Net decrease of 3.39M in 2025, accelerating at ~1.39M/yr. At this rate, 2027 estimate is ~6.17M, exceeding the 5M threshold"
       },
-      "timeWindowYears": 2.0
+      "timeWindowYears": 2.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 64.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-17",
@@ -1460,21 +1825,24 @@
           "institution": "厚生劳动省",
           "tier": 1,
           "url": "https://www.mhlw.go.jp/",
-          "publishDate": "2026-01-15"
+          "publishDate": "2026-01-15",
+          "fetchedAt": null
         },
         {
           "name": "Japan Vital Statistics 2025",
           "institution": "WHO",
           "tier": 2,
           "url": "https://www.who.int/data",
-          "publishDate": "2026-03-01"
+          "publishDate": "2026-03-01",
+          "fetchedAt": null
         },
         {
           "name": "OECD Family Database 2025",
           "institution": "OECD",
           "tier": 1,
           "url": "https://www.oecd.org/en/data/datasets/oecd-family-database.html",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1511,7 +1879,26 @@
         "currentValue": 67.12,
         "notes": "Newborns at 671,200 in 2025, declining ~15K annually. At this rate, 2027 estimate is ~640K. However, deceleration may accelerate; breaching 600K requires annual decline of 35K+"
       },
-      "timeWindowYears": 2.0
+      "timeWindowYears": 2.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 51.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-18",
@@ -1540,21 +1927,24 @@
           "institution": "EU",
           "tier": 1,
           "url": "https://eur-lex.europa.eu/eli/reg/2024/1689",
-          "publishDate": "2024-06-01"
+          "publishDate": "2024-06-01",
+          "fetchedAt": null
         },
         {
           "name": "OECD AI Policy Observatory Update",
           "institution": "OECD",
           "tier": 2,
           "url": "https://oecd.ai/en/policy-areas",
-          "publishDate": "2026-05-15"
+          "publishDate": "2026-05-15",
+          "fetchedAt": null
         },
         {
           "name": "Brookings AI Governance Tracker",
           "institution": "Brookings",
           "tier": 3,
           "url": "https://www.brookings.edu/project/governance-of-ai/",
-          "publishDate": "2026-08-01"
+          "publishDate": "2026-08-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1592,7 +1982,26 @@
         "currentValue": null,
         "notes": "EU AI Act entered into force (2024), multiple countries strengthening AI/tech regulation. No 'technology emergency' declaration yet, but regulatory tightening is a trend signal far from threshold"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 45.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-19",
@@ -1621,21 +2030,24 @@
           "institution": "UN-Population",
           "tier": 1,
           "url": "https://population.un.org/wpp/",
-          "publishDate": "2024-07-11"
+          "publishDate": "2024-07-11",
+          "fetchedAt": null
         },
         {
           "name": "Nigeria National Bureau of Statistics 2024",
           "institution": "NBS-Nigeria",
           "tier": 1,
           "url": "https://nigerianstat.gov.ng/",
-          "publishDate": "2025-01-15"
+          "publishDate": "2025-01-15",
+          "fetchedAt": null
         },
         {
           "name": "World Bank Population Data",
           "institution": "WorldBank",
           "tier": 2,
           "url": "https://data.worldbank.org/topic/population-and-development",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1679,7 +2091,26 @@
         "currentValue": 2.3,
         "notes": "Nigeria at 230M, Pakistan ~240M (gap 10M). Nigeria growing 2.6%/yr (~5.98M annually), Pakistan 1.9% (~4.56M). Annual gap narrowing ~1.42M, projected surpass by 2028"
       },
-      "timeWindowYears": 4.0
+      "timeWindowYears": 4.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 74.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-20",
@@ -1708,21 +2139,24 @@
           "institution": "Stanford-HAI",
           "tier": 2,
           "url": "https://aiindex.stanford.edu/report/",
-          "publishDate": "2026-03-01"
+          "publishDate": "2026-03-01",
+          "fetchedAt": null
         },
         {
           "name": "MIT Technology Review AI Capabilities Assessment",
           "institution": "MIT-TR",
           "tier": 2,
           "url": "https://www.technologyreview.com/topic/artificial-intelligence/",
-          "publishDate": "2026-06-15"
+          "publishDate": "2026-06-15",
+          "fetchedAt": null
         },
         {
           "name": "Loebner Prize Annual Results",
           "institution": "Loebner-Prize",
           "tier": 3,
           "url": "https://www.lobner-prize.com/",
-          "publishDate": "2024-09-01"
+          "publishDate": "2024-09-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1765,7 +2199,26 @@
         "currentValue": 30,
         "notes": "Approximately 30% of AI systems passed domain-specific Turing tests in restricted scenarios in 2025, but general-domain performance is far lower. Annual growth ~5 percentage points"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 40.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-21",
@@ -1794,21 +2247,24 @@
           "institution": "IFR",
           "tier": 1,
           "url": "https://ifr.org/worldrobotics/",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         },
         {
           "name": "McKinsey State of AI 2025",
           "institution": "McKinsey",
           "tier": 2,
           "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
-          "publishDate": "2025-11-15"
+          "publishDate": "2025-11-15",
+          "fetchedAt": null
         },
         {
           "name": "WEF Future of Jobs Report 2025",
           "institution": "WEF",
           "tier": 2,
           "url": "https://www.weforum.org/reports/future-of-jobs-report-2025/",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1846,7 +2302,26 @@
         "currentValue": 35,
         "notes": "China manufacturing AI automation adoption rate ~35%, global average ~15%, ratio 2.33x already exceeding 2x threshold"
       },
-      "timeWindowYears": 3.0
+      "timeWindowYears": 3.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 84.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-22",
@@ -1875,21 +2350,24 @@
           "institution": "IEA",
           "tier": 1,
           "url": "https://www.iea.org/reports/world-energy-outlook-2025",
-          "publishDate": "2025-11-01"
+          "publishDate": "2025-11-01",
+          "fetchedAt": null
         },
         {
           "name": "IEA Data Centres and Data Transmission Networks 2025",
           "institution": "IEA",
           "tier": 1,
           "url": "https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks",
-          "publishDate": "2025-07-01"
+          "publishDate": "2025-07-01",
+          "fetchedAt": null
         },
         {
           "name": "Japan Energy Statistics 2025",
           "institution": "METI-Japan",
           "tier": 2,
           "url": "https://www.enecho.meti.go.jp/",
-          "publishDate": "2025-12-01"
+          "publishDate": "2025-12-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -1928,7 +2406,26 @@
         "currentValue": null,
         "notes": "Japan/Korea show population decline yet per capita electricity consumption still growing. AI data center demand is key driver. IEA projects data centers will account for ~3% of global electricity by 2030"
       },
-      "timeWindowYears": 3.0
+      "timeWindowYears": 3.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 62.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-23",
@@ -1957,35 +2454,40 @@
           "institution": "CAI",
           "tier": 1,
           "url": "https://contentauthenticity.org/",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         },
         {
           "name": "Google Search Quality Report 2025",
           "institution": "Google",
           "tier": 1,
           "url": "https://blog.google/products/search/",
-          "publishDate": "2025-11-15"
+          "publishDate": "2025-11-15",
+          "fetchedAt": null
         },
         {
           "name": "Cloudflare Bot Report 2025",
           "institution": "Cloudflare",
           "tier": 2,
           "url": "https://www.cloudflare.com/learning/bots/what-is-a-bot/",
-          "publishDate": "2025-08-20"
+          "publishDate": "2025-08-20",
+          "fetchedAt": null
         },
         {
           "name": "Statista AI Content Market Report",
           "institution": "Statista",
           "tier": 2,
           "url": "https://www.statista.com/",
-          "publishDate": "2025-06-10"
+          "publishDate": "2025-06-10",
+          "fetchedAt": null
         },
         {
           "name": "Academic Study on AI Content Proliferation",
           "institution": "MIT",
           "tier": 3,
           "url": "https://www.mit.edu/",
-          "publishDate": "2025-04-15"
+          "publishDate": "2025-04-15",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2028,7 +2530,26 @@
         "currentValue": 25.0,
         "notes": "AI-generated content estimated at ~25% of new internet content in 2025 (text segments exceed 40%+), growing ~35% annually. However, definitions and detection methods for 'AI-generated' remain imperfect; actual share may be higher"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 62.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-24",
@@ -2057,7 +2578,8 @@
           "institution": "KOSTAT",
           "tier": 1,
           "url": "https://kostat.go.kr/",
-          "publishDate": "2025-02-25"
+          "publishDate": "2025-02-25",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2094,7 +2616,26 @@
         "currentValue": 0.88,
         "notes": "Current TFR 0.88, threshold 1.0, relative progress = 88%"
       },
-      "timeWindowYears": 1.2
+      "timeWindowYears": 1.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 37.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-25",
@@ -2123,28 +2664,32 @@
           "institution": "Nature-Energy",
           "tier": 1,
           "url": "https://www.nature.com/natenergy/",
-          "publishDate": "2025-06-15"
+          "publishDate": "2025-06-15",
+          "fetchedAt": null
         },
         {
           "name": "Toyota Solid-State Battery Roadmap",
           "institution": "Toyota",
           "tier": 2,
           "url": "https://global.toyota/en/technology/automotive-battery/",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         },
         {
           "name": "Samsung SDI All-Solid-State Battery Update",
           "institution": "Samsung-SDI",
           "tier": 2,
           "url": "https://www.samsungsdi.com/",
-          "publishDate": "2025-10-20"
+          "publishDate": "2025-10-20",
+          "fetchedAt": null
         },
         {
           "name": "IDTechEx Solid-State Battery Market Report 2025",
           "institution": "IDTechEx",
           "tier": 3,
           "url": "https://www.idtechex.com/",
-          "publishDate": "2025-07-01"
+          "publishDate": "2025-07-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2187,7 +2732,26 @@
         "currentValue": 450.0,
         "notes": "Lab energy density reached 400-500Wh/kg in 2025. Toyota/Samsung SDI announced 2027-2028 mass production plans. Lab-to-volume gap persists with yield and cost challenges unresolved"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 48.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-26",
@@ -2216,28 +2780,32 @@
           "institution": "USGS",
           "tier": 1,
           "url": "https://www.usgs.gov/centers/nmic/lithium-statistics-and-information",
-          "publishDate": "2026-01-30"
+          "publishDate": "2026-01-30",
+          "fetchedAt": null
         },
         {
           "name": "Benchmark Mineral Intelligence Lithium Outlook",
           "institution": "Benchmark",
           "tier": 2,
           "url": "https://www.benchmarkminerals.com/",
-          "publishDate": "2026-02-15"
+          "publishDate": "2026-02-15",
+          "fetchedAt": null
         },
         {
           "name": "Wood Mackenzie Lithium Market Report",
           "institution": "WoodMac",
           "tier": 2,
           "url": "https://www.woodmac.com/",
-          "publishDate": "2025-11-01"
+          "publishDate": "2025-11-01",
+          "fetchedAt": null
         },
         {
           "name": "CRU Group Lithium Analysis",
           "institution": "CRU",
           "tier": 3,
           "url": "https://www.crugroup.com/",
-          "publishDate": "2025-09-20"
+          "publishDate": "2025-09-20",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2274,7 +2842,26 @@
         "currentValue": 0,
         "notes": "Lithium prices fell 70%+ from 2022 peak, declining ~35% in last 12 months. Supply surplus rather than deficit; capacity expansion far outpacing demand growth"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 29.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-27",
@@ -2303,14 +2890,16 @@
           "institution": "Kaggle",
           "tier": 1,
           "url": "https://www.kaggle.com/competitions/arc-prize-2024",
-          "publishDate": "2026-03-01"
+          "publishDate": "2026-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Humanity's Last Exam (HLE) Results 2026",
           "institution": "Scale AI",
           "tier": 2,
           "url": "https://lastexam.ai/",
-          "publishDate": "2026-01-15"
+          "publishDate": "2026-01-15",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2347,7 +2936,26 @@
         "currentValue": null,
         "notes": "ARC-AGI-2 ~55%, HLE ~36%, still distant from strict Turing test passage. Direction correct but 2-year window is tight"
       },
-      "timeWindowYears": 2.0
+      "timeWindowYears": 2.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 42.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-28",
@@ -2376,21 +2984,24 @@
           "institution": "UNESCO",
           "tier": 2,
           "url": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics",
-          "publishDate": "2025-06-15"
+          "publishDate": "2025-06-15",
+          "fetchedAt": null
         },
         {
           "name": "Stanford HAI AI Index Report 2026",
           "institution": "Stanford-HAI",
           "tier": 3,
           "url": "https://aiindex.stanford.edu/report/",
-          "publishDate": "2026-03-01"
+          "publishDate": "2026-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Tech Policy Press Digital Rights Survey",
           "institution": "TPP",
           "tier": 3,
           "url": "https://techpolicy.press/",
-          "publishDate": "2025-11-20"
+          "publishDate": "2025-11-20",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2434,7 +3045,26 @@
         "currentValue": null,
         "notes": "GDPR and similar data protection legislation exists, but 'technology citizenship' concept has no formal national adoption. Only indirect data rights trends, far from target concept"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 37.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-29",
@@ -2463,21 +3093,24 @@
           "institution": "World-Bank",
           "tier": 1,
           "url": "https://www.worldbank.org/",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "UBI Center Global Pilot Database",
           "institution": "UBI-Center",
           "tier": 2,
           "url": "https://www.ubicenter.org/",
-          "publishDate": "2025-09-15"
+          "publishDate": "2025-09-15",
+          "fetchedAt": null
         },
         {
           "name": "The Lancet - UBI Health Outcomes Meta-analysis",
           "institution": "Lancet",
           "tier": 3,
           "url": "https://www.thelancet.com/",
-          "publishDate": "2025-04-10"
+          "publishDate": "2025-04-10",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2521,7 +3154,26 @@
         "currentValue": null,
         "notes": "Finland's 2017-2018 short-term trial; Kenya GiveDirectly long-term trial ongoing but hasn't reached 3 years. Multiple city-level pilots (Stockton, Barcelona) but none national. Policy variability is high"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 29.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-30",
@@ -2550,21 +3202,24 @@
           "institution": "Statistics-Korea",
           "tier": 1,
           "url": "https://kostat.go.kr/",
-          "publishDate": "2026-04-01"
+          "publishDate": "2026-04-01",
+          "fetchedAt": null
         },
         {
           "name": "Korea Fertility Rate Analysis 2025",
           "institution": "KIHASA",
           "tier": 1,
           "url": "https://www.kihasa.re.kr/",
-          "publishDate": "2025-12-01"
+          "publishDate": "2025-12-01",
+          "fetchedAt": null
         },
         {
           "name": "OECD Family Database Korea 2025",
           "institution": "OECD",
           "tier": 2,
           "url": "https://www.oecd.org/en/data/datasets/oecd-family-database.html",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2601,7 +3256,26 @@
         "currentValue": null,
         "notes": "Korea TFR rose for 25 consecutive months (0.72→0.80→0.93), but structural factors like housing costs and education competition remain unchanged. Recovery may be a temporary demographic rebound"
       },
-      "timeWindowYears": 3.0
+      "timeWindowYears": 3.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 47.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-31",
@@ -2630,28 +3304,32 @@
           "institution": "US-Congress",
           "tier": 1,
           "url": "https://www.congress.gov/",
-          "publishDate": "2024-06-21"
+          "publishDate": "2024-06-21",
+          "fetchedAt": null
         },
         {
           "name": "Senate Intelligence Committee UAP Report",
           "institution": "US-Senate-IC",
           "tier": 1,
           "url": "https://www.intelligence.senate.gov/",
-          "publishDate": "2024-11-15"
+          "publishDate": "2024-11-15",
+          "fetchedAt": null
         },
         {
           "name": "AARO Annual Report to Congress",
           "institution": "Pentagon-AARO",
           "tier": 2,
           "url": "https://www.aaro.mil/",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "To The Stars Academy Research Papers",
           "institution": "TTSA",
           "tier": 3,
           "url": "https://www.ttsa.tech/",
-          "publishDate": "2025-01-10"
+          "publishDate": "2025-01-10",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2694,7 +3372,26 @@
         "currentValue": null,
         "notes": "2023 UAP hearings (Grusch testimony), 2024 UAP Disclosure Act passed Senate but stalled in House. Bipartisan support for disclosure is clear, but military resistance, intelligence opposition, and national security concerns create legislative uncertainty"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 47.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-32",
@@ -2723,21 +3420,24 @@
           "institution": "NASA",
           "tier": 1,
           "url": "https://webbtelescope.org/contents/news-releases/2023/069",
-          "publishDate": "2023-09-11"
+          "publishDate": "2023-09-11",
+          "fetchedAt": null
         },
         {
           "name": "JWST Exoplanet Atmosphere Review 2025",
           "institution": "NASA",
           "tier": 1,
           "url": "https://webbtelescope.org/",
-          "publishDate": "2025-12-01"
+          "publishDate": "2025-12-01",
+          "fetchedAt": null
         },
         {
           "name": "TRAPPIST-1e Atmospheric Characterization 2025",
           "institution": "ESO",
           "tier": 2,
           "url": "https://www.eso.org/",
-          "publishDate": "2025-08-01"
+          "publishDate": "2025-08-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2774,7 +3474,26 @@
         "currentValue": null,
         "notes": "JWST detected DMS on K2-18b. 2025-2026 observations will narrow candidate planets. But 'strong biosignature' claim threshold is extremely high—abiogenic sources must be excluded"
       },
-      "timeWindowYears": 2.0
+      "timeWindowYears": 2.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 45.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-33",
@@ -2803,21 +3522,24 @@
           "institution": "NASA",
           "tier": 1,
           "url": "https://mars.nasa.gov/news/9123/",
-          "publishDate": "2024-06-15"
+          "publishDate": "2024-06-15",
+          "fetchedAt": null
         },
         {
           "name": "Mars Sample Return Campaign Update",
           "institution": "NASA-ESA",
           "tier": 2,
           "url": "https://mars.nasa.gov/program-and-missions/sample-return/",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Astrobiology Journal Analysis",
           "institution": "Astrobiology Journal",
           "tier": 3,
           "url": "https://home.liebertpub.com/publications/astrobiology/128",
-          "publishDate": "2025-01-10"
+          "publishDate": "2025-01-10",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2860,7 +3582,26 @@
         "currentValue": null,
         "notes": "Perseverance collected 43 samples at Jezero delta, some containing organic molecules. Mars Sample Return launches no earlier than 2028; preliminary in-situ analysis results may emerge 2027-2028"
       },
-      "timeWindowYears": 2.2
+      "timeWindowYears": 2.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 29.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-34",
@@ -2889,21 +3630,24 @@
           "institution": "NASA",
           "tier": 1,
           "url": "https://webbtelescope.org/contents/news-releases/2023-082",
-          "publishDate": "2026-06-20"
+          "publishDate": "2026-06-20",
+          "fetchedAt": null
         },
         {
           "name": "ESO Extremely Large Telescope Progress",
           "institution": "ESO",
           "tier": 2,
           "url": "https://www.eso.org/public/science/facilities/elt/",
-          "publishDate": "2026-08-01"
+          "publishDate": "2026-08-01",
+          "fetchedAt": null
         },
         {
           "name": "Ariel Mission Exoplanet Survey Update",
           "institution": "ESA-Ariel",
           "tier": 2,
           "url": "https://ariel.esa.int/",
-          "publishDate": "2026-09-15"
+          "publishDate": "2026-09-15",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -2946,7 +3690,26 @@
         "currentValue": null,
         "notes": "JWST detected CO2, water vapor and other constituents in multiple exoplanet atmospheres. K2-18b shows apparent DMS (dimethyl sulfide) detection, but multiple confirmatory observations needed"
       },
-      "timeWindowYears": 3.7
+      "timeWindowYears": 3.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 47.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-35",
@@ -2975,21 +3738,24 @@
           "institution": "Nature",
           "tier": 1,
           "url": "https://www.nature.com/articles/s41586-018-0256-x",
-          "publishDate": "2018-11-01"
+          "publishDate": "2018-11-01",
+          "fetchedAt": null
         },
         {
           "name": "JWST Interstellar Object Capabilities 2025",
           "institution": "NASA",
           "tier": 2,
           "url": "https://webbtelescope.org/",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "NEO Surveyor Mission Update 2025",
           "institution": "NASA",
           "tier": 2,
           "url": "https://www.jpl.nasa.gov/missions/neo-surveyor",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3024,7 +3790,26 @@
         "currentValue": null,
         "notes": "'Oumuamua (2017) anomalous acceleration not fully explainable. C/2019 Q4 (Borisov) confirmed interstellar origin. 1-2 new interstellar visitors expected to be discovered 2027-2029. But isotopic evidence requires extremely high resolution"
       },
-      "timeWindowYears": 4.0
+      "timeWindowYears": 4.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 18.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-36",
@@ -3053,21 +3838,24 @@
           "institution": "AARO",
           "tier": 1,
           "url": "https://www.aaro.mil/",
-          "publishDate": "2024-03-01"
+          "publishDate": "2024-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Congressional UAP Disclosure Act 2025",
           "institution": "Congress",
           "tier": 1,
           "url": "https://www.congress.gov/",
-          "publishDate": "2025-07-15"
+          "publishDate": "2025-07-15",
+          "fetchedAt": null
         },
         {
           "name": "Navy UAP Video Release 2025",
           "institution": "Navy",
           "tier": 2,
           "url": "https://www.navy.mil/",
-          "publishDate": "2025-04-01"
+          "publishDate": "2025-04-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3104,7 +3892,26 @@
         "currentValue": null,
         "notes": "2024 AARO reports no alien evidence. But 2025 Congress requested partial video declassification. Multiple military-captured UAP videos partially released"
       },
-      "timeWindowYears": 1.0
+      "timeWindowYears": 1.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 28.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-37",
@@ -3133,28 +3940,32 @@
           "institution": "Breakthrough Initiatives",
           "tier": 1,
           "url": "https://breakthroughinitiatives.org/",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Laser Propulsion Test 2025",
           "institution": "Caltech",
           "tier": 2,
           "url": "https://www.caltech.edu/",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         },
         {
           "name": "Interstellar Probe Funding 2025",
           "institution": "SpaceNews",
           "tier": 2,
           "url": "https://spacenews.com/",
-          "publishDate": "2025-11-01"
+          "publishDate": "2025-11-01",
+          "fetchedAt": null
         },
         {
           "name": "Private Space Exploration 2024",
           "institution": "Euroconsult",
           "tier": 3,
           "url": "https://www.euroconsultnews.com/",
-          "publishDate": "2024-08-01"
+          "publishDate": "2024-08-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3191,7 +4002,26 @@
         "currentValue": null,
         "notes": "Breakthrough Starshot advancing but requires funding and technology breakthroughs"
       },
-      "timeWindowYears": 4.0
+      "timeWindowYears": 4.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 22.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-38",
@@ -3220,21 +4050,24 @@
           "institution": "NASA",
           "tier": 1,
           "url": "https://www.nasa.gov/feature/goddard/2018/nasa-lro-finds-ice-on-moon-surface-in-direct-sunlight",
-          "publishDate": "2024-06-01"
+          "publishDate": "2024-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Chandrayaan-3 South Pole Discovery",
           "institution": "ISRO",
           "tier": 1,
           "url": "https://www.isro.gov.in/Chandrayaan3.html",
-          "publishDate": "2023-08-23"
+          "publishDate": "2023-08-23",
+          "fetchedAt": null
         },
         {
           "name": "CLPS Mission Plans 2026-2027",
           "institution": "NASA",
           "tier": 2,
           "url": "https://clps.gsfc.nasa.gov/",
-          "publishDate": "2026-04-01"
+          "publishDate": "2026-04-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3271,7 +4104,26 @@
         "currentValue": 0.5,
         "notes": "LRO/LAMP identified multiple water ice signals in permanently shadowed regions. Chandrayaan-3 confirmed sulfur anomalies. CLPS neutron spectrometer planned for 2027 landing. Current estimate ~0.5% mass ratio, gap remains to 1% threshold"
       },
-      "timeWindowYears": 3.0
+      "timeWindowYears": 3.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 49.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-39",
@@ -3300,14 +4152,16 @@
           "institution": "Science",
           "tier": 1,
           "url": "https://www.science.org/",
-          "publishDate": "2024-06-01"
+          "publishDate": "2024-06-01",
+          "fetchedAt": null
         },
         {
           "name": "RFdiffusion Protein Design Platform",
           "institution": "UW-IPD",
           "tier": 2,
           "url": "https://rfdiffusion.ai/",
-          "publishDate": "2025-01-01"
+          "publishDate": "2025-01-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3344,7 +4198,26 @@
         "currentValue": 40,
         "notes": "Natural PFAS-degrading enzymes discovered in 2024 (PETase variants). AI protein design tools available. But stability under industrial conditions is the primary challenge. Current natural enzyme degradation rate ~40%, significant gap to 90% threshold"
       },
-      "timeWindowYears": 3.0
+      "timeWindowYears": 3.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 36.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-40",
@@ -3373,35 +4246,40 @@
           "institution": "ClinicalTrials",
           "tier": 1,
           "url": "https://clinicaltrials.gov/study/NCT02432254",
-          "publishDate": "2024-12-01"
+          "publishDate": "2024-12-01",
+          "fetchedAt": null
         },
         {
           "name": "FDA Drug Approvals Annual Report 2025",
           "institution": "FDA",
           "tier": 1,
           "url": "https://www.fda.gov/drugs/new-drugs-fda-cders-new-molecular-entities-and-new-therapeutic-biological-products",
-          "publishDate": "2026-01-15"
+          "publishDate": "2026-01-15",
+          "fetchedAt": null
         },
         {
           "name": "Nature Aging - Rapamycin Analog Clinical Data",
           "institution": "Nature-Aging",
           "tier": 2,
           "url": "https://www.nature.com/nataging/",
-          "publishDate": "2025-08-10"
+          "publishDate": "2025-08-10",
+          "fetchedAt": null
         },
         {
           "name": "Unity Biotechnology Senolytics Pipeline",
           "institution": "Unity-Bio",
           "tier": 2,
           "url": "https://unitybiotechnology.com/",
-          "publishDate": "2025-05-20"
+          "publishDate": "2025-05-20",
+          "fetchedAt": null
         },
         {
           "name": "Aging Research Reviews - Senolytics Meta-analysis",
           "institution": "Elsevier",
           "tier": 3,
           "url": "https://www.journals.elsevier.com/aging-research-reviews",
-          "publishDate": "2025-02-28"
+          "publishDate": "2025-02-28",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3444,7 +4322,26 @@
         "currentValue": null,
         "notes": "Multiple anti-aging candidates in various clinical stages in 2025: metformin TAME trial (Phase 3 design), rapamycin analogs (Phase 2), senolytics such as dasatinib+quercetin (Phase 2). But FDA does not recognize 'aging' as treatable disease; regulatory pathway unclear"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 49.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-41",
@@ -3473,21 +4370,24 @@
           "institution": "Nature Medicine",
           "tier": 1,
           "url": "https://www.nature.com/nm/",
-          "publishDate": "2025-08-01"
+          "publishDate": "2025-08-01",
+          "fetchedAt": null
         },
         {
           "name": "Epigenetic Reversal Trial 2025",
           "institution": "Altos Labs",
           "tier": 1,
           "url": "https://altos.labs/",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         },
         {
           "name": "Aging Biomarkers Review 2025",
           "institution": "NIH",
           "tier": 2,
           "url": "https://www.nih.gov/",
-          "publishDate": "2025-12-01"
+          "publishDate": "2025-12-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3524,7 +4424,26 @@
         "currentValue": 1.0,
         "notes": "Phase 1 trials show 1-2 biomarker reversals. Multi-biomarker simultaneous reversal requires larger sample validation"
       },
-      "timeWindowYears": 3.0
+      "timeWindowYears": 3.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 52.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-42",
@@ -3553,21 +4472,24 @@
           "institution": "IBM",
           "tier": 1,
           "url": "https://www.research.ibm.com/quantum/roadmap",
-          "publishDate": "2025-11-01"
+          "publishDate": "2025-11-01",
+          "fetchedAt": null
         },
         {
           "name": "Google Quantum AI Error Correction Results",
           "institution": "Google-QAI",
           "tier": 2,
           "url": "https://quantumai.google/",
-          "publishDate": "2026-01-15"
+          "publishDate": "2026-01-15",
+          "fetchedAt": null
         },
         {
           "name": "Nature Physics Quantum Computing Review",
           "institution": "Nature",
           "tier": 3,
           "url": "https://www.nature.com/nphys/",
-          "publishDate": "2026-03-01"
+          "publishDate": "2026-03-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3610,7 +4532,26 @@
         "currentValue": 50,
         "notes": "IBM Heron processor: 1000+ physical qubits (2024). Logical qubits remain experimental (~50). Error correction progressing but million logical qubits require 1B+ physical qubits—vast gap remains"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 43.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-43",
@@ -3639,21 +4580,24 @@
           "institution": "Google Quantum AI",
           "tier": 1,
           "url": "https://quantumai.google/",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         },
         {
           "name": "Logical Qubit Scaling 2025",
           "institution": "IBM",
           "tier": 1,
           "url": "https://www.ibm.com/quantum",
-          "publishDate": "2025-11-01"
+          "publishDate": "2025-11-01",
+          "fetchedAt": null
         },
         {
           "name": "Quantum Computing Review 2025",
           "institution": "Nature",
           "tier": 2,
           "url": "https://www.nature.com/",
-          "publishDate": "2025-12-01"
+          "publishDate": "2025-12-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3690,7 +4634,26 @@
         "currentValue": 50.0,
         "notes": "~50 logical qubits reached by 2025, but 50 to 1M requires 4 orders of magnitude improvement"
       },
-      "timeWindowYears": 5.0
+      "timeWindowYears": 5.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 41.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-44",
@@ -3719,21 +4682,24 @@
           "institution": "Science",
           "tier": 1,
           "url": "https://www.science.org/",
-          "publishDate": "2025-07-01"
+          "publishDate": "2025-07-01",
+          "fetchedAt": null
         },
         {
           "name": "Hybrid Quantum-Classical Algorithms 2025",
           "institution": "MIT",
           "tier": 2,
           "url": "https://www.mit.edu/",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         },
         {
           "name": "Protein Folding Quantum Simulation 2025",
           "institution": "DeepMind",
           "tier": 2,
           "url": "https://deepmind.google/",
-          "publishDate": "2025-11-01"
+          "publishDate": "2025-11-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3770,7 +4736,26 @@
         "currentValue": 5.0,
         "notes": "Quantum-classical hybrid algorithms achieved ~5x speedup in small molecule simulation by 2025. 100x speedup requires larger-scale quantum computers"
       },
-      "timeWindowYears": 4.0
+      "timeWindowYears": 4.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 33.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-45",
@@ -3799,35 +4784,40 @@
           "institution": "WMO",
           "tier": 1,
           "url": "https://public.wmo.int/en/media/press-release/wmo-report-documents-spiralling-climate-change",
-          "publishDate": "2024-04-20"
+          "publishDate": "2024-04-20",
+          "fetchedAt": null
         },
         {
           "name": "Copernicus Global Temperature 2024",
           "institution": "Copernicus",
           "tier": 1,
           "url": "https://climate.copernicus.eu/",
-          "publishDate": "2025-01-10"
+          "publishDate": "2025-01-10",
+          "fetchedAt": null
         },
         {
           "name": "NOAA Annual Climate Report 2024",
           "institution": "NOAA",
           "tier": 1,
           "url": "https://www.noaa.gov/annual-report",
-          "publishDate": "2025-01-15"
+          "publishDate": "2025-01-15",
+          "fetchedAt": null
         },
         {
           "name": "NASA GISS Surface Temperature Analysis",
           "institution": "NASA-GISS",
           "tier": 1,
           "url": "https://data.giss.nasa.gov/gistemp/",
-          "publishDate": "2025-01-12"
+          "publishDate": "2025-01-12",
+          "fetchedAt": null
         },
         {
           "name": "IPCC AR6 Synthesis Report",
           "institution": "IPCC",
           "tier": 2,
           "url": "https://www.ipcc.ch/report/ar6/syr/",
-          "publishDate": "2023-03-20"
+          "publishDate": "2023-03-20",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3864,7 +4854,26 @@
         "currentValue": 1.45,
         "notes": "Already reached 1.45°C in 2023 (only 3.3% from threshold), 2024 expected to set new records. Long-term trend converging toward threshold; even La Niña years only temporarily slow progress"
       },
-      "timeWindowYears": 1.3
+      "timeWindowYears": 1.3,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 79.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-46",
@@ -3893,21 +4902,24 @@
           "institution": "NOAA",
           "tier": 1,
           "url": "https://www.noaa.gov/",
-          "publishDate": "2024-05-01"
+          "publishDate": "2024-05-01",
+          "fetchedAt": null
         },
         {
           "name": "Ocean Temperature Anomaly 2025",
           "institution": "NASA",
           "tier": 1,
           "url": "https://www.nasa.gov/",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Coral Reef Status 2025",
           "institution": "ICSU",
           "tier": 2,
           "url": "https://www.icsu.org/",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -3944,7 +4956,26 @@
         "currentValue": null,
         "notes": "Fourth global bleaching event in 2023-2024 (~54% affected). Grade 5 requires >80% affected"
       },
-      "timeWindowYears": 3.0
+      "timeWindowYears": 3.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 46.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-47",
@@ -3973,28 +5004,32 @@
           "institution": "NSIDC",
           "tier": 1,
           "url": "https://nsidc.org/arcticseaicenews/",
-          "publishDate": "2026-09-15"
+          "publishDate": "2026-09-15",
+          "fetchedAt": null
         },
         {
           "name": "IPCC AR6 Cryosphere Chapter Update",
           "institution": "IPCC",
           "tier": 1,
           "url": "https://www.ipcc.ch/report/ar6/wg1/",
-          "publishDate": "2026-05-01"
+          "publishDate": "2026-05-01",
+          "fetchedAt": null
         },
         {
           "name": "NASA Arctic Sea Ice Minimum 2026",
           "institution": "NASA",
           "tier": 1,
           "url": "https://climate.nasa.gov/vital-signs/arctic-sea-ice-minimum/",
-          "publishDate": "2026-09-20"
+          "publishDate": "2026-09-20",
+          "fetchedAt": null
         },
         {
           "name": "Copernicus Arctic Sea Ice Monitor 2026",
           "institution": "Copernicus",
           "tier": 2,
           "url": "https://climate.copernicus.eu/arctic-sea-ice",
-          "publishDate": "2026-09-25"
+          "publishDate": "2026-09-25",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4031,7 +5066,26 @@
         "currentValue": 4.2,
         "notes": "Arctic minimum sea ice ~4.3M km² in 2024, declining ~50K km²/year. At current rate, only ~200K km² reduction by 2030—far insufficient for <1M km² target"
       },
-      "timeWindowYears": 4.0
+      "timeWindowYears": 4.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 39.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-48",
@@ -4060,21 +5114,24 @@
           "institution": "Northrop Grumman",
           "tier": 1,
           "url": "https://www.northropgrumman.com/",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "NASA OSAM Program 2025",
           "institution": "NASA",
           "tier": 1,
           "url": "https://www.nasa.gov/osam",
-          "publishDate": "2025-08-01"
+          "publishDate": "2025-08-01",
+          "fetchedAt": null
         },
         {
           "name": "In-Space Servicing Market 2025",
           "institution": "Euroconsult",
           "tier": 2,
           "url": "https://www.euroconsultnews.com/",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4111,7 +5168,26 @@
         "currentValue": 25.0,
         "notes": "MEV-3 completed ~25kg propellant transfer in 2025. 100kg refueling requires new infrastructure"
       },
-      "timeWindowYears": 2.5
+      "timeWindowYears": 2.5,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 47.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-49",
@@ -4140,21 +5216,24 @@
           "institution": "SpaceReport",
           "tier": 1,
           "url": "https://www.space-report.com/",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Commercial Space Activity 2025",
           "institution": "Tauri Group",
           "tier": 1,
           "url": "https://www.taurigroup.com/",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         },
         {
           "name": "Suborbital Tourism Analysis 2025",
           "institution": "Euroconsult",
           "tier": 2,
           "url": "https://www.euroconsultnews.com/",
-          "publishDate": "2025-11-01"
+          "publishDate": "2025-11-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4191,7 +5270,26 @@
         "currentValue": 180.0,
         "notes": "Market size ~$180M in 2025. Reaching $1B requires higher flight frequency and more participants"
       },
-      "timeWindowYears": 3.0
+      "timeWindowYears": 3.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 51.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-50",
@@ -4220,21 +5318,24 @@
           "institution": "CNSA",
           "tier": 1,
           "url": "http://www.cnsa.gov.cn/",
-          "publishDate": "2024-06-25"
+          "publishDate": "2024-06-25",
+          "fetchedAt": null
         },
         {
           "name": "ILRS International Lunar Station 2025",
           "institution": "CNSA/Roscosmos",
           "tier": 1,
           "url": "http://www.cnsa.gov.cn/",
-          "publishDate": "2025-05-01"
+          "publishDate": "2025-05-01",
+          "fetchedAt": null
         },
         {
           "name": "Lunar Exploration Roadmap 2025",
           "institution": "NASA",
           "tier": 2,
           "url": "https://www.nasa.gov/",
-          "publishDate": "2025-08-01"
+          "publishDate": "2025-08-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4277,7 +5378,26 @@
         "currentValue": null,
         "notes": "Chang'e-6 completed lunar far-side sample return in 2024. ILRS international lunar research station advancing. But south pole base requires multiple launches"
       },
-      "timeWindowYears": 5.0
+      "timeWindowYears": 5.0,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 39.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-51",
@@ -4306,28 +5426,32 @@
           "institution": "OpenAI",
           "tier": 1,
           "url": "https://openai.com/pricing",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Epoch AI Inference Cost Tracker",
           "institution": "Epoch AI",
           "tier": 1,
           "url": "https://epoch.ai",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         },
         {
           "name": "NVIDIA Blackwell Architecture",
           "institution": "NVIDIA",
           "tier": 1,
           "url": "https://nvidia.com",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "AI Cost Trends Analysis",
           "institution": "Our World in Data",
           "tier": 2,
           "url": "https://ourworldindata.org",
-          "publishDate": "2025-07-01"
+          "publishDate": "2025-07-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4364,7 +5488,26 @@
         "currentValue": 0.15,
         "notes": "GPT-4o-mini reached $0.15/M tokens, far below $0.30 threshold—target achieved ahead of schedule"
       },
-      "timeWindowYears": 1.2
+      "timeWindowYears": 1.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 95.1,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-52",
@@ -4393,21 +5536,24 @@
           "institution": "UN DESA",
           "tier": 1,
           "url": "https://population.un.org/wpp/",
-          "publishDate": "2024-07-01"
+          "publishDate": "2024-07-01",
+          "fetchedAt": null
         },
         {
           "name": "China 2024 Population Statistics",
           "institution": "NBS China",
           "tier": 1,
           "url": "https://www.stats.gov.cn",
-          "publishDate": "2025-01-17"
+          "publishDate": "2025-01-17",
+          "fetchedAt": null
         },
         {
           "name": "India Population Estimates 2025",
           "institution": "World Bank",
           "tier": 2,
           "url": "https://worldbank.org",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4444,7 +5590,26 @@
         "currentValue": 1425.0,
         "notes": "UN announced India approaching surpass in 2023. Current gap ~15M and expanding at 10M/year"
       },
-      "timeWindowYears": 0.7
+      "timeWindowYears": 0.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 92.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-53",
@@ -4473,21 +5638,24 @@
           "institution": "BloombergNEF",
           "tier": 1,
           "url": "https://about.bnef.com",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "IEA Energy Storage Market Report 2025",
           "institution": "IEA",
           "tier": 1,
           "url": "https://iea.org",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         },
         {
           "name": "China Energy Storage Bidding Data H1 2025",
           "institution": "Wood Mackenzie",
           "tier": 2,
           "url": "https://woodmac.com",
-          "publishDate": "2025-07-01"
+          "publishDate": "2025-07-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4524,7 +5692,26 @@
         "currentValue": 120.0,
         "notes": "~75GW in 2024 → projected ~120GW in 2025 (+60% YoY). China energy storage tenders exceeded 60GW in H1 2025"
       },
-      "timeWindowYears": 2.2
+      "timeWindowYears": 2.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 66.4,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-54",
@@ -4553,21 +5740,24 @@
           "institution": "Google",
           "tier": 1,
           "url": "https://abc.xyz",
-          "publishDate": "2025-04-29"
+          "publishDate": "2025-04-29",
+          "fetchedAt": null
         },
         {
           "name": "GitHub Copilot Developer Survey 2025",
           "institution": "GitHub",
           "tier": 1,
           "url": "https://github.blog",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         },
         {
           "name": "AI Code Generation Market Report",
           "institution": "Gartner",
           "tier": 2,
           "url": "https://gartner.com",
-          "publishDate": "2025-08-01"
+          "publishDate": "2025-08-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4604,7 +5794,26 @@
         "currentValue": 25.0,
         "notes": "Google Q1 2025 confirmed 25%+ code AI-generated, increasing 5-8pp per quarter"
       },
-      "timeWindowYears": 1.7
+      "timeWindowYears": 1.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 66.4,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-55",
@@ -4633,21 +5842,24 @@
           "institution": "UK AISI",
           "tier": 1,
           "url": "https://aisi.gov.uk",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "AI Deepfake Election Interference Report",
           "institution": "EU DisinfoLab",
           "tier": 2,
           "url": "https://disinfolab.eu",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Frontier Model CBRN Risk Assessment",
           "institution": "RAND Corporation",
           "tier": 2,
           "url": "https://rand.org",
-          "publishDate": "2025-05-01"
+          "publishDate": "2025-05-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4684,7 +5896,26 @@
         "currentValue": 0,
         "notes": "AI deepfakes interfered with elections in 2024-2025, AI-assisted cyberattack tools circulating on dark web, but no emergency declaration triggered yet"
       },
-      "timeWindowYears": 2.2
+      "timeWindowYears": 2.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 60.4,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-56",
@@ -4713,21 +5944,24 @@
           "institution": "French Government",
           "tier": 1,
           "url": "https://www.elysee.fr",
-          "publishDate": "2025-02-01"
+          "publishDate": "2025-02-01",
+          "fetchedAt": null
         },
         {
           "name": "Saudi HUMAIN NVIDIA Partnership",
           "institution": "NVIDIA",
           "tier": 1,
           "url": "https://nvidia.com",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Global Sovereign AI Investment Tracker",
           "institution": "Stanford HAI",
           "tier": 2,
           "url": "https://hai.stanford.edu",
-          "publishDate": "2025-08-01"
+          "publishDate": "2025-08-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4764,7 +5998,26 @@
         "currentValue": 10.0,
         "notes": "France Stargate Europe €22B (2025), Saudi HUMAIN $10B (NVIDIA GTC 2025). Threshold already reached"
       },
-      "timeWindowYears": 1.7
+      "timeWindowYears": 1.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 91.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-57",
@@ -4793,21 +6046,24 @@
           "institution": "European Commission",
           "tier": 1,
           "url": "https://digital-strategy.ec.europa.eu",
-          "publishDate": "2025-02-01"
+          "publishDate": "2025-02-01",
+          "fetchedAt": null
         },
         {
           "name": "AI Office Enforcement Preparation",
           "institution": "EU AI Office",
           "tier": 2,
           "url": "https://digital-strategy.ec.europa.eu",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "AI Act Compliance Industry Analysis",
           "institution": "BCLP",
           "tier": 2,
           "url": "https://bclplaw.com",
-          "publishDate": "2025-08-01"
+          "publishDate": "2025-08-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4844,7 +6100,26 @@
         "currentValue": 0.0,
         "notes": "AI Act prohibitive provisions effective February 2025, general-purpose AI rules August 2025. Enforcement agencies established but no major fines yet"
       },
-      "timeWindowYears": 1.7
+      "timeWindowYears": 1.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 38.6,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-58",
@@ -4873,21 +6148,24 @@
           "institution": "Wood Mackenzie",
           "tier": 1,
           "url": "https://woodmac.com",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         },
         {
           "name": "IEA Energy Storage Market Outlook 2025",
           "institution": "IEA",
           "tier": 1,
           "url": "https://iea.org",
-          "publishDate": "2025-10-01"
+          "publishDate": "2025-10-01",
+          "fetchedAt": null
         },
         {
           "name": "BNEF Long-Term Energy Storage Forecast",
           "institution": "BloombergNEF",
           "tier": 2,
           "url": "https://about.bnef.com",
-          "publishDate": "2025-11-01"
+          "publishDate": "2025-11-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4924,7 +6202,26 @@
         "currentValue": 180.0,
         "notes": "Cumulative ~180GWh by end 2024, annual additions 120+GW with 50%+ growth rate. Linear extrapolation with retirement discount ~1.2TWh"
       },
-      "timeWindowYears": 3.2
+      "timeWindowYears": 3.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 64.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-59",
@@ -4953,14 +6250,16 @@
           "institution": "MIC Japan",
           "tier": 1,
           "url": "https://www.stat.go.jp",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "IPSS Population Projection",
           "institution": "IPSS",
           "tier": 1,
           "url": "https://www.ipss.go.jp",
-          "publishDate": "2024-03-01"
+          "publishDate": "2024-03-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -4997,7 +6296,26 @@
         "currentValue": 123.2,
         "notes": "~123.2M in 2025, declining 600-800K annually. ~119.7-120.5M projected for 2029"
       },
-      "timeWindowYears": 2.7
+      "timeWindowYears": 2.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 61.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-60",
@@ -5026,21 +6344,24 @@
           "institution": "Google DeepMind",
           "tier": 1,
           "url": "https://deepmind.google",
-          "publishDate": "2023-07-01"
+          "publishDate": "2023-07-01",
+          "fetchedAt": null
         },
         {
           "name": "UNHCR Climate Displacement Report 2025",
           "institution": "UNHCR",
           "tier": 1,
           "url": "https://unhcr.org",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Climate Migration Governance Discussion",
           "institution": "IOM",
           "tier": 3,
           "url": "https://iom.int",
-          "publishDate": "2025-04-01"
+          "publishDate": "2025-04-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5077,7 +6398,26 @@
         "currentValue": 0,
         "notes": "AI climate models already achieve 10,000x faster forecasting than traditional models. But international agreement still requires great power consensus"
       },
-      "timeWindowYears": 3.2
+      "timeWindowYears": 3.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 52.9,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-61",
@@ -5106,14 +6446,16 @@
           "institution": "NASA",
           "tier": 1,
           "url": "https://dart.jhuapl.edu",
-          "publishDate": "2022-11-01"
+          "publishDate": "2022-11-01",
+          "fetchedAt": null
         },
         {
           "name": "Hera Mission Plan",
           "institution": "ESA",
           "tier": 1,
           "url": "https://esa.int",
-          "publishDate": "2024-10-01"
+          "publishDate": "2024-10-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5150,7 +6492,26 @@
         "currentValue": 0,
         "notes": "DART successfully altered Dimorphos orbit by 33 minutes in 2022. Hera launches 2024, arrives 2027. Follow-up mission possible 2028"
       },
-      "timeWindowYears": 2.2
+      "timeWindowYears": 2.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 44.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-62",
@@ -5179,21 +6540,24 @@
           "institution": "NEJM",
           "tier": 1,
           "url": "https://nejm.org",
-          "publishDate": "2023-06-01"
+          "publishDate": "2023-06-01",
+          "fetchedAt": null
         },
         {
           "name": "BNT122 Pancreatic Cancer Phase I",
           "institution": "Nature",
           "tier": 1,
           "url": "https://nature.com",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "ClinicalTrials.gov mRNA Cancer Vaccines",
           "institution": "NIH",
           "tier": 2,
           "url": "https://clinicaltrials.gov",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5230,7 +6594,26 @@
         "currentValue": 0,
         "notes": "Moderna/Merck mRNA-4157 reduced melanoma recurrence risk by 44% in Phase IIb. Entering Phase III pivotal trial in 2025"
       },
-      "timeWindowYears": 2.2
+      "timeWindowYears": 2.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 65.1,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-63",
@@ -5259,21 +6642,24 @@
           "institution": "Caltech",
           "tier": 1,
           "url": "https://solar.caltech.edu",
-          "publishDate": "2023-06-01"
+          "publishDate": "2023-06-01",
+          "fetchedAt": null
         },
         {
           "name": "China Space Solar Power Station Program",
           "institution": "CASIC",
           "tier": 2,
           "url": "https://www.casic.cn",
-          "publishDate": "2025-01-01"
+          "publishDate": "2025-01-01",
+          "fetchedAt": null
         },
         {
           "name": "ESA SBSP Feasibility Study",
           "institution": "ESA",
           "tier": 2,
           "url": "https://esa.int",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5310,7 +6696,26 @@
         "currentValue": 0,
         "notes": "Caltech SSPP verified on-orbit microwave transmission in 2023. China completed ground verification station in 2025. But engineering gap remains for complete 1kW on-orbit chain"
       },
-      "timeWindowYears": 2.7
+      "timeWindowYears": 2.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 52.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-64",
@@ -5339,21 +6744,24 @@
           "institution": "DARPA",
           "tier": 1,
           "url": "https://darpa.mil",
-          "publishDate": "2024-06-01"
+          "publishDate": "2024-06-01",
+          "fetchedAt": null
         },
         {
           "name": "UK National Quantum Technologies Programme",
           "institution": "UK NQT",
           "tier": 2,
           "url": "https://www.nationalquantumtechnologies.gov.uk",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Quantum Inertial Navigation Review",
           "institution": "Nature Physics",
           "tier": 2,
           "url": "https://nature.com/nphys",
-          "publishDate": "2025-05-01"
+          "publishDate": "2025-05-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5390,7 +6798,26 @@
         "currentValue": 0,
         "notes": "Quantum accelerometers/gyroscopes demonstrated 10-100x precision improvement in laboratory. Key challenges are miniaturization and environmental stability"
       },
-      "timeWindowYears": 3.2
+      "timeWindowYears": 3.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 57.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-65",
@@ -5419,21 +6846,24 @@
           "institution": "NOC",
           "tier": 1,
           "url": "https://rapid.ac.uk",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "AMOC Tipping Point Study",
           "institution": "Nature",
           "tier": 1,
           "url": "https://nature.com",
-          "publishDate": "2024-07-01"
+          "publishDate": "2024-07-01",
+          "fetchedAt": null
         },
         {
           "name": "Greenland Meltwater AMOC Impact",
           "institution": "Science",
           "tier": 2,
           "url": "https://science.org",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5470,7 +6900,26 @@
         "currentValue": 16.0,
         "notes": "RAPID observations show AMOC slowed ~15% over past 20 years. Increased freshwater input accelerating deceleration trend"
       },
-      "timeWindowYears": 2.7
+      "timeWindowYears": 2.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 57.4,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-66",
@@ -5499,21 +6948,24 @@
           "institution": "NewsGuard",
           "tier": 1,
           "url": "https://newsguardtech.com",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "X/Twitter Transparency Report Q2 2025",
           "institution": "X Corp",
           "tier": 2,
           "url": "https://transparency.x.com",
-          "publishDate": "2025-07-01"
+          "publishDate": "2025-07-01",
+          "fetchedAt": null
         },
         {
           "name": "AI Content Ecosystem Analysis",
           "institution": "Pew Research",
           "tier": 2,
           "url": "https://pewresearch.org",
-          "publishDate": "2025-09-01"
+          "publishDate": "2025-09-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5550,7 +7002,26 @@
         "currentValue": 18.0,
         "notes": "AI-generated content estimated at ~15-20% on X in 2025. Generation tools proliferating but anti-AI detection also strengthening"
       },
-      "timeWindowYears": 2.7
+      "timeWindowYears": 2.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 50.5,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-67",
@@ -5579,21 +7050,24 @@
           "institution": "Target Malaria",
           "tier": 1,
           "url": "https://targetmalaria.org",
-          "publishDate": "2024-07-01"
+          "publishDate": "2024-07-01",
+          "fetchedAt": null
         },
         {
           "name": "WHO Gene Drive Governance Framework",
           "institution": "WHO",
           "tier": 1,
           "url": "https://who.int",
-          "publishDate": "2025-05-01"
+          "publishDate": "2025-05-01",
+          "fetchedAt": null
         },
         {
           "name": "Gene Drive Ecology Risk Assessment",
           "institution": "Nature Ecology",
           "tier": 2,
           "url": "https://nature.com/natecolevol",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5630,7 +7104,26 @@
         "currentValue": 0,
         "notes": "Target Malaria completed limited field trials in Burkina Faso (2024). Open release requires higher safety approval"
       },
-      "timeWindowYears": 1.7
+      "timeWindowYears": 1.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 44.6,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-68",
@@ -5659,14 +7152,16 @@
           "institution": "Microsoft",
           "tier": 1,
           "url": "https://azure.microsoft.com/quantum",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Majorana Experiment 2025",
           "institution": "Nature Physics",
           "tier": 1,
           "url": "https://nature.com/nphys",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5703,7 +7198,26 @@
         "currentValue": 0,
         "notes": "Microsoft Station Q demonstrated stronger Majorana evidence in 2025. But experimental manipulation remains extremely difficult"
       },
-      "timeWindowYears": 2.7
+      "timeWindowYears": 2.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 47.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-69",
@@ -5732,21 +7246,24 @@
           "institution": "Axiom Space",
           "tier": 1,
           "url": "https://axiomspace.com",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Vast Haven-1 Mission Plan",
           "institution": "Vast Technologies",
           "tier": 2,
           "url": "https://vast.space",
-          "publishDate": "2025-08-01"
+          "publishDate": "2025-08-01",
+          "fetchedAt": null
         },
         {
           "name": "ISS Retirement Timeline",
           "institution": "NASA",
           "tier": 1,
           "url": "https://nasa.gov",
-          "publishDate": "2024-01-01"
+          "publishDate": "2024-01-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5783,7 +7300,26 @@
         "currentValue": 0,
         "notes": "Axiom Space plans first module launch 2026-2027. Vast Haven plans 2026 maiden flight. But independent operation requires ISS detachment"
       },
-      "timeWindowYears": 3.2
+      "timeWindowYears": 3.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 49.9,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-70",
@@ -5812,14 +7348,16 @@
           "institution": "KOSTAT",
           "tier": 1,
           "url": "https://kostat.go.kr",
-          "publishDate": "2025-02-01"
+          "publishDate": "2025-02-01",
+          "fetchedAt": null
         },
         {
           "name": "OECD Korea Population Report",
           "institution": "OECD",
           "tier": 1,
           "url": "https://oecd.org",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5856,7 +7394,26 @@
         "currentValue": 0.72,
         "notes": "Korea TFR at 0.72 in 2024 with slight recovery. Recovery driven by subsidies; structural factors unchanged"
       },
-      "timeWindowYears": 3.2
+      "timeWindowYears": 3.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 61.0,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-71",
@@ -5885,21 +7442,24 @@
           "institution": "Equinor",
           "tier": 1,
           "url": "https://equinor.com",
-          "publishDate": "2025-01-01"
+          "publishDate": "2025-01-01",
+          "fetchedAt": null
         },
         {
           "name": "GWEC Floating Wind Outlook 2025",
           "institution": "GWEC",
           "tier": 2,
           "url": "https://gwec.net",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Ulsan Floating Wind Project",
           "institution": "KOWIND",
           "tier": 3,
           "url": "https://www.kowind.kr",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -5936,7 +7496,26 @@
         "currentValue": 0,
         "notes": "Global floating wind <200MW in 2025. GW-scale plans across Europe/Japan-Korea/China. Commercialization requires solving mooring reliability and deepwater costs"
       },
-      "timeWindowYears": 3.2
+      "timeWindowYears": 3.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 45.1,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-72",
@@ -5965,14 +7544,16 @@
           "institution": "NASA",
           "tier": 1,
           "url": "https://europa.nasa.gov",
-          "publishDate": "2024-10-01"
+          "publishDate": "2024-10-01",
+          "fetchedAt": null
         },
         {
           "name": "Hubble Europa Water Plume Observation",
           "institution": "STScI",
           "tier": 1,
           "url": "https://stsci.edu",
-          "publishDate": "2024-03-01"
+          "publishDate": "2024-03-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -6009,7 +7590,26 @@
         "currentValue": 0,
         "notes": "Europa Clipper launched 2024, arriving 2030. Equipped with MASE to detect plume composition. Hubble has observed water plumes"
       },
-      "timeWindowYears": 3.7
+      "timeWindowYears": 3.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 34.1,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-73",
@@ -6038,21 +7638,24 @@
           "institution": "UNEP",
           "tier": 1,
           "url": "https://unep.org",
-          "publishDate": "2024-03-01"
+          "publishDate": "2024-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Harvard SCoPEx Experiment Controversy",
           "institution": "Harvard",
           "tier": 2,
           "url": "https://harvard.edu",
-          "publishDate": "2024-09-01"
+          "publishDate": "2024-09-01",
+          "fetchedAt": null
         },
         {
           "name": "Geoengineering Governance Survey",
           "institution": "Chatham House",
           "tier": 2,
           "url": "https://chathamhouse.org",
-          "publishDate": "2025-05-01"
+          "publishDate": "2025-05-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -6089,7 +7692,26 @@
         "currentValue": 0,
         "notes": "UNEA discussions began in 2024. Requires US-China-India-EU consensus. Extreme climate events or unilateral SRM experiments would drive urgency"
       },
-      "timeWindowYears": 3.7
+      "timeWindowYears": 3.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 38.1,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-74",
@@ -6118,14 +7740,16 @@
           "institution": "Pivot Bio",
           "tier": 1,
           "url": "https://pivotbio.com",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Synthetic Coral Symbiont Research",
           "institution": "Nature Biotechnology",
           "tier": 1,
           "url": "https://nature.com/nbt",
-          "publishDate": "2024-09-01"
+          "publishDate": "2024-09-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -6162,7 +7786,26 @@
         "currentValue": 5.0,
         "notes": "Pivot Bio engineered nitrogen-fixing microbes tested. Synthetic coral symbiotic algae showing progress. But regulatory barriers remain massive (GMO controversy)"
       },
-      "timeWindowYears": 2.7
+      "timeWindowYears": 2.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 32.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-75",
@@ -6191,21 +7834,24 @@
           "institution": "CAS",
           "tier": 1,
           "url": "https://cas.cn",
-          "publishDate": "2024-06-01"
+          "publishDate": "2024-06-01",
+          "fetchedAt": null
         },
         {
           "name": "QuTech Quantum Internet Roadmap",
           "institution": "QuTech",
           "tier": 2,
           "url": "https://qutech.nl",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Quantum Repeater Progress Review",
           "institution": "Physical Review Letters",
           "tier": 2,
           "url": "https://journals.aps.org/prl",
-          "publishDate": "2025-07-01"
+          "publishDate": "2025-07-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -6242,7 +7888,26 @@
         "currentValue": 0,
         "notes": "China Beijing-Shanghai 2000km quantum key distribution (trusted relay). But city-scale + quantum repeaters require multiple breakthroughs"
       },
-      "timeWindowYears": 3.2
+      "timeWindowYears": 3.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 42.4,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-76",
@@ -6271,21 +7936,24 @@
           "institution": "NASA",
           "tier": 1,
           "url": "https://psyche.asu.edu",
-          "publishDate": "2023-10-01"
+          "publishDate": "2023-10-01",
+          "fetchedAt": null
         },
         {
           "name": "AstroForge Mining Plan",
           "institution": "AstroForge",
           "tier": 3,
           "url": "https://astroforge.io",
-          "publishDate": "2024-03-01"
+          "publishDate": "2024-03-01",
+          "fetchedAt": null
         },
         {
           "name": "Hayabusa2 Sample Return Results",
           "institution": "JAXA",
           "tier": 1,
           "url": "https://jaxa.jp",
-          "publishDate": "2024-06-01"
+          "publishDate": "2024-06-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -6322,7 +7990,26 @@
         "currentValue": 0,
         "notes": "AstroForge 2024 inaugural mission failed. Hayabusa series proven sample return feasibility. Key is targeting M-type asteroids"
       },
-      "timeWindowYears": 3.7
+      "timeWindowYears": 3.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 27.6,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-77",
@@ -6351,14 +8038,16 @@
           "institution": "Stanford HAI",
           "tier": 1,
           "url": "https://hai.stanford.edu",
-          "publishDate": "2024-06-01"
+          "publishDate": "2024-06-01",
+          "fetchedAt": null
         },
         {
           "name": "Turing Test Reassessment 2025",
           "institution": "MIT Technology Review",
           "tier": 2,
           "url": "https://technologyreview.com",
-          "publishDate": "2025-04-01"
+          "publishDate": "2025-04-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -6395,7 +8084,26 @@
         "currentValue": 0,
         "notes": "GPT-4/Claude approached 70% in 2024 informal testing. But standard tests are more rigorous"
       },
-      "timeWindowYears": 2.2
+      "timeWindowYears": 2.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 38.2,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-78",
@@ -6424,21 +8132,24 @@
           "institution": "UMSOM",
           "tier": 1,
           "url": "https://ummedicine.umaryland.edu",
-          "publishDate": "2024-01-01"
+          "publishDate": "2024-01-01",
+          "fetchedAt": null
         },
         {
           "name": "NYU Langone Porcine Kidney Transplant",
           "institution": "NYU Langone",
           "tier": 2,
           "url": "https://nyulangone.org",
-          "publishDate": "2024-09-01"
+          "publishDate": "2024-09-01",
+          "fetchedAt": null
         },
         {
           "name": "Xenotransplantation Clinical Progress Review",
           "institution": "The Lancet",
           "tier": 1,
           "url": "https://thelancet.com",
-          "publishDate": "2025-06-01"
+          "publishDate": "2025-06-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -6475,7 +8186,26 @@
         "currentValue": 15.0,
         "notes": "First porcine kidney transplant in 2024. ~10-15 cumulative cases by 2025. Primary challenge is rejection"
       },
-      "timeWindowYears": 3.2
+      "timeWindowYears": 3.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 29.9,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-79",
@@ -6504,14 +8234,16 @@
           "institution": "NIST",
           "tier": 1,
           "url": "https://nist.gov",
-          "publishDate": "2024-08-01"
+          "publishDate": "2024-08-01",
+          "fetchedAt": null
         },
         {
           "name": "Quantum RSA Breaking Resource Estimate",
           "institution": "arXiv",
           "tier": 2,
           "url": "https://arxiv.org",
-          "publishDate": "2024-11-01"
+          "publishDate": "2024-11-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -6548,7 +8280,26 @@
         "currentValue": 133,
         "notes": "IBM Heron (2025) has 1,121 physical qubits; error-corrected logical qubits still far from 4,000 target. Google Willow chip shows promise but gap remains >4,000x."
       },
-      "timeWindowYears": 3.7
+      "timeWindowYears": 3.7,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 34.1,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     },
     {
       "id": "FP-80",
@@ -6577,14 +8328,16 @@
           "institution": "ITGC",
           "tier": 1,
           "url": "https://thwaitesglacier.org",
-          "publishDate": "2024-12-01"
+          "publishDate": "2024-12-01",
+          "fetchedAt": null
         },
         {
           "name": "NASA IceBridge Data",
           "institution": "NASA",
           "tier": 1,
           "url": "https://icebridge.gsfc.nasa.gov",
-          "publishDate": "2025-03-01"
+          "publishDate": "2025-03-01",
+          "fetchedAt": null
         }
       ],
       "causalChainNodes": [
@@ -6621,7 +8374,26 @@
         "currentValue": 0,
         "notes": "Thwaites bottom accelerating melt. But structural collapse requires warm water triggering hydrofracturing + ice cliff instability. 2030 window is tight"
       },
-      "timeWindowYears": 4.2
+      "timeWindowYears": 4.2,
+      "generatedBy": "Anna (Agent)",
+      "generatedAt": "2026-10-12T12:00:00Z",
+      "engineVersion": "v4.0.0",
+      "updatedAt": null,
+      "verdict": {
+        "status": "pending",
+        "verifiedAt": null,
+        "source": null,
+        "actualValue": null,
+        "notes": ""
+      },
+      "confidenceHistory": [
+        {
+          "ts": "2026-10-12T12:00:00Z",
+          "score": 23.8,
+          "source": "engine",
+          "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+        }
+      ]
     }
   ],
   "causalChains": [

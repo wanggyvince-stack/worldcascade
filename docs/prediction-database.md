@@ -124,6 +124,8 @@
 
 ## 字段说明
 
+### 核心字段
+
 | 字段 | 含义 | 来源 |
 |---|---|---|
 | id | 预测唯一标识（FP-01 ~ FP-80） | 自动生成 |
@@ -134,13 +136,46 @@
 | originalConfidence | 原始置信度（0-100） | LLM 评估 |
 | engineScore | 引擎评分（0-100） | v4.0.0 计算 |
 | confidenceLevel | 等级（high/medium/low） | 基于 engineScore |
-| leadingSignal | 先行信号 | 人工/L混合 |
+| leadingSignal | 先行信号 | 人工/LLM 混合 |
 | causalChainNodes | 因果链步骤 | LLM 生成 |
 | causalChainIds | 所属因果链 | 引擎生成 |
 | evidence | 证据列表 | LLM 生成 |
 | consensusStatus | 共识状态 | 计算得出 |
 | currentValue | 当前值 | 动态更新 |
 | thresholdValue | 阈值 | 生成时指定 |
+
+### 新增字段（2026-10-16）
+
+| 字段 | 类型 | 含义 | 当前值 |
+|---|---|---|---|
+| generatedBy | string | 生成者 | "Anna (Agent)" |
+| generatedAt | ISO timestamp | 生成时间 | "2026-10-12T12:00:00Z" |
+| engineVersion | string | 引擎版本 | "v4.0.0" |
+| updatedAt | ISO timestamp \| null | 最后更新时间 | null |
+| verdict | object | 验证结果 | 见下方结构 |
+| confidenceHistory | array | 置信度变化轨迹 | 见下方结构 |
+| evidence[].fetchedAt | ISO timestamp \| null | 证据获取时间 | null |
+
+**verdict 结构：**
+```json
+{
+  "status": "pending",  // pending | confirmed | refuted | partial
+  "verifiedAt": null,   // 实际验证日期
+  "source": null,       // 验证依据
+  "actualValue": null,  // 实际值
+  "notes": ""           // 备注
+}
+```
+
+**confidenceHistory 结构：**
+```json
+[{
+  "ts": "2026-10-12T12:00:00Z",
+  "score": 96.9,
+  "source": "engine",  // "engine" | "manual"
+  "reason": "Initial generation by Anna using prediction-engine v4.0.0"
+}]
+```
 
 ---
 
@@ -149,6 +184,7 @@
 | 批次 | 日期 | 引擎版本 | 数量 | 生成者 | 说明 |
 |---|---|---|---|---|---|
 | v1 | 2026-10-12 | v4.0.0 | 80 | Anna | MVP 全量预测，含 21 条因果链（后修正为 17 条） |
+| schema-v1.1 | 2026-10-16 | v4.0.0 | 80 | - | 新增字段：generatedBy, generatedAt, engineVersion, updatedAt, verdict, confidenceHistory, evidence[].fetchedAt |
 
 ---
 
