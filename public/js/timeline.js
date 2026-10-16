@@ -1283,8 +1283,15 @@ function handleHash() {
   // Check for chain detail route: #chain/CC-XXX-NNN
   if (hash.toLowerCase().startsWith('chain/')) {
     const chainId = hash.split('/')[1];
-    // Trigger chain detail via custom event (sidebar listens for this)
-    window.dispatchEvent(new CustomEvent('show-chain-detail', { detail: chainId }));
+    // Small delay to ensure sidebar is fully initialized
+    setTimeout(() => {
+      if (window.openChainDetail) {
+        window.openChainDetail(chainId);
+      } else {
+        // Fallback: dispatch event for later listeners
+        window.dispatchEvent(new CustomEvent('show-chain-detail', { detail: chainId }));
+      }
+    }, 100);
     return;
   }
   
@@ -1436,14 +1443,18 @@ function setupChainSidebar() {
   let minStrength = 0;
   let selectedChainId = null;
   
-  // Listen for chain detail navigation from timeline click
-  window.addEventListener('show-chain-detail', (e) => {
-    const chainId = e.detail;
+  // Expose openChainDetail globally for hash routing
+  window.openChainDetail = function(chainId) {
     if (chainId && causalChains.find(c => c.id === chainId)) {
       sidebar.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
       showChainDetail(chainId);
     }
+  };
+  
+  // Listen for chain detail navigation from timeline click
+  window.addEventListener('show-chain-detail', (e) => {
+    window.openChainDetail(e.detail);
   });
   
   // Toggle sidebar
