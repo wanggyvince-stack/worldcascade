@@ -4295,12 +4295,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Nodes
       document.getElementById('cd-nodes').innerHTML = chain.nodes.map((n, i) => {
-        const anchorChips = n.anchors.map(pid => {
+        const anchorChips = (n.anchors || []).map(pid => {
           const p = PREDICTIONS.find(p => p.id === pid);
           if (!p) return '';
           return `<a class="cd-mini-pred" href="#detail/${pid}" onclick="setLastRoute(location.hash);event.stopPropagation();event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">${pid} <span class="mp-score">${p.e}</span></a>`;
         }).join('');
-        const paragraphs = n.paragraphs.map(p => `<p class="cd-node-p">${p}</p>`).join('');
+        const paragraphs = (n.paragraphs || []).map(p => `<p class="cd-node-p">${p}</p>`).join('');
+        const meaning = n.meaning ? `<div class="cd-node-meaning">${n.meaning}</div>` : '';
         return `
           <article class="cd-node${i === 0 ? ' open' : ''}" data-node="${n.id}">
             <div class="cd-node-head" onclick="this.parentElement.classList.toggle('open')">
@@ -4313,7 +4314,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="cd-node-body">
               ${paragraphs}
-              <div class="cd-node-meaning">${n.meaning}</div>
+              ${meaning}
               <div class="cd-node-anchors">
                 <div class="cd-node-anchors-label">Anchor Predictions</div>
                 ${anchorChips}
@@ -4325,13 +4326,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Vulnerability
       const v = chain.vulnerability;
-      document.getElementById('cd-vuln').innerHTML = `
-        <strong>Weakest link: ${v.title}</strong>
-        <p class="cd-node-p" style="margin-top:0.75rem;margin-bottom:0;">${v.text}</p>
-      `;
+      if (v) {
+        document.getElementById('cd-vuln').innerHTML = `
+          <strong>Weakest link: ${v.title}</strong>
+          <p class="cd-node-p" style="margin-top:0.75rem;margin-bottom:0;">${v.text}</p>
+        `;
+        document.getElementById('cd-vuln').style.display = '';
+      } else {
+        // Auto-generated chains may not have vulnerability data
+        const weakestNode = chain.nodes.reduce((weakest, n, i) => {
+          const score = n.evidence === 'HIGH' ? 3 : n.evidence === 'MEDIUM' ? 2 : 1;
+          return score < weakest.score ? { score, node: n, idx: i } : weakest;
+        }, { score: 4, node: null, idx: -1 });
+        if (weakestNode.node) {
+          document.getElementById('cd-vuln').innerHTML = `
+            <strong>Weakest link: Node ${weakestNode.idx + 1} — ${weakestNode.node.title}</strong>
+            <p class="cd-node-p" style="margin-top:0.75rem;margin-bottom:0;">Evidence strength: ${weakestNode.node.evidence}. Detailed narrative coming soon.</p>
+          `;
+          document.getElementById('cd-vuln').style.display = '';
+        } else {
+          document.getElementById('cd-vuln').style.display = 'none';
+        }
+      }
 
       // All predictions
-      const predsHtml = chain.relatedPreds.map(pid => {
+      const relatedPreds = chain.relatedPreds || [];
+      const predsHtml = relatedPreds.map(pid => {
         const p = PREDICTIONS.find(p => p.id === pid);
         if (!p) return '';
         return `<a class="cd-pred-row" href="#detail/${pid}" onclick="setLastRoute(location.hash);event.preventDefault();history.pushState(null,'','#detail/${pid}');handleRoute();">
@@ -4342,7 +4362,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }).join('');
       document.getElementById('cd-preds').innerHTML = `
         ${predsHtml}
-        <div class="cd-preds-summary">Average engine score across <strong>${(chain.relatedPreds || []).length}</strong> linked predictions: <strong>${avgScore}</strong></div>
+        <div class="cd-preds-summary">Average engine score across <strong>${relatedPreds.length}</strong> linked predictions: <strong>${avgScore}</strong></div>
       `;
 
       // Toggle visibility
