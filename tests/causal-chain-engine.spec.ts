@@ -147,3 +147,113 @@ test.describe('Causal Chain Engine', () => {
     }
   });
 });
+
+test.describe('Visual & Rendering Validation', () => {
+  let data: DataFile;
+
+  test.beforeAll(() => {
+    data = JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8'));
+  });
+
+  test('all chain endpoints are valid FP events', () => {
+    const validIds = new Set(data.predictions.map(p => p.id));
+    
+    for (const chain of data.causalChains) {
+      const linked = chain.linkedPredictions;
+      expect(linked.length).toBeGreaterThanOrEqual(2);
+      // First and last must be valid FP IDs
+      expect(validIds.has(linked[0])).toBeTruthy();
+      expect(validIds.has(linked[linked.length - 1])).toBeTruthy();
+    }
+  });
+
+  test('time monotonicity across ALL chains (not just auto)', () => {
+    const predMap = new Map(data.predictions.map(p => [p.id, p]));
+    
+    for (const chain of data.causalChains) {
+      const dates = chain.linkedPredictions
+        .map(id => predMap.get(id)?.verificationDate)
+        .filter(Boolean) as string[];
+      
+      for (let i = 0; i < dates.length - 1; i++) {
+        const curr = new Date(dates[i]).getTime();
+        const next = new Date(dates[i + 1]).getTime();
+        expect(curr).toBeLessThanOrEqual(next);
+      }
+    }
+  });
+
+  test('every domain with predictions has at least 1 chain passing through', () => {
+    const predMap = new Map(data.predictions.map(p => [p.id, p]));
+    const allDomains = new Set(data.predictions.map(p => p.domain));
+    const domainsWithChains = new Set<string>();
+    
+    for (const chain of data.causalChains) {
+      for (const fpId of chain.linkedPredictions) {
+        const pred = predMap.get(fpId);
+        if (pred) domainsWithChains.add(pred.domain);
+      }
+    }
+    
+    // Every domain that has predictions should have at least 1 chain
+    for (const domain of allDomains) {
+      expect(domainsWithChains.has(domain)).toBeTruthy();
+    }
+  });
+
+  test('chain strength values are not all identical', () => {
+    const strengths = data.causalChains
+      .map(c => c.strength)
+      .filter((s): s is number => s !== undefined);
+    
+    expect(strengths.length).toBeGreaterThan(0);
+    const uniqueStrengths = new Set(strengths);
+    // Should have at least 3 distinct strength values
+    expect(uniqueStrengths.size).toBeGreaterThanOrEqual(3);
+  });
+
+  test('no duplicate chain IDs across all chains', () => {
+    const ids = data.causalChains.map(c => c.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  test('all chains have non-empty linkedPredictions with valid references', () => {
+    const validIds = new Set(data.predictions.map(p => p.id));
+    
+    for (const chain of data.causalChains) {
+      expect(chain.linkedPredictions).toBeInstanceOf(Array);
+      expect(chain.linkedPredictions.length).toBeGreaterThanOrEqual(2);
+      
+      for (const fpId of chain.linkedPredictions) {
+        expect(validIds.has(fpId)).toBeTruthy();
+      }
+    }
+  });
+
+  test('hand-crafted chains have strength field', () => {
+    const handCrafted = data.causalChains.filter(c => c.id.startsWith('CC-CROSS-00'));
+    
+    for (const chain of handCrafted) {
+      expect(chain.strength).toBeDefined();
+      expect(typeof chain.strength).toBe('number');
+      expect(chain.strength).toBeGreaterThanOrEqual(50);
+    }
+  });
+
+  test('chain titles do not truncate at bad positions', () => {
+    for (const chain of data.causalChains) {
+      const title = chain.title;
+      expect(title).toBeTruthy();
+      // Should not end with very short partial word like "c..." (1 char before ...)
+      // Allow complete words before "..." like "most...", "by...", "it..."
+      if (title.endsWith('...')) {
+        const beforeEllipsis = title.slice(0, -3);
+        const lastWord = beforeEllipsis.split(/\s+/).pop() || '';
+        // Last word before "..." should be at least 2 chars (not a single-char mid-word break)
+        expect(lastWord.length).toBeGreaterThanOrEqual(2);
+      }
+      // Should not end with "1/1→" pattern
+      expect(title).not.toMatch(/→$/);
+    }
+  });
+});
