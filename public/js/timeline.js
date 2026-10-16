@@ -829,21 +829,20 @@ function renderCausalChains(g, svg) {
       const srcOffset = chainLaneOffset[`${chain.id}:${srcDomain}`] || 0;
       const tgtOffset = chainLaneOffset[`${chain.id}:${tgtDomain}`] || 0;
       
-      // Bezier control points: smooth S-curve
-      // Horizontal bias: control points at 40% and 60% of x-distance
-      const cp1x = src.x + dx * 0.4;
-      const cp1y = src.y + srcOffset;
-      const cp2x = src.x + dx * 0.6;
-      const cp2y = tgt.y + tgtOffset;
+      // Bezier control points: smooth S-curve with proper y interpolation
+      const cp1x = src.x + dx * 0.35;
+      const cp1y = src.y + srcOffset + (tgt.y + tgtOffset - src.y - srcOffset) * 0.15;
+      const cp2x = src.x + dx * 0.65;
+      const cp2y = src.y + srcOffset + (tgt.y + tgtOffset - src.y - srcOffset) * 0.85;
       
-      // For short horizontal distances, add vertical offset to avoid overlap
+      // For short horizontal distances, add vertical bow to avoid overlap
       const minDx = Math.abs(dx);
       let cpExtraOffsetY = 0;
       if (minDx < 60) {
         cpExtraOffsetY = (i % 2 === 0 ? -1 : 1) * 8;
       }
       
-      const pathD = `M${src.x},${src.y + srcOffset} C${cp1x},${cp1y + cpExtraOffsetY} ${cp2x},${cp2y + cpExtraOffsetY} ${tgt.x},${tgt.y + tgtOffset}`;
+      const pathD = `M${src.x},${src.y + srcOffset} C${cp1x},${cp1y + cpExtraOffsetY} ${cp2x},${cp2y - cpExtraOffsetY} ${tgt.x},${tgt.y + tgtOffset}`;
       
       const isLast = (i === positions.length - 2);
       
