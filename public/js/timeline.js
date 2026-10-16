@@ -696,11 +696,62 @@ function renderCausalChains(g, svg) {
   // Sort all chains by strength descending
   const allSorted = [...causalChains].sort((a, b) => calcChainStrength(b) - calcChainStrength(a));
   
-  // Show top 5 core chains by default (rest available via sidebar in WO-S4-06)
+  // Smart selection: top 5 by strength, but ensure each domain has at least 1 chain visible
   const maxVisible = 5;
-  const visibleChains = allSorted.slice(0, maxVisible);
+  const domainCoverage = new Set();
+  const selectedChains = [];
+  
+  // First pass: select top chains ensuring domain coverage
+  for (const chain of allSorted) {
+    if (selectedChains.length >= maxVisible) break;
+    const linkedDomains = new Set();
+    for (const fpId of (chain.linkedPredictions || [])) {
+      const pred = predictions.find(p => p.id === fpId);
+      if (pred) linkedDomains.add(pred.domain);
+    }
+    // Prioritize chains that cover uncovered domains
+    const hasNewDomain = [...linkedDomains].some(d => !domainCoverage.has(d));
+    if (hasNewDomain || selectedChains.length < 3) {
+      selectedChains.push(chain);
+      linkedDomains.forEach(d => domainCoverage.add(d));
+    }
+  }
+  
+  // Fill remaining slots with top strength chains
+  for (const chain of allSorted) {
+    if (selectedChains.length >= maxVisible) break;
+    if (!selectedChains.includes(chain)) {
+      selectedChains.push(chain);
+    }
+  }
+  
+  const visibleChains = selectedChains;
 
   const chainG = g.append('g').attr('class', 'causal-chains');
+
+  // Calculate per-chain per-lane vertical offsets to reduce overlap
+  // Track how many chains pass through each lane, assign alternating offsets
+  const laneChainCount = {};
+  const chainLaneOffset = {}; // key: "chainId:domain" -> offset in px
+  visibleChains.forEach((chain, idx) => {
+    const domains = new Set();
+    for (const fpId of (chain.linkedPredictions || [])) {
+      const pred = predictions.find(p => p.id === fpId);
+      if (pred) domains.add(pred.domain);
+    }
+    domains.forEach(domain => {
+      if (!laneChainCount[domain]) laneChainCount[domain] = 0;
+      const count = laneChainCount[domain];
+      // Alternate offset: 0, -12, +12, -24, +24, ...
+      let offset = 0;
+      if (count > 0) {
+        const magnitude = Math.ceil(count / 2) * 12;
+        offset = (count % 2 === 1) ? -magnitude : magnitude;
+      }
+      chainLaneOffset[`${chain.id}:${domain}`] = offset;
+      laneChainCount[domain] = count + 1;
+    });
+  });
 
   visibleChains.forEach((chain, idx) => {
     const linkedIds = chain.linkedPredictions || [];
@@ -714,13 +765,19 @@ function renderCausalChains(g, svg) {
     const targetColor = positions[positions.length - 1].domainColor || DOMAIN_COLORS[positions[positions.length - 1].domain] || '#94A3B8';
     const strokeWidth = getStrokeWidth(chain);
 
+    // Calculate offset positions for gradient
+    const firstDomain = linkedIds[0] ? (predictions.find(p => p.id === linkedIds[0]) || {}).domain : positions[0].domain;
+    const lastDomain = linkedIds[linkedIds.length-1] ? (predictions.find(p => p.id === linkedIds[linkedIds.length-1]) || {}).domain : positions[positions.length-1].domain;
+    const firstOffset = chainLaneOffset[`${chain.id}:${firstDomain}`] || 0;
+    const lastOffset = chainLaneOffset[`${chain.id}:${lastDomain}`] || 0;
+
     // Create linear gradient spanning full chain extent
     const gradId = `chain-grad-${idx}`;
     const gradient = defs.append('linearGradient')
       .attr('id', gradId)
       .attr('gradientUnits', 'userSpaceOnUse')
-      .attr('x1', positions[0].x).attr('y1', positions[0].y)
-      .attr('x2', positions[positions.length - 1].x).attr('y2', positions[positions.length - 1].y);
+      .attr('x1', positions[0].x).attr('y1', positions[0].y + firstOffset)
+      .attr('x2', positions[positions.length - 1].x).attr('y2', positions[positions.length - 1].y + lastOffset);
     gradient.append('stop').attr('offset', '0%').attr('stop-color', sourceColor).attr('stop-opacity', 0.75);
     gradient.append('stop').attr('offset', '100%').attr('stop-color', targetColor).attr('stop-opacity', 0.75);
 
@@ -747,21 +804,27 @@ function renderCausalChains(g, svg) {
       const dx = tgt.x - src.x;
       const dy = tgt.y - src.y;
       
+      // Apply per-chain per-lane offset to reduce overlap
+      const srcDomain = linkedIds[i] ? (predictions.find(p => p.id === linkedIds[i]) || {}).domain : src.domain;
+      const tgtDomain = linkedIds[i+1] ? (predictions.find(p => p.id === linkedIds[i+1]) || {}).domain : tgt.domain;
+      const srcOffset = chainLaneOffset[`${chain.id}:${srcDomain}`] || 0;
+      const tgtOffset = chainLaneOffset[`${chain.id}:${tgtDomain}`] || 0;
+      
       // Bezier control points: smooth S-curve
       // Horizontal bias: control points at 40% and 60% of x-distance
       const cp1x = src.x + dx * 0.4;
-      const cp1y = src.y;
+      const cp1y = src.y + srcOffset;
       const cp2x = src.x + dx * 0.6;
-      const cp2y = tgt.y;
+      const cp2y = tgt.y + tgtOffset;
       
       // For short horizontal distances, add vertical offset to avoid overlap
       const minDx = Math.abs(dx);
-      let cpOffsetY = 0;
+      let cpExtraOffsetY = 0;
       if (minDx < 60) {
-        cpOffsetY = (i % 2 === 0 ? -1 : 1) * 15; // alternate up/down
+        cpExtraOffsetY = (i % 2 === 0 ? -1 : 1) * 8;
       }
       
-      const pathD = `M${src.x},${src.y} C${cp1x},${cp1y + cpOffsetY} ${cp2x},${cp2y + cpOffsetY} ${tgt.x},${tgt.y}`;
+      const pathD = `M${src.x},${src.y + srcOffset} C${cp1x},${cp1y + cpExtraOffsetY} ${cp2x},${cp2y + cpExtraOffsetY} ${tgt.x},${tgt.y + tgtOffset}`;
       
       const isLast = (i === positions.length - 2);
       
